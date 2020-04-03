@@ -7,7 +7,7 @@ import Button from "react-bootstrap/Button";
 class Header extends Component {
   render() {
     return (
-      <Navbar expand="lg" variant="dark" bg="dark" id="navbar-nav">
+      <Navbar expand="lg" variant="dark" bg="dark" id="navbar-nav" fixed='top'>
         <Navbar.Brand>
           <img
             alt=""
@@ -21,25 +21,25 @@ class Header extends Component {
         <DropdownButton
           variant={"warning"}
           className="m-2"
-          title={"Cases: " + this.props.total.total_cases}
+          title={"Global Cases: " + this.props.total.total_cases}
           id="last_updated"
         >
           <Dropdown.Item>
-            Today's Increase: {this.props.total.new_cases}
+            Daily Increase: {this.props.total.new_cases}
           </Dropdown.Item>
         </DropdownButton>
         <Button variant="success" className="m-2" id="last_updated">
           {" "}
-          Recoveries: {this.props.total.total_recovered}
+          Global Recoveries: {this.props.total.total_recovered}
         </Button>
         <DropdownButton
           variant={"danger"}
           className="m-2"
-          title={"Deaths: " + this.props.total.total_deaths}
+          title={"Global Deaths: " + this.props.total.total_deaths}
           id="last_updated"
         >
           <Dropdown.Item>
-            Today's Increase: {this.props.total.new_deaths}
+            Daily Increase: {this.props.total.new_deaths}
           </Dropdown.Item>
         </DropdownButton>
         <Button variant="dark" className="btn-space m-2" id="last_updated">
