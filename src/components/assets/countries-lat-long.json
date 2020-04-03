@@ -1829,7 +1829,7 @@
       "alpha2": "US",
       "alpha3": "USA",
       "numeric": 840,
-      "latitude": 35.2220,
+      "latitude": 35.222,
       "longitude": -101.8313
     },
     {
@@ -1952,17 +1952,17 @@
     {
       "country": "Saint Martin",
       "latitude": 18.0826,
-      "longitude": 63.0523
+      "longitude": -63.0523
     },
     {
       "country": "Curaçao",
       "latitude": 12.1696,
-      "longitude": 68.99
+      "longitude": -68.99
     },
     {
       "country": "St. Barth",
       "latitude": 17.9,
-      "longitude": 62.8333
+      "longitude": -62.8333
     },
     {
       "country": "Carribean Netherlands",
