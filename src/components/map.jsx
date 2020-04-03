@@ -12,6 +12,7 @@ export class MapContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      center: { lat: 45.4929, lng: 11.5553 },
       isMarkerShowing: true,
       activeMarker: null,
       selectedPlace: {},
@@ -20,10 +21,18 @@ export class MapContainer extends Component {
   }
 
   onMapClicked = (mapProps, map, event) => {
-    this.setState({
-      isMarkerShowing: false,
-      activeMarker: ""
-    });
+    console.log("mapProps", mapProps)
+    console.log("map", map)
+    console.log("event", event)
+    // if (data.marginBounds.nw.lat >= 85 || data.marginBounds.se.lat <= -85) {
+    //   this.setState({
+    //     center: [this.state.center[0] + 0.00100, this.state.center[1]],
+    //   });
+    // }
+    // this.setState({
+    //   isMarkerShowing: false,
+    //   activeMarker: ""
+    // });
   };
 
   onMarkerClicked = (props, marker, event) => {
@@ -48,17 +57,22 @@ export class MapContainer extends Component {
     });
   };
 
+
+
+
   render() {
     return (
+      <div className="Map">
       <Map
         google={this.props.google}
         styles={styles}
-        initialCenter={{ lat: 29.94, lng: 31.548 }}
-        zoom={2.25}
-        minZoom={2.24}
+        initialCenter={this.state.center}
+        zoom={2}
+        minZoom={2}
         maxZoom={12}
         onClick={this.onMapClicked}
         disableDefaultUI={true}
+        // onClick={this.onChange}
       >
         <InfoWindow
           marker={this.state.activeMarker}
@@ -81,6 +95,7 @@ export class MapContainer extends Component {
         </InfoWindow>
         {this.generateMarkers()}
       </Map>
+      </div>
     );
     // };
   }
