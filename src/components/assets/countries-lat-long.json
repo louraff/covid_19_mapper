@@ -797,8 +797,8 @@
       "alpha2": "ID",
       "alpha3": "IDN",
       "numeric": 360,
-      "latitude": -5,
-      "longitude": 120
+      "latitude": -6.2088,
+      "longitude": 106.8456
     },
     {
       "country": "Iran",
@@ -1045,8 +1045,8 @@
       "alpha2": "MY",
       "alpha3": "MYS",
       "numeric": 458,
-      "latitude": 2.5,
-      "longitude": 112.5
+      "latitude": 3.139,
+      "longitude": 101.6869
     },
     {
       "country": "Maldives",
@@ -1877,8 +1877,8 @@
       "alpha2": "VN",
       "alpha3": "VNM",
       "numeric": 704,
-      "latitude": 16,
-      "longitude": 106
+      "latitude": 21.0278,
+      "longitude": 105.8342
     },
     {
       "country": "British Virgin Islands",

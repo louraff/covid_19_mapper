@@ -10,7 +10,7 @@ class App extends Component {
     countries: [],
     error: null,
     isLoaded: false,
-    total: []
+    total: [],
   };
 
   componentDidMount() {
@@ -22,8 +22,8 @@ class App extends Component {
           headers: {
             "x-rapidapi-host": "coronavirus-monitor.p.rapidapi.com",
             "x-rapidapi-key":
-              "2bb49386fdmsh5daac6ca9add22ep1484a8jsn9816903163ef"
-          }
+              "2bb49386fdmsh5daac6ca9add22ep1484a8jsn9816903163ef",
+          },
         }
       ),
       fetch(
@@ -33,17 +33,18 @@ class App extends Component {
           headers: {
             "x-rapidapi-host": "coronavirus-monitor.p.rapidapi.com",
             "x-rapidapi-key":
-              "a04279196bmsh77bb3ff9e6f2e74p1f4d03jsn5bc0fbe15879"
-          }
+              "a04279196bmsh77bb3ff9e6f2e74p1f4d03jsn5bc0fbe15879",
+          },
         }
       ),
       fetch("https://covid19-data.p.rapidapi.com/us", {
         method: "GET",
         headers: {
           "x-rapidapi-host": "covid19-data.p.rapidapi.com",
-          "x-rapidapi-key": "2bb49386fdmsh5daac6ca9add22ep1484a8jsn9816903163ef"
-        }
-      })
+          "x-rapidapi-key":
+            "2bb49386fdmsh5daac6ca9add22ep1484a8jsn9816903163ef",
+        },
+      }),
     ])
 
       .then(([res1, res2, res3]) => {
@@ -53,7 +54,7 @@ class App extends Component {
       .then(([res1, res2, res3]) => {
         this.setState({
           countries: this.createCountry(res2.countries_stat, res3.list),
-          total: res1
+          total: res1,
         });
       });
   }
@@ -61,8 +62,8 @@ class App extends Component {
   createCountry(api_countries, states) {
     const countries = [];
     const usa = [];
-    ref_country_codes.ref_country_codes.forEach(one =>
-      api_countries.forEach(two => {
+    ref_country_codes.ref_country_codes.forEach((one) =>
+      api_countries.forEach((two) => {
         if (two.country_name === "US") {
           usa.push(two);
         }
@@ -72,7 +73,7 @@ class App extends Component {
             recovered: two.total_recovered,
             deaths: two.deaths,
             confirmed: two.cases,
-            center: { lat: one.latitude, lng: one.longitude }
+            center: { lat: one.latitude, lng: one.longitude },
           });
         }
       })
@@ -89,7 +90,7 @@ class App extends Component {
 
     var unique = USA.filter((v, i, a) => a.indexOf(v) === i);
 
-    unique.forEach(function(d) {
+    unique.forEach(function (d) {
       if (totalStates.hasOwnProperty(d.state)) {
         totalStates[d.state].deaths += d.deaths;
         totalStates[d.state].confirmed += d.confirmed;
@@ -98,16 +99,16 @@ class App extends Component {
         totalStates[d.state] = {
           stateName: d.state,
           deaths: d.deaths,
-          confirmed: d.confirmed
-          // recovered: d.recovered
+          confirmed: d.confirmed,
+          recovered: "N/A",
         };
       }
     });
 
-    finalArray = Object.keys(totalStates).map(k => totalStates[k]);
+    finalArray = Object.keys(totalStates).map((k) => totalStates[k]);
 
-    us_codes.us_codes.forEach(state =>
-      finalArray.forEach(obj => {
+    us_codes.us_codes.forEach((state) =>
+      finalArray.forEach((obj) => {
         if (obj.stateName === "Georgia") {
           obj.stateName = "Georgia, US";
         }
@@ -118,7 +119,7 @@ class App extends Component {
             recovered: obj.recovered,
             deaths: obj.deaths,
             confirmed: obj.confirmed,
-            center: { lat: state.latitude, lng: state.longitude }
+            center: { lat: state.latitude, lng: state.longitude },
           });
         }
       })
