@@ -12,7 +12,7 @@ export class MapContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      center: { lat: 45.4929, lng: 11.5553 },
+      center: { lat: 40.4929, lng: 15.5553 },
       isMarkerShowing: true,
       activeMarker: null,
       selectedPlace: {},
@@ -68,12 +68,12 @@ export class MapContainer extends Component {
           google={this.props.google}
           styles={styles}
           initialCenter={this.state.center}
-          zoom={2}
-          minZoom={2}
+          zoom={2.2}
+          minZoom={2.2}
           maxZoom={12}
           // onClick={this.onMapClicked}
           disableDefaultUI={true}
-          // onClick={this.onChange}
+        // onClick={this.onChange}
         >
           <InfoWindow
             marker={this.state.activeMarker}
