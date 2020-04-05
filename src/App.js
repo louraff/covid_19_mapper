@@ -74,6 +74,11 @@ class App extends Component {
             deaths: two.deaths,
             confirmed: two.cases,
             center: { lat: one.latitude, lng: one.longitude },
+            newCases: two.new_cases,
+            newDeaths: two.new_deaths,
+            activeCases: two.active_cases,
+            criticalCases: two.serious_critical,
+            perOneMillion: two.total_cases_per_1m_population,
           });
         }
       })
@@ -130,7 +135,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header total={this.state.total} />
+        <Header total={this.state.total} countries={this.state.countries} />
         <div className="Container">
           <MapContainer countries={this.state.countries} />
         </div>
