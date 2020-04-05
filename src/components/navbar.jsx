@@ -33,7 +33,6 @@ class Header extends Component {
         </Navbar.Brand>
         <DropdownButton
           variant={"warning"}
-          className="m-2"
           title={"Global Cases: " + this.props.total.total_cases}
           id="last_updated"
         >
@@ -44,7 +43,6 @@ class Header extends Component {
         <Nav className="ml-auto">
           <DropdownButton
             variant={"success"}
-            className="m-2"
             title={"Global Recoveries: " + this.props.total.total_recovered}
             id="last_updated"
           >
@@ -57,7 +55,6 @@ class Header extends Component {
         <Nav className="ml-auto">
           <DropdownButton
             variant={"danger"}
-            className="m-2"
             title={"Global Deaths: " + this.props.total.total_deaths}
             id="last_updated"
           >
@@ -66,11 +63,12 @@ class Header extends Component {
             </Dropdown.Item>
           </DropdownButton>
         </Nav>
-        <Nav className="ml-auto dropdown-menu-right ">
+        <Nav className="ml-auto">
           <DropdownButton
+            alignRight
             variant={"info"}
             title={"Last Updated "}
-            id="last_updated"
+            id={"dropdown-menu-align-right"}
           >
             <Dropdown.Item>
               UTC: {this.props.total.statistic_taken_at}
