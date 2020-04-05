@@ -71,9 +71,7 @@ export class MapContainer extends Component {
           zoom={2.2}
           minZoom={2.2}
           maxZoom={12}
-          // onClick={this.onMapClicked}
           disableDefaultUI={true}
-        // onClick={this.onChange}
         >
           <InfoWindow
             marker={this.state.activeMarker}

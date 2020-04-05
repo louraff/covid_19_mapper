@@ -32,46 +32,53 @@ class Header extends Component {
           /> Covid-19
         </Navbar.Brand>
         <DropdownButton
-          variant={"warning"}
+          variant={"outline-warning"}
           title={"Global Cases: " + this.props.total.total_cases}
           id="last_updated"
         >
           <Dropdown.Item>
-            Daily Increase: {this.props.total.new_cases}
+            <div id="drop-down-window">
+              Daily Increase: {this.props.total.new_cases}
+            </div>
           </Dropdown.Item>
         </DropdownButton>
         <Nav className="ml-auto">
           <DropdownButton
-            variant={"success"}
+            variant={"outline-success"}
             title={"Global Recoveries: " + this.props.total.total_recovered}
             id="last_updated"
           >
             <Dropdown.Item>
-              Active Cases:
-              {this.totalActiveCases()}
+              <div id="drop-down-window">
+                Active Cases: {this.totalActiveCases()}
+              </div>
             </Dropdown.Item>
           </DropdownButton>
         </Nav>
         <Nav className="ml-auto">
           <DropdownButton
-            variant={"danger"}
+            variant={"outline-danger"}
             title={"Global Deaths: " + this.props.total.total_deaths}
             id="last_updated"
           >
             <Dropdown.Item>
-              Daily Increase: {this.props.total.new_deaths}
+              <div id="drop-down-window">
+                Daily Increase: {this.props.total.new_deaths}
+              </div>
             </Dropdown.Item>
           </DropdownButton>
         </Nav>
         <Nav className="ml-auto">
           <DropdownButton
             alignRight
-            variant={"info"}
+            variant={"outline-info"}
             title={"Last Updated "}
             id={"dropdown-menu-align-right"}
           >
             <Dropdown.Item>
-              UTC: {this.props.total.statistic_taken_at}
+              <div id="drop-down-window">
+                UTC: {this.props.total.statistic_taken_at}
+              </div>
             </Dropdown.Item>
           </DropdownButton>
         </Nav>

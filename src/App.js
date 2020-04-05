@@ -99,13 +99,11 @@ class App extends Component {
       if (totalStates.hasOwnProperty(d.state)) {
         totalStates[d.state].deaths += d.deaths;
         totalStates[d.state].confirmed += d.confirmed;
-        // totalStates[d.state].recovered += d.recovered;
       } else {
         totalStates[d.state] = {
           stateName: d.state,
           deaths: d.deaths,
-          confirmed: d.confirmed,
-          recovered: "N/A",
+          confirmed: d.confirmed
         };
       }
     });
