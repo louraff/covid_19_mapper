@@ -61,7 +61,6 @@ export class MapContainer extends Component {
   };
 
   render() {
-    console.log(styles)
     return (
       <div className="Map">
         <Map

@@ -59,11 +59,11 @@ class App extends Component {
       });
   }
 
-  createCountry(api_countries, states) {
+  createCountry(country, states) {
     const countries = [];
     const usa = [];
     ref_country_codes.ref_country_codes.forEach((one) =>
-      api_countries.forEach((two) => {
+      country.forEach((two) => {
         if (two.country_name === "US") {
           usa.push(two);
         }
@@ -89,33 +89,13 @@ class App extends Component {
     return a;
   }
 
-  updateUS(USA, countries) {
-    var totalStates = {};
-    let finalArray = [];
-
-    var unique = USA.filter((v, i, a) => a.indexOf(v) === i);
-
-    unique.forEach(function (d) {
-      if (totalStates.hasOwnProperty(d.state)) {
-        totalStates[d.state].deaths += d.deaths;
-        totalStates[d.state].confirmed += d.confirmed;
-      } else {
-        totalStates[d.state] = {
-          stateName: d.state,
-          deaths: d.deaths,
-          confirmed: d.confirmed
-        };
-      }
-    });
-
-    finalArray = Object.keys(totalStates).map((k) => totalStates[k]);
-
+  updateUS(states, countries) {
     us_codes.us_codes.forEach((state) =>
-      finalArray.forEach((obj) => {
-        if (obj.stateName === "Georgia") {
-          obj.stateName = "Georgia, US";
+      states.forEach((obj) => {
+        if (obj.state === "Georgia") {
+          obj.state = "Georgia, US";
         }
-        if (obj.stateName === state.state) {
+        if (obj.state === state.state) {
           countries.push({
             us: true,
             country: state.state,
@@ -131,21 +111,13 @@ class App extends Component {
   }
 
   updateTotal(totalArray) {
-    var total = {}
     var newTotalCases = parseInt(totalArray["total_cases"].replace(/,/g, ""))
     var newTotalDeaths = parseInt(totalArray["total_deaths"].replace(/,/g, ""))
     var newTotalRecoveries = parseInt(totalArray["total_recovered"].replace(/,/g, ""))
     var activeCases = newTotalCases - newTotalDeaths - newTotalRecoveries
 
-    total["total_cases"] = totalArray["total_cases"]
-    total["total_deaths"] = totalArray["total_deaths"]
-    total["total_recovered"] = totalArray["total_recovered"]
-    total["new_cases"] = totalArray["new_cases"]
-    total["new_deaths"] = totalArray["new_deaths"]
-    total["statistic_taken_at"] = totalArray["statistic_taken_at"]
-    total["active_cases"] = activeCases.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
-
-    return total;
+    totalArray["active_cases"] = activeCases.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
+    return totalArray;
   }
 
   render() {
@@ -161,3 +133,7 @@ class App extends Component {
 }
 
 export default App;
+
+
+// 54: {countrycode: "US", country: "United States of America", state: "Guam", latitude: "13.4443", longitude: "144.7937", …}
+// 55: {countrycode: "US", country: "United States of America", state: "Puerto Rico", latitude: "18.2208", longitude: "-66.5901", …}
