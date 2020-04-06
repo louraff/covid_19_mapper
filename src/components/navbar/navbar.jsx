@@ -6,7 +6,6 @@ import Nav from "react-bootstrap/Nav"
 
 class Header extends Component {
   render() {
-    console.log(this.props.total)
     return (
       <Navbar
         fixed="top"

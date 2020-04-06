@@ -1,22 +1,24 @@
 import * as React from 'react';
-import ReactDOM from "react-dom";
 import { render } from '@testing-library/react';
 import { shallow } from 'enzyme';
 import App from './App';
-import MapContainer from './components/map/map'
+import renderer from 'react-test-renderer';
 
+describe("App Component", () => {  
+  it('does not crash when loaded onto page', () => {
+    shallow(<App />)
+  })
 
-it('does not crash when loaded onto page', () => {
-  shallow(<App />)
+  it('renders as expected, snapshot comparison', () => {
+    const TextInputComponent = renderer.create(<App />).toJSON()
+    expect(TextInputComponent).toMatchSnapshot()
+  })
 })
 
-// test('renders learn react link', () => {
-//   const { getByText } = render(<App />);
-//   const linkElement = getByText;
-//   expect(linkElement).toBeInTheDocument();
-// });
+//  test('createCountry', () => {
+//   const usStates = {'country.stat'{'country'{'United Kingdom'}}}
+//   const countries = {{}}; 
+//    expect(createCountry(usStates, countries)).toBe()
+//  })
 
-// it('does not crash when loaded onto page', () => {
-//   const div = document.createElement('div');
-//   ReactDOM.render(<App />, div);
-// })
+

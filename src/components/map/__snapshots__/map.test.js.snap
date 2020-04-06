@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Map from GoogleMap renders correctly the map compomenet 1`] = `
+<div>
+  Loading...
+</div>
+`;
+
+exports[`Map from GoogleMap renders correctly the map component 1`] = `
+<div>
+  Loading...
+</div>
+`;
