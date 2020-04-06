@@ -52,6 +52,7 @@ class App extends Component {
       })
 
       .then(([res1, res2, res3]) => {
+        console.log(res3.list)
         this.setState({
           countries: this.createCountry(res2.countries_stat, res3.list),
           total: this.updateTotal(res1),
@@ -121,6 +122,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.countries)
     return (
       <div className="App">
         <Header total={this.state.total} countries={this.state.countries} />
