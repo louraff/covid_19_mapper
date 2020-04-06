@@ -274,6 +274,11 @@
       "state": "Virgin Islands",
       "latitude": 18.3358,
       "longitude": -64.8963
+    },
+    {
+      "state": "Diamond Princess",
+      "latitude": 35.414583,
+      "longitude": 139.682033
     }
   ]
 }
