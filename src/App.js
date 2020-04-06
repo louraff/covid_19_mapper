@@ -54,7 +54,7 @@ class App extends Component {
       .then(([res1, res2, res3]) => {
         this.setState({
           countries: this.createCountry(res2.countries_stat, res3.list),
-          total: res1,
+          total: this.updateTotal(res1),
         });
       });
   }
@@ -128,6 +128,24 @@ class App extends Component {
       })
     );
     return countries;
+  }
+
+  updateTotal(totalArray) {
+    var total = {}
+    var newTotalCases = parseInt(totalArray["total_cases"].replace(/,/g, ""))
+    var newTotalDeaths = parseInt(totalArray["total_deaths"].replace(/,/g, ""))
+    var newTotalRecoveries = parseInt(totalArray["total_recovered"].replace(/,/g, ""))
+    var activeCases = newTotalCases - newTotalDeaths - newTotalRecoveries
+
+    total["total_cases"] = totalArray["total_cases"]
+    total["total_deaths"] = totalArray["total_deaths"]
+    total["total_recovered"] = totalArray["total_recovered"]
+    total["new_cases"] = totalArray["new_cases"]
+    total["new_deaths"] = totalArray["new_deaths"]
+    total["statistic_taken_at"] = totalArray["statistic_taken_at"]
+    total["active_cases"] = activeCases.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
+
+    return total;
   }
 
   render() {

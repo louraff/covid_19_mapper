@@ -5,22 +5,12 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import Nav from "react-bootstrap/Nav"
 
 class Header extends Component {
-
-  totalActiveCases() {
-    // // console.log(this.props.total)
-    // var totalCases = this.props.total.total_cases
-    // var newTotalCases = totalCases.replace(',', '')
-    // var totalDeaths = this.props.total.totalDeaths.replace(',', '')
-    // var newTotalDeaths = totalDeaths.replace(',', '')
-    // var totalRecoveries = this.props.total.totalRecoveries.replace(',', '')
-    // var newTotalRecoveries = totalRecoveries.replace(',', '')
-    // return newTotalCases - newTotalDeaths - newTotalRecoveries
-  }
   render() {
+    console.log(this.props.total)
     return (
       <Navbar
         fixed="top"
-        className="navbar-dark navbar-expand-lg"
+        className="navbar-dark bs-navbar-collapse"
       >
         <Navbar.Brand>
           <img
@@ -50,7 +40,7 @@ class Header extends Component {
           >
             <Dropdown.Item>
               <div id="drop-down-window">
-                Active Cases: {this.totalActiveCases()}
+                Active Cases: {this.props.total.active_cases}
               </div>
             </Dropdown.Item>
           </DropdownButton>
