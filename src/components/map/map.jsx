@@ -4,9 +4,8 @@ import {
   GoogleApiWrapper,
   Marker,
   InfoWindow,
-  Circle,
 } from "google-maps-react";
-import styles from "./assets/mapStyle.json";
+import styles from "./../assets/mapStyle.json";
 
 export class MapContainer extends Component {
   constructor(props) {
@@ -62,6 +61,7 @@ export class MapContainer extends Component {
   };
 
   render() {
+    console.log(styles)
     return (
       <div className="Map">
         <Map

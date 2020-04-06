@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
-import Header from "./components/navbar";
-import MapContainer from "./components/map";
+import Header from "./components/navbar/navbar";
+import MapContainer from "./components/map/map";
 import ref_country_codes from "./components/assets/countries-lat-long.json";
 import us_codes from "./components/assets/USlatlong.json";
 
