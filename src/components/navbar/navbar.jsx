@@ -15,7 +15,7 @@ class Header extends Component {
         <Navbar.Brand>
           <img
             alt=""
-            src="https://cdn3.iconfinder.com/data/icons/science-116/64/virus-lab-scientist-biology-cell-medical-512.png"
+            src="https://cdn3.iconfinder.com/data/icons/science-116/64/virus-lab-scientist-biology-cell-medical-512.png?v=2"
             width="30"
             height="30"
             className="d-inline-block align-top"
@@ -23,7 +23,7 @@ class Header extends Component {
         </Navbar.Brand>
         <DropdownButton
           variant={"outline-warning"}
-          title={"Global Cases: " + this.props.total.total_cases === "Global Cases: undefined" ? "Global Cases: " && < Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true" /> : "Global Cases: " + this.props.total.total_cases}
+          title={"Global Cases: " + this.props.total.total_cases === "Global Cases: undefined" ? "Global Cases: " && <Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true" /> : "Global Cases: " + this.props.total.total_cases}
 
           id="last_updated"
         >
@@ -78,7 +78,7 @@ class Header extends Component {
             </Dropdown.Item>
           </DropdownButton>
         </Nav>
-      </Navbar>
+      </Navbar >
     );
   }
 }
