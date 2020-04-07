@@ -23,12 +23,14 @@ class Header extends Component {
         </Navbar.Brand>
         <DropdownButton
           variant={"outline-warning"}
-          title={ "Global Cases: " + this.props.total.total_cases}
+          // title={"Global Cases: " + this.props.total.total_cases}
+          title={"Global Cases: " + this.props.total.total_cases === "Global Cases: undefined" ? "Global Cases: " && < Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true" /> : "Global Cases: " + this.props.total.total_cases}
+
           id="last_updated"
-         >
-        <Dropdown.Item>
+        >
+          <Dropdown.Item>
             <div id="drop-down-window">
-            <Spinner animation="grow" variant="warning" size="sm"/>
+              <Spinner animation="grow" variant="warning" size="sm" />
               Daily Increase: {this.props.total.new_cases}
             </div>
           </Dropdown.Item>
@@ -36,12 +38,13 @@ class Header extends Component {
         <Nav className="ml-auto">
           <DropdownButton
             variant={"outline-success"}
-            title={"Global Recoveries: " + this.props.total.total_recovered}
+            // title={"Global Recoveries: " + this.props.total.total_recovered}
+            title={"Global Recoveries: " + this.props.total.total_recovered === "Global Recoveries: undefined" ? "Global Recoveries: " && < Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true" /> : "Global Recoveries: " + this.props.total.total_recovered}
             id="last_updated"
-          > 
+          >
             <Dropdown.Item>
               <div id="drop-down-window">
-              <Spinner animation="grow" variant="success" size="sm"/>
+                <Spinner animation="grow" variant="success" size="sm" />
                 Active Cases: {this.props.total.active_cases}
               </div>
             </Dropdown.Item>
@@ -50,12 +53,13 @@ class Header extends Component {
         <Nav className="ml-auto">
           <DropdownButton
             variant={"outline-danger"}
-            title={"Global Deaths: " + this.props.total.total_deaths}
+            // title={"Global Deaths: " + this.props.total.total_deaths}
+            title={"Global Deaths: " + this.props.total.total_deaths === "Global Deaths: undefined" ? "Global Deaths: " && < Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true" /> : "Global Deaths: " + this.props.total.total_deaths}
             id="last_updated"
           >
             <Dropdown.Item>
               <div id="drop-down-window">
-              <Spinner animation="grow" variant="danger" size="sm"/>
+                <Spinner animation="grow" variant="danger" size="sm" />
                 Daily Increase: {this.props.total.new_deaths}
               </div>
             </Dropdown.Item>
@@ -70,7 +74,7 @@ class Header extends Component {
           >
             <Dropdown.Item>
               <div id="drop-down-window">
-              <Spinner animation="grow" variant="info" size="sm"/>
+                <Spinner animation="grow" variant="info" size="sm" />
                 UTC: {this.props.total.statistic_taken_at}
               </div>
             </Dropdown.Item>
