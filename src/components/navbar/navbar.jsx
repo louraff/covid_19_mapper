@@ -25,8 +25,8 @@ class Header extends Component {
           variant={"outline-warning"}
           title={"Global Cases: " + this.props.total.total_cases}
           id="last_updated"
-        >
-          <Dropdown.Item>
+         >
+        <Dropdown.Item>
             <div id="drop-down-window">
               Daily Increase: {this.props.total.new_cases}
             </div>
