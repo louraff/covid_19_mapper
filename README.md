@@ -25,3 +25,20 @@ This will start the local server which can be accessed at [_localhst:3000_](http
 The project is also hosted live on [_Heroku_](https://covid-mapper.herokuapp.com/)
 
 ---
+
+## How to Run Tests
+
+Jest and Enzyme
+
+
+```
+npm test
+```
+
+```
+npm test -- --coverage --watchAll
+```
+
+```
+npm -- --updateSnapshot
+```

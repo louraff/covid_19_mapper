@@ -52,7 +52,6 @@ class App extends Component {
       })
 
       .then(([res1, res2, res3]) => {
-        console.log(res3.list)
         this.setState({
           countries: this.createCountry(res2.countries_stat, res3.list),
           total: this.updateTotal(res1),
@@ -134,7 +133,3 @@ class App extends Component {
 }
 
 export default App;
-
-
-// 54: {countrycode: "US", country: "United States of America", state: "Guam", latitude: "13.4443", longitude: "144.7937", …}
-// 55: {countrycode: "US", country: "United States of America", state: "Puerto Rico", latitude: "18.2208", longitude: "-66.5901", …}

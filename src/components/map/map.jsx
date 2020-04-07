@@ -13,7 +13,6 @@ export class MapContainer extends Component {
     this.state = {
       center: { lat: 40.4929, lng: 15.5553 },
       isMarkerShowing: true,
-      activeMarker: null,
       selectedPlace: {},
       activeMarker: {},
     };
@@ -34,7 +33,8 @@ export class MapContainer extends Component {
   // });
   // };
 
-  onMarkerClicked = (props, marker, event) => {
+  onMarkerClicked = (props, marker) => {
+    console.log("props",props)
     this.setState({
       isMarkerShowing: true,
       selectedPlace: props,

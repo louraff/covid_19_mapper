@@ -25,7 +25,6 @@ describe("App Component", () => {
   })
 
   it('calls a fetch', () => {
-    const fetch = jest.fn()
     const fetchSpy = jest.spyOn(window, "fetch")
     shallow(<App />)
     expect(fetchSpy).toHaveBeenCalled()

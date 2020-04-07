@@ -3,6 +3,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Nav from "react-bootstrap/Nav"
+import Spinner from 'react-bootstrap/Spinner'
 
 class Header extends Component {
   render() {
