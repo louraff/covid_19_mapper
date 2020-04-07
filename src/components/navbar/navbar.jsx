@@ -23,11 +23,12 @@ class Header extends Component {
         </Navbar.Brand>
         <DropdownButton
           variant={"outline-warning"}
-          title={"Global Cases: " + this.props.total.total_cases}
+          title={ "Global Cases: " + this.props.total.total_cases}
           id="last_updated"
          >
         <Dropdown.Item>
             <div id="drop-down-window">
+            <Spinner animation="grow" variant="warning" size="sm"/>
               Daily Increase: {this.props.total.new_cases}
             </div>
           </Dropdown.Item>
@@ -37,9 +38,10 @@ class Header extends Component {
             variant={"outline-success"}
             title={"Global Recoveries: " + this.props.total.total_recovered}
             id="last_updated"
-          >
+          > 
             <Dropdown.Item>
               <div id="drop-down-window">
+              <Spinner animation="grow" variant="success" size="sm"/>
                 Active Cases: {this.props.total.active_cases}
               </div>
             </Dropdown.Item>
@@ -53,6 +55,7 @@ class Header extends Component {
           >
             <Dropdown.Item>
               <div id="drop-down-window">
+              <Spinner animation="grow" variant="danger" size="sm"/>
                 Daily Increase: {this.props.total.new_deaths}
               </div>
             </Dropdown.Item>
@@ -67,6 +70,7 @@ class Header extends Component {
           >
             <Dropdown.Item>
               <div id="drop-down-window">
+              <Spinner animation="grow" variant="info" size="sm"/>
                 UTC: {this.props.total.statistic_taken_at}
               </div>
             </Dropdown.Item>
