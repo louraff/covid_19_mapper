@@ -122,7 +122,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.countries)
     return (
       <div className="App">
         <Header total={this.state.total} countries={this.state.countries} />

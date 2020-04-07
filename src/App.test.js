@@ -24,23 +24,11 @@ describe("App Component", () => {
     expect(spy).toHaveBeenCalled()
   })
 
-  xit('calls a fetch', () => {
+  it('calls a fetch', () => {
     const fetch = jest.fn()
-    fetch.mockImplementation(() => {
-      return Promise.resolve({
-        json: () => {
-          return Promise.resolve([
-            {
-              country: "US",
-              cases: "10"
-            }
-          ])
-        }
-      })
-    })
-    wrapper = shallow(<App/>)
-    
-    expect(fetch).toHaveBeenCalled()
+    const fetchSpy = jest.spyOn(window, "fetch")
+    shallow(<App />)
+    expect(fetchSpy).toHaveBeenCalled()
   })
 })
  
