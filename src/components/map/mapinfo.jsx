@@ -16,12 +16,18 @@ class MapInfo extends Component {
   }
 
   render() {
-    console.log("hereee", this.props.countriesArray)
     return (
       <div>
         {this.props.countriesArray.map(country => {
           if (country.country === this.state.marker) {
-            return `${country.country} Confirmed: ${country.confirmed} Deaths: ${country.deaths} Recovered: ${country.recovered}`
+            if (country.us) {
+              return `${country.country} Total Cases: ${country.confirmed} Total Deaths: ${country.deaths}`
+            } else {
+              return `${country.country} Total Cases: ${country.confirmed} Total Deaths: ${country.deaths} 
+                Total Recoveries ${country.recovered} Active Cases: ${country.activeCases} 
+                Critical Cases: ${country.criticalCases} New Cases: ${country.newCases}
+                New Deaths: ${country.newDeaths} Cases per Million: ${country.perOneMillion}`
+            }
           }
         })}
       </div>);
