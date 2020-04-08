@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withGoogleMap, GoogleMap, InfoWindow, Marker, Circle } from "react-google-maps"
 import styles from './../assets/mapStyle.json'
+import MapInfo from './mapinfo'
 
 class MapContainer extends Component {
 
@@ -14,12 +15,10 @@ class MapContainer extends Component {
     }
   }
 
+
   onMarkerClicked = (marker) => {
-    console.log("marker", marker)
-    // this.setState({
-    //   isMarkerShowing: true,
-    //   activeMarker: marker,
-    // });
+    console.log("country", marker)
+    return marker
   };
 
   onCircleClicked = (props) => {
@@ -45,7 +44,7 @@ class MapContainer extends Component {
           // key={i}
           defaultCenter={ country.center}
           radius={100000}
-          onClick={ () => this.onMarkerClicked(i)}
+          onClick={ () => this.onMarkerClicked(country.country)}
           options= {{
             strokeColor: '#FF0000',
             strokeOpacity: 0.8,
@@ -53,25 +52,28 @@ class MapContainer extends Component {
             fillColor: '#FF0000',
             fillOpacity: 0.3
           }}>
-            <InfoWindow
-            key={i}
-            marker={this.state.activeMarker}
-            visible={this.state.isMarkerShowing}
-          ></InfoWindow>
            </Circle>
          
         ))}
           
       </GoogleMap>
+
     ));
     
 
     return ( <div>
+
+      <div>
         <GoogleMapExample
           containerElement={ <div id="container" /> }
           mapElement={ <div id="map" /> }
         />
-      </div> );
+        </div>
+        <div id="mapinfo">
+          <MapInfo country={this.onMarkerClicked()} countriesArray={this.props.countries}/> 
+        </div>
+      </div> 
+    );
   }
 }
  
