@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withGoogleMap, GoogleMap } from "react-google-maps"
+import { withGoogleMap, GoogleMap, Marker, Circle } from "react-google-maps"
 import styles from './../assets/mapStyle.json'
 
 class MapContainer extends Component {
@@ -14,8 +14,17 @@ class MapContainer extends Component {
         defaultCenter = { { lat: 40.4929, lng: 15.5553 } }
         defaultZoom = { 2 }
         defaultOptions = {{ styles: styles}}
-      >
-        
+      ><Circle
+            defaultCenter={{ lat: 40.4929, lng: 15.5553 }}
+            radius={100000}
+            options= {{
+              strokeColor: "#ff0000",
+              strokeOpacity: 0.8,
+              strokeWeight: 0,
+              fillColor: '#FF0000',
+              fillOpacity: 0.3
+            }}
+              />
       </GoogleMap>
     ));  
 
