@@ -7,6 +7,7 @@ class MapContainer extends Component {
 
   constructor(props) {
     super(props);
+    this.countryElement = React.createRef();
     this.state = {
       center: { lat: 40.4929, lng: 15.5553 },
       isMarkerShowing: true,
@@ -17,8 +18,7 @@ class MapContainer extends Component {
 
 
   onMarkerClicked = (marker) => {
-    console.log("country", marker)
-    return marker
+    this.countryElement.current.changeCountry(marker)
   };
 
   onCircleClicked = (props) => {
@@ -70,7 +70,7 @@ class MapContainer extends Component {
         />
         </div>
         <div id="mapinfo">
-          <MapInfo country={this.onMarkerClicked()} countriesArray={this.props.countries}/> 
+          <MapInfo ref={this.countryElement} countriesArray={this.props.countries}/> 
         </div>
       </div> 
     );

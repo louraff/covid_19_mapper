@@ -9,25 +9,10 @@ class MapInfo extends Component {
     }
   }
   
-
-  // componentDidMount(){
-    
-  //   this.setState({
-  //     marker: this.props.country
-  //   })
-  // }
-
-  // componentDidUpdate(props, prevProps){
-  //   if(props.country !== prevProps.country){
-  //     this.setState({
-  //       marker: props.country
-  //     })
-  //   }
-  // }
-
-  filterCountries = () => {
-    var a = this.props.countriesArray.filter(country => country.country === this.state.marker)
-      console.log(a)
+  changeCountry = (marker) => {
+    this.setState({
+      marker: marker
+    })
   }
 
   render() { 
