@@ -1,126 +1,32 @@
-import React, { Component } from "react";
-import {
-  Map,
-  GoogleApiWrapper,
-  Marker,
-  InfoWindow,
-} from "google-maps-react";
-import styles from "./../assets/mapStyle.json";
+import React, { Component } from 'react';
+import { withGoogleMap, GoogleMap } from "react-google-maps"
+import styles from './../assets/mapStyle.json'
 
-export class MapContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      center: { lat: 40.4929, lng: 15.5553 },
-      isMarkerShowing: true,
-      selectedPlace: {},
-      activeMarker: {},
-    };
-  }
+class MapContainer extends Component {
+  state = {  }
 
-  // onMapClicked = (mapProps, map, event) => {
-  // console.log("mapProps", mapProps);
-  // console.log("map", map);
-  // console.log("event", event);
-  // if (data.marginBounds.nw.lat >= 85 || data.marginBounds.se.lat <= -85) {
-  //   this.setState({
-  //     center: [this.state.center[0] + 0.00100, this.state.center[1]],
-  //   });
-  // }
-  // this.setState({
-  //   isMarkerShowing: false,
-  //   activeMarker: ""
-  // });
-  // };
 
-  onMarkerClicked = (props, marker) => {
-    console.log("props",props)
-    this.setState({
-      isMarkerShowing: true,
-      selectedPlace: props,
-      activeMarker: marker,
-    });
-  };
 
-  generateMarkers = () => {
-    return this.props.countries.map((country, i) => {
-      return (
-        <Marker
-          id={country.country}
-          key={i}
-          position={country.center}
-          onClick={this.onMarkerClicked}
-          icon={
-            country.us
-              ? "http://maps.google.com/mapfiles/ms/icons/blue.png"
-              : "http://maps.google.com/mapfiles/ms/icons/purple.png"
-          }
-        ></Marker>
-      );
-    });
-  };
+  render() { 
+    console.log(styles)
+    const GoogleMapExample = withGoogleMap(props => (
+      <GoogleMap
+        defaultCenter = { { lat: 40.4929, lng: 15.5553 } }
+        defaultZoom = { 2 }
+        defaultOptions = {{ styles: styles}}
+      >
+        
+      </GoogleMap>
+    ));  
 
-  render() {
-    return (
-      <div className="Map">
-        <Map
-          google={this.props.google}
-          styles={styles}
-          initialCenter={this.state.center}
-          zoom={2.2}
-          minZoom={2.2}
-          maxZoom={12}
-          disableDefaultUI={true}
-          zoomControl={true}
-        >
-          <InfoWindow
-            marker={this.state.activeMarker}
-            visible={this.state.isMarkerShowing}
-          >
-            {this.props.countries.map((country) => {
-              if (country.country === this.state.selectedPlace.id) {
-                if (country.us) {
-                  return (
-                    <div>
-                      <h6>{country.country}</h6>
-                      Total Cases: {country.confirmed}
-                      <br></br>
-                      Total Deaths: {country.deaths}
-                    </div>
-                  );
-                } else {
-                  return (
-                    <div>
-                      <h6>{country.country}</h6>
-                      Total Cases: {country.confirmed}
-                      <br></br>
-                      Total Deaths: {country.deaths}
-                      <br></br>
-                      Total Recoveries: {country.recovered}
-                      <br></br>
-                      Active Cases: {country.activeCases}
-                      <br></br>
-                      Critical Cases: {country.criticalCases}
-                      <br></br>
-                      New Cases: {country.newCases}
-                      <br></br>
-                      New Deaths: {country.newDeaths}
-                      <br></br>
-                      Cases per Million: {country.perOneMillion}
-                    </div>
-                  );
-                }
-              }
-            })}
-          </InfoWindow>
-          {this.generateMarkers()}
-        </Map>
-      </div>
-    );
-    // };
+
+    return ( <div>
+        <GoogleMapExample
+          containerElement={ <div style={{ height: '1000px', width: '1000px' }} /> }
+          mapElement={ <div style={{ height: `100%`, width: '100%' }} /> }
+        />
+      </div> );
   }
 }
-
-export default GoogleApiWrapper({
-  apiKey: process.env.REACT_APP_GOOGLE_API,
-})(MapContainer);
+ 
+export default MapContainer;
