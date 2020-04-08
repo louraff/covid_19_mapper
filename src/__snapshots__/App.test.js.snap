@@ -119,7 +119,21 @@ exports[`App Component renders as expected, snapshot comparison 1`] = `
     className="Container"
   >
     <div>
-      Loading...
+      <div>
+        <div
+          id="container"
+        >
+          <div
+            id="map"
+          />
+          <div />
+        </div>
+      </div>
+      <div
+        id="mapinfo"
+      >
+        <div />
+      </div>
     </div>
   </div>
 </div>
