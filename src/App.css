@@ -9,12 +9,13 @@
 }
 
 #drop-down-window{
+  font-size: 14px;
   color: grey;
   font-weight: bolder;  
 }
 
-/* .Map {
+#map {
   position: absolute;
   width: 100%;
-  height: 80%;
-} */
+  height: 100%;
+}
