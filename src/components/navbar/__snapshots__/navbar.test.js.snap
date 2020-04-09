@@ -14,7 +14,8 @@ exports[`Navbar Component render correctly Header component 1`] = `
       src="https://cdn3.iconfinder.com/data/icons/science-116/64/virus-lab-scientist-biology-cell-medical-512.png?v=2"
       width="30"
     />
-     Covid-19
+     
+    Covid-19
   </span>
   <div
     className="dropdown"
