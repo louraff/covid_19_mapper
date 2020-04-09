@@ -11,6 +11,7 @@ class App extends Component {
     error: null,
     isLoaded: false,
     total: [],
+    totalInt: [],
   };
 
   componentDidMount() {
@@ -55,6 +56,7 @@ class App extends Component {
         this.setState({
           countries: this.createCountry(res2.countries_stat, res3.list),
           total: this.updateTotal(res1),
+          totalInt: this.toInteger(res1),
         });
       });
   }
@@ -111,13 +113,22 @@ class App extends Component {
   }
 
   updateTotal(totalArray) {
-    var newTotalCases = parseInt(totalArray["total_cases"].replace(/,/g, ""))
-    var newTotalDeaths = parseInt(totalArray["total_deaths"].replace(/,/g, ""))
-    var newTotalRecoveries = parseInt(totalArray["total_recovered"].replace(/,/g, ""))
-    var activeCases = newTotalCases - newTotalDeaths - newTotalRecoveries
+    let total = this.toInteger(totalArray);
+    var activeCases = total[0] - total[1] - total[2];
 
-    totalArray["active_cases"] = activeCases.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
+    totalArray["active_cases"] = activeCases
+      .toString()
+      .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
     return totalArray;
+  }
+
+  toInteger(totalArray) {
+    var newTotalCases = parseInt(totalArray["total_cases"].replace(/,/g, ""));
+    var newTotalDeaths = parseInt(totalArray["total_deaths"].replace(/,/g, ""));
+    var newTotalRecoveries = parseInt(
+      totalArray["total_recovered"].replace(/,/g, "")
+    );
+    return [newTotalCases, newTotalDeaths, newTotalRecoveries];
   }
 
   render() {
@@ -125,7 +136,10 @@ class App extends Component {
       <div className="App">
         <Header total={this.state.total} countries={this.state.countries} />
         <div className="Container">
-          <MapContainer countries={this.state.countries} />
+          <MapContainer
+            countries={this.state.countries}
+            total={this.state.totalInt}
+          />
         </div>
       </div>
     );
