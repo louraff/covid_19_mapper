@@ -23,7 +23,6 @@
 #mapinfo {
   position: absolute;
   width: 20%;
-  background-color: red;
   z-index: 1;
   margin-top: 400px;
 }

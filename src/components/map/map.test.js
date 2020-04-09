@@ -2,8 +2,8 @@ import * as React from 'react';
 import { ReactDOM, unmountComponentAtNode } from "react-dom";
 import { render } from '@testing-library/react';
 import { shallow, simulate } from 'enzyme';
-import { MapContainer, Map } from './map'
-import Marker from 'google-maps-react'
+import { MapContainer, GoogleMap, Circle } from './map'
+import Marker from 'google-maps-react';
 import renderer from 'react-test-renderer';
 import MockedMap from './map'
 import { act } from "react-dom/test-utils"

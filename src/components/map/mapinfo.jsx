@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Card from "react-bootstrap/Card"
 
 
 class MapInfo extends Component {
@@ -17,7 +18,7 @@ class MapInfo extends Component {
 
   render() {
     return (
-      <div>
+      <Card className="bg-secondary text-white" >
         {this.props.countriesArray.map(country => {
           if (country.country === this.state.marker) {
             if (country.us) {
@@ -30,7 +31,7 @@ class MapInfo extends Component {
             }
           }
         })}
-      </div>);
+      </Card>);
   }
 }
 
