@@ -85,9 +85,8 @@ class MapContainer extends Component {
           <Circle
             ref={this.circle}
             defaultCenter={country.center}
-            // radius={100000}
             radius={
-              (country.confirmed / this.props.total[0]) * 100 <= 2 || NaN
+              (country.confirmed / this.props.total[0]) * 100 <= 1.5 || NaN
                 ? 60000
                 : 160000
             }
@@ -95,30 +94,32 @@ class MapContainer extends Component {
             options={
               country.us
                 ? {
-                    fillColor: "#007aa3",
-                    fillOpacity: 0.4,
-                    strokeColor: "#FF0000",
+                    strokeColor: "",
+                    strokeOpacity: 0.8,
+                    strokeWeight: 0.2,
+                  }
+                : (country.deaths / country.confirmed) * 100 <= 2.5
+                ? {
+                    fillColor: "#28A745",
+                    fillOpacity: 0.5,
+                    strokeOpacity: 0.8,
+                    strokeWeight: 0,
+                  }
+                : (country.deaths / country.confirmed) * 100 <= 5
+                ? {
+                    fillColor: "#FFC108",
+                    fillOpacity: 0.5,
                     strokeOpacity: 0.8,
                     strokeWeight: 0,
                   }
                 : {
-                    fillColor: "#FF0000",
-                    fillOpacity: 0.3,
-                    strokeColor: "#FF0000",
+                    fillColor: "#DC3645",
+                    fillOpacity: 0.5,
                     strokeOpacity: 0.8,
                     strokeWeight: 0,
                   }
             }
-          >
-            {/* {typeof country.confirmed === "string"
-              ? console.log(country.country, ": ", country.confirmed)
-              : "\n"} */}
-            {console.log(
-              country,
-
-              country.confirmed / this.props.total[0]
-            ) * 100}
-          </Circle>
+          ></Circle>
         ))}
       </GoogleMap>
     ));

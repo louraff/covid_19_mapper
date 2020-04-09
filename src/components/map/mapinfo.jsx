@@ -23,7 +23,9 @@ class MapInfo extends Component {
             if (country.us) {
               return (
                 <div id="mapinfo">
-                  <div id="infoUS"><h4>{country.country}</h4></div>
+                  <div id="infoUS">
+                    <h4>{country.country}</h4>
+                  </div>
                   <br></br>
                   <div id="infoUS">
                     <strong>Total Cases</strong>
