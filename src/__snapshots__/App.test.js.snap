@@ -132,7 +132,9 @@ exports[`App Component renders as expected, snapshot comparison 1`] = `
       <div
         id="mapinfo"
       >
-        <div />
+        <div
+          className="bg-secondary text-white card"
+        />
       </div>
     </div>
   </div>
