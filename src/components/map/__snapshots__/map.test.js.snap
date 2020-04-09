@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <div>
+    <div
+      id="container"
+    >
+      <div
+        id="map"
+      />
+      <div />
+    </div>
+  </div>
+  <div
+    id="mapinfo"
+  >
+    <div
+      className="bg-secondary text-white card"
+    />
+  </div>
+</div>
+`;
