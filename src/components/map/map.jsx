@@ -98,7 +98,8 @@ class MapContainer extends Component {
                     strokeOpacity: 0.8,
                     strokeWeight: 0.2,
                   }
-                : (country.deaths / country.confirmed) * 100 <= 2.5
+                : 
+                (country.deaths / country.confirmed) * 100 <= 2.5
                 ? {
                     fillColor: "#28A745",
                     fillOpacity: 0.5,

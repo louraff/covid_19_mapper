@@ -16,7 +16,8 @@ exports[`renders correctly 1`] = `
     id="mapinfo"
   >
     <div
-      className="bg-secondary text-white card"
+      className="bg-warning text-white"
+      id="card"
     />
   </div>
 </div>

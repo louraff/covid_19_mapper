@@ -17,7 +17,8 @@ exports[`App Component renders as expected, snapshot comparison 1`] = `
         src="https://cdn3.iconfinder.com/data/icons/science-116/64/virus-lab-scientist-biology-cell-medical-512.png?v=2"
         width="30"
       />
-       Covid-19
+       
+      Covid-19
     </span>
     <div
       className="dropdown"
@@ -133,7 +134,8 @@ exports[`App Component renders as expected, snapshot comparison 1`] = `
         id="mapinfo"
       >
         <div
-          className="bg-secondary text-white card"
+          className="bg-warning text-white"
+          id="card"
         />
       </div>
     </div>
