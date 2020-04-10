@@ -44,9 +44,11 @@ class MapContainer extends Component {
             ref={this.circle}
             defaultCenter={country.center}
             radius={
-              (country.confirmed / this.props.total[0]) * 100 <= 1.5 || NaN
-                ? 60000
-                : 160000
+              country.country === "USA"
+                ? 220000
+                : (country.confirmed / this.props.total[0]) * 100 <= 1.5 || NaN
+                  ? 60000
+                  : 160000
             }
             onClick={() => this.onMarkerClicked(country.country)}
             options={
@@ -55,20 +57,20 @@ class MapContainer extends Component {
                   fillColor: "#28A745",
                   fillOpacity: 0.5,
                   strokeOpacity: 0.8,
-                  strokeWeight: 0,
+                  strokeWeight: 0
                 }
                 : (country.deaths / country.confirmed) * 100 <= 5
                   ? {
                     fillColor: "#FFC108",
                     fillOpacity: 0.5,
                     strokeOpacity: 0.8,
-                    strokeWeight: 0,
+                    strokeWeight: 0
                   }
                   : {
                     fillColor: "#DC3645",
                     fillOpacity: 0.5,
                     strokeOpacity: 0.8,
-                    strokeWeight: 0,
+                    strokeWeight: 0
                   }
             }
           ></Circle>
