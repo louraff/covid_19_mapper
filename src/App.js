@@ -203,7 +203,7 @@ class App extends Component {
     console.log("hello", this.state.countriesInteger)
     return (
       <div className="App" >
-        <Header total={this.state.total} countries={this.state.countries} />
+        <Header total={this.state.total} countries={this.state.countries} globalCFR={this.state.totalCFR} />
         <div className="Container">
           <MapContainer
             countries={this.state.countries}
