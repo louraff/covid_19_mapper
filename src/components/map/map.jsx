@@ -6,6 +6,7 @@ import {
 } from "react-google-maps";
 import styles from "./../assets/mapStyle.json";
 import MapInfo from "./mapinfo";
+import Legend from './legend'
 
 class MapContainer extends Component {
   constructor(props) {
@@ -52,26 +53,19 @@ class MapContainer extends Component {
             }
             onClick={() => this.onMarkerClicked(country.country)}
             options={
-              (country.deaths / country.confirmed) * 100 <= 2.5
+              (country.deaths / country.confirmed) * 100 <= 5
                 ? {
-                  fillColor: "#28A745",
+                  fillColor: "#FFC108",
                   fillOpacity: 0.5,
                   strokeOpacity: 0.8,
                   strokeWeight: 0
                 }
-                : (country.deaths / country.confirmed) * 100 <= 5
-                  ? {
-                    fillColor: "#FFC108",
-                    fillOpacity: 0.5,
-                    strokeOpacity: 0.8,
-                    strokeWeight: 0
-                  }
-                  : {
-                    fillColor: "#DC3645",
-                    fillOpacity: 0.5,
-                    strokeOpacity: 0.8,
-                    strokeWeight: 0
-                  }
+                : {
+                  fillColor: "#DC3645",
+                  fillOpacity: 0.5,
+                  strokeOpacity: 0.8,
+                  strokeWeight: 0
+                }
             }
           ></Circle>
         ))
@@ -86,6 +80,9 @@ class MapContainer extends Component {
             containerElement={<div id="container" />}
             mapElement={<div id="map" />}
           />
+        </div>
+        <div id="legend">
+          <Legend />
         </div>
         <div id="mapinfo">
           <MapInfo
