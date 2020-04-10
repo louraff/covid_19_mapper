@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import {
   withGoogleMap,
   GoogleMap,
-  InfoWindow,
-  Marker,
-  Circle,
+  Circle
 } from "react-google-maps";
 import styles from "./../assets/mapStyle.json";
 import MapInfo from "./mapinfo";
@@ -12,11 +10,6 @@ import MapInfo from "./mapinfo";
 class MapContainer extends Component {
   constructor(props) {
     super(props);
-    this.map = React.createRef();
-    this.circle = React.createRef();
-    this.countryElement = React.createRef();
-    this.getZoom = this.getZoom.bind(this);
-    this.idleCalled = false;
 
     this.state = {
       center: { lat: 40.4929, lng: 15.5553 },
@@ -25,38 +18,7 @@ class MapContainer extends Component {
       activeMarker: {},
     };
   }
-  getCircle(magnitude) {
-    return {
-      path: this.circle.current,
-      scale: Math.pow(2, magnitude) / 2,
-    };
-  }
 
-  getZoom() {
-    return this.map.current.getZoom();
-  }
-
-  // handleIdle() {
-  //   // console.log(this.idleCalled);
-  //   if (!this.idleCalled) {
-  //     console.log(this.circle);
-  //     if (this.circle.current !== null) {
-  //       // console.log(this.circle.current.getRadius());
-  //       this.changeCircleRadius();
-  //       // this.map.current.this.idleCalled = false;
-  //     }
-  //   }
-  // }
-
-  // changeCircleRadius() {
-  //   if (this.getZoom() <= 4) {
-  //     return 25000;
-  //   } else if (this.getZoom() > 3 && this.getZoom() <= 8) {
-  //     return 12500;
-  //   } else {
-  //     return 10000;
-  //   }
-  // }
 
   onMarkerClicked = (marker) => {
     this.countryElement.current.changeCountry(marker);
@@ -92,28 +54,21 @@ class MapContainer extends Component {
             }
             onClick={() => this.onMarkerClicked(country.country)}
             options={
-              country.us
+              (country.deaths / country.confirmed) * 100 <= 2.5
                 ? {
-                    strokeColor: "",
-                    strokeOpacity: 0.8,
-                    strokeWeight: 0.2,
-                  }
-                : 
-                (country.deaths / country.confirmed) * 100 <= 2.5
-                ? {
-                    fillColor: "#28A745",
-                    fillOpacity: 0.5,
-                    strokeOpacity: 0.8,
-                    strokeWeight: 0,
-                  }
+                  fillColor: "#28A745",
+                  fillOpacity: 0.5,
+                  strokeOpacity: 0.8,
+                  strokeWeight: 0,
+                }
                 : (country.deaths / country.confirmed) * 100 <= 5
-                ? {
+                  ? {
                     fillColor: "#FFC108",
                     fillOpacity: 0.5,
                     strokeOpacity: 0.8,
                     strokeWeight: 0,
                   }
-                : {
+                  : {
                     fillColor: "#DC3645",
                     fillOpacity: 0.5,
                     strokeOpacity: 0.8,
@@ -121,7 +76,8 @@ class MapContainer extends Component {
                   }
             }
           ></Circle>
-        ))}
+        ))
+        }
       </GoogleMap>
     ));
 
