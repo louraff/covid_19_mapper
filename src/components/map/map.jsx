@@ -25,6 +25,7 @@ class MapContainer extends Component {
     this.countryElement.current.changeCountry(marker)
   };
 
+
   render() {
     const GoogleMapExample = withGoogleMap((props) => (
       <GoogleMap
@@ -40,11 +41,13 @@ class MapContainer extends Component {
         }}
         onIdle={this.handleIdle}
       >
-        {this.props.countries.map((country, i) => (
+        {console.log(this.props)}
+        {this.props.integerCountries.map((country, i) => (
           <Circle
             ref={this.circle}
             defaultCenter={country.center}
             radius={
+
               country.country === "USA"
                 ? 220000
                 : (country.confirmed / this.props.total[0]) * 100 <= 1.5 || NaN
@@ -53,7 +56,7 @@ class MapContainer extends Component {
             }
             onClick={() => this.onMarkerClicked(country.country)}
             options={
-              (country.deaths / country.confirmed) * 100 <= 5
+              (country.deaths / country.confirmed) * 100 <= this.props.globalCFR
                 ? {
                   fillColor: "#FFC108",
                   fillOpacity: 0.5,
@@ -67,7 +70,7 @@ class MapContainer extends Component {
                   strokeWeight: 0
                 }
             }
-          ></Circle>
+          >{typeof country.confirmed === "string" ? console.log(country.country) : console.log("")}</Circle>
         ))
         }
       </GoogleMap>

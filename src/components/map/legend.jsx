@@ -44,7 +44,7 @@ class Legend extends Component {
         <div id="key">
           <strong>Key</strong>
           <br></br>
-          <OverlayTrigger {...this.props} trigger="click" placement="right" overlay={this.renderTooltipYellow} >
+          <OverlayTrigger placement="right" delay={{ show: 250, hide: 250 }} overlay={this.renderTooltipYellow}  >
             <Button
               variant={"outline-"}
               size={"sm"}>
@@ -56,7 +56,7 @@ class Legend extends Component {
             </Button>
           </OverlayTrigger>
           <br></br>
-          <OverlayTrigger trigger="click" placement="right" overlay={this.renderTooltipRed}>
+          <OverlayTrigger placement="right" delay={{ show: 250, hide: 250 }} overlay={this.renderTooltipRed}>
             <Button
               variant={"outline-"}
               size={"sm"}>
@@ -68,7 +68,7 @@ class Legend extends Component {
             </Button>
           </OverlayTrigger>
         </div>
-        <OverlayTrigger trigger="click" placement="right" overlay={this.renderTooltipSmall}>
+        <OverlayTrigger placement="right" delay={{ show: 250, hide: 250 }} overlay={this.renderTooltipSmall}>
           <Button
             variant={"outline-"}
             size={"sm"}>
@@ -80,7 +80,7 @@ class Legend extends Component {
           </Button>
         </OverlayTrigger>
         <br></br>
-        <OverlayTrigger trigger="click" placement="right" overlay={this.renderTooltipLarge}>
+        <OverlayTrigger placement="right" delay={{ show: 250, hide: 250 }} overlay={this.renderTooltipLarge}>
           <Button
             variant={"outline-"}
             size={"sm"}>
