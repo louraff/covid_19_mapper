@@ -102,8 +102,8 @@ class App extends Component {
             us: true,
             country: state.state,
             recovered: obj.recovered,
-            deaths: obj.deaths,
-            confirmed: obj.confirmed,
+            deaths: (obj.deaths).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","),
+            confirmed: (obj.confirmed).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","),
             center: { lat: state.latitude, lng: state.longitude },
           });
         }

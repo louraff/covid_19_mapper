@@ -10,6 +10,7 @@ import MapInfo from "./mapinfo";
 class MapContainer extends Component {
   constructor(props) {
     super(props);
+    this.countryElement = React.createRef();
 
     this.state = {
       center: { lat: 40.4929, lng: 15.5553 },
@@ -19,13 +20,8 @@ class MapContainer extends Component {
     };
   }
 
-
   onMarkerClicked = (marker) => {
-    this.countryElement.current.changeCountry(marker);
-  };
-
-  onCircleClicked = (props) => {
-    console.log(props);
+    this.countryElement.current.changeCountry(marker)
   };
 
   render() {
