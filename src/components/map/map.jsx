@@ -90,7 +90,7 @@ class MapContainer extends Component {
             countriesArray={this.props.countries}
           />
         </div>
-      </div>
+      </div >
     );
   }
 }
