@@ -200,7 +200,6 @@ class App extends Component {
   }
 
   render() {
-    console.log("hello", this.state.countriesInteger)
     return (
       <div className="App" >
         <Header total={this.state.total} countries={this.state.countries} globalCFR={this.state.totalCFR} />

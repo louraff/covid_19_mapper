@@ -41,7 +41,6 @@ class MapContainer extends Component {
         }}
         onIdle={this.handleIdle}
       >
-        {console.log(this.props)}
         {this.props.integerCountries.map((country, i) => (
           <Circle
             ref={this.circle}
