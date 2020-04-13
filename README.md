@@ -24,7 +24,7 @@ npm start
 
 This will start the local server which can be accessed at [_localhost:3000_](http://localhost:3000/)
 
-The project is also hosted live on [_Heroku_](https://covid-mapper.herokuapp.com/)
+The project is also hosted live on [_Heroku_](https://covid-mapper.herokuapp.com/), visit via Google Chrome.
 
 ---
 
