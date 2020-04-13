@@ -49,7 +49,7 @@ class MapContainer extends Component {
 
               country.country === "USA"
                 ? 220000
-                : (country.confirmed / this.props.total[0]) * 100 <= 1.5 || NaN
+                : (country.confirmed / this.props.total[0]) * 100 <= 1
                   ? 60000
                   : 160000
             }
