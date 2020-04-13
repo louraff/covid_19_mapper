@@ -114,7 +114,7 @@ class Header extends Component {
                     aria-hidden="true"
                   />
                 )
-                : "Global C.F.R: " + this.props.globalCFR.toFixed(2) + '%'
+                : "Global C.F.R: " + this.props.globalCFR + '%'
             }
             id={"dropdown-menu-align-right"}
           >

@@ -137,7 +137,8 @@ class App extends Component {
     let cfrPerCountry = []
     countries.forEach(country => {
       cfrPerCountry.push(
-        (parseInt(country.deaths.replace(/,/g, "")) / parseInt(country.cases.replace(/,/g, ""))) * 100
+        parseInt(country.deaths.replace(/,/g, "")) / parseInt(country.cases.replace(/,/g, "")) * 100
+
       )
     })
 
@@ -149,7 +150,7 @@ class App extends Component {
     const reducer = (accumulator, currentValue) => accumulator + currentValue
     let avCfr = cfrPerCountry.reduce(reducer) / cfrPerCountry.length
 
-    return avCfr
+    return avCfr.toFixed(2)
   }
 
   toInteger(totalArray) {
@@ -211,6 +212,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.totalCFR)
     return (
       <div className="App" >
         <Header total={this.state.total} countries={this.state.countries} globalCFR={this.state.totalCFR} />
