@@ -17,11 +17,11 @@ class MapInfo extends Component {
   render() {
     return (
       <div className="bg-warning text-white" id="card">
-        {this.props.countriesArray.map((country) => {
+        {this.props.countriesArray.map((country, i) => {
           if (country.country === this.state.marker) {
             if (country.us) {
               return (
-                <div id="mapinfo">
+                <div id="mapinfo" key={i}>
                   <div id="infoUS">
                     <h4>{country.country}</h4>
                   </div>
@@ -34,11 +34,15 @@ class MapInfo extends Component {
                     <strong>Total Deaths</strong>
                     <br></br> {country.deaths}
                   </div>
+                  <div id="infoUS">
+                    <strong>C.F.R</strong>
+                    <br></br> {country.cfr}%
+                  </div>
                 </div>
               );
             } else {
               return (
-                <div id="mapinfo">
+                <div id="mapinfo" key={i}>
                   <div id="info">
                     <h4>{country.country}</h4>
                   </div>
@@ -71,6 +75,10 @@ class MapInfo extends Component {
                   <div id="info">
                     <strong>Cases per Millon</strong>
                     <br></br> {country.perOneMillion}
+                  </div>
+                  <div id='info'>
+                    <strong>C.F.R</strong>
+                    <br></br> {country.cfr}%
                   </div>
                 </div>
               );

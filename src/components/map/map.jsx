@@ -44,6 +44,7 @@ class MapContainer extends Component {
         {this.props.integerCountries.map((country, i) => (
           <Circle
             ref={this.circle}
+            key={i}
             defaultCenter={country.center}
             radius={
 
@@ -69,7 +70,7 @@ class MapContainer extends Component {
                   strokeWeight: 0
                 }
             }
-          >{typeof country.confirmed === "string" ? console.log(country.country) : console.log("")}</Circle>
+          ></Circle>
         ))
         }
       </GoogleMap>

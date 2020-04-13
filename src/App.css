@@ -12,6 +12,13 @@
   font-size: 14px;
   color: grey;
   font-weight: bolder;
+  display: flex;
+  flex-direction: row;
+  margin: 0px;
+}
+
+#info-icon {
+  margin-right: 5px;
 }
 
 #map {
