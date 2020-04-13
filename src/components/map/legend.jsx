@@ -9,7 +9,7 @@ class Legend extends Component {
   renderTooltipYellow(props) {
     return (
       <Tooltip id="button-tooltip" {...props}>
-        Case Fatality Rate &lt; Global average CFR
+        C.F.R &lt; Global Average C.F.R
       </Tooltip>
     );
   }
@@ -17,7 +17,7 @@ class Legend extends Component {
   renderTooltipRed(props) {
     return (
       <Tooltip id="button-tooltip" {...props}>
-        Case Fatality Rate &gt; Global Average CFR
+        C.F.R &gt; Global Average C.F.R
       </Tooltip>
     );
   }
@@ -63,7 +63,7 @@ class Legend extends Component {
               <div id="colour"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                 width="30" height="30"
                 viewBox="0 0 172 172"
-                styles=" fill:#000000;"><g fill="none" fillRule="nonzero" ><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#dc3645"><path d="M86,157.66667c-39.41667,0 -71.66667,-32.25 -71.66667,-71.66667c0,-39.41667 32.25,-71.66667 71.66667,-71.66667c39.41667,0 71.66667,32.25 71.66667,71.66667c0,39.41667 -32.25,71.66667 -71.66667,71.66667z">
+                styles=" fill:#000000;"><g fill="none" fillRule="nonzero" font-family="none" font-weight="none" font-size="none" text-anchor="none" ><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#fb5945"><path d="M86,14.33333c-39.58041,0 -71.66667,32.08626 -71.66667,71.66667c0,39.58041 32.08626,71.66667 71.66667,71.66667c39.58041,0 71.66667,-32.08626 71.66667,-71.66667c0,-39.58041 -32.08626,-71.66667 -71.66667,-71.66667z">
                 </path></g></g></svg></div>
             </Button>
           </OverlayTrigger>

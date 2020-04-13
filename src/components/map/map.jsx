@@ -56,15 +56,15 @@ class MapContainer extends Component {
             }
             onClick={() => this.onMarkerClicked(country.country)}
             options={
-              (country.deaths / country.confirmed) * 100 <= this.props.globalCFR
+              country.cfr <= this.props.globalCFR
                 ? {
-                  fillColor: "#FFC108",
+                  fillColor: "#FBBD08",
                   fillOpacity: 0.5,
                   strokeOpacity: 0.8,
                   strokeWeight: 0
                 }
                 : {
-                  fillColor: "#DC3645",
+                  fillColor: "#FB5945",
                   fillOpacity: 0.5,
                   strokeOpacity: 0.8,
                   strokeWeight: 0
@@ -91,6 +91,7 @@ class MapContainer extends Component {
           <MapInfo
             ref={this.countryElement}
             countriesArray={this.props.countries}
+            globalCFR={this.props.globalCFR}
           />
         </div>
       </div >

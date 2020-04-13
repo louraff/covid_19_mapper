@@ -20,7 +20,7 @@ class Header extends Component {
           Covid-19
         </Navbar.Brand>
         <DropdownButton
-          variant={"outline-warning"}
+          variant={"outline-info"}
           title={
             "Global Cases: " + this.props.total.total_cases ===
               "Global Cases: undefined"
@@ -39,7 +39,7 @@ class Header extends Component {
         >
           <Dropdown.Item>
             <div id="drop-down-window">
-              <Spinner animation="grow" variant="warning" size="sm" />
+              <Spinner animation="grow" variant="info" size="sm" />
               Daily Increase: {this.props.total.new_cases}
             </div>
           </Dropdown.Item>
@@ -101,7 +101,7 @@ class Header extends Component {
         <Nav className="ml-auto">
           <DropdownButton
             alignRight
-            variant={"outline-info"}
+            variant={"outline-warning"}
             title={
               "Global C.F.R: " + this.props.globalCFR ===
                 "Global C.F.R: null"
@@ -120,11 +120,10 @@ class Header extends Component {
           >
             <Dropdown.Item>
               <div id="drop-down-window">
-                {/* <Spinner animation="grow" variant="info" size="sm" /> */}
                 <div id="info-icon">
                   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/1200px-Infobox_info_icon.svg.png" height="22px" width="22px" alt=""></img>
                 </div>
-                <div>Case Fatality Rate: % of Recorded Cases that Result in Deaths</div>
+                <div>Case Fatality Rate = % of Recorded Cases that Result in Deaths</div>
               </div>
             </Dropdown.Item>
           </DropdownButton>
