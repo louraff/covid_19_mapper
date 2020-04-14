@@ -15,7 +15,6 @@ class MapInfo extends Component {
   };
 
   render() {
-    console.log("countries", this.props.countriesArray)
     return (
       <div id="card">
         {this.props.countriesArray.map((country, i) => {
