@@ -150,7 +150,7 @@ class App extends Component {
     const reducer = (accumulator, currentValue) => accumulator + currentValue
     let avCfr = cfrPerCountry.reduce(reducer) / cfrPerCountry.length
 
-    return parseInt(avCfr.toFixed(2))
+    return parseFloat(avCfr.toFixed(2))
   }
 
   toInteger(totalArray) {
