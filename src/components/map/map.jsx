@@ -76,6 +76,7 @@ class MapContainer extends Component {
       </GoogleMap>
     ));
 
+    console.log("in map", this.props.countries)
     return (
       <div>
         <div>

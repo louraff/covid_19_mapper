@@ -150,7 +150,7 @@ class App extends Component {
     const reducer = (accumulator, currentValue) => accumulator + currentValue
     let avCfr = cfrPerCountry.reduce(reducer) / cfrPerCountry.length
 
-    return avCfr.toFixed(2)
+    return parseInt(avCfr.toFixed(2))
   }
 
   toInteger(totalArray) {
@@ -212,7 +212,7 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.totalCFR)
+    console.log("in app", this.state.countries)
     return (
       <div className="App" >
         <Header total={this.state.total} countries={this.state.countries} globalCFR={this.state.totalCFR} />
