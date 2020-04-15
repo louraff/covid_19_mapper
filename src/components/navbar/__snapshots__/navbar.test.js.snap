@@ -162,7 +162,8 @@ exports[`Navbar Component render correctly Header component 1`] = `
         className="react-bootstrap-table"
       >
         <table
-          className="table table-bordered"
+          className="table table-striped table-bordered"
+          id="bootstrap-table"
         >
           <thead>
             <tr>
