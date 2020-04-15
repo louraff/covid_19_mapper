@@ -155,237 +155,231 @@ exports[`Navbar Component render correctly Header component 1`] = `
     </div>
   </nav>
   <div
-    id="table"
+    className="Container"
   >
     <div>
-      <div
-        className="react-bootstrap-table"
-      >
-        <table
-          className="table table-striped table-bordered"
-          id="bootstrap-table"
+      <div>
+        <div
+          id="container"
         >
-          <thead>
-            <tr>
-              <th
-                aria-label="Country sortable"
-                className="sortable"
-                onClick={[Function]}
-                onKeyUp={[Function]}
-                tabIndex={0}
+          <div
+            id="map"
+          />
+          <div />
+        </div>
+      </div>
+      <div
+        id="legend"
+      >
+        <div>
+          <div
+            id="key"
+          >
+            <strong>
+              Key
+            </strong>
+            <br />
+            <button
+              className="btn btn-outline- btn-sm"
+              disabled={false}
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+              type="button"
+            >
+              <div
+                id="colour"
               >
-                Country
-                <span
-                  className="order"
+                <svg
+                  height="30"
+                  styles=" fill:#000000;"
+                  viewBox="0 0 172 172"
+                  width="30"
+                  x="0px"
+                  xmlns="http://www.w3.org/2000/svg"
+                  y="0px"
                 >
-                  <span
-                    className="dropdown"
+                  <g
+                    fill="none"
+                    fillRule="nonzero"
                   >
-                    <span
-                      className="caret"
+                    <path
+                      d="M0,172v-172h172v172z"
+                      fill="none"
                     />
-                  </span>
-                  <span
-                    className="dropup"
-                  >
-                    <span
-                      className="caret"
-                    />
-                  </span>
-                </span>
-              </th>
-              <th
-                aria-label="Total Cases sortable"
-                className="sortable"
-                onClick={[Function]}
-                onKeyUp={[Function]}
-                tabIndex={0}
+                    <g
+                      fill="#ffc108"
+                    >
+                      <path
+                        d="M86,157.66667c-39.41667,0 -71.66667,-32.25 -71.66667,-71.66667c0,-39.41667 32.25,-71.66667 71.66667,-71.66667c39.41667,0 71.66667,32.25 71.66667,71.66667c0,39.41667 -32.25,71.66667 -71.66667,71.66667z"
+                      />
+                    </g>
+                  </g>
+                </svg>
+              </div>
+            </button>
+            <br />
+            <button
+              className="btn btn-outline- btn-sm"
+              disabled={false}
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+              type="button"
+            >
+              <div
+                id="colour"
               >
-                Total Cases
-                <span
-                  className="order"
+                <svg
+                  height="30"
+                  styles=" fill:#000000;"
+                  viewBox="0 0 172 172"
+                  width="30"
+                  x="0px"
+                  xmlns="http://www.w3.org/2000/svg"
+                  y="0px"
                 >
-                  <span
-                    className="dropdown"
+                  <g
+                    fill="none"
+                    fillRule="nonzero"
                   >
-                    <span
-                      className="caret"
+                    <path
+                      d="M0,172v-172h172v172z"
+                      fill="none"
                     />
-                  </span>
-                  <span
-                    className="dropup"
-                  >
-                    <span
-                      className="caret"
-                    />
-                  </span>
-                </span>
-              </th>
-              <th
-                aria-label="Active Cases sortable"
-                className="sortable"
-                onClick={[Function]}
-                onKeyUp={[Function]}
-                tabIndex={0}
+                    <g
+                      fill="#fb5945"
+                    >
+                      <path
+                        d="M86,14.33333c-39.58041,0 -71.66667,32.08626 -71.66667,71.66667c0,39.58041 32.08626,71.66667 71.66667,71.66667c39.58041,0 71.66667,-32.08626 71.66667,-71.66667c0,-39.58041 -32.08626,-71.66667 -71.66667,-71.66667z"
+                      />
+                    </g>
+                  </g>
+                </svg>
+              </div>
+            </button>
+          </div>
+          <button
+            className="btn btn-outline- btn-sm"
+            disabled={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            type="button"
+          >
+            <div
+              id="size"
+            >
+              <svg
+                height="15"
+                styles=" fill:#000000;"
+                viewBox="0 0 172 172"
+                width="15"
+                x="0px"
+                xmlns="http://www.w3.org/2000/svg"
+                y="0px"
               >
-                Active Cases
-                <span
-                  className="order"
+                <g
+                  transform="translate(4.988,4.988) scale(0.942,0.942)"
                 >
-                  <span
-                    className="dropdown"
+                  <g
+                    fill="none"
+                    fillRule="nonzero"
                   >
-                    <span
-                      className="caret"
+                    <g
+                      fill="#ffffff"
+                    >
+                      <path
+                        d="M86,157.66667c-39.41667,0 -71.66667,-32.25 -71.66667,-71.66667c0,-39.41667 32.25,-71.66667 71.66667,-71.66667c39.41667,0 71.66667,32.25 71.66667,71.66667c0,39.41667 -32.25,71.66667 -71.66667,71.66667zM86,28.66667c-31.53333,0 -57.33333,25.8 -57.33333,57.33333c0,31.53333 25.8,57.33333 57.33333,57.33333c31.53333,0 57.33333,-25.8 57.33333,-57.33333c0,-31.53333 -25.8,-57.33333 -57.33333,-57.33333z"
+                      />
+                    </g>
+                    <path
+                      d="M0,172v-172h172v172z"
+                      fill="none"
                     />
-                  </span>
-                  <span
-                    className="dropup"
-                  >
-                    <span
-                      className="caret"
+                    <g
+                      fill="#ffffff"
+                    >
+                      <path
+                        d="M86,157.66667c-39.41667,0 -71.66667,-32.25 -71.66667,-71.66667c0,-39.41667 32.25,-71.66667 71.66667,-71.66667c39.41667,0 71.66667,32.25 71.66667,71.66667c0,39.41667 -32.25,71.66667 -71.66667,71.66667zM86,28.66667c-31.53333,0 -57.33333,25.8 -57.33333,57.33333c0,31.53333 25.8,57.33333 57.33333,57.33333c31.53333,0 57.33333,-25.8 57.33333,-57.33333c0,-31.53333 -25.8,-57.33333 -57.33333,-57.33333z"
+                      />
+                    </g>
+                    <path
+                      d=""
+                      fill="none"
                     />
-                  </span>
-                </span>
-              </th>
-              <th
-                aria-label="Recovered sortable"
-                className="sortable"
-                onClick={[Function]}
-                onKeyUp={[Function]}
-                tabIndex={0}
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </button>
+          <br />
+          <button
+            className="btn btn-outline- btn-sm"
+            disabled={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            type="button"
+          >
+            <div
+              id="size"
+            >
+              <svg
+                height="30"
+                styles=" fill:#000000;"
+                viewBox="0 0 172 172"
+                width="30"
+                x="0px"
+                xmlns="http://www.w3.org/2000/svg"
+                y="0px"
               >
-                Recovered
-                <span
-                  className="order"
+                <g
+                  transform="translate(4.988,4.988) scale(0.942,0.942)"
                 >
-                  <span
-                    className="dropdown"
+                  <g
+                    fill="none"
+                    fillRule="nonzero"
                   >
-                    <span
-                      className="caret"
+                    <g
+                      fill="#ffffff"
+                    >
+                      <path
+                        d="M86,157.66667c-39.41667,0 -71.66667,-32.25 -71.66667,-71.66667c0,-39.41667 32.25,-71.66667 71.66667,-71.66667c39.41667,0 71.66667,32.25 71.66667,71.66667c0,39.41667 -32.25,71.66667 -71.66667,71.66667zM86,28.66667c-31.53333,0 -57.33333,25.8 -57.33333,57.33333c0,31.53333 25.8,57.33333 57.33333,57.33333c31.53333,0 57.33333,-25.8 57.33333,-57.33333c0,-31.53333 -25.8,-57.33333 -57.33333,-57.33333z"
+                      />
+                    </g>
+                    <path
+                      d="M0,172v-172h172v172z"
+                      fill="none"
                     />
-                  </span>
-                  <span
-                    className="dropup"
-                  >
-                    <span
-                      className="caret"
+                    <g
+                      fill="#ffffff"
+                    >
+                      <path
+                        d="M86,157.66667c-39.41667,0 -71.66667,-32.25 -71.66667,-71.66667c0,-39.41667 32.25,-71.66667 71.66667,-71.66667c39.41667,0 71.66667,32.25 71.66667,71.66667c0,39.41667 -32.25,71.66667 -71.66667,71.66667zM86,28.66667c-31.53333,0 -57.33333,25.8 -57.33333,57.33333c0,31.53333 25.8,57.33333 57.33333,57.33333c31.53333,0 57.33333,-25.8 57.33333,-57.33333c0,-31.53333 -25.8,-57.33333 -57.33333,-57.33333z"
+                      />
+                    </g>
+                    <path
+                      d=""
+                      fill="none"
                     />
-                  </span>
-                </span>
-              </th>
-              <th
-                aria-label="Deaths sortable"
-                className="sortable"
-                onClick={[Function]}
-                onKeyUp={[Function]}
-                tabIndex={0}
-              >
-                Deaths
-                <span
-                  className="order"
-                >
-                  <span
-                    className="dropdown"
-                  >
-                    <span
-                      className="caret"
-                    />
-                  </span>
-                  <span
-                    className="dropup"
-                  >
-                    <span
-                      className="caret"
-                    />
-                  </span>
-                </span>
-              </th>
-              <th
-                aria-label="Critical Cases sortable"
-                className="sortable"
-                onClick={[Function]}
-                onKeyUp={[Function]}
-                tabIndex={0}
-              >
-                Critical Cases
-                <span
-                  className="order"
-                >
-                  <span
-                    className="dropdown"
-                  >
-                    <span
-                      className="caret"
-                    />
-                  </span>
-                  <span
-                    className="dropup"
-                  >
-                    <span
-                      className="caret"
-                    />
-                  </span>
-                </span>
-              </th>
-              <th
-                aria-label="Cases Per 1Million People sortable"
-                className="sortable"
-                onClick={[Function]}
-                onKeyUp={[Function]}
-                tabIndex={0}
-              >
-                Cases Per 1Million People
-                <span
-                  className="order"
-                >
-                  <span
-                    className="dropdown"
-                  >
-                    <span
-                      className="caret"
-                    />
-                  </span>
-                  <span
-                    className="dropup"
-                  >
-                    <span
-                      className="caret"
-                    />
-                  </span>
-                </span>
-              </th>
-              <th
-                aria-label="C.F.R sortable"
-                className="sortable"
-                onClick={[Function]}
-                onKeyUp={[Function]}
-                tabIndex={0}
-              >
-                C.F.R
-                <span
-                  className="order"
-                >
-                  <span
-                    className="dropdown"
-                  >
-                    <span
-                      className="caret"
-                    />
-                  </span>
-                  <span
-                    className="dropup"
-                  >
-                    <span
-                      className="caret"
-                    />
-                  </span>
-                </span>
-              </th>
-            </tr>
-          </thead>
-        </table>
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </button>
+        </div>
+      </div>
+      <div
+        id="mapinfo"
+      >
+        <div
+          id="card"
+        />
       </div>
     </div>
   </div>
