@@ -8,6 +8,16 @@
   flex-direction: row;
 }
 
+#nav-title {
+  display: flex;
+  flex-direction: row;
+  width: 80%
+}
+
+#img {
+  margin: 2px;
+}
+
 #drop-down-window {
   font-size: 14px;
   color: grey;

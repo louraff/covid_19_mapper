@@ -6,50 +6,92 @@ import Nav from "react-bootstrap/Nav";
 import Spinner from "react-bootstrap/Spinner";
 import MapContainer from "./../map/map";
 
+
+
 class Header extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      viewMap: true,
+      viewTables: false
+    }
   }
+
+  handleMapClick = () => {
+    console.log(this)
+    this.setState({
+      viewMap: true,
+      viewTables: false
+    })
+  }
+
+  handleTableClick = () => {
+    this.setState({
+      viewMap: false,
+      viewTables: true
+    })
+  }
+
+
   render() {
-    console.log("in navbar", this.props)
     return (
       <div id="app">
         <Navbar fixed="top" className="navbar-dark bs-navbar-collapse">
-          <Navbar.Brand>
-            <img
-              alt=""
-              src="https://cdn3.iconfinder.com/data/icons/science-116/64/virus-lab-scientist-biology-cell-medical-512.png?v=2"
-              width="30"
-              height="30"
-              className="d-inline-block align-top"
-            />{" "}
-          Covid-19
-        </Navbar.Brand>
-          <DropdownButton
-            variant={"outline-info"}
-            title={
-              "Global Cases: " + this.props.total.total_cases ===
-                "Global Cases: undefined"
-                ? "Global Cases: " && (
-                  <Spinner
-                    as="span"
-                    animation="grow"
-                    size="sm"
-                    role="status"
-                    aria-hidden="true"
-                  />
-                )
-                : "Global Cases: " + this.props.total.total_cases
-            }
-            id="last_updated"
-          >
-            <Dropdown.Item>
-              <div id="drop-down-window">
-                <Spinner animation="grow" variant="info" size="sm" />
+          <Nav>
+            <DropdownButton
+              id={"nav-title"}
+              variant={"outline-light"}
+              title={
+                <span>
+                  <span id="img">
+                    <img
+                      alt=""
+                      src="https://cdn3.iconfinder.com/data/icons/science-116/64/virus-lab-scientist-biology-cell-medical-512.png?v=2"
+                      width="22"
+                      height="22"
+                      className="d-inline-block align-top"
+                    ></img></span>
+                 Covid-19
+                </span>
+              }
+              id="last_updated"
+            >
+              <Dropdown.Item onClick={this.handleMapClick}>
+                <div id="drop-down-window">
+                  View Map </div></Dropdown.Item>
+
+              <Dropdown.Item onClick={this.handleTableClick}>
+                <div id="drop-down-window">
+                  View Tables</div></Dropdown.Item>
+            </DropdownButton>
+          </Nav>
+          <Nav className="ml-auto">
+            <DropdownButton
+              variant={"outline-info"}
+              title={
+                "Global Cases: " + this.props.total.total_cases ===
+                  "Global Cases: undefined"
+                  ? "Global Cases: " && (
+                    <Spinner
+                      as="span"
+                      animation="grow"
+                      size="sm"
+                      role="status"
+                      aria-hidden="true"
+                    />
+                  )
+                  : "Global Cases: " + this.props.total.total_cases
+              }
+              id="last_updated"
+            >
+              <Dropdown.Item>
+                <div id="drop-down-window">
+                  <Spinner animation="grow" variant="info" size="sm" />
               Daily Increase: {this.props.total.new_cases}
-              </div>
-            </Dropdown.Item>
-          </DropdownButton>
+                </div>
+              </Dropdown.Item>
+            </DropdownButton>
+          </Nav>
           <Nav className="ml-auto">
             <DropdownButton
               variant={"outline-success"}
@@ -163,15 +205,23 @@ class Header extends Component {
             </DropdownButton>
           </Nav>
         </Navbar>
-        <div className="Container">
-          <MapContainer
-            countries={this.props.countries}
-            total={this.props.totalInt}
-            globalCFR={this.props.globalCFR}
-            integerCountries={this.props.integerCountries}
-          />
-        </div>
-      </div>
+        {
+          this.state.viewMap &&
+          <div className="Container">
+            <MapContainer
+              countries={this.props.countries}
+              total={this.props.totalInt}
+              globalCFR={this.props.globalCFR}
+              integerCountries={this.props.integerCountries}
+            />
+          </div>
+        }
+        {
+          !this.state.viewMap &&
+          <div><h1>Hello</h1></div>
+        }
+
+      </div >
     );
   }
 }
