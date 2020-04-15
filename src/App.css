@@ -47,6 +47,10 @@
   right: 0px;
 }
 
+#bootstrap-table {
+  color: white
+}
+
 #legend {
   position: absolute;
   display: flex;

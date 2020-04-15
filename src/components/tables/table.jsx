@@ -68,7 +68,9 @@ class TableContainer extends Component {
     return (
       <div>
         {/* <button className="btn btn-danger" onClick={this.handleSortById}>Sort By ID</button> */}
-        <BootstrapTable
+        <BootstrapTable 
+          id="bootstrap-table" 
+          striped={true}
           keyField="id"
           data={this.props.countries}
           columns={columns}
