@@ -5,8 +5,7 @@ import DropdownButton from "react-bootstrap/DropdownButton"
 import Nav from "react-bootstrap/Nav";
 import Spinner from "react-bootstrap/Spinner";
 import MapContainer from "./../map/map";
-
-
+import TableContainer from "./../tables/table"
 
 class Header extends Component {
   constructor(props) {
@@ -58,10 +57,17 @@ class Header extends Component {
             >
               <Dropdown.Item onClick={this.handleMapClick}>
                 <div id="drop-down-window">
+                  <div id="info-icon">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Globe_icon.svg/420px-Globe_icon.svg.png" height="18px" width="18px" alt=""></img>
+                  </div>
+
                   View Map </div></Dropdown.Item>
 
               <Dropdown.Item onClick={this.handleTableClick}>
                 <div id="drop-down-window">
+                  <div id="info-icon">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Simple_icon_table.svg/1280px-Simple_icon_table.svg.png" height="16px" width="20px" alt=""></img>
+                  </div>
                   View Tables</div></Dropdown.Item>
             </DropdownButton>
           </Nav>
@@ -218,7 +224,9 @@ class Header extends Component {
         }
         {
           !this.state.viewMap &&
-          <div><h1>Hello</h1></div>
+          <div>
+            <TableContainer />
+          </div>
         }
 
       </div >
