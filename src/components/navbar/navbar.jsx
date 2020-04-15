@@ -11,13 +11,12 @@ class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      viewMap: true,
-      viewTables: false
+      viewMap: false,
+      viewTables: true
     }
   }
 
   handleMapClick = () => {
-    console.log(this)
     this.setState({
       viewMap: true,
       viewTables: false
@@ -38,18 +37,28 @@ class Header extends Component {
         <Navbar fixed="top" className="navbar-dark bs-navbar-collapse">
           <Nav>
             <DropdownButton
-              id={"nav-title"}
               variant={"outline-light"}
               title={
-                <span>
-                  <span id="img">
-                    <img
-                      alt=""
-                      src="https://cdn3.iconfinder.com/data/icons/science-116/64/virus-lab-scientist-biology-cell-medical-512.png?v=2"
-                      width="22"
-                      height="22"
-                      className="d-inline-block align-top"
-                    ></img></span>
+                "Global Recoveries: " + this.props.total.total_recovered ===
+                  "Global Recoveries: undefined"
+                  ? "Last Updated" && (
+                    <Spinner
+                      as="span"
+                      animation="grow"
+                      size="sm"
+                      role="status"
+                      aria-hidden="true"
+                    />
+                  )
+                  : <span>
+                    <span id="img">
+                      <img
+                        alt=""
+                        src="https://cdn3.iconfinder.com/data/icons/science-116/64/virus-lab-scientist-biology-cell-medical-512.png?v=2"
+                        width="22"
+                        height="22"
+                        className="d-inline-block align-top"
+                      ></img></span>
                  Covid-19
                 </span>
               }
@@ -223,9 +232,9 @@ class Header extends Component {
           </div>
         }
         {
-          !this.state.viewMap &&
-          <div>
-            <TableContainer />
+          this.state.viewTables &&
+          <div id="table">
+            <TableContainer countries={this.props.integerCountries} />
           </div>
         }
 

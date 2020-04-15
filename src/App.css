@@ -1,6 +1,7 @@
 .App {
   text-align: center;
-  background-color: rgb(81, 82, 82);
+  color: #3E444A;
+  /* background-color: rgb(81, 82, 82); */
 }
 
 .Container {
@@ -16,6 +17,14 @@
 
 #img {
   margin: 2px;
+}
+
+#table {
+  position: absolute;
+  top: 70px;
+  /* border: solid;
+  border-color: white;
+  border-width: medium; */
 }
 
 #drop-down-window {
