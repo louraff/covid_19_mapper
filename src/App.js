@@ -88,7 +88,7 @@ class App extends Component {
             activeCases: two.active_cases,
             criticalCases: two.serious_critical,
             perOneMillion: two.total_cases_per_1m_population,
-            cfr: cfr.toFixed(2)
+            cfr: parseFloat(cfr.toFixed(2))
           });
         }
       })
