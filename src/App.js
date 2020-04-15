@@ -182,7 +182,7 @@ class App extends Component {
             activeCases: parseInt(two.active_cases.replace(/,/g, "")),
             criticalCases: parseInt(two.serious_critical.replace(/,/g, "")),
             perOneMillion: parseInt(two.total_cases_per_1m_population.replace(/,/g, "")),
-            cfr: cfr,
+            cfr: parseFloat(cfr.toFixed(2)),
 
           })
         }
