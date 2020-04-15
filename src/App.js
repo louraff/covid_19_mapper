@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
 import Header from "./components/navbar/navbar";
-import MapContainer from "./components/map/map";
 import ref_country_codes from "./components/assets/countries-lat-long.json";
 import us_codes from "./components/assets/USlatlong.json";
 
@@ -171,7 +170,7 @@ class App extends Component {
           let intTotalConfirmed = parseInt(two.cases.replace(/,/g, ""))
           let intTotalDeaths = parseInt(two.deaths.replace(/,/g, ""))
           let cfr = intTotalDeaths / intTotalConfirmed * 100
-        
+
           countriesInteger.push({
             country: two.country_name,
             recovered: parseInt(two.total_recovered.replace(/,/g, "")),
@@ -183,7 +182,7 @@ class App extends Component {
             activeCases: parseInt(two.active_cases.replace(/,/g, "")),
             criticalCases: parseInt(two.serious_critical.replace(/,/g, "")),
             perOneMillion: parseInt(two.total_cases_per_1m_population.replace(/,/g, "")),
-            cfr: cfr,
+            cfr: parseFloat(cfr.toFixed(2)),
 
           })
         }
@@ -215,15 +214,12 @@ class App extends Component {
   render() {
     return (
       <div className="App" >
-        <Header total={this.state.total} countries={this.state.countries} globalCFR={this.state.totalCFR} />
-        <div className="Container">
-          <MapContainer
-            countries={this.state.countries}
-            total={this.state.totalInt}
-            globalCFR={this.state.totalCFR}
-            integerCountries={this.state.countriesInteger}
-          />
-        </div>
+        <Header
+          total={this.state.total}
+          totalInt={this.state.totalInt}
+          countries={this.state.countries}
+          globalCFR={this.state.totalCFR}
+          integerCountries={this.state.countriesInteger} />
       </div>
     );
   }
