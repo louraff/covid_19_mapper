@@ -27,6 +27,7 @@ class MapContainer extends Component {
 
 
   render() {
+    console.log("in map", this.props.countries)
     const GoogleMapExample = withGoogleMap((props) => (
       <GoogleMap
         ref={this.map}
