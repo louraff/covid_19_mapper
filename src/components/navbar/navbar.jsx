@@ -35,7 +35,6 @@ class Header extends Component {
     return (
       <div id="app">
         <Navbar fixed="top" bg={this.state.viewMap ? "" : "dark"} className="navbar-dark bs-navbar-collapse" >
-
           <Nav>
             <DropdownButton
               variant={"outline-light"}
