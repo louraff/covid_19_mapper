@@ -11,8 +11,8 @@ class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      viewMap: false,
-      viewTables: true
+      viewMap: true,
+      viewTables: false
     }
   }
 
@@ -34,7 +34,8 @@ class Header extends Component {
   render() {
     return (
       <div id="app">
-        <Navbar fixed="top" className="navbar-dark bs-navbar-collapse">
+        <Navbar fixed="top" bg={this.state.viewMap ? "" : "dark"} className="navbar-dark bs-navbar-collapse" >
+
           <Nav>
             <DropdownButton
               variant={"outline-light"}
@@ -59,7 +60,7 @@ class Header extends Component {
                         height="22"
                         className="d-inline-block align-top"
                       ></img></span>
-                 Covid-19
+                    Covid-19
                 </span>
               }
               id="last_updated"
@@ -102,7 +103,7 @@ class Header extends Component {
               <Dropdown.Item>
                 <div id="drop-down-window">
                   <Spinner animation="grow" variant="info" size="sm" />
-              Daily Increase: {this.props.total.new_cases}
+                  Daily Increase: {this.props.total.new_cases}
                 </div>
               </Dropdown.Item>
             </DropdownButton>
@@ -129,7 +130,7 @@ class Header extends Component {
               <Dropdown.Item>
                 <div id="drop-down-window">
                   <Spinner animation="grow" variant="success" size="sm" />
-                Active Cases: {this.props.total.active_cases}
+                  Active Cases: {this.props.total.active_cases}
                 </div>
               </Dropdown.Item>
             </DropdownButton>
@@ -156,7 +157,7 @@ class Header extends Component {
               <Dropdown.Item>
                 <div id="drop-down-window">
                   <Spinner animation="grow" variant="danger" size="sm" />
-                Daily Increase: {this.props.total.new_deaths}
+                  Daily Increase: {this.props.total.new_deaths}
                 </div>
               </Dropdown.Item>
             </DropdownButton>
@@ -214,7 +215,7 @@ class Header extends Component {
               <Dropdown.Item>
                 <div id="drop-down-window">
                   <Spinner animation="grow" variant="secondary" size="sm" />
-                UTC: {this.props.total.statistic_taken_at}
+                  UTC: {this.props.total.statistic_taken_at}
                 </div>
               </Dropdown.Item>
             </DropdownButton>
