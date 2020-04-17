@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  color: #3E444A;
+  color: #3e444a;
   /* background-color: rgb(81, 82, 82); */
 }
 
@@ -12,7 +12,7 @@
 #nav-title {
   display: flex;
   flex-direction: row;
-  width: 80%
+  width: 80%;
 }
 
 #img {
@@ -76,6 +76,7 @@ color: white;
   width: 100%;
   z-index: 1;
   bottom: 10px;
+
   left: 0px;
   fill: none;
 }
@@ -102,11 +103,14 @@ color: white;
   color: rgb(40,167,69);
   width: 15%;
   font-weight: bold;
+
 }
 
 #infoUS {
   width: 40%;
+
   font-weight: bold;
+
 }
 
 #infoUSCases {
@@ -119,20 +123,22 @@ color: white;
   width: 40%;
   color: rgb(220,54,69);
   font-weight: bold;
+
 }
 
 #card {
-color: white;
+  color: white;
 }
 
 #infoYellow {
   color: #FBBD08;
   width: 15%;
   font-weight: bold;
+
 }
 
 #infoOrange {
-  color: #FB5945;
+  color: #fb5945;
   width: 15%;
   font-weight: bold;
 }
@@ -141,10 +147,11 @@ color: white;
   color: #FBBD08;
   width: 40%;
   font-weight: bold;
+
 }
 
 #infoUSOrange {
-  color: #FB5945;
+  color: #fb5945;
   width: 40%;
   font-weight: bold;
 }
