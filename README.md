@@ -61,10 +61,10 @@ This will display all of tests and snapshot tests.
 
 ---
 
-## Stage 2
+## Stage 3
 #### Map View
 <img src='./public/images/three_map.png' />
 
 #### Table View
-<img src='./public/images/three_stat.png' />
+<img src='./public/images/three_table.png' />
 ---
