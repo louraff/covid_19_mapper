@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
-import { Line } from 'react-chartjs-2'
+import { Line, Doughnut } from 'react-chartjs-2'
 
 
 class GraphContainer extends Component {
-
-  
-  state = {
-    data: []
+  constructor(props){
+    super(props)
+    this.state = {
+      data: []
+    }
   }
+  
+  
   
   componentDidMount() {
     fetch("https://pomber.github.io/covid19/timeseries.json")
@@ -18,34 +21,119 @@ class GraphContainer extends Component {
         })
       });
   }
+
+  createLabels = () => {
+    const labelData = []
+    console.log("creating labels",this.state.data)
+    if(this.state.data.US !== undefined) {
+    this.state.data.US.map (date => {
+      labelData.push(date.date)
+    })
+    return labelData
+  }
+  }
+
+  createGraphData = (type) => {
+    const graphData = {
+      deaths: [],
+      confirmed: [],
+      recoveries: []
+    }
+    
+    if(this.state.data.US !== undefined) {
+      this.state.data.US.map (date => {
+        graphData.confirmed.push(date.confirmed)
+        graphData.deaths.push(date.deaths)
+        graphData.recoveries.push(date.recovered)
+      })
+
+      if(type === 'confirmed') {
+        return graphData.confirmed
+      }else if(type === "deaths"){
+        return graphData.deaths
+      }else if(type ==="recovered"){
+        return graphData.recoveries
+      }
+    }
+  }
+
+  doughnutLabels = () => {
+    const doughtnutLabels = []
+    if (this.props.countries !== undefined){
+      this.props.countries.map(country => {
+        doughtnutLabels.push(country.country)
+      })
+    }
+    return doughtnutLabels
+  }
+
+  doughnutData = () => {
+    const doughnutData = []
+    console.log(this.props.total)
+    if(this.props.countries !== undefined) {
+      this.props.countries.map (country => {
+        if(!country.us) {
+          doughnutData.push(country.confirmed / this.props.total[0] * 100)
+        }
+      })
+    }
+    return doughnutData
+  }
   
   render() {
-  
-    const data = {
-      labels: [
-        '10/04/2018', '10/05/2018',
-        '10/06/2018', '10/07/2018',
-        '10/08/2018', '10/09/2018',
-        '10/10/2018', '10/11/2018',
-        '10/12/2018', '10/13/2018',
-        '10/14/2018', '10/15/2018'
-      ],
-      datasets: [
-        {
-          label: 'Temperature',
-          data: [22, 19, 27, 23, 22, 24, 17, 25, 23, 24, 20, 19],
-          fill: false,          // Don't fill area under the line
-          borderColor: 'green'  // Line color
-        }
-      ]
+    console.log("integerCountries", this.props.countries)
+      const line = {
+        labels: 
+          this.createLabels()
+        ,
+        datasets: [
+          {
+            label: 'Confirmed',
+            data: this.createGraphData("confirmed"),
+            fill: false,          
+            borderColor: '#18A2B8',
+            
+          },
+          {
+            label: 'Deaths',
+            data: this.createGraphData("deaths"),
+            fill: false,          
+            borderColor: '#dc3644' 
+          },
+          {
+            label: 'Recovered',
+            data: this.createGraphData("recovered"),
+            fill: false,          
+            borderColor: '#28a745' 
+          }
+        ],
+        
+      }
+    const dOptions = {
+      legend: false,
+      animation: {
+        animateScale: true
+      },
+      cutoutPercentage: 50,
+      circumfrance:  314.1596,
+    }
+
+    const doughnut = {
+      labels: this.doughnutLabels(),
+      datasets: [{
+        data: this.doughnutData()
+      }]
+      
     }
   
-    // console.log(this.state.data)
     return (
-      <div className="App">
-      
-        <Line data={data} />
-    
+      <div id="graph" className="graph">
+        <div id="line">
+        <Line data={line}  />
+        </div>
+        <div id="doughnut">
+        <Doughnut data={doughnut} options={dOptions} />
+        </div>       
       </div>
     )
   }

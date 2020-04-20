@@ -62,9 +62,25 @@
 color: white;
 }
 
-#graph {
+#line {
+  position: absolute;
+  top: 7%;
+  width: 50%;
+  height: 46%;
   z-index: 1;
-  top: 50px;
+  color: white;
+  border: solid;
+  border-color: white;
+  position: center;
+}
+
+#doughnut {
+  position: absolute;
+  right: 0%;
+  top: 7%;
+  width: 50%;
+  z-index: 1;
+
 }
 
 #legend {
@@ -73,7 +89,6 @@ color: white;
   flex-direction: column;
   z-index: 1;
   top: 40%;
-  /* top: 350px; */
   color: white;
   left: 0px;
   width: 5%;

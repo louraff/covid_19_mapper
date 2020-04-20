@@ -45,7 +45,7 @@ class Header extends Component {
   render() {
     return (
       <div id="app">
-        <Navbar fixed="top" bg={this.state.viewMap || this.state.viewGraph ? "" : "dark"} className="navbar-dark bs-navbar-collapse" >
+        <Navbar fixed="top" bg={this.state.viewMap ? "" : "dark"} className="navbar-dark bs-navbar-collapse" >
           <Nav>
             <DropdownButton
               variant={"outline-light"}
@@ -280,9 +280,7 @@ class Header extends Component {
           </div>
         )}
         {this.state.viewGraph && (
-          <div id="graph">
-            <GraphContainer/>
-          </div>
+            <GraphContainer countries={this.props.integerCountries} total={this.props.totalInt}/>
         )}
       </div>
     );
