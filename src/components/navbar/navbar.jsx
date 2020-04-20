@@ -6,14 +6,15 @@ import Nav from "react-bootstrap/Nav";
 import Spinner from "react-bootstrap/Spinner";
 import MapContainer from "./../map/map";
 import TableContainer from "./../tables/table";
+import GraphContainer from "./../graph/graph"
 
 class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      viewMap: true,
+      viewMap: false,
       viewTables: false,
-      viewGraph: false
+      viewGraph: true
     }
   }
 
@@ -43,7 +44,7 @@ class Header extends Component {
 
   render() {
     return (
-      <div id="app">i
+      <div id="app">
         <Navbar fixed="top" bg={this.state.viewMap || this.state.viewGraph ? "" : "dark"} className="navbar-dark bs-navbar-collapse" >
           <Nav>
             <DropdownButton
@@ -280,7 +281,7 @@ class Header extends Component {
         )}
         {this.state.viewGraph && (
           <div id="graph">
-            <h1>Graph</h1>
+            <GraphContainer/>
           </div>
         )}
       </div>
