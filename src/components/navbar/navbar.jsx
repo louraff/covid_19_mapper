@@ -7,6 +7,7 @@ import Spinner from "react-bootstrap/Spinner";
 import MapContainer from "./../map/map";
 import TableContainer from "./../tables/table";
 import GraphContainer from "./../graph/graph"
+import SearchContainer from "./../searchbar/searchbar"
 
 class Header extends Component {
   constructor(props) {
@@ -45,7 +46,10 @@ class Header extends Component {
   render() {
     return (
       <div id="app">
-        <Navbar fixed="top" bg={this.state.viewMap ? "" : "dark"} className="navbar-dark bs-navbar-collapse" >
+        {/* this.state.viewMap ? "" : */}
+        <Navbar fixed="top"
+          bg={""}
+          className="navbar-dark bs-navbar-collapse" >
           <Nav>
             <DropdownButton
               variant={"outline-light"}
@@ -86,7 +90,7 @@ class Header extends Component {
                       alt=""
                     ></img>
                   </div>
-                  View Map
+                  Interactive Map
                 </div>
               </Dropdown.Item>
               <Dropdown.Item onClick={this.handleTableClick}>
@@ -99,7 +103,7 @@ class Header extends Component {
                       alt=""
                     ></img>
                   </div>
-                  View Tables
+                  Interactive Table
                 </div>
               </Dropdown.Item>
               <Dropdown.Item onClick={this.handleGraphClick}>
@@ -112,7 +116,7 @@ class Header extends Component {
                       alt=""
                     ></img>
                   </div>
-                  View Graphs
+                  Interactive Charts
                 </div>
               </Dropdown.Item>
             </DropdownButton>
@@ -280,7 +284,10 @@ class Header extends Component {
           </div>
         )}
         {this.state.viewGraph && (
-            <GraphContainer countries={this.props.integerCountries} total={this.props.totalInt}/>
+            <div id="search">
+              <SearchContainer countries={this.props.integerCountries} totalInt={this.props.totalInt} />
+            </div>
+
         )}
       </div>
     );

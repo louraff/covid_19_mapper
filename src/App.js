@@ -3,6 +3,8 @@ import "./App.css";
 import Header from "./components/navbar/navbar";
 import ref_country_codes from "./components/assets/countries-lat-long.json";
 import us_codes from "./components/assets/USlatlong.json";
+import SearchContainer from "./components/searchbar/searchbar";
+
 
 class App extends Component {
   state = {
@@ -220,6 +222,7 @@ class App extends Component {
           countries={this.state.countries}
           globalCFR={this.state.totalCFR}
           integerCountries={this.state.countriesInteger} />
+        {/* <SearchContainer/> */}
       </div>
     );
   }
