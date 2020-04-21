@@ -166,7 +166,7 @@ class TableContainer extends Component {
           {
             props => (
               <div>
-                <SearchBar {...props.searchProps} placeholder="Search by Country or US State" style={{ width: "250px" }} className="searchbar" />
+                <SearchBar {...props.searchProps} placeholder="Search..." style={{ width: "250px" }} className="searchbar" />
                 <hr />
                 <BootstrapTable
                   {...props.baseProps}

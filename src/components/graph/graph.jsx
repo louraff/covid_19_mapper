@@ -64,12 +64,12 @@ class GraphContainer extends Component {
     const doughtnutLabels = [];
     if (this.props.countries !== undefined) {
       this.props.countries.map((country) => {
-        if(country.country === this.props.country) {
+        if(country.country.toLowerCase() === this.props.country.toLowerCase()) {
           doughtnutLabels.unshift(
             country.country
           )
         }
-        if(country.country !== this.props.country) {
+        if(country.country.toLowerCase() !== this.props.country.toLowerCase()) {
         doughtnutLabels.push(country.country);
         }
       });
@@ -84,13 +84,15 @@ class GraphContainer extends Component {
         if(country.country === 'USA') {
           country.country = 'US'
         }
-        if(country.country === this.props.country){
-          console.log("Country Match found", country.country, this.props.country)
+        if(country.country === "UK") {
+          country.country = "United Kingdom"
+        }
+        if(country.country.toLowerCase() === this.props.country.toLowerCase()){
           doughnutData.unshift(
             ((country.confirmed / this.props.total[0]) * 100).toFixed(2)
           )
         }
-        if (!country.us && country.country !== this.props.country) {
+        if (!country.us && country.country.toLowerCase() !== this.props.country.toLowerCase()) {
           doughnutData.push(
             ((country.confirmed / this.props.total[0]) * 100).toFixed(2)
           );
@@ -222,7 +224,7 @@ class GraphContainer extends Component {
       tooltips: {
         backgroundColor: "#18A2B8",
         displayColors: false,
-      }
+      },
     };
 
     const doughnut = {
@@ -239,16 +241,16 @@ class GraphContainer extends Component {
     };
 
     return (
-      <div id="graph" className="graph">
+      <React.Fragment>
         <div id="line">
-          <h4>{`${this.props.country}`} Historical Data From First Death</h4>
+          <h4>{`${this.props.country}`} Data From Day of First Death</h4>
           <Line data={line} options={lOptions} />
         </div>
         <div id="doughnut">
-          <h4>Country Cases as a % of Global Cases</h4>
+          <h4>Country Case as % of Global Cases</h4>
           <Doughnut data={doughnut} options={dOptions} />
         </div>
-      </div>
+        </React.Fragment>
     );
   }
 }

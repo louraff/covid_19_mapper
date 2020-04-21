@@ -5,7 +5,7 @@ class SearchContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      query: "Spain",
+      query: "United Kingdom",
       results: []
     };
   }
@@ -33,9 +33,7 @@ class SearchContainer extends Component {
       },
       () => {
         if (this.state.query && this.state.query.length >= 0) {
-          // if (this.state.query.length % 2 === 0) {
           this.getInfo();
-          // }
         }
       }
     );
@@ -44,26 +42,33 @@ class SearchContainer extends Component {
   render() {
     return (
       <div>
+        <h4 id="search-heading">Select a Country</h4>
         <div id="search-bar">
           <form onSubmit={this.handleSubmit} id="search-form">
             <label>
-              <input
-                type="text"
-                ref={(input) => (this.search = input)}
-                onChange={this.handleChange}
+              <input 
+              type="text" 
+              name="search" 
+              placeholder="Search.."
+              ref={(input) => (this.search = input)
+              }
+              onChange={this.handleChange}
               />
+
             </label>
-            <input type="submit" value="Submit" />
           </form>
           {/* {this.state.results.map((el) => {
             return <ul>{el}</ul>;
           })} */}
         </div>
+        <div id="graph-countainer">
+        {console.log(this.state.results)}
         <GraphContainer
           country={this.state.query}
           countries={this.props.countries}
           total={this.props.totalInt}
         />
+        </div>
       </div>
     );
   }
