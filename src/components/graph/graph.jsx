@@ -39,10 +39,8 @@ class GraphContainer extends Component {
       recoveries: [],
     };
 
-    // let array = []
     const countryData = this.state.data[this.props.country];
 
-    // console.log("filtered array", array)
     if (countryData !== undefined) {
       countryData.map((date) => {
         if (date.deaths !== 0) {
@@ -50,7 +48,6 @@ class GraphContainer extends Component {
           graphData.deaths.push(date.deaths);
           graphData.recoveries.push(date.recovered);
         }
-        // })
       });
 
       if (type === "confirmed") {
@@ -67,6 +64,11 @@ class GraphContainer extends Component {
     const doughtnutLabels = [];
     if (this.props.countries !== undefined) {
       this.props.countries.map((country) => {
+        if(country.country === this.props.country) {
+          doughtnutLabels.unshift(
+            country.country
+          )
+        }
         doughtnutLabels.push(country.country);
       });
     }
@@ -77,18 +79,28 @@ class GraphContainer extends Component {
     const doughnutData = [];
     if (this.props.countries !== undefined) {
       this.props.countries.map((country) => {
-        if (!country.us) {
+        if(country.country === 'USA') {
+          country.country = 'US'
+        }
+        if(country.country === this.props.country){
+          console.log("Country Match found", country.country, this.props.country)
+          doughnutData.unshift(
+            ((country.confirmed / this.props.total[0]) * 100).toFixed(2)
+          )
+        }
+        if (!country.us && country.country !== this.props.country) {
           doughnutData.push(
             ((country.confirmed / this.props.total[0]) * 100).toFixed(2)
           );
         }
       });
     }
-    return doughnutData;
+     return doughnutData;
   };
 
   render() {
-    console.log(defaults);
+    console.log(this.doughnutData())
+    // console.log(this.doughnutSelectedData());
     defaults.global.defaultFontColor = "white";
 
     const line = {
@@ -210,11 +222,7 @@ class GraphContainer extends Component {
       tooltips: {
         backgroundColor: "#18A2B8",
         displayColors: false,
-      },
-      onClick: (evnt, item) => {
-        console.log(item[0]);
-        item[0]._model.outerRadius += 5;
-      },
+      }
     };
 
     const doughnut = {
@@ -222,7 +230,7 @@ class GraphContainer extends Component {
       datasets: [
         {
           data: this.doughnutData(),
-          backgroundColor: "#646D79",
+          backgroundColor: ["red", "#646D79"],
           hoverBackgroundColor: "#18A2B8",
           borderWidth: 0.1,
           borderColor: false,
@@ -233,7 +241,7 @@ class GraphContainer extends Component {
     return (
       <div id="graph" className="graph">
         <div id="line">
-          <h4>{`${this.props.country}`} Historical Data</h4>
+          <h4>{`${this.props.country}`} Historical Data From First Death</h4>
           <Line data={line} options={lOptions} />
         </div>
         <div id="doughnut">

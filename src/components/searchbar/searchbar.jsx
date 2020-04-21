@@ -5,12 +5,9 @@ class SearchContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      query: "United Kingdom",
-      results: [],
-      submit: false,
+      query: "Spain",
+      results: []
     };
-    //  this.handleChange = this.handleChange.bind(this);
-    //  this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   getInfo = () => {
@@ -44,39 +41,29 @@ class SearchContainer extends Component {
     );
   };
 
-  handleSubmit = (event) => {
-    this.setState({
-      submit: true,
-    });
-    event.preventDefault();
-  };
-
   render() {
     return (
-      <div id="App">
+      <div>
         <div id="search-bar">
           <form onSubmit={this.handleSubmit} id="search-form">
             <label>
               <input
                 type="text"
-                // value={this.state.value}
                 ref={(input) => (this.search = input)}
                 onChange={this.handleChange}
               />
             </label>
             <input type="submit" value="Submit" />
           </form>
-          {this.state.results.map((el) => {
+          {/* {this.state.results.map((el) => {
             return <ul>{el}</ul>;
-          })}
+          })} */}
         </div>
-        {/* {this.state.submit && */}
         <GraphContainer
           country={this.state.query}
           countries={this.props.countries}
           total={this.props.totalInt}
         />
-        {/* } */}
       </div>
     );
   }

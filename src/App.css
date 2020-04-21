@@ -68,14 +68,15 @@ color: white;
   z-index: 1;
   top: 10%;
   position: absolute;
-  width: 100%
+  width: 100%;
+  margin: 5px;
 }
 
 
 #doughnut {
   position: absolute;
   right: 0%;
-  top: 30%;
+  top: 40%;
   width: 50%;
   z-index: 1;
   height: 50%;
@@ -111,6 +112,11 @@ color: white;
   width: 15%;
   fill: none;
   font-weight: bold;
+}
+
+#graph {
+  position: absolute;
+  top: 50%
 }
 
 #infoCases {
