@@ -69,7 +69,9 @@ class GraphContainer extends Component {
             country.country
           )
         }
+        if(country.country !== this.props.country) {
         doughtnutLabels.push(country.country);
+        }
       });
     }
     return doughtnutLabels;
@@ -99,8 +101,6 @@ class GraphContainer extends Component {
   };
 
   render() {
-    console.log(this.doughnutData())
-    // console.log(this.doughnutSelectedData());
     defaults.global.defaultFontColor = "white";
 
     const line = {
@@ -230,10 +230,10 @@ class GraphContainer extends Component {
       datasets: [
         {
           data: this.doughnutData(),
-          backgroundColor: ["red", "#646D79"],
-          hoverBackgroundColor: "#18A2B8",
-          borderWidth: 0.1,
-          borderColor: false,
+          backgroundColor: ["#FBBD08", ],
+          hoverBackgroundColor:  "#18A2B8",
+          borderWidth: 0.5,
+          borderColor: "#646D79",
         },
       ],
     };
