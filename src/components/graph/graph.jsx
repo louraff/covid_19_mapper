@@ -21,9 +21,12 @@ class GraphContainer extends Component {
 
   createLabels = () => {
     const labelData = [];
-    if (this.state.data.US !== undefined) {
-      this.state.data.US.map((date) => {
-        labelData.push(date.date);
+    const countryData = this.state.data[this.props.country];
+    if (countryData !== undefined) {
+      countryData.map((date) => {
+        if (date.deaths !== 0) {
+          labelData.push(date.date);
+        }
       });
       return labelData;
     }
@@ -42,9 +45,11 @@ class GraphContainer extends Component {
     // console.log("filtered array", array)
     if (countryData !== undefined) {
       countryData.map((date) => {
-        graphData.confirmed.push(date.confirmed);
-        graphData.deaths.push(date.deaths);
-        graphData.recoveries.push(date.recovered);
+        if (date.deaths !== 0) {
+          graphData.confirmed.push(date.confirmed);
+          graphData.deaths.push(date.deaths);
+          graphData.recoveries.push(date.recovered);
+        }
         // })
       });
 
@@ -144,7 +149,7 @@ class GraphContainer extends Component {
               },
             },
             gridLines: {
-              display: false,
+              display: true,
               drawBorder: true,
             },
             scaleLabel: {
@@ -170,7 +175,7 @@ class GraphContainer extends Component {
             },
             scaleLabel: {
               display: true,
-              labelString: "Number of People",
+              labelString: "No of People",
               fontStyle: "bold",
               fontColor: "#FFFFFF",
             },
@@ -228,7 +233,7 @@ class GraphContainer extends Component {
     return (
       <div id="graph" className="graph">
         <div id="line">
-          <h4>Data by Date</h4>
+          <h4>{`${this.props.country}`} Historical Data</h4>
           <Line data={line} options={lOptions} />
         </div>
         <div id="doughnut">

@@ -5,7 +5,7 @@ class SearchContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      query: "Spain",
+      query: "United Kingdom",
       results: [],
       submit: false,
     };
