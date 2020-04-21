@@ -22,9 +22,6 @@
 #table {
   position: absolute;
   top: 70px;
-  /* border: solid;
-  border-color: white;
-  border-width: medium; */
 }
 
 #drop-down-window {
@@ -49,12 +46,54 @@
 
 #bootstrap-table {
   color: white;
-  /* color: black; */
   font-size: 15px;
 }
 
 #table-heading {
 color: white;
+}
+
+#line {
+  position: absolute;
+  top: 130%;
+  width: 50%;
+  height: 100%;
+  z-index: 1;
+  color: white;
+  /* border: solid;
+  border-color: white; */
+}
+
+#search{
+  z-index: 1;
+  top: 10%;
+  position: absolute;
+  width: 100%;
+  margin: 5px;
+}
+
+#graph-container {
+  bottom: 5px;
+  position: absolute;
+  height: 100%;
+}
+
+#search-heading {
+  color: white;
+  margin: 10px;
+}
+
+
+#doughnut {
+  position: absolute;
+  right: 0%;
+  top: 130%;
+  width: 50%;
+  z-index: 1;
+  height: 100%;
+  /* border: solid;
+  border-color: white; */
+  color: white;
 }
 
 #legend {
@@ -63,7 +102,6 @@ color: white;
   flex-direction: column;
   z-index: 1;
   top: 40%;
-  /* top: 350px; */
   color: white;
   left: 0px;
   width: 5%;
@@ -87,10 +125,19 @@ color: white;
   font-weight: bold;
 }
 
+#graph {
+  position: absolute;
+  top: 50%
+}
+
 #infoCases {
   color: #18A2B8;
   width: 15%;
   font-weight: bold;
+}
+
+#graph {
+  width: 100%;
 }
 
 #infoDeaths {
@@ -154,4 +201,23 @@ color: white;
   color: #fb5945;
   width: 40%;
   font-weight: bold;
+}
+
+#search-form input[type=text] {
+  width: 200px;
+  box-sizing: border-box;
+  border: 2px solid #646D79;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: rgb(215, 213, 213);
+  background-image: url('https://cdn3.iconfinder.com/data/icons/science-116/64/virus-lab-scientist-biology-cell-medical-512.png?v=2');
+  background-size: 25px 25px;
+  background-position: 10px 10px; 
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+  transition: width 0.4s ease-in-out;
+}
+
+#search-form input[type=text]:focus {
+  width: 100%;
 }
