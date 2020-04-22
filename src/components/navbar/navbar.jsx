@@ -13,9 +13,9 @@ class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      viewMap: true,
+      viewMap: false,
       viewTables: false,
-      viewGraph: false
+      viewGraph: true
     }
   }
 
@@ -76,7 +76,7 @@ class Header extends Component {
                           className="d-inline-block align-top"
                         ></img></span>
                       Covid-19
-                </span>
+                    </span>
                   )}
               id="last_updated"
             >
@@ -284,9 +284,9 @@ class Header extends Component {
           </div>
         )}
         {this.state.viewGraph && (
-            <div id="search">
-              <SearchContainer countries={this.props.integerCountries} totalInt={this.props.totalInt} />
-            </div>
+          <div id="search">
+            <SearchContainer countries={this.props.integerCountries} totalInt={this.props.totalInt} />
+          </div>
 
         )}
       </div>

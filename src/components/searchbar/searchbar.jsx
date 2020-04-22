@@ -46,13 +46,13 @@ class SearchContainer extends Component {
         <div id="search-bar">
           <form onSubmit={this.handleSubmit} id="search-form">
             <label>
-              <input 
-              type="text" 
-              name="search" 
-              placeholder="Search.."
-              ref={(input) => (this.search = input)
-              }
-              onChange={this.handleChange}
+              <input
+                type="text"
+                name="search"
+                placeholder="Search.."
+                ref={(input) => (this.search = input)
+                }
+                onChange={this.handleChange}
               />
 
             </label>
@@ -62,12 +62,13 @@ class SearchContainer extends Component {
           })} */}
         </div>
         <div id="graph-countainer">
-        {console.log(this.state.results)}
-        <GraphContainer
-          country={this.state.query}
-          countries={this.props.countries}
-          total={this.props.totalInt}
-        />
+          {console.log(this.state.results)}
+          <GraphContainer
+            country={this.state.results[0] === undefined ? "United Kingdom" : this.state.results[0]}
+            // country={this.state.query.toLowerCase().split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ")}
+            countries={this.props.countries}
+            total={this.props.totalInt}
+          />
         </div>
       </div>
     );
