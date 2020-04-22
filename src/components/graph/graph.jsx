@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { Line, Doughnut, HorizontalBar, defaults } from "react-chartjs-2";
+import popData from './../assets/popData'
+
+
 
 class GraphContainer extends Component {
   constructor(props) {
@@ -103,6 +106,51 @@ class GraphContainer extends Component {
     return doughnutData;
   };
 
+  horizontalBarLabels = () => {
+    var deathsPer1m = []
+    this.props.countries.map((country) => {
+
+      popData.popData.map((countryPop) => {
+        if (country.country == countryPop.name) {
+          if (parseFloat(countryPop.pop2020) / 1000 > 1) {
+            console.log(parseFloat(countryPop.pop2020))
+            deathsPer1m.push(
+              {
+                deaths: (country.deaths / parseFloat(countryPop.pop2020) * 1000),
+                country: country.country
+              }
+            )
+          }
+        }
+      })
+    })
+    let topTenDeathsPer1m = deathsPer1m.sort(function (a, b) { return a.deaths < b.deaths ? 1 : -1; }).slice(0, 20)
+    let finalLabels = []
+    topTenDeathsPer1m.map((country) => {
+      finalLabels.push(country.country)
+    })
+    console.log(finalLabels)
+    return finalLabels
+  }
+
+  horizontalBarData = () => {
+    var deathsPer1m = []
+    this.props.countries.map((country) => {
+
+      popData.popData.map((countryPop) => {
+        if (country.country == countryPop.name) {
+          if (parseFloat(countryPop.pop2020) / 1000 > 2) {
+            deathsPer1m.push((country.deaths / parseFloat(countryPop.pop2020) * 1000)
+            )
+          }
+        }
+      })
+    })
+    let topTenDeathsPer1m = deathsPer1m.sort(function (a, b) { return a.deaths < b.deaths ? 1 : -1; }).slice(0, 20)
+    console.log(topTenDeathsPer1m)
+    return topTenDeathsPer1m
+  }
+
   render() {
     defaults.global.defaultFontColor = "white";
 
@@ -201,7 +249,7 @@ class GraphContainer extends Component {
         position: "top",
         align: "center",
         labels: {
-          fontSize: 10,
+          fontSize: 12,
           fontStyle: "bold",
           fontColor: "#FFFFFF",
           usePointStyle: true,
@@ -241,29 +289,85 @@ class GraphContainer extends Component {
     };
 
     const horizontal = {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      labels: this.horizontalBarLabels(),
       datasets: [
         {
           label: 'Deaths per Country',
-          data: [65, 59, 80, 81, 56, 55, 40],
+          data: this.horizontalBarData(),
           backgroundColor: 'rgba(255,99,132,0.2)',
           borderColor: '#dc3644',
           borderWidth: 1,
           hoverBackgroundColor: '#dc3644',
           hoverBorderColor: 'rgba(255,99,132,0.2)',
+          pointColor: '#dc3644'
 
-          // backgroundColor: "#dc3644",
-          // borderColor: "#dc3644",
-          // borderWidth: 2,
-          // pointBackgroundColor: "#dc3644",
-          // pointBorderColor: "#000000",
-          // pointBorderWidth: 0.5,
-          // pointStyle: "rectRounded",
-          // hoverBackgroundColor: "#FFFFFF"
+
         }
       ]
     };
-    const hOptions = {}
+    const hOptions = {
+      scales: {
+        xAxes: [
+          {
+            ticks: {
+              beginAtZero: true,
+              display: true,
+              major: {
+                fontStyle: "bold",
+                fontColor: "#FFFFFF",
+              },
+            },
+            gridLines: {
+              display: true,
+              drawBorder: true,
+            },
+            scaleLabel: {
+              display: true,
+              labelString: "No of People",
+              fontStyle: "bold",
+              fontColor: "#FFFFFF",
+            },
+          },
+        ],
+        yAxes: [
+          {
+            ticks: {
+              display: true,
+              major: {
+                fontStyle: "bold",
+                fontColor: "#FFFFFF",
+              },
+            },
+            gridLines: {
+              display: false,
+              drawBorder: true,
+            },
+            scaleLabel: {
+              display: true,
+              labelString: "Country",
+              fontStyle: "bold",
+              fontColor: "#FFFFFF",
+            },
+          },
+        ],
+      },
+      legend: {
+        display: true,
+        position: "top",
+        align: "center",
+        labels: {
+          fontSize: 12,
+          fontStyle: "bold",
+          fontColor: "#FFFFFF"
+        },
+      },
+      tooltips: {
+        displayColors: false
+      },
+      lineTension: 3,
+      borderWidth: 2,
+
+    }
 
     return (
       <React.Fragment>
@@ -276,8 +380,8 @@ class GraphContainer extends Component {
           <Doughnut data={doughnut} options={dOptions} />
         </div>
         <div id='bar'>
-          <h4>Horizontal Bar</h4>
-          <HorizontalBar data={horizontal} />
+          <h4>{`${this.props.country}`}</h4>
+          <HorizontalBar data={horizontal} options={hOptions} />
         </div>
       </React.Fragment >
     );

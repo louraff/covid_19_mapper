@@ -6,7 +6,6 @@ import Nav from "react-bootstrap/Nav";
 import Spinner from "react-bootstrap/Spinner";
 import MapContainer from "./../map/map";
 import TableContainer from "./../tables/table";
-import GraphContainer from "./../graph/graph"
 import SearchContainer from "./../searchbar/searchbar"
 
 class Header extends Component {
