@@ -109,19 +109,15 @@ class GraphContainer extends Component {
   horizontalBarLabels = () => {
     var deathsPer1m = []
     this.props.countries.map((country) => {
-
       popData.popData.map((countryPop) => {
         if (country.country == countryPop.name) {
-          if (parseFloat(countryPop.pop2020) / 1000 > 5) {
+          if (parseFloat(countryPop.pop2020) / 1000 > 2.5) {
             deathsPer1m.push(
               {
-                deaths: country.deaths/((parseFloat(countryPop.pop2020)) / 1000),
+                deaths: ((country.deaths)/((parseFloat(countryPop.pop2020)) / 1000)),
                 country: country.country
               }
             )
-            if( typeof country.deaths == 'string' ){
-              console.log(country.name)
-            }
           }
         }
       })
@@ -137,24 +133,18 @@ class GraphContainer extends Component {
   horizontalBarData = () => {
     var deathsPer1m = []
     this.props.countries.map((country) => {
-
       popData.popData.map((countryPop) => {
         if (country.country == countryPop.name) {
-          if (parseFloat(countryPop.pop2020) / 1000 > 5) {
-            deathsPer1m.push( (country.deaths)/((parseFloat(countryPop.pop2020)) / 1000))
-          }
-          if(country.country == "Belgium"){
-            console.log(country.country)
-            console.log(country.deaths)
-            console.log((parseFloat(countryPop.pop2020)) / 1000)
-            console.log("Deaths Per1m Belgium",(country.deaths)/((parseFloat(countryPop.pop2020)) / 1000))
+          if (parseFloat(countryPop.pop2020) / 1000 > 2.5) {
+           
+            deathsPer1m.push( (country.deaths)/((parseFloat(countryPop.pop2020)) / 1000) )
           }
         }
 
         
       })
     })
-    let topTenDeathsPer1m = deathsPer1m.sort(function (a, b) { return a.deaths < b.deaths ? 1 : -1; }).slice(0, 20)
+    let topTenDeathsPer1m = deathsPer1m.sort(function (a, b) { return a < b ? 1 : -1; }).slice(0, 20)
     return topTenDeathsPer1m
   }
 
