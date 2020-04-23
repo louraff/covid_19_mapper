@@ -381,7 +381,7 @@ class GraphContainer extends Component {
           label: function (tooltipItems, data) {
 
             let density = popData.popData.map((countryPop) => {
-              if (tooltipItems.yLabel == countryPop.name) {
+              if (tooltipItems.yLabel === countryPop.name) {
                 return countryPop.Density
               }
             })
@@ -395,7 +395,7 @@ class GraphContainer extends Component {
     return (
       <React.Fragment>
         <div id='b'>
-          <h4>Highest Deaths per 1 Million of the Population</h4>
+          <h4>Highest Deaths per 1 Million People</h4>
           <HorizontalBar data={horizontal} options={hOptions} />
         </div>
         <br></br>
@@ -403,6 +403,7 @@ class GraphContainer extends Component {
         <div id="l">
           <h4>{`${this.props.country}`} Data From Day of First Death</h4>
           <Line data={line} options={lOptions} />
+          <div id="legend-title">Interactive Legend</div>
         </div>
         <br></br>
         <br></br>
