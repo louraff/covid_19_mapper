@@ -41,7 +41,7 @@ class SearchContainer extends Component {
     );
   };
 
- 
+
   render() {
     return (
       <div>
@@ -52,7 +52,7 @@ class SearchContainer extends Component {
               <input
                 type="text"
                 name="search"
-                placeholder="Search.."
+                placeholder="Search Country"
                 ref={(input) => (this.search = input)
                 }
                 onChange={this.handleChange}

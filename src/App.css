@@ -53,6 +53,10 @@
 color: white;
 }
 
+h4 {
+  color: white;
+}
+
 #line {
   position: absolute;
   top: 130%;
@@ -84,7 +88,7 @@ color: white;
 }
 
 
-#doughnut {
+/* #doughnut {
   position: absolute;
   right: 0%;
   top: 130%;
@@ -93,8 +97,8 @@ color: white;
   height: 100%;
   /* border: solid;
   border-color: white; */
-  color: white;
-}
+  /* color: white; */
+/* } */
 
 #legend {
   position: absolute;

@@ -148,6 +148,14 @@ class GraphContainer extends Component {
     return topTenDeathsPer1m
   }
 
+  populationDensity = (labely) => {
+    popData.popData.map((countryPop) => {
+      if (labely == countryPop.name) {
+        return countryPop.density
+      }
+    })
+  }
+
   render() {
     defaults.global.defaultFontColor = "white";
 
@@ -243,7 +251,7 @@ class GraphContainer extends Component {
       },
       legend: {
         display: true,
-        position: "top",
+        position: "right",
         align: "center",
         labels: {
           fontSize: 12,
@@ -282,8 +290,17 @@ class GraphContainer extends Component {
       tooltips: {
         backgroundColor: "#18A2B8",
         displayColors: false,
-      },
-    };
+        callbacks: {
+          label: function (tooltipItems, data) {
+            if (data !== undefined) {
+              let dataPercentage = data.datasets[tooltipItems.datasetIndex].data[tooltipItems.index]
+              return data.labels[tooltipItems.index] + " " + dataPercentage + '%'
+            }
+
+          }
+        }
+      }
+    }
 
     const horizontal = {
       labels: this.horizontalBarLabels(),
@@ -320,7 +337,7 @@ class GraphContainer extends Component {
             },
             scaleLabel: {
               display: true,
-              labelString: "No of People",
+              labelString: "Deaths",
               fontStyle: "bold",
               fontColor: "#FFFFFF",
             },
@@ -350,7 +367,7 @@ class GraphContainer extends Component {
       },
       legend: {
         display: true,
-        position: "top",
+        position: "right",
         align: "center",
         labels: {
           fontSize: 12,
@@ -359,26 +376,39 @@ class GraphContainer extends Component {
         },
       },
       tooltips: {
-        displayColors: false
+        displayColors: false,
+        callbacks: {
+          label: function (tooltipItems, data) {
+
+            let density = popData.popData.map((countryPop) => {
+              if (tooltipItems.yLabel == countryPop.name) {
+                return countryPop.Density
+              }
+            })
+            let popDensity = density.sort()
+            return ["Deaths per 1M: " + Math.round(tooltipItems.xLabel), "Population Density: " + popDensity[0] + " ( People per km\u00B2 )"]
+          }
+        }
       },
-      lineTension: 3,
       borderWidth: 2,
-
     }
-
     return (
       <React.Fragment>
-        <div id="line">
+        <div id='b'>
+          <h4>Highest Deaths per 1 Million of the Population</h4>
+          <HorizontalBar data={horizontal} options={hOptions} />
+        </div>
+        <br></br>
+        <br></br>
+        <div id="l">
           <h4>{`${this.props.country}`} Data From Day of First Death</h4>
           <Line data={line} options={lOptions} />
         </div>
-        <div id="doughnut">
-          <h4>Country Case as % of Global Cases</h4>
+        <br></br>
+        <br></br>
+        <div id="d">
+          <h4>{`${this.props.country}`} as % of Global Cases</h4>
           <Doughnut data={doughnut} options={dOptions} />
-        </div>
-        <div id='bar'>
-          <h4>{`${this.props.country}`}</h4>
-          <HorizontalBar data={horizontal} options={hOptions} />
         </div>
       </React.Fragment >
     );
