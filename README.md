@@ -86,6 +86,6 @@ This will display all of tests and snapshot tests.
 
 ## Forking This Repo
 
-This site is fully open source, but as you all know, plagiarism is bad. We put blood, sweat and tears into this project and are proud of it! Feel free to fork this repo, but if you do, please just give us proper credit by linking back to the repo: `https://github.com/davidpaps/covid_19_mapper`
+This site is fully open source, but as you all know, plagiarism is bad. We put blood, sweat and tears into this project and are proud of it! Feel free to fork this repo, but if you do, please just give us proper credit by linking back to the repo: https://github.com/davidpaps/covid_19_mapper
 
 ---
