@@ -7,14 +7,15 @@ import Spinner from "react-bootstrap/Spinner";
 import MapContainer from "./../map/map";
 import TableContainer from "./../tables/table";
 import SearchContainer from "./../searchbar/searchbar"
+import HorizontalBarContainer from "./../BarChart/HorizontalBarContainer"
 
 class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      viewMap: false,
+      viewMap: true,
       viewTables: false,
-      viewGraph: true
+      viewGraph: false
     }
   }
 
@@ -283,8 +284,13 @@ class Header extends Component {
           </div>
         )}
         {this.state.viewGraph && (
+          <div id="graph">
+          <div id="b">
+            <HorizontalBarContainer countries={this.props.integerCountries} />
+          </div>
           <div id="search">
             <SearchContainer countries={this.props.integerCountries} totalInt={this.props.totalInt} />
+          </div>
           </div>
 
         )}

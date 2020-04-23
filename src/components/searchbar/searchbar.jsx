@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import GraphContainer from "./../graph/graph";
-import $ from 'jquery'
 
 class SearchContainer extends Component {
   constructor(props) {
@@ -44,15 +43,15 @@ class SearchContainer extends Component {
 
   render() {
     return (
-      <div>
-        <h4 id="search-heading">Select a Country</h4>
+      <div id="search">
+        <h4 id="search-heading">Country Specific Data</h4>
         <div id="search-bar">
           <form onSubmit={e => { e.preventDefault(); }} id="search-form">
             <label>
               <input
                 type="text"
                 name="search"
-                placeholder="Search Country"
+                placeholder="Search Country to View"
                 ref={(input) => (this.search = input)
                 }
                 onChange={this.handleChange}
@@ -60,15 +59,11 @@ class SearchContainer extends Component {
 
             </label>
           </form>
-          {/* {this.state.results.map((el) => {
-            return <ul>{el}</ul>;
-          })} */}
         </div>
         <div id="graph-countainer">
-          {/* {console.log(this.state.results)} */}
+          <br></br>
           <GraphContainer
             country={this.state.results[0] === undefined ? "United Kingdom" : this.state.results[0]}
-            // country={this.state.query.toLowerCase().split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ")}
             countries={this.props.countries}
             total={this.props.totalInt}
           />

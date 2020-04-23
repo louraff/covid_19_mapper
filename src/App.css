@@ -15,11 +15,21 @@
   width: 80%;
 }
 
+#graph {
+  position: absolute;
+  top: 10%;
+}
+
+/* #b {
+  position: relative;
+  top: 10%;
+} */
+
 #legend-title {
   position: absolute;
   right: 1%;
   z-index: 1;
-  top: 160.7%;
+  top: 25%;
   color: white;
   font-weight: bold;
 }
@@ -72,7 +82,6 @@ h4 {
 
 #b {
   margin-bottom: 100px;
-  top: 10%;
 }
 
 #line {
@@ -87,29 +96,23 @@ h4 {
 }
 
 #search{
+  top: 20%;
+  position: absolute;
   z-index: 1;
-  /* top: 10%; */
-  /* position: absolute;
+  position: relative;
   width: 100%;
-  margin: 5px; */
+  margin: 5px;
+  justify-content: center;
 }
 
-#search-bar {
-/* top: 50%;
-position: absolute; */
-z-index: 1;
-top: 110%;
-position: absolute;
-width: 100%;
-margin: 5px;
-}
 
-#graph-container {
+
+/* #graph-container {
   bottom: 5px;
   position: absolute;
   height: 100%;
   background-color: grey
-}
+} */
 
 #search-heading {
   color: white;
@@ -117,17 +120,17 @@ margin: 5px;
 }
 
 
-/* #doughnut {
+#doughnut {
   position: absolute;
   right: 0%;
   top: 130%;
   width: 50%;
   z-index: 1;
   height: 100%;
-  /* border: solid;
-  border-color: white; */
-  /* color: white; */
-/* } */
+  border: solid;
+  border-color: white;
+  color: white;
+} 
 
 #legend {
   position: absolute;
@@ -236,7 +239,7 @@ margin: 5px;
 }
 
 #search-form input[type=text] {
-  width: 200px;
+  width: 250px;
   box-sizing: border-box;
   border: 2px solid #646D79;
   border-radius: 4px;
@@ -250,6 +253,6 @@ margin: 5px;
   transition: width 0.4s ease-in-out;
 }
 
-#search-form input[type=text]:focus {
+/* #search-form input[type=text]:focus {
   width: 100%;
-}
+} */
