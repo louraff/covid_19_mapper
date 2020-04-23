@@ -114,7 +114,7 @@ class GraphContainer extends Component {
           if (parseFloat(countryPop.pop2020) / 1000 > 2.5) {
             deathsPer1m.push(
               {
-                deaths: ((country.deaths)/((parseFloat(countryPop.pop2020)) / 1000)),
+                deaths: ((country.deaths) / ((parseFloat(countryPop.pop2020)) / 1000)),
                 country: country.country
               }
             )
@@ -136,12 +136,12 @@ class GraphContainer extends Component {
       popData.popData.map((countryPop) => {
         if (country.country == countryPop.name) {
           if (parseFloat(countryPop.pop2020) / 1000 > 2.5) {
-           
-            deathsPer1m.push( (country.deaths)/((parseFloat(countryPop.pop2020)) / 1000) )
+
+            deathsPer1m.push((country.deaths) / ((parseFloat(countryPop.pop2020)) / 1000))
           }
         }
 
-        
+
       })
     })
     let topTenDeathsPer1m = deathsPer1m.sort(function (a, b) { return a < b ? 1 : -1; }).slice(0, 20)
@@ -289,7 +289,7 @@ class GraphContainer extends Component {
       labels: this.horizontalBarLabels(),
       datasets: [
         {
-          label: 'Deaths per Country',
+          label: 'Deaths per Million People',
           data: this.horizontalBarData(),
           backgroundColor: 'rgba(255,99,132,0.2)',
           borderColor: '#dc3644',

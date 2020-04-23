@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import GraphContainer from "./../graph/graph";
+import $ from 'jquery'
 
 class SearchContainer extends Component {
   constructor(props) {
@@ -26,7 +27,8 @@ class SearchContainer extends Component {
     });
   };
 
-  handleChange = () => {
+  handleChange = (event) => {
+
     this.setState(
       {
         query: this.search.value,
@@ -39,12 +41,13 @@ class SearchContainer extends Component {
     );
   };
 
+ 
   render() {
     return (
       <div>
         <h4 id="search-heading">Select a Country</h4>
         <div id="search-bar">
-          <form onSubmit={this.handleSubmit} id="search-form">
+          <form onSubmit={e => { e.preventDefault(); }} id="search-form">
             <label>
               <input
                 type="text"
@@ -62,7 +65,7 @@ class SearchContainer extends Component {
           })} */}
         </div>
         <div id="graph-countainer">
-          {console.log(this.state.results)}
+          {/* {console.log(this.state.results)} */}
           <GraphContainer
             country={this.state.results[0] === undefined ? "United Kingdom" : this.state.results[0]}
             // country={this.state.query.toLowerCase().split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ")}
