@@ -18,6 +18,7 @@ This was the first large Post-Makers project, and was made with a brand new piec
 
 ---
 
+'Stage 4', we decided to explore the Graph.js library to add some visuals of the incoming data. The first horizontal bar chart graph shows the death rate per million of a population (with Population Density). The next set of charts are rendered on selection of a country by a user. The line graph renders total cases, deaths and recoveries of the given country, measured from the first recorded death of that country. The doughnut chart then shows the percentage of cases that country makes up, out of the total global cases. 
 ## How to Run
 
 Clone this repo, navigate to the [_test-app_](test-app) directory and in the command line type:
@@ -67,4 +68,24 @@ This will display all of tests and snapshot tests.
 
 #### Table View
 <img src='./public/images/three_table.png' />
+
+---
+
+## Stage 4
+#### Horizontal Bar Chart
+<img src='./public/images/four_graph.png' />
+
+#### Line Graph 
+<img src='./public/images/four_graph_2.png' />
+
+#### Doughnut Chart 
+<img src='./public/images/four_graph_3.png' />
+
+
+---
+
+## Forking This Repo
+
+This site is fully open source, but as you all know, plagiarism is bad. We put blood, sweat and tears into this project and are proud of it! Feel free to fork this repo, but if you do, please just give us proper credit by linking back to the repo: `https://github.com/davidpaps/covid_19_mapper`
+
 ---
