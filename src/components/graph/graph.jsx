@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Line, Doughnut, defaults } from "react-chartjs-2";
 
+
+
 class GraphContainer extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +21,7 @@ class GraphContainer extends Component {
       });
   }
 
-  createLabels = () => {
+  createLineLabels = () => {
     const labelData = [];
     const countryData = this.state.data[this.props.country];
     if (countryData !== undefined) {
@@ -32,12 +34,13 @@ class GraphContainer extends Component {
     }
   };
 
-  createGraphData = (type) => {
+  createLineData = (type) => {
     const graphData = {
       deaths: [],
       confirmed: [],
       recoveries: [],
     };
+
 
     const countryData = this.state.data[this.props.country];
 
@@ -64,13 +67,13 @@ class GraphContainer extends Component {
     const doughtnutLabels = [];
     if (this.props.countries !== undefined) {
       this.props.countries.map((country) => {
-        if(country.country.toLowerCase() === this.props.country.toLowerCase()) {
+        if (country.country === this.props.country) {
           doughtnutLabels.unshift(
             country.country
           )
         }
-        if(country.country.toLowerCase() !== this.props.country.toLowerCase()) {
-        doughtnutLabels.push(country.country);
+        if (country.country !== this.props.country) {
+          doughtnutLabels.push(country.country);
         }
       });
     }
@@ -81,36 +84,36 @@ class GraphContainer extends Component {
     const doughnutData = [];
     if (this.props.countries !== undefined) {
       this.props.countries.map((country) => {
-        if(country.country === 'USA') {
+        if (country.country === 'USA') {
           country.country = 'US'
         }
-        if(country.country === "UK") {
+        if (country.country === "UK") {
           country.country = "United Kingdom"
         }
-        if(country.country.toLowerCase() === this.props.country.toLowerCase()){
+        if (country.country === this.props.country && !country.us) {
           doughnutData.unshift(
             ((country.confirmed / this.props.total[0]) * 100).toFixed(2)
           )
         }
-        if (!country.us && country.country.toLowerCase() !== this.props.country.toLowerCase()) {
+        if (!country.us && country.country !== this.props.country) {
           doughnutData.push(
             ((country.confirmed / this.props.total[0]) * 100).toFixed(2)
           );
         }
       });
     }
-     return doughnutData;
+    return doughnutData;
   };
 
   render() {
     defaults.global.defaultFontColor = "white";
 
     const line = {
-      labels: this.createLabels(),
+      labels: this.createLineLabels(),
       datasets: [
         {
           label: "Confirmed Cases",
-          data: this.createGraphData("confirmed"),
+          data: this.createLineData("confirmed"),
           fill: false,
           backgroundColor: "#18A2B8",
           borderColor: "#18A2B8",
@@ -119,12 +122,14 @@ class GraphContainer extends Component {
           pointBorderColor: "#000000",
           pointBorderWidth: 0.5,
           pointStyle: "rectRounded",
+          pointRadius: 4,
+          pointHitRadius: 5,
+          pointHoverRadius: 5,
           hoverBackgroundColor: "#FFFFFF",
-          defaultFontColor: "red",
         },
         {
           label: "Confirmed Deaths",
-          data: this.createGraphData("deaths"),
+          data: this.createLineData("deaths"),
           fill: false,
           backgroundColor: "#dc3644",
           borderColor: "#dc3644",
@@ -133,11 +138,14 @@ class GraphContainer extends Component {
           pointBorderColor: "#000000",
           pointBorderWidth: 0.5,
           pointStyle: "rectRounded",
+          pointRadius: 4,
+          pointHitRadius: 5,
+          pointHoverRadius: 5,
           hoverBackgroundColor: "#FFFFFF",
         },
         {
           label: "Confrmed Recoveries",
-          data: this.createGraphData("recovered"),
+          data: this.createLineData("recovered"),
           fill: false,
           backgroundColor: "#28a745",
           borderColor: "#28a745",
@@ -146,6 +154,9 @@ class GraphContainer extends Component {
           pointBorderColor: "#000000",
           pointBorderWidth: 0.5,
           pointStyle: "rectRounded",
+          pointRadius: 4,
+          pointHitRadius: 5,
+          pointHoverRadius: 5,
           hoverBackgroundColor: "#FFFFFF",
         },
       ],
@@ -198,10 +209,10 @@ class GraphContainer extends Component {
       },
       legend: {
         display: true,
-        position: "top",
+        position: "right",
         align: "center",
         labels: {
-          fontSize: 10,
+          fontSize: 12,
           fontStyle: "bold",
           fontColor: "#FFFFFF",
           usePointStyle: true,
@@ -209,6 +220,19 @@ class GraphContainer extends Component {
       },
       lineTension: 3,
       borderWidth: 2,
+    };
+
+    const doughnut = {
+      labels: this.doughnutLabels(),
+      datasets: [
+        {
+          data: this.doughnutData(),
+          backgroundColor: ["#FBBD08",],
+          hoverBackgroundColor: "#18A2B8",
+          borderWidth: 0.5,
+          borderColor: "#646D79",
+        },
+      ],
     };
 
     const dOptions = {
@@ -224,33 +248,34 @@ class GraphContainer extends Component {
       tooltips: {
         backgroundColor: "#18A2B8",
         displayColors: false,
-      },
-    };
+        callbacks: {
+          label: function (tooltipItems, data) {
+            if (data !== undefined) {
+              let dataPercentage = data.datasets[tooltipItems.datasetIndex].data[tooltipItems.index]
+              return data.labels[tooltipItems.index] + " " + dataPercentage + '%'
+            }
 
-    const doughnut = {
-      labels: this.doughnutLabels(),
-      datasets: [
-        {
-          data: this.doughnutData(),
-          backgroundColor: ["#FBBD08", ],
-          hoverBackgroundColor:  "#18A2B8",
-          borderWidth: 0.5,
-          borderColor: "#646D79",
-        },
-      ],
-    };
+          }
+        }
+      }
+    }
 
     return (
       <React.Fragment>
-        <div id="line">
+        <br></br>
+        <br></br>
+        <div id="l">
           <h4>{`${this.props.country}`} Data From Day of First Death</h4>
           <Line data={line} options={lOptions} />
+          <div id="legend-title">Interactive Legend</div>
         </div>
-        <div id="doughnut">
-          <h4>Country Case as % of Global Cases</h4>
+        <br></br>
+        <br></br>
+        <div id="d">
+          <h4>{`${this.props.country}`} as % of Global Cases</h4>
           <Doughnut data={doughnut} options={dOptions} />
         </div>
-        </React.Fragment>
+      </React.Fragment >
     );
   }
 }

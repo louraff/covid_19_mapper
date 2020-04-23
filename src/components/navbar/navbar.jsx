@@ -6,8 +6,8 @@ import Nav from "react-bootstrap/Nav";
 import Spinner from "react-bootstrap/Spinner";
 import MapContainer from "./../map/map";
 import TableContainer from "./../tables/table";
-import GraphContainer from "./../graph/graph"
 import SearchContainer from "./../searchbar/searchbar"
+import HorizontalBarContainer from "./../BarChart/HorizontalBarContainer"
 
 class Header extends Component {
   constructor(props) {
@@ -48,7 +48,7 @@ class Header extends Component {
       <div id="app">
         {/* this.state.viewMap ? "" : */}
         <Navbar fixed="top"
-          bg={""}
+          bg={this.state.viewMap ? "" : "dark"}
           className="navbar-dark bs-navbar-collapse" >
           <Nav>
             <DropdownButton
@@ -76,7 +76,7 @@ class Header extends Component {
                           className="d-inline-block align-top"
                         ></img></span>
                       Covid-19
-                </span>
+                    </span>
                   )}
               id="last_updated"
             >
@@ -284,9 +284,14 @@ class Header extends Component {
           </div>
         )}
         {this.state.viewGraph && (
-            <div id="search">
-              <SearchContainer countries={this.props.integerCountries} totalInt={this.props.totalInt} />
-            </div>
+          <div id="graph">
+          <div id="b">
+            <HorizontalBarContainer countries={this.props.integerCountries} />
+          </div>
+          <div id="search">
+            <SearchContainer countries={this.props.integerCountries} totalInt={this.props.totalInt} />
+          </div>
+          </div>
 
         )}
       </div>

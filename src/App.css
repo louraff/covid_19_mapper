@@ -15,6 +15,29 @@
   width: 80%;
 }
 
+#graph {
+  position: absolute;
+  top: 10%;
+}
+
+/* #b {
+  position: relative;
+  top: 10%;
+} */
+
+#legend-title {
+  position: absolute;
+  right: 1%;
+  z-index: 1;
+  top: 25%;
+  color: white;
+  font-weight: bold;
+}
+
+#app {
+  background-color: #343A40;
+}
+
 #img {
   margin: 2px;
 }
@@ -53,6 +76,14 @@
 color: white;
 }
 
+h4 {
+  color: white;
+}
+
+#b {
+  margin-bottom: 100px;
+}
+
 #line {
   position: absolute;
   top: 130%;
@@ -65,18 +96,23 @@ color: white;
 }
 
 #search{
-  z-index: 1;
-  top: 10%;
+  top: 20%;
   position: absolute;
+  z-index: 1;
+  position: relative;
   width: 100%;
   margin: 5px;
+  justify-content: center;
 }
 
-#graph-container {
+
+
+/* #graph-container {
   bottom: 5px;
   position: absolute;
   height: 100%;
-}
+  background-color: grey
+} */
 
 #search-heading {
   color: white;
@@ -91,10 +127,10 @@ color: white;
   width: 50%;
   z-index: 1;
   height: 100%;
-  /* border: solid;
-  border-color: white; */
+  border: solid;
+  border-color: white;
   color: white;
-}
+} 
 
 #legend {
   position: absolute;
@@ -125,9 +161,8 @@ color: white;
   font-weight: bold;
 }
 
-#graph {
-  position: absolute;
-  top: 50%
+#graph-countainer {
+ top: 10%
 }
 
 #infoCases {
@@ -204,7 +239,7 @@ color: white;
 }
 
 #search-form input[type=text] {
-  width: 200px;
+  width: 250px;
   box-sizing: border-box;
   border: 2px solid #646D79;
   border-radius: 4px;
@@ -218,6 +253,6 @@ color: white;
   transition: width 0.4s ease-in-out;
 }
 
-#search-form input[type=text]:focus {
+/* #search-form input[type=text]:focus {
   width: 100%;
-}
+} */

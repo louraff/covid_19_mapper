@@ -3,7 +3,6 @@ import "./App.css";
 import Header from "./components/navbar/navbar";
 import ref_country_codes from "./components/assets/countries-lat-long.json";
 import us_codes from "./components/assets/USlatlong.json";
-import SearchContainer from "./components/searchbar/searchbar";
 
 
 class App extends Component {
@@ -37,6 +36,7 @@ class App extends Component {
           headers: {
             "x-rapidapi-host": "coronavirus-monitor.p.rapidapi.com",
             "x-rapidapi-key":
+              // "2bb49386fdmsh5daac6ca9add22ep1484a8jsn9816903163ef"
               "a04279196bmsh77bb3ff9e6f2e74p1f4d03jsn5bc0fbe15879",
           },
         }
