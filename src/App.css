@@ -23,9 +23,13 @@
   position: absolute;
   right: 1%;
   z-index: 1;
-  top: 25%;
+  top: 17%;
   color: white;
   font-weight: bold;
+}
+
+#l {
+  margin-bottom: 50px;
 }
 
 #app {

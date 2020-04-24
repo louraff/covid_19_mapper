@@ -4,13 +4,12 @@ import { HorizontalBar } from "react-chartjs-2";
 import Button from "react-bootstrap/Button"
 
 export class HorizontalBarContainer extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
       adjust: false
     }
   }
-
 
   horizontalBarLabels = () => {
     var deathsPer1m = [];
@@ -128,16 +127,15 @@ export class HorizontalBarContainer extends Component {
         },
       ],
     };
-    
-    
+
+
     const horizontalAdj = {
       labels: this.horizontalBarLabelsAdjusted(),
       datasets: [
         {
-          label: "Adjusted Deaths per Million People", 
+          label: "Adjusted Deaths per Million People",
           data: this.horizontalBarDataAdj(),
           backgroundColor: "rgb(220,54,68,0.8)",
-          // backgroundColor: "rgba(255,99,132,0.4)",
           borderColor: "rgba(255,45,2,0.2)",
           borderWidth: 1,
           hoverBackgroundColor: "rgb(255,99,132,0.2)",
@@ -146,7 +144,7 @@ export class HorizontalBarContainer extends Component {
         }
       ],
     }
-    
+
     const hOptions = {
       scales: {
         xAxes: [
@@ -216,8 +214,8 @@ export class HorizontalBarContainer extends Component {
             return [
               "Deaths per 1M: " + Math.round(tooltipItems.xLabel),
               "Population Density: " +
-                Math.round(popDensity[0]) +
-                " ( People per km\u00B2 )",
+              Math.round(popDensity[0]) +
+              " ( People per km\u00B2 )",
             ];
           },
         },
@@ -294,8 +292,8 @@ export class HorizontalBarContainer extends Component {
             return [
               "Adjusted Deaths per 1M: " + tooltipItems.xLabel.toFixed(2),
               "Population Density: " +
-                Math.round(popDensity[0]) +
-                " ( People per km\u00B2 )",
+              Math.round(popDensity[0]) +
+              " ( People per km\u00B2 )",
             ];
           },
         },
@@ -306,16 +304,16 @@ export class HorizontalBarContainer extends Component {
       <div>
         <h4>Highest Deaths per 1 Million People</h4>
         {!this.state.adjust &&
-        <Button onClick={this.handleClick} variant={"danger"}>Adjust for Population Density</Button>
-        } 
-        {this.state.adjust &&
-        <Button onClick={this.handleClick} variant={"danger"}>Raw Statistics</Button>
-        }
-        {!this.state.adjust && 
-        <HorizontalBar data={horizontal} options={hOptions} />
+          <Button onClick={this.handleClick} variant={"danger"}>Adjust for Population Density</Button>
         }
         {this.state.adjust &&
-        <HorizontalBar data={horizontalAdj} options={hOptionsAdj} />
+          <Button onClick={this.handleClick} variant={"danger"}>Raw Statistics</Button>
+        }
+        {!this.state.adjust &&
+          <HorizontalBar data={horizontal} options={hOptions} />
+        }
+        {this.state.adjust &&
+          <HorizontalBar data={horizontalAdj} options={hOptionsAdj} />
         }
       </div>
     );

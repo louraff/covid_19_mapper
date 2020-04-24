@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import popData from "./../assets/popData";
 import ref_country_codes from "./../assets/countries-lat-long.json";
 
 class MapInfo extends Component {
@@ -28,6 +27,7 @@ class MapInfo extends Component {
                     <img
                       id="flag"
                       src={`https://www.countryflags.io/us/flat/64.png`}
+                      alt=''
                     />
                     <h4>{country.country}</h4>
                   </div>
@@ -47,24 +47,21 @@ class MapInfo extends Component {
                         <br></br> {country.cfr}%
                       </div>
                     ) : (
-                      <div id="infoUSOrange">
-                        <strong>C.F.R</strong>
-                        <br></br> {country.cfr}%
-                      </div>
-                    )}
+                        <div id="infoUSOrange">
+                          <strong>C.F.R</strong>
+                          <br></br> {country.cfr}%
+                        </div>
+                      )}
                   </div>
                 </div>
               );
             } else {
               return (
-                // {let popCountry = popData.popData.filter(pop => pop.name == country.country)}
                 <div id="mapinfo" key={i}>
-                  {/* <div id="info"> */}
-
-                  {/* </div> */}
                   <div id="infoCountryName">
                     <img
                       id="flag"
+                      alt=''
                       src={`https://www.countryflags.io/${ref_country_codes.ref_country_codes
                         .filter((pop) => pop.country === country.country)[0]
                         .alpha2.toLowerCase()}/flat/64.png`}
@@ -108,11 +105,11 @@ class MapInfo extends Component {
                         <br></br> {country.cfr}%
                       </div>
                     ) : (
-                      <div id="infoOrange">
-                        <strong>C.F.R</strong>
-                        <br></br> {country.cfr}%
-                      </div>
-                    )}
+                        <div id="infoOrange">
+                          <strong>C.F.R</strong>
+                          <br></br> {country.cfr}%
+                        </div>
+                      )}
                   </div>
                 </div>
               );
