@@ -136,11 +136,12 @@ export class HorizontalBarContainer extends Component {
         {
           label: "Adjusted Deaths per Million People", 
           data: this.horizontalBarDataAdj(),
-          backgroundColor: "rgba(255,45,2,0.2)",
-          borderColor: "#dc3644",
+          backgroundColor: "rgb(220,54,68,0.8)",
+          // backgroundColor: "rgba(255,99,132,0.4)",
+          borderColor: "rgba(255,45,2,0.2)",
           borderWidth: 1,
-          hoverBackgroundColor: "#dc3644",
-          hoverBorderColor: "rgba(255,99,132,0.2)",
+          hoverBackgroundColor: "rgb(255,99,132,0.2)",
+          hoverBorderColor: "#dc3644",
           pointColor: "#dc3644",
         }
       ],
@@ -291,7 +292,7 @@ export class HorizontalBarContainer extends Component {
             });
             let popDensity = density.sort();
             return [
-              "Adjusted Deaths per 1M: " + Math.round(tooltipItems.xLabel),
+              "Adjusted Deaths per 1M: " + tooltipItems.xLabel.toFixed(2),
               "Population Density: " +
                 Math.round(popDensity[0]) +
                 " ( People per km\u00B2 )",
