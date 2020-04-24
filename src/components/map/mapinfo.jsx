@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import popData from "./../assets/popData";
+
 
 class MapInfo extends Component {
   constructor(props) {
@@ -18,6 +20,7 @@ class MapInfo extends Component {
     return (
       <div id="card">
         {this.props.countriesArray.map((country, i) => {
+          
           if (country.country === this.state.marker) {
             if (country.us) {
               return (
@@ -49,7 +52,9 @@ class MapInfo extends Component {
               );
             } else {
               return (
+                // {let popCountry = popData.popData.filter(pop => pop.name == country.country)}
                 <div id="mapinfo" key={i}>
+                   <img src={`https://www.countryflags.io/${(popData.popData.filter(pop => pop.name == country.country))[0].cca2}/flat/64.png`}/>
                   <div id="info">
                     <h4>{country.country}</h4>
                   </div>
