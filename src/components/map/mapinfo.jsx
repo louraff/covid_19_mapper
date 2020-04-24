@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import popData from "./../assets/popData";
+import ref_country_codes from "./../assets/countries-lat-long.json";
 
 class MapInfo extends Component {
   constructor(props) {
@@ -32,25 +33,25 @@ class MapInfo extends Component {
                   </div>
                   <br></br>
                   <div id="info-boxes">
-                  <div id="infoUSCases">
-                    <strong>Total Cases</strong>
-                    <br></br> {country.confirmed}
-                  </div>
-                  <div id="infoUSDeaths">
-                    <strong>Total Deaths</strong>
-                    <br></br> {country.deaths}
-                  </div>
-                  {country.cfr <= this.props.globalCFR ? (
-                    <div id="infoUSYellow">
-                      <strong>C.F.R</strong>
-                      <br></br> {country.cfr}%
+                    <div id="infoUSCases">
+                      <strong>Total Cases</strong>
+                      <br></br> {country.confirmed}
                     </div>
-                  ) : (
-                    <div id="infoUSOrange">
-                      <strong>C.F.R</strong>
-                      <br></br> {country.cfr}%
+                    <div id="infoUSDeaths">
+                      <strong>Total Deaths</strong>
+                      <br></br> {country.deaths}
                     </div>
-                  )}
+                    {country.cfr <= this.props.globalCFR ? (
+                      <div id="infoUSYellow">
+                        <strong>C.F.R</strong>
+                        <br></br> {country.cfr}%
+                      </div>
+                    ) : (
+                      <div id="infoUSOrange">
+                        <strong>C.F.R</strong>
+                        <br></br> {country.cfr}%
+                      </div>
+                    )}
                   </div>
                 </div>
               );
@@ -62,12 +63,13 @@ class MapInfo extends Component {
 
                   {/* </div> */}
                   <div id="infoCountryName">
+                    
                     <img
                       id="flag"
                       src={`https://www.countryflags.io/${
-                        popData.popData.filter(
-                          (pop) => pop.name === country.country
-                        )[0].cca2
+                        ref_country_codes.ref_country_codes.filter(
+                          (pop) => pop.country === country.country
+                        )[0].alpha2.toLowerCase()
                       }/flat/64.png`}
                     />
                     <h4>{country.country}</h4>

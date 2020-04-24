@@ -3,14 +3,14 @@ import popData from "./../assets/popData";
 import { HorizontalBar } from "react-chartjs-2";
 
 export class HorizontalBarContainer extends Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   horizontalBarLabels = () => {
     var deathsPer1m = [];
-    this.props.countries.map((country) => {
-      popData.popData.map((countryPop) => {
+    this.props.countries.forEach((country) => {
+      popData.popData.forEach((countryPop) => {
         if (country.country === countryPop.name) {
           if (parseFloat(countryPop.pop2020) / 1000 > 2.5) {
             deathsPer1m.push({
@@ -27,7 +27,7 @@ export class HorizontalBarContainer extends Component {
       })
       .slice(0, 20);
     let finalLabels = [];
-    topTenDeathsPer1m.map((country) => {
+    topTenDeathsPer1m.forEach((country) => {
       finalLabels.push(country.country);
     });
     return finalLabels;
@@ -35,8 +35,8 @@ export class HorizontalBarContainer extends Component {
 
   horizontalBarData = () => {
     var deathsPer1m = [];
-    this.props.countries.map((country) => {
-      popData.popData.map((countryPop) => {
+    this.props.countries.forEach((country) => {
+      popData.popData.forEach((countryPop) => {
         if (country.country === countryPop.name) {
           if (parseFloat(countryPop.pop2020) / 1000 > 2.5) {
             deathsPer1m.push(
@@ -130,7 +130,7 @@ export class HorizontalBarContainer extends Component {
         displayColors: false,
         callbacks: {
           label: function (tooltipItems, data) {
-            let density = popData.popData.map((countryPop) => {
+            let density = popData.popData.forEach((countryPop) => {
               if (tooltipItems.yLabel === countryPop.name) {
                 return countryPop.Density;
               }
