@@ -46,7 +46,6 @@ class Header extends Component {
   render() {
     return (
       <div id="app">
-        {/* this.state.viewMap ? "" : */}
         <Navbar fixed="top"
           bg={this.state.viewMap ? "" : "dark"}
           className="navbar-dark bs-navbar-collapse" >
@@ -75,7 +74,7 @@ class Header extends Component {
                           height="22"
                           className="d-inline-block align-top"
                         ></img></span>
-                      Covid-19
+                      Covid-19 Menu
                     </span>
                   )}
               id="last_updated"

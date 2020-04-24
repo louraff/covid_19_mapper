@@ -4,7 +4,6 @@ import Header from "./components/navbar/navbar";
 import ref_country_codes from "./components/assets/countries-lat-long.json";
 import us_codes from "./components/assets/USlatlong.json";
 
-
 class App extends Component {
   state = {
     countries: [],
@@ -13,7 +12,7 @@ class App extends Component {
     total: [],
     totalInt: [],
     totalCFR: null,
-    countriesInteger: []
+    countriesInteger: [],
   };
 
   componentDidMount() {
@@ -61,23 +60,26 @@ class App extends Component {
           total: this.updateTotal(res1),
           totalInt: this.toInteger(res1),
           totalCFR: this.makeGlobalCFR(res2.countries_stat, res3.list),
-          countriesInteger: this.makeCountriesInteger(res2.countries_stat, res3.list)
+          countriesInteger: this.makeCountriesInteger(
+            res2.countries_stat,
+            res3.list
+          ),
         });
       });
   }
 
   createCountry(country, states) {
     const countries = [];
-    const usa = [];
+    // const usa = [];
     ref_country_codes.ref_country_codes.forEach((one) =>
       country.forEach((two) => {
-        if (two.country_name === "US") {
-          usa.push(two);
+        if (two.country_name === "UK") {
+          two.country_name = "United Kingdom";
         }
         if (one.country === two.country_name) {
-          let intTotalConfirmed = parseInt(two.cases.replace(/,/g, ""))
-          let intTotalDeaths = parseInt(two.deaths.replace(/,/g, ""))
-          let cfr = intTotalDeaths / intTotalConfirmed * 100
+          let intTotalConfirmed = parseInt(two.cases.replace(/,/g, ""));
+          let intTotalDeaths = parseInt(two.deaths.replace(/,/g, ""));
+          let cfr = (intTotalDeaths / intTotalConfirmed) * 100;
           countries.push({
             country: two.country_name,
             recovered: two.total_recovered,
@@ -89,7 +91,7 @@ class App extends Component {
             activeCases: two.active_cases,
             criticalCases: two.serious_critical,
             perOneMillion: two.total_cases_per_1m_population,
-            cfr: parseFloat(cfr.toFixed(2))
+            cfr: parseFloat(cfr.toFixed(2)),
           });
         }
       })
@@ -103,7 +105,6 @@ class App extends Component {
   updateUS(states, countries) {
     us_codes.us_codes.forEach((state) =>
       states.forEach((obj) => {
-
         if (obj.state === "Georgia") {
           obj.state = "Georgia, US";
         }
@@ -112,17 +113,20 @@ class App extends Component {
             us: true,
             country: state.state,
             recovered: obj.recovered,
-            deaths: (obj.deaths).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","),
-            confirmed: (obj.confirmed).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","),
+            deaths: obj.deaths
+              .toString()
+              .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","),
+            confirmed: obj.confirmed
+              .toString()
+              .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","),
             center: { lat: state.latitude, lng: state.longitude },
-            cfr: parseFloat((obj.deaths / obj.confirmed * 100).toFixed(2))
+            cfr: parseFloat(((obj.deaths / obj.confirmed) * 100).toFixed(2)),
           });
         }
       })
     );
     return countries;
   }
-
 
   updateTotal(totalArray) {
     let total = this.toInteger(totalArray);
@@ -135,23 +139,22 @@ class App extends Component {
   }
 
   makeGlobalCFR(countries, states) {
-    let cfrPerCountry = []
-    countries.forEach(country => {
+    let cfrPerCountry = [];
+    countries.forEach((country) => {
       cfrPerCountry.push(
-        parseInt(country.deaths.replace(/,/g, "")) / parseInt(country.cases.replace(/,/g, "")) * 100
+        (parseInt(country.deaths.replace(/,/g, "")) /
+          parseInt(country.cases.replace(/,/g, ""))) *
+          100
+      );
+    });
 
-      )
-    })
+    states.forEach((state) => {
+      cfrPerCountry.push((state.deaths / state.confirmed) * 100);
+    });
+    const reducer = (accumulator, currentValue) => accumulator + currentValue;
+    let avCfr = cfrPerCountry.reduce(reducer) / cfrPerCountry.length;
 
-    states.forEach(state => {
-      cfrPerCountry.push(
-        (state.deaths / state.confirmed * 100)
-      )
-    })
-    const reducer = (accumulator, currentValue) => accumulator + currentValue
-    let avCfr = cfrPerCountry.reduce(reducer) / cfrPerCountry.length
-
-    return parseFloat(avCfr.toFixed(2))
+    return parseFloat(avCfr.toFixed(2));
   }
 
   toInteger(totalArray) {
@@ -169,9 +172,9 @@ class App extends Component {
     ref_country_codes.ref_country_codes.forEach((one) => {
       countries.forEach((two) => {
         if (one.country === two.country_name) {
-          let intTotalConfirmed = parseInt(two.cases.replace(/,/g, ""))
-          let intTotalDeaths = parseInt(two.deaths.replace(/,/g, ""))
-          let cfr = intTotalDeaths / intTotalConfirmed * 100
+          let intTotalConfirmed = parseInt(two.cases.replace(/,/g, ""));
+          let intTotalDeaths = parseInt(two.deaths.replace(/,/g, ""));
+          let cfr = (intTotalDeaths / intTotalConfirmed) * 100;
 
           countriesInteger.push({
             country: two.country_name,
@@ -183,14 +186,14 @@ class App extends Component {
             newDeaths: parseInt(two.new_deaths.replace(/,/g, "")),
             activeCases: parseInt(two.active_cases.replace(/,/g, "")),
             criticalCases: parseInt(two.serious_critical.replace(/,/g, "")),
-            perOneMillion: parseInt(two.total_cases_per_1m_population.replace(/,/g, "")),
+            perOneMillion: parseInt(
+              two.total_cases_per_1m_population.replace(/,/g, "")
+            ),
             cfr: parseFloat(cfr.toFixed(2)),
-
-          })
+          });
         }
-      })
-    })
-
+      });
+    });
 
     us_codes.us_codes.forEach((state) => {
       states.forEach((obj) => {
@@ -202,26 +205,27 @@ class App extends Component {
             us: true,
             country: state.state,
             recovered: obj.recovered,
-            deaths: (obj.deaths),
-            confirmed: (obj.confirmed),
+            deaths: obj.deaths,
+            confirmed: obj.confirmed,
             center: { lat: state.latitude, lng: state.longitude },
-            cfr: parseFloat((obj.deaths / obj.confirmed * 100).toFixed(2))
+            cfr: parseFloat(((obj.deaths / obj.confirmed) * 100).toFixed(2)),
           });
         }
-      })
+      });
     });
     return countriesInteger;
   }
 
   render() {
     return (
-      <div className="App" >
+      <div className="App">
         <Header
           total={this.state.total}
           totalInt={this.state.totalInt}
           countries={this.state.countries}
           globalCFR={this.state.totalCFR}
-          integerCountries={this.state.countriesInteger} />
+          integerCountries={this.state.countriesInteger}
+        />
         {/* <SearchContainer/> */}
       </div>
     );

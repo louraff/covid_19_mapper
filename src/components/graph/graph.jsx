@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Line, Doughnut, defaults } from "react-chartjs-2";
 
-
-
 class GraphContainer extends Component {
   constructor(props) {
     super(props);
@@ -15,6 +13,7 @@ class GraphContainer extends Component {
     fetch("https://pomber.github.io/covid19/timeseries.json")
       .then((response) => response.json())
       .then((data) => {
+        data["USA"] = data["US"]
         this.setState({
           data: data,
         });
@@ -40,7 +39,6 @@ class GraphContainer extends Component {
       confirmed: [],
       recoveries: [],
     };
-
 
     const countryData = this.state.data[this.props.country];
 
@@ -68,9 +66,7 @@ class GraphContainer extends Component {
     if (this.props.countries !== undefined) {
       this.props.countries.map((country) => {
         if (country.country === this.props.country) {
-          doughtnutLabels.unshift(
-            country.country
-          )
+          doughtnutLabels.unshift(country.country);
         }
         if (country.country !== this.props.country) {
           doughtnutLabels.push(country.country);
@@ -84,16 +80,10 @@ class GraphContainer extends Component {
     const doughnutData = [];
     if (this.props.countries !== undefined) {
       this.props.countries.map((country) => {
-        if (country.country === 'USA') {
-          country.country = 'US'
-        }
-        if (country.country === "UK") {
-          country.country = "United Kingdom"
-        }
         if (country.country === this.props.country && !country.us) {
           doughnutData.unshift(
             ((country.confirmed / this.props.total[0]) * 100).toFixed(2)
-          )
+          );
         }
         if (!country.us && country.country !== this.props.country) {
           doughnutData.push(
@@ -227,7 +217,7 @@ class GraphContainer extends Component {
       datasets: [
         {
           data: this.doughnutData(),
-          backgroundColor: ["#FBBD08",],
+          backgroundColor: ["#FBBD08"],
           hoverBackgroundColor: "#18A2B8",
           borderWidth: 0.5,
           borderColor: "#646D79",
@@ -251,14 +241,18 @@ class GraphContainer extends Component {
         callbacks: {
           label: function (tooltipItems, data) {
             if (data !== undefined) {
-              let dataPercentage = data.datasets[tooltipItems.datasetIndex].data[tooltipItems.index]
-              return data.labels[tooltipItems.index] + " " + dataPercentage + '%'
+              let dataPercentage =
+                data.datasets[tooltipItems.datasetIndex].data[
+                  tooltipItems.index
+                ];
+              return (
+                data.labels[tooltipItems.index] + " " + dataPercentage + "%"
+              );
             }
-
-          }
-        }
-      }
-    }
+          },
+        },
+      },
+    };
 
     return (
       <React.Fragment>
@@ -275,7 +269,7 @@ class GraphContainer extends Component {
           <h4>{`${this.props.country}`} as % of Global Cases</h4>
           <Doughnut data={doughnut} options={dOptions} />
         </div>
-      </React.Fragment >
+      </React.Fragment>
     );
   }
 }

@@ -4,7 +4,7 @@ class MapInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      marker: "UK",
+      marker: "United Kingdom",
     };
   }
 
@@ -34,14 +34,17 @@ class MapInfo extends Component {
                     <strong>Total Deaths</strong>
                     <br></br> {country.deaths}
                   </div>
-                  {(country.cfr <= this.props.globalCFR) ?
-                    <div id="infoUSYellow" >
+                  {country.cfr <= this.props.globalCFR ? (
+                    <div id="infoUSYellow">
                       <strong>C.F.R</strong>
                       <br></br> {country.cfr}%
-                  </div> : <div id="infoUSOrange" >
+                    </div>
+                  ) : (
+                    <div id="infoUSOrange">
                       <strong>C.F.R</strong>
                       <br></br> {country.cfr}%
-                  </div>}
+                    </div>
+                  )}
                 </div>
               );
             } else {
@@ -80,20 +83,23 @@ class MapInfo extends Component {
                     <strong>Cases per Millon</strong>
                     <br></br> {country.perOneMillion}
                   </div>
-                  {(country.cfr <= this.props.globalCFR) ?
-                    <div id="infoYellow" >
+                  {country.cfr <= this.props.globalCFR ? (
+                    <div id="infoYellow">
                       <strong>C.F.R</strong>
                       <br></br> {country.cfr}%
-                  </div> : <div id="infoOrange" >
+                    </div>
+                  ) : (
+                    <div id="infoOrange">
                       <strong>C.F.R</strong>
                       <br></br> {country.cfr}%
-                  </div>}
+                    </div>
+                  )}
                 </div>
               );
             }
           }
         })}
-      </div >
+      </div>
     );
   }
 }
