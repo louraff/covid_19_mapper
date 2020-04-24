@@ -70,7 +70,6 @@ class App extends Component {
 
   createCountry(country, states) {
     const countries = [];
-    // const usa = [];
     ref_country_codes.ref_country_codes.forEach((one) =>
       country.forEach((two) => {
         if (two.country_name === "UK") {
@@ -113,12 +112,8 @@ class App extends Component {
             us: true,
             country: state.state,
             recovered: obj.recovered,
-            deaths: obj.deaths
-              .toString()
-              .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","),
-            confirmed: obj.confirmed
-              .toString()
-              .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","),
+            deaths: this.commaNumberString(obj.deaths.toString()),
+            confirmed: this.commaNumberString(obj.confirmed.toString()),
             center: { lat: state.latitude, lng: state.longitude },
             cfr: parseFloat(((obj.deaths / obj.confirmed) * 100).toFixed(2)),
           });
@@ -132,9 +127,7 @@ class App extends Component {
     let total = this.toInteger(totalArray);
     var activeCases = total[0] - total[1] - total[2];
 
-    totalArray["active_cases"] = activeCases
-      .toString()
-      .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+    totalArray["active_cases"] = this.commaNumberString(activeCases.toString())
     return totalArray;
   }
 
@@ -216,6 +209,10 @@ class App extends Component {
     return countriesInteger;
   }
 
+  commaNumberString(string) {
+    return string.replace(/\d{1,3}(?=(\d{3})+(?!\d))/g , "$&,");
+  }
+
   render() {
     return (
       <div className="App">
@@ -226,7 +223,6 @@ class App extends Component {
           globalCFR={this.state.totalCFR}
           integerCountries={this.state.countriesInteger}
         />
-        {/* <SearchContainer/> */}
       </div>
     );
   }

@@ -13,7 +13,7 @@ class GraphContainer extends Component {
     fetch("https://pomber.github.io/covid19/timeseries.json")
       .then((response) => response.json())
       .then((data) => {
-        data["USA"] = data["US"]
+        data["USA"] = data["US"];
         this.setState({
           data: data,
         });
@@ -24,7 +24,7 @@ class GraphContainer extends Component {
     const labelData = [];
     const countryData = this.state.data[this.props.country];
     if (countryData !== undefined) {
-      countryData.map((date) => {
+      countryData.forEach((date) => {
         if (date.deaths !== 0) {
           labelData.push(date.date);
         }
@@ -43,7 +43,7 @@ class GraphContainer extends Component {
     const countryData = this.state.data[this.props.country];
 
     if (countryData !== undefined) {
-      countryData.map((date) => {
+      countryData.forEach((date) => {
         if (date.deaths !== 0) {
           graphData.confirmed.push(date.confirmed);
           graphData.deaths.push(date.deaths);
@@ -64,7 +64,7 @@ class GraphContainer extends Component {
   doughnutLabels = () => {
     const doughtnutLabels = [];
     if (this.props.countries !== undefined) {
-      this.props.countries.map((country) => {
+      this.props.countries.forEach((country) => {
         if (country.country === this.props.country) {
           doughtnutLabels.unshift(country.country);
         }
@@ -79,7 +79,7 @@ class GraphContainer extends Component {
   doughnutData = () => {
     const doughnutData = [];
     if (this.props.countries !== undefined) {
-      this.props.countries.map((country) => {
+      this.props.countries.forEach((country) => {
         if (country.country === this.props.country && !country.us) {
           doughnutData.unshift(
             ((country.confirmed / this.props.total[0]) * 100).toFixed(2)
