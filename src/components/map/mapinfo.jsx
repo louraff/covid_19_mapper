@@ -63,14 +63,11 @@ class MapInfo extends Component {
 
                   {/* </div> */}
                   <div id="infoCountryName">
-                    
                     <img
                       id="flag"
-                      src={`https://www.countryflags.io/${
-                        ref_country_codes.ref_country_codes.filter(
-                          (pop) => pop.country === country.country
-                        )[0].alpha2.toLowerCase()
-                      }/flat/64.png`}
+                      src={`https://www.countryflags.io/${ref_country_codes.ref_country_codes
+                        .filter((pop) => pop.country === country.country)[0]
+                        .alpha2.toLowerCase()}/flat/64.png`}
                     />
                     <h4>{country.country}</h4>
                   </div>
