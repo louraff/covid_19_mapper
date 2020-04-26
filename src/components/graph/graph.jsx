@@ -125,8 +125,9 @@ class GraphContainer extends Component {
         daily.push(country.date)
       })
 
-
+      daily.reverse()
       daily.pop()
+      daily.reverse()
       return daily
     }
   }
@@ -148,6 +149,47 @@ class GraphContainer extends Component {
       dailyChange.pop()
       return dailyChange
     }
+  }
+
+  growthFactorData = () => {
+    let growthFactorData = []
+
+    const countryData = this.state.data[this.props.country];
+    if (countryData !== undefined) {
+      let dailyChange = this.barData()
+      let temp_array = []
+
+
+      for (let i = 8; i < dailyChange.length; i++) {
+        let a = (dailyChange[i + 1] / dailyChange[i])
+        if (a === Infinity) {
+          temp_array.push(0.0001)
+        } else if (a > 20) {
+          temp_array.push(0.0001)
+        }
+        else {
+          a = a ? temp_array.push(a) : temp_array.push(0.001);
+        }
+
+        if (temp_array.length % 2 === 0) {
+          growthFactorData.push(temp_array.reduce((total, num) => { return total + num }) / 7)
+
+          i = i - 6
+          temp_array = []
+        }
+
+      }
+    }
+    console.log(growthFactorData)
+    return growthFactorData
+  }
+
+  growthFactorLabels = () => {
+    let labels = this.barLabel()
+    labels.reverse()
+    labels.pop()
+    labels.reverse()
+    return labels
   }
 
 
@@ -472,6 +514,88 @@ class GraphContainer extends Component {
       borderWidth: 2,
     };
 
+    const gfLine = {
+      labels: this.createLineLabels(),
+      datasets: [
+        {
+          label: "R Value",
+          data: this.growthFactorData(),
+          fill: false,
+          backgroundColor: "#18A2B8",
+          borderColor: "#18A2B8",
+          borderWidth: 2,
+          pointBackgroundColor: "#18A2B8",
+          pointBorderColor: "#000000",
+          pointBorderWidth: 0.5,
+          pointStyle: "rectRounded",
+          pointRadius: 4,
+          pointHitRadius: 5,
+          pointHoverRadius: 5,
+          hoverBackgroundColor: "#FFFFFF",
+        },
+      ],
+    };
+
+    const gfOptions = {
+      scales: {
+        xAxes: [
+          {
+            ticks: {
+              display: true,
+              major: {
+                fontStyle: "bold",
+                fontColor: "#FFFFFF",
+              },
+            },
+            gridLines: {
+              display: false,
+              drawBorder: true,
+            },
+            scaleLabel: {
+              display: true,
+              labelString: "X AXIS",
+              fontStyle: "bold",
+              fontColor: "#FFFFFF",
+            },
+          },
+        ],
+        yAxes: [
+          {
+            ticks: {
+              display: true,
+              major: {
+                fontStyle: "bold",
+                fontColor: "#FFFFFF",
+              },
+            },
+            gridLines: {
+              display: true,
+              drawBorder: true,
+            },
+            scaleLabel: {
+              display: true,
+              labelString: "Y AXIS",
+              fontStyle: "bold",
+              fontColor: "#FFFFFF",
+            },
+          },
+        ],
+      },
+      legend: {
+        display: true,
+        position: "right",
+        align: "center",
+        labels: {
+          fontSize: 12,
+          fontStyle: "bold",
+          fontColor: "#FFFFFF",
+          usePointStyle: true,
+        },
+      },
+      lineTension: 3,
+      borderWidth: 2,
+    };
+
     return (
       <React.Fragment>
         <br></br>
@@ -498,6 +622,9 @@ class GraphContainer extends Component {
           {this.state.cases &&
             <Bar data={bar} options={bDeathOptions} />
           }
+        </div>
+        <div id="rl">
+          <Line data={gfLine} options={gfOptions} />
         </div>
         <div id="d">
           <h4>{`${this.props.country}`} as % of Global Cases</h4>
