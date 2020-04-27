@@ -616,6 +616,7 @@ class GraphContainer extends Component {
           pointRadius: 0,
           pointHitRadius: 0,
           pointHoverRadius: 0,
+          pointBackgroundColor: "rgba(40, 167, 69, 0.4)",
           hoverBackgroundColor: "#28a745",
         }
       ],
