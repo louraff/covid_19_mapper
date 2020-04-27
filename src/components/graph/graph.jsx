@@ -153,38 +153,50 @@ class GraphContainer extends Component {
 
   growthFactorData = () => {
     let growthFactorData = []
+    let dailyR = []
+    let finalArray = []
 
     const countryData = this.state.data[this.props.country];
     console.log("countryData", this.state.data[this.props.country])
     if (countryData !== undefined) {
       console.log("inside the if")
       let dailyChange = this.barData()
-      let temp_array = []
 
 
       for (let i = 1; i < dailyChange.length; i++) {
         let a = (dailyChange[i + 1] / dailyChange[i])
         console.log("for loop working", a)
         if (a === Infinity) {
-          console.log("in infinity")
-          temp_array.push(0.0001)
-        } else if (a > 20) {
-          console.log("outlier catcher")
-          temp_array.push(0.0001)
+          dailyR.push(0.0001)
+        } else if (a > 15) {
+          dailyR.push(0.0001)
         } else {
-          console.log("passed tests for NaN and Infinity pushing in")
-          a = a ? temp_array.push(a) : temp_array.push(0.001);
-        }
 
-        if (temp_array.length % 2 === 0) {
-          console.log("temp array", temp_array)
-          growthFactorData.push(temp_array.reduce((total, num) => { return total + num }) / 7)
-          temp_array = []
+          a = a ? dailyR.push(a) : dailyR.push(0.001);
         }
       }
+      finalArray = this.movingAverage(dailyR, 7)
     }
-    console.log("before return", growthFactorData)
-    return growthFactorData
+
+    return finalArray
+
+  }
+
+  movingAverage = (dailyR, window) => {
+    let movingAverageValues = []
+    let temp_array = []
+    console.log("this is the dailyy R in MA", dailyR)
+    let reversed = dailyR.reverse()
+    for (let i = 0; i < reversed.length; i++) {
+      temp_array.push(dailyR[i])
+      if (temp_array.length === window) {
+        movingAverageValues.push(temp_array.reduce((total, num) => { return total + num }) / window)
+        temp_array = []
+        i -= window - 1
+      }
+    }
+    movingAverageValues = movingAverageValues.reverse()
+    return movingAverageValues
   }
 
   growthFactorLabels = () => {
@@ -605,7 +617,6 @@ class GraphContainer extends Component {
     return (
 
       <React.Fragment>
-        {this.growthFactorData()}
         {console.log(this.growthFactorLabels())}
         <br></br>
         <br></br>
