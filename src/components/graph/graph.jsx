@@ -337,7 +337,7 @@ class GraphContainer extends Component {
               },
             },
             gridLines: {
-              display: true,
+              display: false,
               drawBorder: true,
             },
             scaleLabel: {
@@ -358,7 +358,7 @@ class GraphContainer extends Component {
               },
             },
             gridLines: {
-              display: false,
+              display: true,
               drawBorder: true,
             },
             scaleLabel: {
@@ -476,7 +476,7 @@ class GraphContainer extends Component {
             },
             scaleLabel: {
               display: true,
-              labelString: "Deaths",
+              labelString: "Cases",
               fontStyle: "bold",
               fontColor: "#FFFFFF",
             },
@@ -498,7 +498,7 @@ class GraphContainer extends Component {
             },
             scaleLabel: {
               display: true,
-              labelString: "People",
+              labelString: "Deaths",
               fontStyle: "bold",
               fontColor: "#FFFFFF",
             },
@@ -561,7 +561,7 @@ class GraphContainer extends Component {
             },
             scaleLabel: {
               display: true,
-              labelString: "People",
+              labelString: "Cases",
               fontStyle: "bold",
               fontColor: "#FFFFFF",
             },
@@ -589,10 +589,9 @@ class GraphContainer extends Component {
       labels: this.growthFactorLabels(),
       datasets: [
         {
-          label: "R Value",
+          label: "Growth Factor",
           data: this.newGrowthFactorData(7),
           fill: false,
-          lineColor: "#fbbd08",
           backgroundColor: "#fbbd08",
           borderColor: "#fbbd08",
           borderWidth: 2,
@@ -606,16 +605,18 @@ class GraphContainer extends Component {
           hoverBackgroundColor: "#FFFFFF",
         },
         {
-          label: "Desired R Value",
+          label: "Desired Growth Factor",
           data: this.growthFactorOne(this.growthFactorLabels()),
-          fill: false,
-          lineColor: "#28a745",
-          backgroundColor: "#28a745",
+          fill: true,
+          backgroundColor: "rgba(40, 167, 69, 0.4)",
           borderColor: "#28a745",
           borderWidth: 2,
           pointBorderWidth: 0,
           pointStyle: "rectRounded",
           pointRadius: 0,
+          pointHitRadius: 0,
+          pointHoverRadius: 0,
+          hoverBackgroundColor: "#28a745",
         }
       ],
 
@@ -660,7 +661,7 @@ class GraphContainer extends Component {
             },
             scaleLabel: {
               display: true,
-              labelString: "Force of Transmission",
+              labelString: "Growth Factor (R)",
               fontStyle: "bold",
               fontColor: "#FFFFFF",
             },
@@ -680,6 +681,11 @@ class GraphContainer extends Component {
       },
       tooltips: {
         displayColors: false,
+        callbacks: {
+          label: function (tooltipItems, data) {
+            return "R Value: " + tooltipItems.yLabel.toFixed(3)
+          },
+        },
       },
       lineTension: 3,
       borderWidth: 2,
@@ -714,7 +720,7 @@ class GraphContainer extends Component {
           }
         </div>
         <div id="gf">
-          <h4>{`${this.props.country}`} Growth Factor </h4>
+          <h4>{`${this.props.country}`} Growth Factor (R) </h4>
           <Line data={gfLine} options={gfOptions} />
         </div>
         <div id="d">

@@ -71,28 +71,32 @@ h4 {
   color: white;
 }
 
+#graph {
+  justify-content: center;
+}
+
 #l {
-  margin-bottom: 100px;
-  width: 90%;
-  height: 90%;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-bottom: 50px;
 }
 
 #b {
-  margin-bottom: 100px;
-  width: 90%;
-  height: 70%;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-bottom: 50px;
 }
 
 #gf {
-  margin-bottom: 100px;
-  width: 90%;
-  height: 90%;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-bottom: 50px;
 }
 
 #d {
-  margin-bottom: 100px;
-  width: 90%;
-  height: 90%;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-bottom: 50px;
 }
 
 #graph {
