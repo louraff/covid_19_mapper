@@ -249,6 +249,18 @@ class GraphContainer extends Component {
     }
   }
 
+  growthFactorOne = (array) => {
+    let oneArray = []
+    const countryData = this.state.data[this.props.country];
+
+    if (countryData !== undefined) {
+      for (let i = 0; i < array.length; i++) {
+        oneArray.push(1)
+      }
+      return oneArray
+    }
+  }
+
 
   handleClick = () => {
     this.setState({
@@ -507,6 +519,7 @@ class GraphContainer extends Component {
         displayColors: false,
       },
       borderWidth: 2,
+      maintainAspectRatio: true
     };
 
     const bDeathOptions = {
@@ -569,19 +582,21 @@ class GraphContainer extends Component {
         displayColors: false,
       },
       borderWidth: 2,
+      maintainAspectRatio: true
     };
 
     const gfLine = {
       labels: this.growthFactorLabels(),
       datasets: [
         {
-          label: "Growth Factor",
+          label: "R Value",
           data: this.newGrowthFactorData(7),
           fill: false,
-          backgroundColor: "#18A2B8",
-          borderColor: "#18A2B8",
+          lineColor: "#fbbd08",
+          backgroundColor: "#fbbd08",
+          borderColor: "#fbbd08",
           borderWidth: 2,
-          pointBackgroundColor: "#18A2B8",
+          pointBackgroundColor: "#fbbd08",
           pointBorderColor: "#000000",
           pointBorderWidth: 0.5,
           pointStyle: "rectRounded",
@@ -590,7 +605,20 @@ class GraphContainer extends Component {
           pointHoverRadius: 5,
           hoverBackgroundColor: "#FFFFFF",
         },
+        {
+          label: "Desired R Value",
+          data: this.growthFactorOne(this.growthFactorLabels()),
+          fill: false,
+          lineColor: "#28a745",
+          backgroundColor: "#28a745",
+          borderColor: "#28a745",
+          borderWidth: 2,
+          pointBorderWidth: 0,
+          pointStyle: "rectRounded",
+          pointRadius: 0,
+        }
       ],
+
     };
 
     const gfOptions = {
@@ -619,6 +647,7 @@ class GraphContainer extends Component {
         yAxes: [
           {
             ticks: {
+              beginAtZero: true,
               display: true,
               major: {
                 fontStyle: "bold",
@@ -631,7 +660,7 @@ class GraphContainer extends Component {
             },
             scaleLabel: {
               display: true,
-              labelString: "Growth Factor",
+              labelString: "Force of Transmission",
               fontStyle: "bold",
               fontColor: "#FFFFFF",
             },
@@ -649,8 +678,12 @@ class GraphContainer extends Component {
           usePointStyle: true,
         },
       },
+      tooltips: {
+        displayColors: false,
+      },
       lineTension: 3,
       borderWidth: 2,
+      maintainAspectRatio: true
     };
 
     return (
@@ -660,7 +693,6 @@ class GraphContainer extends Component {
         <br></br>
         <div id="l">
           <h4>{`${this.props.country}`} Data From Day of First Death</h4>
-          <div id="legend-title">Interactive Legend</div>
           <Line data={line} options={lOptions} />
         </div>
         <br></br>
@@ -682,14 +714,14 @@ class GraphContainer extends Component {
           }
         </div>
         <div id="gf">
-          <h4>{`${this.props.country}`} Growth Factor ( X Day Average)</h4>
+          <h4>{`${this.props.country}`} Growth Factor </h4>
           <Line data={gfLine} options={gfOptions} />
         </div>
         <div id="d">
           <h4>{`${this.props.country}`} as % of Global Cases</h4>
           <Doughnut data={doughnut} options={dOptions} />
         </div>
-      </React.Fragment>
+      </React.Fragment >
     );
   }
 }
