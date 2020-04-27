@@ -104,7 +104,9 @@ class GraphContainer extends Component {
     const countryData = this.state.data[this.props.country];
     if (countryData !== undefined) {
       countryData.forEach((country) => {
-        daily.push(country.confirmed)
+        if (country.deaths !== 0) {
+          daily.push(country.confirmed)
+        }
       })
 
       for (let i = 0; i < daily.length; i++) {
@@ -122,7 +124,9 @@ class GraphContainer extends Component {
     const countryData = this.state.data[this.props.country];
     if (countryData !== undefined) {
       countryData.forEach((country) => {
-        daily.push(country.date)
+        if (country.deaths !== 0) {
+          daily.push(country.date)
+        }
       })
 
       daily.reverse()
@@ -139,7 +143,9 @@ class GraphContainer extends Component {
     const countryData = this.state.data[this.props.country];
     if (countryData !== undefined) {
       countryData.forEach((country) => {
-        daily.push(country.deaths)
+        if (country.deaths !== 0) {
+          daily.push(country.deaths)
+        }
       })
 
       for (let i = 0; i < daily.length; i++) {
