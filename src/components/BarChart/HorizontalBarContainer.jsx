@@ -221,6 +221,7 @@ export class HorizontalBarContainer extends Component {
         },
       },
       borderWidth: 2,
+      maintainAspectRatio: true
     };
 
     const hOptionsAdj = {
@@ -299,6 +300,7 @@ export class HorizontalBarContainer extends Component {
         },
       },
       borderWidth: 2,
+      maintainAspectRatio: true
     };
     return (
       <div>
@@ -310,10 +312,14 @@ export class HorizontalBarContainer extends Component {
           <Button onClick={this.handleClick} variant={"danger"}>Raw Statistics</Button>
         }
         {!this.state.adjust &&
-          <HorizontalBar data={horizontal} options={hOptions} />
+          <div id="h">
+            <HorizontalBar data={horizontal} options={hOptions} />
+          </div>
         }
         {this.state.adjust &&
-          <HorizontalBar data={horizontalAdj} options={hOptionsAdj} />
+          <div id="h">
+            <HorizontalBar data={horizontalAdj} options={hOptionsAdj} />
+          </div>
         }
       </div>
     );

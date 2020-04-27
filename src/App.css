@@ -28,9 +28,9 @@
   font-weight: bold;
 }
 
-#l {
+/* #l {
   margin-bottom: 50px;
-}
+} */
 
 #app {
   background-color: #343a40;
@@ -71,8 +71,32 @@ h4 {
   color: white;
 }
 
+#graph {
+  justify-content: center;
+}
+
+#l {
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-bottom: 50px;
+}
+
 #b {
-  margin-bottom: 100px;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-bottom: 50px;
+}
+
+#gf {
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-bottom: 50px;
+}
+
+#d {
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-bottom: 50px;
 }
 
 #graph {
