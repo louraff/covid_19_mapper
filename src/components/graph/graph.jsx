@@ -157,15 +157,11 @@ class GraphContainer extends Component {
     let finalArray = []
 
     const countryData = this.state.data[this.props.country];
-    console.log("countryData", this.state.data[this.props.country])
     if (countryData !== undefined) {
-      console.log("inside the if")
       let dailyChange = this.barData()
-
 
       for (let i = 1; i < dailyChange.length; i++) {
         let a = (dailyChange[i + 1] / dailyChange[i])
-        console.log("for loop working", a)
         if (a === Infinity) {
           dailyR.push(0.0001)
         } else if (a > 15) {
@@ -182,10 +178,43 @@ class GraphContainer extends Component {
 
   }
 
+  newGrowthFactorData = (window) => {
+    let daily = []
+    let dailyChange = []
+    let dailyR = []
+
+    const countryData = this.state.data[this.props.country];
+
+    if (countryData !== undefined) {
+
+      let ma7 = this.movingAverage(this.createLineData("confirmed"), window)
+
+      ma7.forEach((country) => {
+        daily.push(country)
+      })
+      for (let i = 0; i < daily.length; i++) {
+        dailyChange.push(parseFloat(daily[i + 1]) - parseFloat(daily[i]))
+      }
+
+      dailyChange.pop()
+
+      for (let i = 1; i < dailyChange.length; i++) {
+        let a = (dailyChange[i + 1] / dailyChange[i])
+        if (a === Infinity) {
+          dailyR.push(0.0001)
+        } else {
+          a = a ? dailyR.push(a) : dailyR.push(0.001);
+        }
+      }
+      dailyR.pop()
+      return dailyR
+    }
+
+  }
+
   movingAverage = (dailyR, window) => {
     let movingAverageValues = []
     let temp_array = []
-    console.log("this is the dailyy R in MA", dailyR)
     let reversed = dailyR.reverse()
     for (let i = 0; i < reversed.length; i++) {
       temp_array.push(dailyR[i])
@@ -195,18 +224,22 @@ class GraphContainer extends Component {
         i -= window - 1
       }
     }
+
     movingAverageValues = movingAverageValues.reverse()
     return movingAverageValues
   }
 
   growthFactorLabels = () => {
-    let labels = this.barLabel()
+    let labels = this.createLineLabels()
     const countryData = this.state.data[this.props.country];
     if (countryData !== undefined) {
-      labels.reverse()
       labels.pop()
-      labels.reverse()
-      return labels
+      labels.pop()
+      let reversed = labels.reverse()
+      for (let i = 0; i < 7; i++) {
+        reversed.pop()
+      }
+      return reversed.reverse()
     }
   }
 
@@ -533,11 +566,11 @@ class GraphContainer extends Component {
     };
 
     const gfLine = {
-      labels: this.createLineLabels(),
+      labels: this.growthFactorLabels(),
       datasets: [
         {
           label: "Growth Factor",
-          data: this.growthFactorData(),
+          data: this.newGrowthFactorData(7),
           fill: false,
           backgroundColor: "#18A2B8",
           borderColor: "#18A2B8",
@@ -617,7 +650,6 @@ class GraphContainer extends Component {
     return (
 
       <React.Fragment>
-        {console.log(this.growthFactorLabels())}
         <br></br>
         <br></br>
         <div id="l">
