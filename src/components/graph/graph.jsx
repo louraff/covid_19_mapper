@@ -151,42 +151,52 @@ class GraphContainer extends Component {
     }
   }
 
-  // growthFactorData = () => {
-  //   let growthFactorData = []
+  growthFactorData = () => {
+    let growthFactorData = []
 
-  //   const countryData = this.state.data[this.props.country];
-  //   if (countryData !== undefined) {
-  //     let dailyChange = this.barData()
-  //     let temp_array = []
+    const countryData = this.state.data[this.props.country];
+    console.log("countryData", this.state.data[this.props.country])
+    if (countryData !== undefined) {
+      console.log("inside the if")
+      let dailyChange = this.barData()
+      let temp_array = []
 
 
-  //     for (let i = 8; i < dailyChange.length; i++) {
-  //       let a = (dailyChange[i + 1] / dailyChange[i])
-  //       if (a === Infinity) {
-  //         temp_array.push(0.0001)
-  //       } else if (a > 20) {
-  //         temp_array.push(0.0001)
-  //       } else {
-  //         a = a ? temp_array.push(a) : temp_array.push(0.001);
-  //       }
+      for (let i = 1; i < dailyChange.length; i++) {
+        let a = (dailyChange[i + 1] / dailyChange[i])
+        console.log("for loop working", a)
+        if (a === Infinity) {
+          console.log("in infinity")
+          temp_array.push(0.0001)
+        } else if (a > 20) {
+          console.log("outlier catcher")
+          temp_array.push(0.0001)
+        } else {
+          console.log("passed tests for NaN and Infinity pushing in")
+          a = a ? temp_array.push(a) : temp_array.push(0.001);
+        }
 
-  //       if (temp_array.length % 2 === 0) {
-  //         growthFactorData.push(temp_array.reduce((total, num) => { return total + num }) / 7)
-  //         i = i - 6
-  //         temp_array = []
-  //       }
-  //     }
-  //   }
-  //   return growthFactorData
-  // }
+        if (temp_array.length % 2 === 0) {
+          console.log("temp array", temp_array)
+          growthFactorData.push(temp_array.reduce((total, num) => { return total + num }) / 7)
+          temp_array = []
+        }
+      }
+    }
+    console.log("before return", growthFactorData)
+    return growthFactorData
+  }
 
-  // growthFactorLabels = () => {
-  //   let labels = this.barLabel()
-  //   labels.reverse()
-  //   labels.pop()
-  //   labels.reverse()
-  //   return labels
-  // }
+  growthFactorLabels = () => {
+    let labels = this.barLabel()
+    const countryData = this.state.data[this.props.country];
+    if (countryData !== undefined) {
+      labels.reverse()
+      labels.pop()
+      labels.reverse()
+      return labels
+    }
+  }
 
 
   handleClick = () => {
@@ -510,90 +520,93 @@ class GraphContainer extends Component {
       borderWidth: 2,
     };
 
-    // const gfLine = {
-    //   labels: this.createLineLabels(),
-    //   datasets: [
-    //     {
-    //       label: "Growth Factor",
-    //       data: this.growthFactorData(),
-    //       fill: false,
-    //       backgroundColor: "#18A2B8",
-    //       borderColor: "#18A2B8",
-    //       borderWidth: 2,
-    //       pointBackgroundColor: "#18A2B8",
-    //       pointBorderColor: "#000000",
-    //       pointBorderWidth: 0.5,
-    //       pointStyle: "rectRounded",
-    //       pointRadius: 4,
-    //       pointHitRadius: 5,
-    //       pointHoverRadius: 5,
-    //       hoverBackgroundColor: "#FFFFFF",
-    //     },
-    //   ],
-    // };
+    const gfLine = {
+      labels: this.createLineLabels(),
+      datasets: [
+        {
+          label: "Growth Factor",
+          data: this.growthFactorData(),
+          fill: false,
+          backgroundColor: "#18A2B8",
+          borderColor: "#18A2B8",
+          borderWidth: 2,
+          pointBackgroundColor: "#18A2B8",
+          pointBorderColor: "#000000",
+          pointBorderWidth: 0.5,
+          pointStyle: "rectRounded",
+          pointRadius: 4,
+          pointHitRadius: 5,
+          pointHoverRadius: 5,
+          hoverBackgroundColor: "#FFFFFF",
+        },
+      ],
+    };
 
-    // const gfOptions = {
-    //   scales: {
-    //     xAxes: [
-    //       {
-    //         ticks: {
-    //           display: true,
-    //           major: {
-    //             fontStyle: "bold",
-    //             fontColor: "#FFFFFF",
-    //           },
-    //         },
-    //         gridLines: {
-    //           display: false,
-    //           drawBorder: true,
-    //         },
-    //         scaleLabel: {
-    //           display: true,
-    //           labelString: "Date (YYYY/MM/DD)",
-    //           fontStyle: "bold",
-    //           fontColor: "#FFFFFF",
-    //         },
-    //       },
-    //     ],
-    //     yAxes: [
-    //       {
-    //         ticks: {
-    //           display: true,
-    //           major: {
-    //             fontStyle: "bold",
-    //             fontColor: "#FFFFFF",
-    //           },
-    //         },
-    //         gridLines: {
-    //           display: true,
-    //           drawBorder: true,
-    //         },
-    //         scaleLabel: {
-    //           display: true,
-    //           labelString: "Growth Factor",
-    //           fontStyle: "bold",
-    //           fontColor: "#FFFFFF",
-    //         },
-    //       },
-    //     ],
-    //   },
-    //   legend: {
-    //     display: true,
-    //     position: "right",
-    //     align: "center",
-    //     labels: {
-    //       fontSize: 12,
-    //       fontStyle: "bold",
-    //       fontColor: "#FFFFFF",
-    //       usePointStyle: true,
-    //     },
-    //   },
-    //   lineTension: 3,
-    //   borderWidth: 2,
-    // };
+    const gfOptions = {
+      scales: {
+        xAxes: [
+          {
+            ticks: {
+              display: true,
+              major: {
+                fontStyle: "bold",
+                fontColor: "#FFFFFF",
+              },
+            },
+            gridLines: {
+              display: false,
+              drawBorder: true,
+            },
+            scaleLabel: {
+              display: true,
+              labelString: "Date (YYYY/MM/DD)",
+              fontStyle: "bold",
+              fontColor: "#FFFFFF",
+            },
+          },
+        ],
+        yAxes: [
+          {
+            ticks: {
+              display: true,
+              major: {
+                fontStyle: "bold",
+                fontColor: "#FFFFFF",
+              },
+            },
+            gridLines: {
+              display: true,
+              drawBorder: true,
+            },
+            scaleLabel: {
+              display: true,
+              labelString: "Growth Factor",
+              fontStyle: "bold",
+              fontColor: "#FFFFFF",
+            },
+          },
+        ],
+      },
+      legend: {
+        display: true,
+        position: "right",
+        align: "center",
+        labels: {
+          fontSize: 12,
+          fontStyle: "bold",
+          fontColor: "#FFFFFF",
+          usePointStyle: true,
+        },
+      },
+      lineTension: 3,
+      borderWidth: 2,
+    };
 
     return (
+
       <React.Fragment>
+        {this.growthFactorData()}
+        {console.log(this.growthFactorLabels())}
         <br></br>
         <br></br>
         <div id="l">
@@ -621,7 +634,7 @@ class GraphContainer extends Component {
         </div>
         <div id="gf">
           <h4>{`${this.props.country}`} Growth Factor ( X Day Average)</h4>
-          {/* <Line data={gfLine} options={gfOptions} /> */}
+          <Line data={gfLine} options={gfOptions} />
         </div>
         <div id="d">
           <h4>{`${this.props.country}`} as % of Global Cases</h4>
