@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Doughnut, defaults } from "react-chartjs-2";
+import {Doughnut} from "react-chartjs-2";
 
 class GlobalCasesDoughnut extends Component {
   state = {  }
@@ -39,8 +39,6 @@ class GlobalCasesDoughnut extends Component {
   };
   
   render() { 
-    defaults.global.defaultFontColor = "white";
-
     const doughnut = {
       labels: this.doughnutLabels(),
       datasets: [

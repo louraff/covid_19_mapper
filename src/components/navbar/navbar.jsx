@@ -7,7 +7,7 @@ import Spinner from "react-bootstrap/Spinner";
 import MapContainer from "./../map/map";
 import TableContainer from "./../tables/table";
 import SearchContainer from "./../searchbar/searchbar";
-import HorizontalBarContainer from "../graphs/horizontal_bar_container/horizontal_bar_container";
+import HorizontalBarContainer from "../graphs/global_graphs/horizontal_bar_container/horizontal_bar_container";
 
 class Header extends Component {
   constructor(props) {

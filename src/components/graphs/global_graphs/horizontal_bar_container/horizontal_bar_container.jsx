@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import popData from "../../assets/popData";
+import popData from "../../../assets/popData";
 import { HorizontalBar } from "react-chartjs-2";
 import Button from "react-bootstrap/Button";
 

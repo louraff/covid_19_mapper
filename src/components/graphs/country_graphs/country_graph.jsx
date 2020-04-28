@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Line, Doughnut, Bar, defaults } from "react-chartjs-2";
+import { defaults } from "react-chartjs-2";
 import CountryLineData from './country_data_line/country_data_line'
 import GlobalCasesDoughnut from './global_cases_doughnut/global_cases_doughnut'
 import DailyChangesBar from './daily_changes_bar/daily_changes_bar'

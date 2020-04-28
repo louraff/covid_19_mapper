@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Bar, defaults } from "react-chartjs-2";
+import {Bar} from "react-chartjs-2";
 import Button from "react-bootstrap/Button";
 
 
@@ -75,7 +75,6 @@ class DailyChangesBar extends Component {
   };
  
   render() { 
-    defaults.global.defaultFontColor = "white";
     
     const bar = {
       labels: this.barLabel(),

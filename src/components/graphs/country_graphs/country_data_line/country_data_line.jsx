@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Line, defaults } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 
 class CountryDataLine extends Component {
 
@@ -32,7 +32,6 @@ class CountryDataLine extends Component {
   };
 
   render() {
-    defaults.global.defaultFontColor = "white";
     
     const line = {
       labels: this.props.createLineLabels,

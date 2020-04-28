@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import GraphContainer from "../graphs/graph";
+import GraphContainer from "../graphs/country_graphs/country_graph";
 
 class SearchContainer extends Component {
   constructor(props) {
