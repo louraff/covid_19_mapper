@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import { Line, Doughnut, Bar, defaults } from "react-chartjs-2";
-import Button from "react-bootstrap/Button";
 import CountryLineData from './country_data_line/country_data_line'
 import GlobalCasesDoughnut from './global_cases_doughnut/global_cases_doughnut'
+import DailyChangesBar from './daily_changes_bar/daily_changes_bar'
 
 class GraphContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       data: [],
-      cases: true,
+      // cases: true,
     };
   }
 
@@ -99,26 +99,26 @@ class GraphContainer extends Component {
   //   return doughnutData;
   // };
 
-  barData = () => {
-    const daily = [];
-    const dailyChange = [];
+  // barData = () => {
+  //   const daily = [];
+  //   const dailyChange = [];
 
-    const countryData = this.state.data[this.props.country];
-    if (countryData !== undefined) {
-      countryData.forEach((country) => {
-        if (country.deaths !== 0) {
-          daily.push(country.confirmed);
-        }
-      });
+  //   const countryData = this.state.data[this.props.country];
+  //   if (countryData !== undefined) {
+  //     countryData.forEach((country) => {
+  //       if (country.deaths !== 0) {
+  //         daily.push(country.confirmed);
+  //       }
+  //     });
 
-      for (let i = 0; i < daily.length; i++) {
-        dailyChange.push(parseFloat(daily[i + 1]) - parseFloat(daily[i]));
-      }
+  //     for (let i = 0; i < daily.length; i++) {
+  //       dailyChange.push(parseFloat(daily[i + 1]) - parseFloat(daily[i]));
+  //     }
 
-      dailyChange.pop();
-      return dailyChange;
-    }
-  };
+  //     dailyChange.pop();
+  //     return dailyChange;
+  //   }
+  // };
 
   barLabel = () => {
     const daily = [];
@@ -138,26 +138,26 @@ class GraphContainer extends Component {
     }
   };
 
-  barDataDeaths = () => {
-    const daily = [];
-    const dailyChange = [];
+  // barDataDeaths = () => {
+  //   const daily = [];
+  //   const dailyChange = [];
 
-    const countryData = this.state.data[this.props.country];
-    if (countryData !== undefined) {
-      countryData.forEach((country) => {
-        if (country.deaths !== 0) {
-          daily.push(country.deaths);
-        }
-      });
+  //   const countryData = this.state.data[this.props.country];
+  //   if (countryData !== undefined) {
+  //     countryData.forEach((country) => {
+  //       if (country.deaths !== 0) {
+  //         daily.push(country.deaths);
+  //       }
+  //     });
 
-      for (let i = 0; i < daily.length; i++) {
-        dailyChange.push(parseFloat(daily[i + 1]) - parseFloat(daily[i]));
-      }
+  //     for (let i = 0; i < daily.length; i++) {
+  //       dailyChange.push(parseFloat(daily[i + 1]) - parseFloat(daily[i]));
+  //     }
 
-      dailyChange.pop();
-      return dailyChange;
-    }
-  };
+  //     dailyChange.pop();
+  //     return dailyChange;
+  //   }
+  // };
 
   growthFactorData = () => {
     let growthFactorData = [];
@@ -263,11 +263,11 @@ class GraphContainer extends Component {
     }
   };
 
-  handleClick = () => {
-    this.setState({
-      cases: !this.state.cases,
-    });
-  };
+  // handleClick = () => {
+  //   this.setState({
+  //     cases: !this.state.cases,
+  //   });
+  // };
   render() {
     defaults.global.defaultFontColor = "white";
 
@@ -427,163 +427,163 @@ class GraphContainer extends Component {
     //   },
     // };
 
-    const bar = {
-      labels: this.barLabel(),
-      datasets: [
-        {
-          label: "Daily Case Increase",
-          data: this.barData(),
-          backgroundColor: "rgba(24,162,184, 0.2)",
-          borderColor: "#18a2b8",
-          borderWidth: 1,
-          hoverBackgroundColor: "#18a2b8",
-          hoverBorderColor: "rgba(255,99,132,0.2)",
-          pointColor: "#18a2b8",
-        },
-      ],
-    };
+    // const bar = {
+    //   labels: this.barLabel(),
+    //   datasets: [
+    //     {
+    //       label: "Daily Case Increase",
+    //       data: this.barData(),
+    //       backgroundColor: "rgba(24,162,184, 0.2)",
+    //       borderColor: "#18a2b8",
+    //       borderWidth: 1,
+    //       hoverBackgroundColor: "#18a2b8",
+    //       hoverBorderColor: "rgba(255,99,132,0.2)",
+    //       pointColor: "#18a2b8",
+    //     },
+    //   ],
+    // };
 
-    const barDeaths = {
-      labels: this.barLabel(),
-      datasets: [
-        {
-          label: "Daily Death Increase",
-          data: this.barDataDeaths(),
-          backgroundColor: "rgba(255,99,132,0.2)",
-          borderColor: "#dc3644",
-          borderWidth: 1,
-          hoverBackgroundColor: "#dc3644",
-          hoverBorderColor: "rgba(255,99,132,0.2)",
-          pointColor: "#dc3644",
-        },
-      ],
-    };
+    // const barDeaths = {
+    //   labels: this.barLabel(),
+    //   datasets: [
+    //     {
+    //       label: "Daily Death Increase",
+    //       data: this.barDataDeaths(),
+    //       backgroundColor: "rgba(255,99,132,0.2)",
+    //       borderColor: "#dc3644",
+    //       borderWidth: 1,
+    //       hoverBackgroundColor: "#dc3644",
+    //       hoverBorderColor: "rgba(255,99,132,0.2)",
+    //       pointColor: "#dc3644",
+    //     },
+    //   ],
+    // };
 
-    const bOptions = {
-      scales: {
-        xAxes: [
-          {
-            ticks: {
-              display: true,
-              major: {
-                fontStyle: "bold",
-                fontColor: "#FFFFFF",
-              },
-            },
-            gridLines: {
-              display: false,
-              drawBorder: true,
-            },
-            scaleLabel: {
-              display: true,
-              labelString: "Cases",
-              fontStyle: "bold",
-              fontColor: "#FFFFFF",
-            },
-          },
-        ],
-        yAxes: [
-          {
-            ticks: {
-              beginAtZero: true,
-              display: true,
-              major: {
-                fontStyle: "bold",
-                fontColor: "#FFFFFF",
-              },
-            },
-            gridLines: {
-              display: true,
-              drawBorder: true,
-            },
-            scaleLabel: {
-              display: true,
-              labelString: "Deaths",
-              fontStyle: "bold",
-              fontColor: "#FFFFFF",
-            },
-          },
-        ],
-      },
-      legend: {
-        display: true,
-        position: "right",
-        align: "center",
-        labels: {
-          fontSize: 12,
-          fontStyle: "bold",
-          fontColor: "#FFFFFF",
-        },
-      },
-      tooltips: {
-        displayColors: false,
-      },
-      borderWidth: 2,
-      maintainAspectRatio: true,
-    };
+    // const bOptions = {
+    //   scales: {
+    //     xAxes: [
+    //       {
+    //         ticks: {
+    //           display: true,
+    //           major: {
+    //             fontStyle: "bold",
+    //             fontColor: "#FFFFFF",
+    //           },
+    //         },
+    //         gridLines: {
+    //           display: false,
+    //           drawBorder: true,
+    //         },
+    //         scaleLabel: {
+    //           display: true,
+    //           labelString: "Cases",
+    //           fontStyle: "bold",
+    //           fontColor: "#FFFFFF",
+    //         },
+    //       },
+    //     ],
+    //     yAxes: [
+    //       {
+    //         ticks: {
+    //           beginAtZero: true,
+    //           display: true,
+    //           major: {
+    //             fontStyle: "bold",
+    //             fontColor: "#FFFFFF",
+    //           },
+    //         },
+    //         gridLines: {
+    //           display: true,
+    //           drawBorder: true,
+    //         },
+    //         scaleLabel: {
+    //           display: true,
+    //           labelString: "Deaths",
+    //           fontStyle: "bold",
+    //           fontColor: "#FFFFFF",
+    //         },
+    //       },
+    //     ],
+    //   },
+    //   legend: {
+    //     display: true,
+    //     position: "right",
+    //     align: "center",
+    //     labels: {
+    //       fontSize: 12,
+    //       fontStyle: "bold",
+    //       fontColor: "#FFFFFF",
+    //     },
+    //   },
+    //   tooltips: {
+    //     displayColors: false,
+    //   },
+    //   borderWidth: 2,
+    //   maintainAspectRatio: true,
+    // };
 
-    const bDeathOptions = {
-      scales: {
-        xAxes: [
-          {
-            ticks: {
-              display: true,
-              major: {
-                fontStyle: "bold",
-                fontColor: "#FFFFFF",
-              },
-            },
-            gridLines: {
-              display: false,
-              drawBorder: true,
-            },
-            scaleLabel: {
-              display: true,
-              labelString: "Date (YY/MM/DD)",
-              fontStyle: "bold",
-              fontColor: "#FFFFFF",
-            },
-          },
-        ],
-        yAxes: [
-          {
-            ticks: {
-              beginAtZero: true,
-              display: true,
-              major: {
-                fontStyle: "bold",
-                fontColor: "#FFFFFF",
-              },
-            },
-            gridLines: {
-              display: true,
-              drawBorder: true,
-            },
-            scaleLabel: {
-              display: true,
-              labelString: "Cases",
-              fontStyle: "bold",
-              fontColor: "#FFFFFF",
-            },
-          },
-        ],
-      },
-      legend: {
-        display: true,
-        position: "right",
-        align: "center",
-        labels: {
-          fontSize: 12,
-          fontStyle: "bold",
-          fontColor: "#FFFFFF",
-        },
-      },
-      tooltips: {
-        displayColors: false,
-      },
-      borderWidth: 2,
-      maintainAspectRatio: true,
-    };
+    // const bDeathOptions = {
+    //   scales: {
+    //     xAxes: [
+    //       {
+    //         ticks: {
+    //           display: true,
+    //           major: {
+    //             fontStyle: "bold",
+    //             fontColor: "#FFFFFF",
+    //           },
+    //         },
+    //         gridLines: {
+    //           display: false,
+    //           drawBorder: true,
+    //         },
+    //         scaleLabel: {
+    //           display: true,
+    //           labelString: "Date (YY/MM/DD)",
+    //           fontStyle: "bold",
+    //           fontColor: "#FFFFFF",
+    //         },
+    //       },
+    //     ],
+    //     yAxes: [
+    //       {
+    //         ticks: {
+    //           beginAtZero: true,
+    //           display: true,
+    //           major: {
+    //             fontStyle: "bold",
+    //             fontColor: "#FFFFFF",
+    //           },
+    //         },
+    //         gridLines: {
+    //           display: true,
+    //           drawBorder: true,
+    //         },
+    //         scaleLabel: {
+    //           display: true,
+    //           labelString: "Cases",
+    //           fontStyle: "bold",
+    //           fontColor: "#FFFFFF",
+    //         },
+    //       },
+    //     ],
+    //   },
+    //   legend: {
+    //     display: true,
+    //     position: "right",
+    //     align: "center",
+    //     labels: {
+    //       fontSize: 12,
+    //       fontStyle: "bold",
+    //       fontColor: "#FFFFFF",
+    //     },
+    //   },
+    //   tooltips: {
+    //     displayColors: false,
+    //   },
+    //   borderWidth: 2,
+    //   maintainAspectRatio: true,
+    // };
 
     const gfLine = {
       labels: this.growthFactorLabels(),
@@ -706,7 +706,8 @@ class GraphContainer extends Component {
         <br></br>
         <br></br>
         <div id="b">
-          <h4>{`${this.props.country}`} Daily Changes</h4>
+          <DailyChangesBar data={this.state.data} country={this.props.country}/>
+          {/* <h4>{`${this.props.country}`} Daily Changes</h4>
           <br></br>
           {!this.state.cases && (
             <Button onClick={this.handleClick} variant={"info"}>
@@ -719,7 +720,7 @@ class GraphContainer extends Component {
             </Button>
           )}
           {!this.state.cases && <Bar data={barDeaths} options={bOptions} />}
-          {this.state.cases && <Bar data={bar} options={bDeathOptions} />}
+          {this.state.cases && <Bar data={bar} options={bDeathOptions} />} */}
         </div>
         <div id="gf">
           <h4>{`${this.props.country}`} Growth Factor (R) </h4>
