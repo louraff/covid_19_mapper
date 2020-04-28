@@ -44,8 +44,8 @@ class GlobalCasesDoughnut extends Component {
       datasets: [
         {
           data: this.doughnutData(),
-          backgroundColor: ["#FBBD08"],
-          hoverBackgroundColor: "#18A2B8",
+          backgroundColor: ["#18A2B8"],
+          hoverBackgroundColor: "#FBBD08",
           borderWidth: 0.5,
           borderColor: "#646D79",
         },
@@ -82,7 +82,6 @@ class GlobalCasesDoughnut extends Component {
     };
     return (  
       <React.Fragment>
-        <h4>{`${this.props.country}`} as % of Global Cases</h4>
         <Doughnut data={doughnut} options={options} />
       </React.Fragment>
     );

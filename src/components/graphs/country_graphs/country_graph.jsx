@@ -5,6 +5,8 @@ import GlobalCasesDoughnut from './global_cases_doughnut/global_cases_doughnut'
 import DailyChangesBar from './daily_changes_bar/daily_changes_bar'
 import GrowthFactorLine from './growth_factor_line/growth_factor_line'
 
+
+
 class CountryGraphContainer extends Component {
   constructor(props) {
     super(props);
@@ -44,10 +46,7 @@ class CountryGraphContainer extends Component {
       <React.Fragment>
         <br></br>
         <div id="l">
-          <CountryLineData createLineLabels={this.createLineLabels()} country={this.props.country} data={this.state.data} />
-        </div>
-        <div id="d">
-          <GlobalCasesDoughnut country={this.props.country} countries={this.props.countries} total={this.props.total}/>
+        <CountryLineData createLineLabels={this.createLineLabels()} country={this.props.country} data={this.state.data} total={this.props.total} countries={this.props.countries}/>
         </div>
         <div id="b">
           <DailyChangesBar data={this.state.data} country={this.props.country}/>

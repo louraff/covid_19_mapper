@@ -236,20 +236,22 @@ class DailyChangesBar extends Component {
     
     return ( 
       <React.Fragment>
-         <h4>{`${this.props.country}`} Daily Changes</h4>
-          <br></br>
           {!this.state.cases && (
             <div>
+              <h4>{`${this.props.country}`} Daily Case Change</h4>
+              <br></br>
             <Button onClick={this.handleClick} variant={"info"}>
-              Show Changes in Cases
+              Show Cases
             </Button>
             <Bar data={barDeaths} options={bOptions} />
             </div>
           )}
           {this.state.cases && (
             <div>
+               <h4>{`${this.props.country}`} Daily Death Change</h4>
+               <br></br>
             <Button onClick={this.handleClick} variant={"danger"}>
-              Show Changes in Deaths
+              Show Deaths
             </Button>
             <Bar data={bar} options={bDeathOptions} />
             </div>

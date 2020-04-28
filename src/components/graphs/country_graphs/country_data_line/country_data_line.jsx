@@ -1,7 +1,13 @@
 import React, { Component } from "react";
 import { Line } from "react-chartjs-2";
+import Button from "react-bootstrap/Button";
+import GlobalCasesDoughnut from './../global_cases_doughnut/global_cases_doughnut'
 
 class CountryDataLine extends Component {
+
+  state ={
+    doughnut: false
+  }
 
   createLineData = (type) => {
     const graphData = {
@@ -30,6 +36,12 @@ class CountryDataLine extends Component {
       }
     }
   };
+
+  handleDoughnutClick = () => {
+    this.setState({
+      doughnut: !this.state.doughnut
+    })
+  }
 
   render() {
     
@@ -149,8 +161,23 @@ class CountryDataLine extends Component {
 
     return (
         <React.Fragment>
-        <h4>{`${this.props.country}`} Data From Day of First Death</h4>
+        
+        {!this.state.doughnut && (
+        <div>
+        <h4>{`${this.props.country}`} Data</h4>
+        <br></br>
+        <Button onClick={this.handleDoughnutClick} variant={"info"}>Show {`${this.props.country}`} Cases as % of Global Cases </Button> 
         <Line data={line} options={options} />
+        </div>
+        )}
+        {this.state.doughnut && (
+          <div>
+           <h4>{`${this.props.country}`} as % of Global Cases</h4>
+           <br></br>
+           <Button onClick={this.handleDoughnutClick} variant={"warning"}>Show Data of {`${this.props.country}`} </Button> 
+           <GlobalCasesDoughnut country={this.props.country} countries={this.props.countries} total={this.props.total} />
+           </div>
+        )}
         </React.Fragment>
     );
   }

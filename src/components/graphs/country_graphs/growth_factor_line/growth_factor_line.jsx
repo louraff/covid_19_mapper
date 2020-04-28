@@ -138,7 +138,6 @@ class GrowthFactorLine extends Component {
           borderColor: "#fbbd08",
           borderWidth: 2,
           pointBackgroundColor: "#fbbd08",
-          pointBorderColor: "#000000",
           pointBorderWidth: 0.5,
           pointStyle: "rectRounded",
           pointRadius: 4,

@@ -44,7 +44,7 @@ class SearchContainer extends Component {
   render() {
     return (
       <div id="search">
-        <h4 id="search-heading">Country Specific Data</h4>
+        <h4 id="search-heading">Country Specific Data From Day of First Death</h4>
         <div id="search-bar">
           <form onSubmit={e => { e.preventDefault(); }} id="search-form">
             <label>

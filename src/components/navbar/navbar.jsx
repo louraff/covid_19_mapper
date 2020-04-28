@@ -237,8 +237,8 @@ class Header extends Component {
               alignRight
               variant={"outline-warning"}
               title={
-                "Global C.F.R: " + this.props.globalCFR === "Global C.F.R: null"
-                  ? "Global C.F.F: " && (
+                "Global Av. C.F.R: " + this.props.globalCFR === "Global C.F.R: null"
+                  ? "Global C.F.R: " && (
                       <Spinner
                         as="span"
                         animation="grow"
@@ -247,7 +247,7 @@ class Header extends Component {
                         aria-hidden="true"
                       />
                     )
-                  : "Global C.F.R: " + this.props.globalCFR + "%"
+                  : "Global Av. C.F.R: " + this.props.globalCFR + "%"
               }
               id={"dropdown-menu-align-right"}
             >
