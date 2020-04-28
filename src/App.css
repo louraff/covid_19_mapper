@@ -60,7 +60,7 @@
 
 #table {
   position: absolute;
-  top: 70px;
+  padding: 100px;
 }
 
 #table-heading {
