@@ -7,7 +7,7 @@ import Spinner from "react-bootstrap/Spinner";
 import MapContainer from "./../map/map";
 import TableContainer from "./../tables/table";
 import SearchContainer from "./../searchbar/searchbar";
-import HorizontalBarContainer from "../graphs/global_graphs/horizontal_bar_container/horizontal_bar_container";
+import GlobalGraphContainer from "../graphs/global_graphs/global_graph";
 
 class Header extends Component {
   constructor(props) {
@@ -15,7 +15,8 @@ class Header extends Component {
     this.state = {
       viewMap: false,
       viewTables: false,
-      viewGraph: true,
+      viewCountryGraph: true,
+      viewGlobalGraph: false
     };
   }
 
@@ -23,7 +24,8 @@ class Header extends Component {
     this.setState({
       viewMap: true,
       viewTables: false,
-      viewGraph: false,
+      viewCountryGraph: false,
+      viewGlobalGraph: false
     });
   };
 
@@ -31,17 +33,28 @@ class Header extends Component {
     this.setState({
       viewMap: false,
       viewTables: true,
-      viewGraph: false,
+      viewCountryGraph: false,
+      viewGlobalGraph: false
     });
   };
 
-  handleGraphClick = () => {
+  handleCountryGraphClick = () => {
     this.setState({
       viewMap: false,
       viewTables: false,
-      viewGraph: true,
+      viewCountryGraph: true,
+      viewGlobalGraph: false
     });
   };
+  
+  handleGlobalGraphClick = () => {
+    this.setState({
+      viewMap: false,
+      viewTables: false,
+      viewCountryGraph: false,
+      viewGlobalGraph: true
+    });
+  }
 
   render() {
     return (
@@ -109,7 +122,7 @@ class Header extends Component {
                   Interactive Table
                 </div>
               </Dropdown.Item>
-              <Dropdown.Item onClick={this.handleGraphClick}>
+              <Dropdown.Item onClick={this.handleCountryGraphClick}>
                 <div id="drop-down-window">
                   <div id="info-icon">
                     <img
@@ -119,7 +132,21 @@ class Header extends Component {
                       alt=""
                     ></img>
                   </div>
-                  Interactive Charts
+                  Interactive Country Charts
+                </div>
+              </Dropdown.Item>
+
+              <Dropdown.Item onClick={this.handleGlobalGraphClick}>
+                <div id="drop-down-window">
+                  <div id="info-icon">
+                    <img
+                      src="https://cdn4.iconfinder.com/data/icons/data-management-2-3/50/76-512.png"
+                      height="18px"
+                      width="18px"
+                      alt=""
+                    ></img>
+                  </div>
+                  Interactive Global Charts
                 </div>
               </Dropdown.Item>
             </DropdownButton>
@@ -286,16 +313,20 @@ class Header extends Component {
             <TableContainer countries={this.props.integerCountries} />
           </div>
         )}
-        {this.state.viewGraph && (
+        {this.state.viewCountryGraph && (
           <div id="graph">
-            <div id="b">
-              <HorizontalBarContainer countries={this.props.integerCountries} />
-            </div>
             <div id="search">
               <SearchContainer
                 countries={this.props.integerCountries}
                 totalInt={this.props.totalInt}
               />
+            </div>
+          </div>
+        )}
+        {this.state.viewGlobalGraph && (
+          <div id="graph">
+            <div id="b">
+            <GlobalGraphContainer countries={this.props.integerCountries} />
             </div>
           </div>
         )}

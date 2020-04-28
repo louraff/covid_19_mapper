@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import GraphContainer from "../graphs/country_graphs/country_graph";
+import CountryGraphContainer from "../graphs/country_graphs/country_graph";
 
 class SearchContainer extends Component {
   constructor(props) {
@@ -62,7 +62,7 @@ class SearchContainer extends Component {
         </div>
         <div id="graph-countainer">
           <br></br>
-          <GraphContainer
+          <CountryGraphContainer
             country={this.state.results[0] === undefined ? "United Kingdom" : this.state.results[0]}
             countries={this.props.countries}
             total={this.props.totalInt}

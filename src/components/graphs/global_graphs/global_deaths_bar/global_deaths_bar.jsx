@@ -3,7 +3,7 @@ import popData from "../../../assets/popData";
 import { HorizontalBar } from "react-chartjs-2";
 import Button from "react-bootstrap/Button";
 
-export class HorizontalBarContainer extends Component {
+export class GlobalDeathsBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -310,28 +310,36 @@ export class HorizontalBarContainer extends Component {
       <div>
         <h4>Highest Deaths per 1 Million People</h4>
         {!this.state.adjust && (
+           <div id="h">
           <Button onClick={this.handleClick} variant={"danger"}>
             Adjust for Population Density
           </Button>
+         
+          <HorizontalBar data={horizontal} options={hOptions} />
+        </div>
         )}
         {this.state.adjust && (
+          <div id="h">
           <Button onClick={this.handleClick} variant={"danger"}>
             Raw Statistics
           </Button>
+          
+          <HorizontalBar data={horizontalAdj} options={hOptionsAdj} />
+        </div>
         )}
-        {!this.state.adjust && (
+        {/* {!this.state.adjust && (
           <div id="h">
             <HorizontalBar data={horizontal} options={hOptions} />
           </div>
-        )}
-        {this.state.adjust && (
+        )} */}
+        {/* {this.state.adjust && (
           <div id="h">
             <HorizontalBar data={horizontalAdj} options={hOptionsAdj} />
           </div>
-        )}
+        )} */}
       </div>
     );
   }
 }
 
-export default HorizontalBarContainer;
+export default GlobalDeathsBar;
