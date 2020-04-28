@@ -61,13 +61,19 @@ This will display all of tests and snapshot tests.
 <img src='./public/images/two_map.png' />
 
 ---
-
 ## Stage 3
-#### Map View
-<img src='./public/images/three_map.png' />
 
-#### Table View
-<img src='./public/images/three_table.png' />
+<table>
+  <tr>
+    <td>Map View</td>
+     <td>Table View</td>
+  </tr>
+  <tr>
+    <td valign="top"><img src='./public/images/three_map.png' width="5000"/></td>
+    <td valign="top"><img src='./public/images/three_table.png' width="5000"/></td>
+  </tr>
+ </table>
+<table>
 
 ---
 
@@ -86,6 +92,5 @@ This will display all of tests and snapshot tests.
 
 ## Forking This Repo
 
-This site is fully open source, but as you all know, plagiarism is bad. We put blood, sweat and tears into this project and are proud of it! Feel free to fork this repo, but if you do, please just give us proper credit by linking back to the repo: https://github.com/davidpaps/covid_19_mapper
+This site is fully open source so feel free to fork this repo. If you do, please just give us proper credit by linking back to the repo: https://github.com/davidpaps/covid_19_mapper We put blood, sweat and tears into this project and are proud of it! 
 
----
