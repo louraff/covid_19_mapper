@@ -255,8 +255,6 @@ class DailyChangesBar extends Component {
             <Bar data={bar} options={bDeathOptions} />
             </div>
           )}
-          {/* {!this.state.cases && <Bar data={barDeaths} options={bOptions} />}
-          {this.state.cases && <Bar data={bar} options={bDeathOptions} />} */}
       </React.Fragment>
      );
   }

@@ -3,19 +3,6 @@ import { Line, defaults } from "react-chartjs-2";
 
 class CountryDataLine extends Component {
 
-  createLineLabels = () => {
-    const labelData = [];
-    const countryData = this.props.data[this.props.country];
-    if (countryData !== undefined) {
-      countryData.forEach((date) => {
-        if (date.deaths !== 0) {
-          labelData.push(date.date);
-        }
-      });
-      return labelData;
-    }
-  };
-
   createLineData = (type) => {
     const graphData = {
       deaths: [],
@@ -48,7 +35,7 @@ class CountryDataLine extends Component {
     defaults.global.defaultFontColor = "white";
     
     const line = {
-      labels: this.createLineLabels(),
+      labels: this.props.createLineLabels,
       datasets: [
         {
           label: "Confirmed Cases",
