@@ -327,16 +327,6 @@ export class GlobalDeathsBar extends Component {
           <HorizontalBar data={horizontalAdj} options={hOptionsAdj} />
         </div>
         )}
-        {/* {!this.state.adjust && (
-          <div id="h">
-            <HorizontalBar data={horizontal} options={hOptions} />
-          </div>
-        )} */}
-        {/* {this.state.adjust && (
-          <div id="h">
-            <HorizontalBar data={horizontalAdj} options={hOptionsAdj} />
-          </div>
-        )} */}
       </div>
     );
   }

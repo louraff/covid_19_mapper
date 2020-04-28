@@ -15,20 +15,10 @@ class CountryGraphContainer extends Component {
     };
   }
 
-  componentDidMount() {
-    fetch("https://pomber.github.io/covid19/timeseries.json")
-      .then((response) => response.json())
-      .then((data) => {
-        data["USA"] = data["US"];
-        this.setState({
-          data: data,
-        });
-      });
-  }
 
   createLineLabels = () => {
     const labelData = [];
-    const countryData = this.state.data[this.props.country];
+    const countryData = this.props.timeseries[this.props.country];
     if (countryData !== undefined) {
       countryData.forEach((date) => {
         if (date.deaths !== 0) {
@@ -46,13 +36,13 @@ class CountryGraphContainer extends Component {
       <React.Fragment>
         <br></br>
         <div id="l">
-        <CountryLineData createLineLabels={this.createLineLabels()} country={this.props.country} data={this.state.data} total={this.props.total} countries={this.props.countries}/>
+        <CountryLineData createLineLabels={this.createLineLabels()} country={this.props.country} data={this.props.timeseries} total={this.props.total} countries={this.props.countries}/>
         </div>
         <div id="b">
-          <DailyChangesBar data={this.state.data} country={this.props.country}/>
+          <DailyChangesBar data={this.props.timeseries} country={this.props.country}/>
         </div>
         <div id="gf">
-          <GrowthFactorLine createLineLabels={this.createLineLabels()} data={this.state.data} country={this.props.country}/>
+          <GrowthFactorLine createLineLabels={this.createLineLabels()} data={this.props.timeseries} country={this.props.country}/>
         </div>
         
       </React.Fragment>

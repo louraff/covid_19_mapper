@@ -239,8 +239,9 @@ class Header extends Component {
               alignRight
               variant={"outline-warning"}
               title={
-                "Global Av. C.F.R: " + this.props.globalCFR === "Global C.F.R: null"
-                  ? "Global C.F.R: " && (
+                "Global Cases: " + this.props.total.total_cases ===
+                "Global Cases: undefined"
+                  ? "Global Av. C.F.R: " && (
                       <Spinner
                         as="span"
                         animation="grow"
@@ -321,15 +322,14 @@ class Header extends Component {
               <SearchContainer
                 countries={this.props.integerCountries}
                 totalInt={this.props.totalInt}
+                timeseries={this.props.timeseries}
               />
             </div>
           </div>
         )}
         {this.state.viewGlobalGraph && (
           <div id="graph">
-            <div id="b">
             <GlobalGraphContainer countries={this.props.integerCountries} />
-            </div>
           </div>
         )}
       </div>

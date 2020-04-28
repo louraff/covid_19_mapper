@@ -66,6 +66,7 @@ class SearchContainer extends Component {
             country={this.state.results[0] === undefined ? "United Kingdom" : this.state.results[0]}
             countries={this.props.countries}
             total={this.props.totalInt}
+            timeseries={this.props.timeseries}
           />
         </div>
       </div>
