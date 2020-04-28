@@ -78,15 +78,36 @@ This will display all of tests and snapshot tests.
 ---
 
 ## Stage 4
-#### Horizontal Bar Chart
-<img src='./public/images/four_graph.png' />
-
-#### Line Graph 
-<img src='./public/images/four_graph_2.png' />
-
-#### Doughnut Chart 
-<img src='./public/images/four_graph_3.png' />
-
+<table>
+  <tr>
+    <td>Map View</td>
+     <td>Table View</td>
+  </tr>
+  <tr>
+    <td valign="top"><img src='./public/images/four_map.png' width="5000"/></td>
+    <td valign="top"><img src='./public/images/four_table.png' width="5000"/></td>
+  </tr>
+ </table>
+<table>
+  <tr>
+    <td>Chart 1- Cases per Million</td>
+     <td>Chart 2 - Country Daily Changes</td>
+  </tr>
+  <tr>
+    <td valign="top"><img src='./public/images/four_graph_million.png' width="5000"/></td>
+    <td valign="top"><img src='./public/images/four_graph_daily.png' width="5000"/></td>
+  </tr>
+ </table>
+<table>
+   <tr>
+     <td>Chart 3 - Country Data</td>
+      <td>Chart 4 - Country R Value</td>
+   </tr>
+   <tr>
+     <td valign="top"><img src='./public/images/four_graph_data.png' width="5000"/></td>
+     <td valign="top"><img src='./public/images/four_graph_r.png' width="5000"/></td>
+   </tr>
+  </table>
 
 ---
 
