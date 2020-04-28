@@ -74,6 +74,8 @@ class App extends Component {
 
   fixTimeSeriesUS = (res4) => {
     res4["USA"] = res4["US"]
+    delete res4["US"] 
+    
     return res4
   }
 

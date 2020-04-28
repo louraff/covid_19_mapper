@@ -15,8 +15,8 @@ class Header extends Component {
     this.state = {
       viewMap: false,
       viewTables: false,
-      viewCountryGraph: true,
-      viewGlobalGraph: false
+      viewCountryGraph: false,
+      viewGlobalGraph: true
     };
   }
 
@@ -329,7 +329,7 @@ class Header extends Component {
         )}
         {this.state.viewGlobalGraph && (
           <div id="graph">
-            <GlobalGraphContainer countries={this.props.integerCountries} />
+            <GlobalGraphContainer countries={this.props.integerCountries} data={this.props.timeseries}/>
           </div>
         )}
       </div>
