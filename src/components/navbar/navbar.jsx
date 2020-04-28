@@ -109,19 +109,21 @@ class Header extends Component {
                   Interactive Map
                 </div>
               </Dropdown.Item>
-              <Dropdown.Item onClick={this.handleTableClick}>
+              <Dropdown.Divider />
+              <Dropdown.Item onClick={this.handleGlobalGraphClick}>
                 <div id="drop-down-window">
                   <div id="info-icon">
                     <img
-                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Simple_icon_table.svg/1280px-Simple_icon_table.svg.png"
-                      height="16px"
-                      width="20px"
+                      src="https://cdn4.iconfinder.com/data/icons/data-management-2-3/50/76-512.png"
+                      height="18px"
+                      width="18px"
                       alt=""
                     ></img>
                   </div>
-                  Interactive Table
+                  Interactive Global Charts
                 </div>
               </Dropdown.Item>
+              <Dropdown.Divider />
               <Dropdown.Item onClick={this.handleCountryGraphClick}>
                 <div id="drop-down-window">
                   <div id="info-icon">
@@ -135,18 +137,18 @@ class Header extends Component {
                   Interactive Country Charts
                 </div>
               </Dropdown.Item>
-
-              <Dropdown.Item onClick={this.handleGlobalGraphClick}>
+              <Dropdown.Divider />
+              <Dropdown.Item onClick={this.handleTableClick}>
                 <div id="drop-down-window">
                   <div id="info-icon">
                     <img
-                      src="https://cdn4.iconfinder.com/data/icons/data-management-2-3/50/76-512.png"
-                      height="18px"
-                      width="18px"
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Simple_icon_table.svg/1280px-Simple_icon_table.svg.png"
+                      height="16px"
+                      width="20px"
                       alt=""
                     ></img>
                   </div>
-                  Interactive Global Charts
+                  Interactive Table
                 </div>
               </Dropdown.Item>
             </DropdownButton>

@@ -108,7 +108,7 @@ class DailyChangesBar extends Component {
       ],
     };
 
-    const bOptions = {
+    const bDeathOptions = {
       scales: {
         xAxes: [
           {
@@ -171,7 +171,7 @@ class DailyChangesBar extends Component {
       maintainAspectRatio: true,
     };
 
-    const bDeathOptions = {
+    const bOptions = {
       scales: {
         xAxes: [
           {
@@ -243,7 +243,7 @@ class DailyChangesBar extends Component {
             <Button onClick={this.handleClick} variant={"info"}>
               Show Cases
             </Button>
-            <Bar data={barDeaths} options={bOptions} />
+            <Bar data={barDeaths} options={bDeathOptions} />
             </div>
           )}
           {this.state.cases && (
@@ -253,7 +253,7 @@ class DailyChangesBar extends Component {
             <Button onClick={this.handleClick} variant={"danger"}>
               Show Deaths
             </Button>
-            <Bar data={bar} options={bDeathOptions} />
+            <Bar data={bar} options={bOptions} />
             </div>
           )}
       </React.Fragment>

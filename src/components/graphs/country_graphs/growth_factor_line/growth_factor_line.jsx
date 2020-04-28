@@ -131,7 +131,7 @@ class GrowthFactorLine extends Component {
       labels: this.growthFactorLabels(),
       datasets: [
         {
-          label: "Growth Factor",
+          label: "Growth Factor (R)",
           data: this.newGrowthFactorData(7),
           fill: false,
           backgroundColor: "#fbbd08",
@@ -146,7 +146,7 @@ class GrowthFactorLine extends Component {
           hoverBackgroundColor: "#FFFFFF",
         },
         {
-          label: "Desired Growth Factor",
+          label: "Desired Growth Factor (R)",
           data: this.growthFactorOne(this.growthFactorLabels()),
           fill: true,
           backgroundColor: "rgba(40, 167, 69, 0.4)",
