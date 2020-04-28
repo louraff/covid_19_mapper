@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import popData from "./../assets/popData";
+import popData from "../../../assets/popData";
 import { HorizontalBar } from "react-chartjs-2";
-import Button from "react-bootstrap/Button"
+import Button from "react-bootstrap/Button";
 
-export class HorizontalBarContainer extends Component {
+export class GlobalDeathsBar extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      adjust: false
-    }
+      adjust: false,
+    };
   }
 
   horizontalBarLabels = () => {
@@ -44,7 +44,10 @@ export class HorizontalBarContainer extends Component {
         if (country.country === countryPop.name) {
           if (parseFloat(countryPop.pop2020) / 1000 > 2.5) {
             deathsPer1m.push({
-              deaths: (country.deaths / (parseFloat(countryPop.pop2020) / 1000)) / countryPop.Density,
+              deaths:
+                country.deaths /
+                (parseFloat(countryPop.pop2020) / 1000) /
+                countryPop.Density,
               country: country.country,
             });
           }
@@ -65,9 +68,9 @@ export class HorizontalBarContainer extends Component {
 
   handleClick = () => {
     this.setState({
-      adjust: !this.state.adjust
-    })
-  }
+      adjust: !this.state.adjust,
+    });
+  };
 
   horizontalBarDataAdj = () => {
     var deathsPer1m = [];
@@ -76,7 +79,9 @@ export class HorizontalBarContainer extends Component {
         if (country.country === countryPop.name) {
           if (parseFloat(countryPop.pop2020) / 1000 > 2.5) {
             deathsPer1m.push(
-              (country.deaths / (parseFloat(countryPop.pop2020) / 1000)) / countryPop.Density
+              country.deaths /
+                (parseFloat(countryPop.pop2020) / 1000) /
+                countryPop.Density
             );
           }
         }
@@ -109,7 +114,7 @@ export class HorizontalBarContainer extends Component {
       })
       .slice(0, 20);
     return topTenDeathsPer1m;
-  }
+  };
 
   render() {
     const horizontal = {
@@ -128,7 +133,6 @@ export class HorizontalBarContainer extends Component {
       ],
     };
 
-
     const horizontalAdj = {
       labels: this.horizontalBarLabelsAdjusted(),
       datasets: [
@@ -141,9 +145,9 @@ export class HorizontalBarContainer extends Component {
           hoverBackgroundColor: "rgb(255,99,132,0.2)",
           hoverBorderColor: "#dc3644",
           pointColor: "#dc3644",
-        }
+        },
       ],
-    }
+    };
 
     const hOptions = {
       scales: {
@@ -214,14 +218,14 @@ export class HorizontalBarContainer extends Component {
             return [
               "Deaths per 1M: " + Math.round(tooltipItems.xLabel),
               "Population Density: " +
-              Math.round(popDensity[0]) +
-              " ( People per km\u00B2 )",
+                Math.round(popDensity[0]) +
+                " ( People per km\u00B2 )",
             ];
           },
         },
       },
       borderWidth: 2,
-      maintainAspectRatio: true
+      maintainAspectRatio: true,
     };
 
     const hOptionsAdj = {
@@ -293,37 +297,39 @@ export class HorizontalBarContainer extends Component {
             return [
               "Adjusted Deaths per 1M: " + tooltipItems.xLabel.toFixed(2),
               "Population Density: " +
-              Math.round(popDensity[0]) +
-              " ( People per km\u00B2 )",
+                Math.round(popDensity[0]) +
+                " ( People per km\u00B2 )",
             ];
           },
         },
       },
       borderWidth: 2,
-      maintainAspectRatio: true
+      maintainAspectRatio: true,
     };
     return (
       <div>
         <h4>Highest Deaths per 1 Million People</h4>
-        {!this.state.adjust &&
-          <Button onClick={this.handleClick} variant={"danger"}>Adjust for Population Density</Button>
-        }
-        {this.state.adjust &&
-          <Button onClick={this.handleClick} variant={"danger"}>Raw Statistics</Button>
-        }
-        {!this.state.adjust &&
+        {!this.state.adjust && (
+           <div id="h">
+          <Button onClick={this.handleClick} variant={"danger"}>
+            Adjust for Population Density
+          </Button>
+         
+          <HorizontalBar data={horizontal} options={hOptions} />
+        </div>
+        )}
+        {this.state.adjust && (
           <div id="h">
-            <HorizontalBar data={horizontal} options={hOptions} />
-          </div>
-        }
-        {this.state.adjust &&
-          <div id="h">
-            <HorizontalBar data={horizontalAdj} options={hOptionsAdj} />
-          </div>
-        }
+          <Button onClick={this.handleClick} variant={"danger"}>
+            Raw Statistics
+          </Button>
+          
+          <HorizontalBar data={horizontalAdj} options={hOptionsAdj} />
+        </div>
+        )}
       </div>
     );
   }
 }
 
-export default HorizontalBarContainer;
+export default GlobalDeathsBar;

@@ -13,6 +13,7 @@ class App extends Component {
     totalInt: [],
     totalCFR: null,
     countriesInteger: [],
+    timeSeries: []
   };
 
   componentDidMount() {
@@ -48,13 +49,15 @@ class App extends Component {
             "2bb49386fdmsh5daac6ca9add22ep1484a8jsn9816903163ef",
         },
       }),
+      fetch("https://pomber.github.io/covid19/timeseries.json")
+    
     ])
 
-      .then(([res1, res2, res3]) => {
-        return Promise.all([res1.json(), res2.json(), res3.json()]);
+      .then(([res1, res2, res3,res4]) => {
+        return Promise.all([res1.json(), res2.json(), res3.json(), res4.json()]);
       })
 
-      .then(([res1, res2, res3]) => {
+      .then(([res1, res2, res3,res4]) => {
         this.setState({
           countries: this.createCountry(res2.countries_stat, res3.list),
           total: this.updateTotal(res1),
@@ -64,8 +67,16 @@ class App extends Component {
             res2.countries_stat,
             res3.list
           ),
+          timeSeries: this.fixTimeSeriesUS(res4)
         });
       });
+  }
+
+  fixTimeSeriesUS = (res4) => {
+    res4["USA"] = res4["US"]
+    delete res4["US"] 
+    
+    return res4
   }
 
   createCountry(country, states) {
@@ -222,6 +233,7 @@ class App extends Component {
           countries={this.state.countries}
           globalCFR={this.state.totalCFR}
           integerCountries={this.state.countriesInteger}
+          timeseries={this.state.timeSeries}
         />
       </div>
     );

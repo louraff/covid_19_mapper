@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import GraphContainer from "./../graph/graph";
+import CountryGraphContainer from "../graphs/country_graphs/country_graph";
 
 class SearchContainer extends Component {
   constructor(props) {
@@ -44,7 +44,7 @@ class SearchContainer extends Component {
   render() {
     return (
       <div id="search">
-        <h4 id="search-heading">Country Specific Data</h4>
+        <h4 id="search-heading">Country Specific Data From Day of First Death</h4>
         <div id="search-bar">
           <form onSubmit={e => { e.preventDefault(); }} id="search-form">
             <label>
@@ -62,10 +62,11 @@ class SearchContainer extends Component {
         </div>
         <div id="graph-countainer">
           <br></br>
-          <GraphContainer
+          <CountryGraphContainer
             country={this.state.results[0] === undefined ? "United Kingdom" : this.state.results[0]}
             countries={this.props.countries}
             total={this.props.totalInt}
+            timeseries={this.props.timeseries}
           />
         </div>
       </div>
