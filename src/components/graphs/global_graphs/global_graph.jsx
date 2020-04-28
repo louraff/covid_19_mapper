@@ -7,12 +7,10 @@ class GlobalGraphContainer extends Component {
     data: []
    }
 
-  sortData = () => {
+  componentDidMount(){
     let worldData = []
     let data = this.props.data
-    console.log(data)
-    // console.log(this.props.data)
-    let countryArray = Object.keys(this.props.data).map(i => i)
+    let countryArray = Object.keys(data).map(i => i)
     countryArray.forEach((country) => {
       let countryData = data[country]
       countryData.forEach((day, index) => {
@@ -26,12 +24,13 @@ class GlobalGraphContainer extends Component {
         }
       })
     })
-      return worldData
+      this.setState({
+        data: worldData
+      })
   }
 
   render() { 
     defaults.global.defaultFontColor = "white";
-    console.log(this.sortData())
     return (  
       <div id="b">
         <GlobalDeathsBar countries={this.props.countries} />

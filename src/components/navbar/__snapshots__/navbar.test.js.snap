@@ -124,7 +124,11 @@ exports[`Navbar Component render correctly Header component 1`] = `
           onClick={[Function]}
           type="button"
         >
-          Global C.F.R: 2.9587486%
+          <span
+            aria-hidden="true"
+            className="spinner-grow spinner-grow-sm"
+            role="status"
+          />
         </button>
       </div>
     </div>
