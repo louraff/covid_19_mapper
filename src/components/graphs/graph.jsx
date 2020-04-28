@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Line, Doughnut, Bar, defaults } from "react-chartjs-2";
 import Button from "react-bootstrap/Button";
 import CountryLineData from './country_data_line/country_data_line'
+import GlobalCasesDoughnut from './global_cases_doughnut/global_cases_doughnut'
 
 class GraphContainer extends Component {
   constructor(props) {
@@ -64,39 +65,39 @@ class GraphContainer extends Component {
     }
   };
 
-  doughnutLabels = () => {
-    const doughtnutLabels = [];
-    if (this.props.countries !== undefined) {
-      this.props.countries.forEach((country) => {
-        if (country.country === this.props.country) {
-          doughtnutLabels.unshift(country.country);
-        }
-        if (country.country !== this.props.country) {
-          doughtnutLabels.push(country.country);
-        }
-      });
-    }
-    return doughtnutLabels;
-  };
+  // doughnutLabels = () => {
+  //   const doughtnutLabels = [];
+  //   if (this.props.countries !== undefined) {
+  //     this.props.countries.forEach((country) => {
+  //       if (country.country === this.props.country) {
+  //         doughtnutLabels.unshift(country.country);
+  //       }
+  //       if (country.country !== this.props.country) {
+  //         doughtnutLabels.push(country.country);
+  //       }
+  //     });
+  //   }
+  //   return doughtnutLabels;
+  // };
 
-  doughnutData = () => {
-    const doughnutData = [];
-    if (this.props.countries !== undefined) {
-      this.props.countries.forEach((country) => {
-        if (country.country === this.props.country && !country.us) {
-          doughnutData.unshift(
-            ((country.confirmed / this.props.total[0]) * 100).toFixed(2)
-          );
-        }
-        if (!country.us && country.country !== this.props.country) {
-          doughnutData.push(
-            ((country.confirmed / this.props.total[0]) * 100).toFixed(2)
-          );
-        }
-      });
-    }
-    return doughnutData;
-  };
+  // doughnutData = () => {
+  //   const doughnutData = [];
+  //   if (this.props.countries !== undefined) {
+  //     this.props.countries.forEach((country) => {
+  //       if (country.country === this.props.country && !country.us) {
+  //         doughnutData.unshift(
+  //           ((country.confirmed / this.props.total[0]) * 100).toFixed(2)
+  //         );
+  //       }
+  //       if (!country.us && country.country !== this.props.country) {
+  //         doughnutData.push(
+  //           ((country.confirmed / this.props.total[0]) * 100).toFixed(2)
+  //         );
+  //       }
+  //     });
+  //   }
+  //   return doughnutData;
+  // };
 
   barData = () => {
     const daily = [];
@@ -384,47 +385,47 @@ class GraphContainer extends Component {
     //   borderWidth: 2,
     // };
 
-    const doughnut = {
-      labels: this.doughnutLabels(),
-      datasets: [
-        {
-          data: this.doughnutData(),
-          backgroundColor: ["#FBBD08"],
-          hoverBackgroundColor: "#18A2B8",
-          borderWidth: 0.5,
-          borderColor: "#646D79",
-        },
-      ],
-    };
+    // const doughnut = {
+    //   labels: this.doughnutLabels(),
+    //   datasets: [
+    //     {
+    //       data: this.doughnutData(),
+    //       backgroundColor: ["#FBBD08"],
+    //       hoverBackgroundColor: "#18A2B8",
+    //       borderWidth: 0.5,
+    //       borderColor: "#646D79",
+    //     },
+    //   ],
+    // };
 
-    const dOptions = {
-      legend: false,
-      animation: {
-        animateScale: true,
-      },
-      cutoutPercentage: 50,
-      circumfrance: 0.141596,
-      title: {
-        display: true,
-      },
-      tooltips: {
-        backgroundColor: "#18A2B8",
-        displayColors: false,
-        callbacks: {
-          label: function (tooltipItems, data) {
-            if (data !== undefined) {
-              let dataPercentage =
-                data.datasets[tooltipItems.datasetIndex].data[
-                  tooltipItems.index
-                ];
-              return (
-                data.labels[tooltipItems.index] + " " + dataPercentage + "%"
-              );
-            }
-          },
-        },
-      },
-    };
+    // const dOptions = {
+    //   legend: false,
+    //   animation: {
+    //     animateScale: true,
+    //   },
+    //   cutoutPercentage: 50,
+    //   circumfrance: 0.141596,
+    //   title: {
+    //     display: true,
+    //   },
+    //   tooltips: {
+    //     backgroundColor: "#18A2B8",
+    //     displayColors: false,
+    //     callbacks: {
+    //       label: function (tooltipItems, data) {
+    //         if (data !== undefined) {
+    //           let dataPercentage =
+    //             data.datasets[tooltipItems.datasetIndex].data[
+    //               tooltipItems.index
+    //             ];
+    //           return (
+    //             data.labels[tooltipItems.index] + " " + dataPercentage + "%"
+    //           );
+    //         }
+    //       },
+    //     },
+    //   },
+    // };
 
     const bar = {
       labels: this.barLabel(),
@@ -725,8 +726,9 @@ class GraphContainer extends Component {
           <Line data={gfLine} options={gfOptions} />
         </div>
         <div id="d">
-          <h4>{`${this.props.country}`} as % of Global Cases</h4>
-          <Doughnut data={doughnut} options={dOptions} />
+          <GlobalCasesDoughnut country={this.props.country} countries={this.props.countries} total={this.props.total}/>
+          {/* <h4>{`${this.props.country}`} as % of Global Cases</h4>
+          <Doughnut data={doughnut} options={dOptions} /> */}
         </div>
       </React.Fragment>
     );

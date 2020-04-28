@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Line, defaults } from "react-chartjs-2";
 
 class CountryDataLine extends Component {
-  state = {};
 
   createLineLabels = () => {
     const labelData = [];
@@ -102,7 +101,7 @@ class CountryDataLine extends Component {
       ],
     };
 
-    const lOptions = {
+    const options = {
       scales: {
         xAxes: [
           {
@@ -165,7 +164,7 @@ class CountryDataLine extends Component {
     return (
         <React.Fragment>
         <h4>{`${this.props.country}`} Data From Day of First Death</h4>
-        <Line data={line} options={lOptions} />
+        <Line data={line} options={options} />
         </React.Fragment>
     );
   }
