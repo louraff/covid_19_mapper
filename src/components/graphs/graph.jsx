@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { Line, Doughnut, Bar, defaults } from "react-chartjs-2";
-import Button from "react-bootstrap/Button"
+import Button from "react-bootstrap/Button";
+import CountryLineData from './country_data_line/country_data_line'
 
 class GraphContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       data: [],
-      cases: true
+      cases: true,
     };
   }
 
@@ -98,292 +99,290 @@ class GraphContainer extends Component {
   };
 
   barData = () => {
-    const daily = []
-    const dailyChange = []
+    const daily = [];
+    const dailyChange = [];
 
     const countryData = this.state.data[this.props.country];
     if (countryData !== undefined) {
       countryData.forEach((country) => {
         if (country.deaths !== 0) {
-          daily.push(country.confirmed)
+          daily.push(country.confirmed);
         }
-      })
+      });
 
       for (let i = 0; i < daily.length; i++) {
-        dailyChange.push(parseFloat(daily[i + 1]) - parseFloat(daily[i]))
+        dailyChange.push(parseFloat(daily[i + 1]) - parseFloat(daily[i]));
       }
 
-      dailyChange.pop()
-      return dailyChange
+      dailyChange.pop();
+      return dailyChange;
     }
-  }
+  };
 
   barLabel = () => {
-    const daily = []
+    const daily = [];
 
     const countryData = this.state.data[this.props.country];
     if (countryData !== undefined) {
       countryData.forEach((country) => {
         if (country.deaths !== 0) {
-          daily.push(country.date)
+          daily.push(country.date);
         }
-      })
+      });
 
-      daily.reverse()
-      daily.pop()
-      daily.reverse()
-      return daily
+      daily.reverse();
+      daily.pop();
+      daily.reverse();
+      return daily;
     }
-  }
+  };
 
   barDataDeaths = () => {
-    const daily = []
-    const dailyChange = []
+    const daily = [];
+    const dailyChange = [];
 
     const countryData = this.state.data[this.props.country];
     if (countryData !== undefined) {
       countryData.forEach((country) => {
         if (country.deaths !== 0) {
-          daily.push(country.deaths)
+          daily.push(country.deaths);
         }
-      })
+      });
 
       for (let i = 0; i < daily.length; i++) {
-        dailyChange.push(parseFloat(daily[i + 1]) - parseFloat(daily[i]))
+        dailyChange.push(parseFloat(daily[i + 1]) - parseFloat(daily[i]));
       }
 
-      dailyChange.pop()
-      return dailyChange
+      dailyChange.pop();
+      return dailyChange;
     }
-  }
+  };
 
   growthFactorData = () => {
-    let growthFactorData = []
-    let dailyR = []
-    let finalArray = []
+    let growthFactorData = [];
+    let dailyR = [];
+    let finalArray = [];
 
     const countryData = this.state.data[this.props.country];
     if (countryData !== undefined) {
-      let dailyChange = this.barData()
+      let dailyChange = this.barData();
 
       for (let i = 1; i < dailyChange.length; i++) {
-        let a = (dailyChange[i + 1] / dailyChange[i])
+        let a = dailyChange[i + 1] / dailyChange[i];
         if (a === Infinity) {
-          dailyR.push(0.0001)
+          dailyR.push(0.0001);
         } else if (a > 15) {
-          dailyR.push(0.0001)
+          dailyR.push(0.0001);
         } else {
-
           a = a ? dailyR.push(a) : dailyR.push(0.001);
         }
       }
-      finalArray = this.movingAverage(dailyR, 7)
+      finalArray = this.movingAverage(dailyR, 7);
     }
 
-    return finalArray
-
-  }
+    return finalArray;
+  };
 
   newGrowthFactorData = (window) => {
-    let daily = []
-    let dailyChange = []
-    let dailyR = []
+    let daily = [];
+    let dailyChange = [];
+    let dailyR = [];
 
     const countryData = this.state.data[this.props.country];
 
     if (countryData !== undefined) {
-
-      let ma7 = this.movingAverage(this.createLineData("confirmed"), window)
+      let ma7 = this.movingAverage(this.createLineData("confirmed"), window);
 
       ma7.forEach((country) => {
-        daily.push(country)
-      })
+        daily.push(country);
+      });
       for (let i = 0; i < daily.length; i++) {
-        dailyChange.push(parseFloat(daily[i + 1]) - parseFloat(daily[i]))
+        dailyChange.push(parseFloat(daily[i + 1]) - parseFloat(daily[i]));
       }
 
-      dailyChange.pop()
+      dailyChange.pop();
 
       for (let i = 1; i < dailyChange.length; i++) {
-        let a = (dailyChange[i + 1] / dailyChange[i])
+        let a = dailyChange[i + 1] / dailyChange[i];
         if (a === Infinity) {
-          dailyR.push(0.0001)
+          dailyR.push(0.0001);
         } else {
           a = a ? dailyR.push(a) : dailyR.push(0.001);
         }
       }
-      dailyR.pop()
-      return dailyR
+      dailyR.pop();
+      return dailyR;
     }
-
-  }
+  };
 
   movingAverage = (dailyR, window) => {
-    let movingAverageValues = []
-    let temp_array = []
-    let reversed = dailyR.reverse()
+    let movingAverageValues = [];
+    let temp_array = [];
+    let reversed = dailyR.reverse();
     for (let i = 0; i < reversed.length; i++) {
-      temp_array.push(dailyR[i])
+      temp_array.push(dailyR[i]);
       if (temp_array.length === window) {
-        movingAverageValues.push(temp_array.reduce((total, num) => { return total + num }) / window)
-        temp_array = []
-        i -= window - 1
+        movingAverageValues.push(
+          temp_array.reduce((total, num) => {
+            return total + num;
+          }) / window
+        );
+        temp_array = [];
+        i -= window - 1;
       }
     }
 
-    movingAverageValues = movingAverageValues.reverse()
-    return movingAverageValues
-  }
+    movingAverageValues = movingAverageValues.reverse();
+    return movingAverageValues;
+  };
 
   growthFactorLabels = () => {
-    let labels = this.createLineLabels()
+    let labels = this.createLineLabels();
     const countryData = this.state.data[this.props.country];
     if (countryData !== undefined) {
-      labels.pop()
-      labels.pop()
-      let reversed = labels.reverse()
+      labels.pop();
+      labels.pop();
+      let reversed = labels.reverse();
       for (let i = 0; i < 7; i++) {
-        reversed.pop()
+        reversed.pop();
       }
-      return reversed.reverse()
+      return reversed.reverse();
     }
-  }
+  };
 
   growthFactorOne = (array) => {
-    let oneArray = []
+    let oneArray = [];
     const countryData = this.state.data[this.props.country];
 
     if (countryData !== undefined) {
       for (let i = 0; i < array.length; i++) {
-        oneArray.push(1)
+        oneArray.push(1);
       }
-      return oneArray
+      return oneArray;
     }
-  }
-
+  };
 
   handleClick = () => {
     this.setState({
-      cases: !this.state.cases
-    })
-  }
+      cases: !this.state.cases,
+    });
+  };
   render() {
     defaults.global.defaultFontColor = "white";
 
+    // const line = {
+    //   labels: this.createLineLabels(),
+    //   datasets: [
+    //     {
+    //       label: "Confirmed Cases",
+    //       data: this.createLineData("confirmed"),
+    //       fill: false,
+    //       backgroundColor: "#18A2B8",
+    //       borderColor: "#18A2B8",
+    //       borderWidth: 2,
+    //       pointBackgroundColor: "#18A2B8",
+    //       pointBorderColor: "#000000",
+    //       pointBorderWidth: 0.5,
+    //       pointStyle: "rectRounded",
+    //       pointRadius: 4,
+    //       pointHitRadius: 5,
+    //       pointHoverRadius: 5,
+    //       hoverBackgroundColor: "#FFFFFF",
+    //     },
+    //     {
+    //       label: "Confirmed Deaths",
+    //       data: this.createLineData("deaths"),
+    //       fill: false,
+    //       backgroundColor: "#dc3644",
+    //       borderColor: "#dc3644",
+    //       borderWidth: 2,
+    //       pointBackgroundColor: "#dc3644",
+    //       pointBorderColor: "#000000",
+    //       pointBorderWidth: 0.5,
+    //       pointStyle: "rectRounded",
+    //       pointRadius: 4,
+    //       pointHitRadius: 5,
+    //       pointHoverRadius: 5,
+    //       hoverBackgroundColor: "#FFFFFF",
+    //     },
+    //     {
+    //       label: "Confrmed Recoveries",
+    //       data: this.createLineData("recovered"),
+    //       fill: false,
+    //       backgroundColor: "#28a745",
+    //       borderColor: "#28a745",
+    //       borderWidth: 2,
+    //       pointBackgroundColor: "#28a745",
+    //       pointBorderColor: "#000000",
+    //       pointBorderWidth: 0.5,
+    //       pointStyle: "rectRounded",
+    //       pointRadius: 4,
+    //       pointHitRadius: 5,
+    //       pointHoverRadius: 5,
+    //       hoverBackgroundColor: "#FFFFFF",
+    //     },
+    //   ],
+    // };
 
-    const line = {
-      labels: this.createLineLabels(),
-      datasets: [
-        {
-          label: "Confirmed Cases",
-          data: this.createLineData("confirmed"),
-          fill: false,
-          backgroundColor: "#18A2B8",
-          borderColor: "#18A2B8",
-          borderWidth: 2,
-          pointBackgroundColor: "#18A2B8",
-          pointBorderColor: "#000000",
-          pointBorderWidth: 0.5,
-          pointStyle: "rectRounded",
-          pointRadius: 4,
-          pointHitRadius: 5,
-          pointHoverRadius: 5,
-          hoverBackgroundColor: "#FFFFFF",
-        },
-        {
-          label: "Confirmed Deaths",
-          data: this.createLineData("deaths"),
-          fill: false,
-          backgroundColor: "#dc3644",
-          borderColor: "#dc3644",
-          borderWidth: 2,
-          pointBackgroundColor: "#dc3644",
-          pointBorderColor: "#000000",
-          pointBorderWidth: 0.5,
-          pointStyle: "rectRounded",
-          pointRadius: 4,
-          pointHitRadius: 5,
-          pointHoverRadius: 5,
-          hoverBackgroundColor: "#FFFFFF",
-        },
-        {
-          label: "Confrmed Recoveries",
-          data: this.createLineData("recovered"),
-          fill: false,
-          backgroundColor: "#28a745",
-          borderColor: "#28a745",
-          borderWidth: 2,
-          pointBackgroundColor: "#28a745",
-          pointBorderColor: "#000000",
-          pointBorderWidth: 0.5,
-          pointStyle: "rectRounded",
-          pointRadius: 4,
-          pointHitRadius: 5,
-          pointHoverRadius: 5,
-          hoverBackgroundColor: "#FFFFFF",
-        },
-      ],
-    };
-
-    const lOptions = {
-      scales: {
-        xAxes: [
-          {
-            ticks: {
-              display: true,
-              major: {
-                fontStyle: "bold",
-                fontColor: "#FFFFFF",
-              },
-            },
-            gridLines: {
-              display: false,
-              drawBorder: true,
-            },
-            scaleLabel: {
-              display: true,
-              labelString: "Date (YYYY/MM/DD)",
-              fontStyle: "bold",
-              fontColor: "#FFFFFF",
-            },
-          },
-        ],
-        yAxes: [
-          {
-            ticks: {
-              display: true,
-              major: {
-                fontStyle: "bold",
-                fontColor: "#FFFFFF",
-              },
-            },
-            gridLines: {
-              display: true,
-              drawBorder: true,
-            },
-            scaleLabel: {
-              display: true,
-              labelString: "No of People",
-              fontStyle: "bold",
-              fontColor: "#FFFFFF",
-            },
-          },
-        ],
-      },
-      legend: {
-        display: true,
-        position: "right",
-        align: "center",
-        labels: {
-          fontSize: 12,
-          fontStyle: "bold",
-          fontColor: "#FFFFFF",
-          usePointStyle: true,
-        },
-      },
-      lineTension: 3,
-      borderWidth: 2,
-    };
+    // const lOptions = {
+    //   scales: {
+    //     xAxes: [
+    //       {
+    //         ticks: {
+    //           display: true,
+    //           major: {
+    //             fontStyle: "bold",
+    //             fontColor: "#FFFFFF",
+    //           },
+    //         },
+    //         gridLines: {
+    //           display: false,
+    //           drawBorder: true,
+    //         },
+    //         scaleLabel: {
+    //           display: true,
+    //           labelString: "Date (YYYY/MM/DD)",
+    //           fontStyle: "bold",
+    //           fontColor: "#FFFFFF",
+    //         },
+    //       },
+    //     ],
+    //     yAxes: [
+    //       {
+    //         ticks: {
+    //           display: true,
+    //           major: {
+    //             fontStyle: "bold",
+    //             fontColor: "#FFFFFF",
+    //           },
+    //         },
+    //         gridLines: {
+    //           display: true,
+    //           drawBorder: true,
+    //         },
+    //         scaleLabel: {
+    //           display: true,
+    //           labelString: "No of People",
+    //           fontStyle: "bold",
+    //           fontColor: "#FFFFFF",
+    //         },
+    //       },
+    //     ],
+    //   },
+    //   legend: {
+    //     display: true,
+    //     position: "right",
+    //     align: "center",
+    //     labels: {
+    //       fontSize: 12,
+    //       fontStyle: "bold",
+    //       fontColor: "#FFFFFF",
+    //       usePointStyle: true,
+    //     },
+    //   },
+    //   lineTension: 3,
+    //   borderWidth: 2,
+    // };
 
     const doughnut = {
       labels: this.doughnutLabels(),
@@ -416,7 +415,7 @@ class GraphContainer extends Component {
             if (data !== undefined) {
               let dataPercentage =
                 data.datasets[tooltipItems.datasetIndex].data[
-                tooltipItems.index
+                  tooltipItems.index
                 ];
               return (
                 data.labels[tooltipItems.index] + " " + dataPercentage + "%"
@@ -519,7 +518,7 @@ class GraphContainer extends Component {
         displayColors: false,
       },
       borderWidth: 2,
-      maintainAspectRatio: true
+      maintainAspectRatio: true,
     };
 
     const bDeathOptions = {
@@ -582,7 +581,7 @@ class GraphContainer extends Component {
         displayColors: false,
       },
       borderWidth: 2,
-      maintainAspectRatio: true
+      maintainAspectRatio: true,
     };
 
     const gfLine = {
@@ -618,9 +617,8 @@ class GraphContainer extends Component {
           pointHoverRadius: 0,
           pointBackgroundColor: "rgba(40, 167, 69, 0.4)",
           hoverBackgroundColor: "#28a745",
-        }
+        },
       ],
-
     };
 
     const gfOptions = {
@@ -684,41 +682,43 @@ class GraphContainer extends Component {
         displayColors: false,
         callbacks: {
           label: function (tooltipItems, data) {
-            return "R Value: " + tooltipItems.yLabel.toFixed(3)
+            return "R Value: " + tooltipItems.yLabel.toFixed(3);
           },
         },
       },
       lineTension: 3,
       borderWidth: 2,
-      maintainAspectRatio: true
+      maintainAspectRatio: true,
     };
 
     return (
-
       <React.Fragment>
         <br></br>
         <br></br>
         <div id="l">
+          <CountryLineData country={this.props.country} data={this.state.data} />
+        </div>
+        {/* <div id="l">
           <h4>{`${this.props.country}`} Data From Day of First Death</h4>
           <Line data={line} options={lOptions} />
-        </div>
+        </div> */}
         <br></br>
         <br></br>
-        <div id='b'>
+        <div id="b">
           <h4>{`${this.props.country}`} Daily Changes</h4>
           <br></br>
-          {!this.state.cases &&
-            <Button onClick={this.handleClick} variant={"info"}>Show Changes in Cases</Button>
-          }
-          {this.state.cases &&
-            <Button onClick={this.handleClick} variant={"danger"}>Show Changes in Deaths</Button>
-          }
-          {!this.state.cases &&
-            <Bar data={barDeaths} options={bOptions} />
-          }
-          {this.state.cases &&
-            <Bar data={bar} options={bDeathOptions} />
-          }
+          {!this.state.cases && (
+            <Button onClick={this.handleClick} variant={"info"}>
+              Show Changes in Cases
+            </Button>
+          )}
+          {this.state.cases && (
+            <Button onClick={this.handleClick} variant={"danger"}>
+              Show Changes in Deaths
+            </Button>
+          )}
+          {!this.state.cases && <Bar data={barDeaths} options={bOptions} />}
+          {this.state.cases && <Bar data={bar} options={bDeathOptions} />}
         </div>
         <div id="gf">
           <h4>{`${this.props.country}`} Growth Factor (R) </h4>
@@ -728,7 +728,7 @@ class GraphContainer extends Component {
           <h4>{`${this.props.country}`} as % of Global Cases</h4>
           <Doughnut data={doughnut} options={dOptions} />
         </div>
-      </React.Fragment >
+      </React.Fragment>
     );
   }
 }
