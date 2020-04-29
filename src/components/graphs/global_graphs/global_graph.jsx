@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
 import { defaults } from "react-chartjs-2";
 import GlobalDeathsBar from "./global_deaths_bar/global_deaths_bar"
+import GlobalDataLine from "./global_line/global_line"
 
 class GlobalGraphContainer extends Component {
-  state = { 
+  state = {
     data: []
-   }
+  }
 
-  componentDidMount(){
+  componentDidMount() {
     let worldData = []
     let data = this.props.data
     let countryArray = Object.keys(data).map(i => i)
     countryArray.forEach((country) => {
       let countryData = data[country]
       countryData.forEach((day, index) => {
-        if(worldData[index] === undefined){
-          let globalStats = {date: day.date, confirmed: day.confirmed, recovered: day.recovered, deaths: day.deaths}
+        if (worldData[index] === undefined) {
+          let globalStats = { date: day.date, confirmed: day.confirmed, recovered: day.recovered, deaths: day.deaths }
           worldData.push(globalStats)
         } else {
           worldData[index].confirmed += day.confirmed
@@ -24,19 +25,24 @@ class GlobalGraphContainer extends Component {
         }
       })
     })
-      this.setState({
-        data: worldData
-      })
+    this.setState({
+      data: worldData
+    })
   }
 
-  render() { 
+  render() {
     defaults.global.defaultFontColor = "white";
-    return (  
-      <div id="b">
-        <GlobalDeathsBar countries={this.props.countries} />
+    return (
+      <div>
+        <div id="b">
+          <GlobalDeathsBar countries={this.props.countries} />
+        </div>
+        <div id="l">
+          <GlobalDataLine data={this.state.data} s />
+        </div>
       </div>
     );
   }
 }
- 
+
 export default GlobalGraphContainer;
