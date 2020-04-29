@@ -49,11 +49,11 @@ class GlobalGraphContainer extends Component {
     defaults.global.defaultFontColor = "white";
     return (
       <div>
-        <div id="b">
-          <GlobalDeathsBar countries={this.props.countries} />
+        <div id="l">
+        <GlobalDataLine createLineLabels={this.createLineLabels()} data={this.state.data} />
         </div>
         <div id="b">
-          <GlobalDataLine createLineLabels={this.createLineLabels()} data={this.state.data} />
+        <GlobalDeathsBar countries={this.props.countries} />
         </div>
         <div id="b">
           <GlobalChangesBar data={this.state.data} />

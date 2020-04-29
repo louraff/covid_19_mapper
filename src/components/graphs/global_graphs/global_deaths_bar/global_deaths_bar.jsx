@@ -309,6 +309,7 @@ export class GlobalDeathsBar extends Component {
     return (
       <div>
         <h4>Highest Deaths per 1 Million People</h4>
+        <br></br>
         {!this.state.adjust && (
            <div id="h">
           <Button onClick={this.handleClick} variant={"danger"}>

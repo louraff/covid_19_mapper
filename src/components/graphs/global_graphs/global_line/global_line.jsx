@@ -20,7 +20,6 @@ class GlobalDataLine extends Component {
           graphData.recoveries.push(date.recovered);
         }
       });
-      console.log(countryData)
       if (type === "confirmed") {
         return graphData.confirmed;
       } else if (type === "deaths") {
@@ -148,7 +147,8 @@ class GlobalDataLine extends Component {
     };
     return (
       <div>
-        <h4>World Data</h4>
+        <h2>World Data</h2>
+        <br></br>
         <Line data={line} options={options} />
       </div>
     );
