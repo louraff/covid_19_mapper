@@ -52,13 +52,13 @@ class GlobalGraphContainer extends Component {
         <div id="b">
           <GlobalDeathsBar countries={this.props.countries} />
         </div>
-        <div id="l">
+        <div id="b">
           <GlobalDataLine createLineLabels={this.createLineLabels()} data={this.state.data} />
         </div>
         <div id="b">
           <GlobalChangesBar data={this.state.data} />
         </div>
-        <div id="l">
+        <div id="b">
           <GlobalGrowthFactor data={this.state.data} createLineLabels={this.createLineLabels()} />
           </div>
       </div>

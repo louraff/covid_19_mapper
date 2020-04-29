@@ -3,9 +3,6 @@ import { Line } from "react-chartjs-2";
 
 
 class GlobalDataLine extends Component {
-  constructor(props) {
-    super(props)
-  }
 
   createLineData = (countryData, type) => {
     const graphData = {
