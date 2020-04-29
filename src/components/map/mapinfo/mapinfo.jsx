@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ref_country_codes from "./../assets/countries-lat-long.json";
+import ref_country_codes from "./../../assets/countries-lat-long.json";
 
 class MapInfo extends Component {
   constructor(props) {
