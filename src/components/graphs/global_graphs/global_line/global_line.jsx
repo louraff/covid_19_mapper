@@ -33,21 +33,11 @@ class GlobalDataLine extends Component {
       }
     }
   }
-  createLineLabels = () => {
-    const labelData = [];
-    if (this.props.data !== undefined) {
-      this.props.data.forEach((date) => {
-        if (date.deaths !== 0) {
-          labelData.push(date.date);
-        }
-      });
-      return labelData;
-    }
-  };
+
 
   render() {
     const line = {
-      labels: this.createLineLabels(),
+      labels: this.props.createLineLabels,
       datasets: [
         {
           label: "Confirmed Cases",
@@ -160,7 +150,10 @@ class GlobalDataLine extends Component {
       borderWidth: 2,
     };
     return (
-      <Line data={line} options={options} />
+      <div>
+        <h4>World Data</h4>
+        <Line data={line} options={options} />
+      </div>
     );
   }
 }

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { defaults } from "react-chartjs-2";
 import GlobalDeathsBar from "./global_deaths_bar/global_deaths_bar"
 import GlobalDataLine from "./global_line/global_line"
+import GlobalChangesBar from "./global_changes_bar/global_changes_bar"
+import GlobalGrowthFactor from "./global_growth_line/global_growth_line"
 
 class GlobalGraphContainer extends Component {
   state = {
@@ -30,6 +32,19 @@ class GlobalGraphContainer extends Component {
     })
   }
 
+  createLineLabels = () => {
+    const labelData = [];
+    const countryData = this.state.data;
+    if (countryData !== undefined) {
+      countryData.forEach((date) => {
+        if (date.deaths !== 0) {
+          labelData.push(date.date);
+        }
+      });
+      return labelData;
+    }
+  };
+
   render() {
     defaults.global.defaultFontColor = "white";
     return (
@@ -38,8 +53,14 @@ class GlobalGraphContainer extends Component {
           <GlobalDeathsBar countries={this.props.countries} />
         </div>
         <div id="l">
-          <GlobalDataLine data={this.state.data} s />
+          <GlobalDataLine createLineLabels={this.createLineLabels()} data={this.state.data} />
         </div>
+        <div id="b">
+          <GlobalChangesBar data={this.state.data} />
+        </div>
+        <div id="l">
+          <GlobalGrowthFactor data={this.state.data} createLineLabels={this.createLineLabels()} />
+          </div>
       </div>
     );
   }
