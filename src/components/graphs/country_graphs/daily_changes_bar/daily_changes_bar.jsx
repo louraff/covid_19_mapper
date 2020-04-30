@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import {Bar} from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import Button from "react-bootstrap/Button";
 
 
 class DailyChangesBar extends Component {
-  state = { 
+  state = {
     cases: true,
-   }
+  }
 
   barData = () => {
     const daily = [];
@@ -73,9 +73,9 @@ class DailyChangesBar extends Component {
       cases: !this.state.cases,
     });
   };
- 
-  render() { 
-    
+
+  render() {
+
     const bar = {
       labels: this.barLabel(),
       datasets: [
@@ -233,32 +233,32 @@ class DailyChangesBar extends Component {
       borderWidth: 2,
       maintainAspectRatio: true,
     };
-    
-    return ( 
+
+    return (
       <React.Fragment>
-          {!this.state.cases && (
-            <div>
-              <h4>{`${this.props.country}`} Daily Case Change</h4>
-              <br></br>
+        {!this.state.cases && (
+          <div>
+            <h4>{`${this.props.country}`} Daily Death Change</h4>
+            <br></br>
             <Button onClick={this.handleClick} variant={"info"}>
               Show Cases
             </Button>
             <Bar data={barDeaths} options={bDeathOptions} />
-            </div>
-          )}
-          {this.state.cases && (
-            <div>
-               <h4>{`${this.props.country}`} Daily Death Change</h4>
-               <br></br>
+          </div>
+        )}
+        {this.state.cases && (
+          <div>
+            <h4>{`${this.props.country}`} Daily Case Change</h4>
+            <br></br>
             <Button onClick={this.handleClick} variant={"danger"}>
               Show Deaths
             </Button>
             <Bar data={bar} options={bOptions} />
-            </div>
-          )}
+          </div>
+        )}
       </React.Fragment>
-     );
+    );
   }
 }
- 
+
 export default DailyChangesBar;

@@ -81,6 +81,8 @@ class ComparisonLineContainer extends Component {
   generateDataSets = () => {
     let top10 = []
     var country = this.props.top10Data
+    let olours = ["#a09be7", "#96e072", "#B10AFF", "#0090F7", "#fff714", "#ff9c1c", "#ff3dc1", "#ffcad4", "#84dcc6", "#ff6978"]
+    let colours = ["#f07167", "#ffadad", "#ffd6a5", "#fdffb6", "#caffbf", "#9bf6ff", "#a0c4ff", "#bdb2ff", "#ffc6ff", "#fffffc"]
     if (this.props.top10Data[this.props.selected] === undefined) {
 
       if (country.includes(this.props.selected)) {
@@ -91,15 +93,15 @@ class ComparisonLineContainer extends Component {
               data: this.createComparisonData(i),
               fill: false,
               hidden: true,
-              backgroundColor: "#18A2B8",
-              borderColor: "#18A2B8",
+              backgroundColor: colours[i],
+              borderColor: colours[i],
               borderWidth: 2,
-              pointBackgroundColor: "#18A2B8",
+              pointBackgroundColor: colours[i],
               pointBorderColor: "#000000",
               pointBorderWidth: 0.5,
               pointStyle: "rectRounded",
-              pointRadius: 4,
-              pointHitRadius: 5,
+              pointRadius: 2.5,
+              pointHitRadius: 4,
               pointHoverRadius: 5,
               hoverBackgroundColor: "#FFFFFF",
             })
@@ -116,8 +118,8 @@ class ComparisonLineContainer extends Component {
               pointBorderColor: "#000000",
               pointBorderWidth: 0.5,
               pointStyle: "rectRounded",
-              pointRadius: 4,
-              pointHitRadius: 5,
+              pointRadius: 3.25,
+              pointHitRadius: 4,
               pointHoverRadius: 5,
               hoverBackgroundColor: "#FFFFFF",
             })
@@ -129,16 +131,16 @@ class ComparisonLineContainer extends Component {
             label: country,
             data: this.createComparisonData(i),
             fill: false,
-            backgroundColor: "#18A2B8",
-            borderColor: "#18A2B8",
+            backgroundColor: colours[i],
+            borderColor: colours[i],
             borderWidth: 2,
             hidden: true,
-            pointBackgroundColor: "#18A2B8",
+            pointBackgroundColor: colours[i],
             pointBorderColor: "#000000",
             pointBorderWidth: 0.5,
             pointStyle: "rectRounded",
-            pointRadius: 4,
-            pointHitRadius: 5,
+            pointRadius: 2.5,
+            pointHitRadius: 4,
             pointHoverRadius: 5,
             hoverBackgroundColor: "#FFFFFF",
           })
@@ -154,8 +156,8 @@ class ComparisonLineContainer extends Component {
           pointBorderColor: "#000000",
           pointBorderWidth: 0.5,
           pointStyle: "rectRounded",
-          pointRadius: 4,
-          pointHitRadius: 5,
+          pointRadius: 3.25,
+          pointHitRadius: 4,
           pointHoverRadius: 5,
           hoverBackgroundColor: "#FFFFFF",
         })
