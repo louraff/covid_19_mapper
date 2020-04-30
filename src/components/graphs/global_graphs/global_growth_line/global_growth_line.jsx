@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import { Line } from "react-chartjs-2";
 
 export default class GlobalGrowthFactor extends Component {
-  constructor(props) {
-    super(props)
-  }
 
   createLineData = () => {
     const graphData = {
@@ -209,7 +206,7 @@ export default class GlobalGrowthFactor extends Component {
       borderWidth: 2,
       maintainAspectRatio: true,
     }
-    
+
     return (
       <React.Fragment>
         <h4>Global Growth Factor (R)</h4>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Line } from "react-chartjs-2";
 
 class GrowthFactorLine extends Component {
-  state = {  }
+  state = {}
 
   createLineData = () => {
     const graphData = {
@@ -19,11 +19,10 @@ class GrowthFactorLine extends Component {
       });
     }
 
-        return graphData.confirmed;
+    return graphData.confirmed;
   };
 
   growthFactorData = () => {
-    let growthFactorData = [];
     let dailyR = [];
     let finalArray = [];
 
@@ -125,7 +124,7 @@ class GrowthFactorLine extends Component {
       return oneArray;
     }
   };
-  render() { 
+  render() {
 
     const line = {
       labels: this.growthFactorLabels(),
@@ -232,13 +231,13 @@ class GrowthFactorLine extends Component {
       borderWidth: 2,
       maintainAspectRatio: true,
     };
-    return ( 
+    return (
       <React.Fragment>
-         <h4>{`${this.props.country}`} Growth Factor (R) </h4>
-         <Line data={line} options={options} />
+        <h4>{`${this.props.country}`} Growth Factor (R) </h4>
+        <Line data={line} options={options} />
       </React.Fragment>
-     );
+    );
   }
 }
- 
+
 export default GrowthFactorLine;

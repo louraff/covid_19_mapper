@@ -5,8 +5,8 @@ import {
   Circle
 } from "react-google-maps";
 import styles from "./../assets/mapStyle.json";
-import MapInfo from "./mapinfo";
-import Legend from './legend'
+import MapInfo from "./mapinfo/mapinfo";
+import Legend from './legend/legend'
 
 class MapContainer extends Component {
   constructor(props) {

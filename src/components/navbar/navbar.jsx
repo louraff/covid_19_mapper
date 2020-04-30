@@ -91,7 +91,7 @@ class Header extends Component {
                         ></img>
                       </span>
                       Covid-19 Menu
-                  </span>
+                    </span>
                   )
               }
               id="last_updated"
