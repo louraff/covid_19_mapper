@@ -10,16 +10,16 @@ class ComparisonLineContainer extends Component {
 
 
   createComparisonData = (index) => {
-    
-    if(this.props.data !== undefined && this.props.top10Data[index] !== undefined) {
-      var top10Data =[]
+
+    if (this.props.data !== undefined && this.props.top10Data[index] !== undefined) {
+      var top10Data = []
       var country = this.props.top10Data[index]
-        this.props.data[country].forEach(day => {
-          if(day.deaths !== 0) {
+      this.props.data[country].forEach(day => {
+        if (day.deaths !== 0) {
           top10Data.push(day.confirmed)
-          }
-        })
-     
+        }
+      })
+
       // console.log("full data", top10Data)
       // console.log(top10Data[index])
       return top10Data
@@ -27,44 +27,91 @@ class ComparisonLineContainer extends Component {
   }
 
   createComparisonLabels = (index) => {
-    if(this.props.top10Data !== undefined){
+    if (this.props.top10Data !== undefined) {
       return this.props.top10Data[index]
     }
-    
+
   }
 
   createLineData = () => {
-    const graphData = {
-      confirmed: [],
-    };
+    let confirmed = []
+
     let countryData = []
 
-    if(this.props.top10Data[this.props.selected] === undefined) {
-    countryData.push(this.props.data[this.props.selected]);
-    }
+    console.log("data", this.props.data)
 
-    if(!countryData.length === 0){
-      countryData.forEach((date) => {
+    if (this.props.data[this.props.selected] !== undefined) {
+      countryData.push(this.props.data[this.props.selected]);
+      console.log("countrydata", countryData)
+      countryData[0].forEach((date) => {
+        console.log("date", date)
         if (date.deaths !== 0) {
-          graphData.confirmed.push(date.confirmed);
+          confirmed.push(date.confirmed);
         }
       });
+      return confirmed;
     }
+    console.log("before ifsdfjsjfad", countryData.length !== 0)
+    // if (countryData !== undefined) {
+    //   console.log("ifjsdfjsdfhkjshf")
+    //   countryData.forEach((date) => {
+    //     if (date.deaths !== 0) {
+    //       confirmed.push(date.confirmed);
+    //     }
+    //   });
+    // }
+    console.log("graphData", confirmed)
 
-    return graphData.confirmed;
+    // return confirmed;
   };
 
-  render() { 
-    {for(let i = 0; i <= 9; i++){
-    // console.log(this.props.top10Data[i])
-    }}
+  generateDataSets = () => {
+    let datasets = []
+    let top10 = []
+    var country = this.props.top10Data
+    console.log("the countries going in", country)
+    if (this.props.top10Data[this.props.selected] === undefined) {
 
-    // {console.log(this.props.lineLabels)}
-    
-    const line = {
-      labels: this.props.lineLabels ,
-      datasets: [
-        {
+      if (country.includes(this.props.selected)) {
+        country.forEach((country, i) => {
+          top10.push({
+            label: country,
+            data: this.createComparisonData(i),
+            fill: false,
+            backgroundColor: "#18A2B8",
+            borderColor: "#18A2B8",
+            borderWidth: 2,
+            pointBackgroundColor: "#18A2B8",
+            pointBorderColor: "#000000",
+            pointBorderWidth: 0.5,
+            pointStyle: "rectRounded",
+            pointRadius: 4,
+            pointHitRadius: 5,
+            pointHoverRadius: 5,
+            hoverBackgroundColor: "#FFFFFF",
+          })
+        })
+      } else {
+        country.forEach((country, i) => {
+          top10.push({
+            label: country,
+            data: this.createComparisonData(i),
+            fill: false,
+            backgroundColor: "#18A2B8",
+            borderColor: "#18A2B8",
+            borderWidth: 2,
+            pointBackgroundColor: "#18A2B8",
+            pointBorderColor: "#000000",
+            pointBorderWidth: 0.5,
+            pointStyle: "rectRounded",
+            pointRadius: 4,
+            pointHitRadius: 5,
+            pointHoverRadius: 5,
+            hoverBackgroundColor: "#FFFFFF",
+          })
+        })
+        console.log("line", this.createLineData())
+        top10.unshift({
           label: this.props.selected,
           data: this.createLineData(),
           fill: false,
@@ -79,169 +126,27 @@ class ComparisonLineContainer extends Component {
           pointHitRadius: 5,
           pointHoverRadius: 5,
           hoverBackgroundColor: "#FFFFFF",
-        },
-        {
-          label: this.createComparisonLabels(0),
-          data: this.createComparisonData(0),
-          fill: false,
-          backgroundColor: "#18A2B8",
-          borderColor: "#18A2B8",
-          borderWidth: 2,
-          pointBackgroundColor: "#18A2B8",
-          pointBorderColor: "#000000",
-          pointBorderWidth: 0.5,
-          pointStyle: "rectRounded",
-          pointRadius: 4,
-          pointHitRadius: 5,
-          pointHoverRadius: 5,
-          hoverBackgroundColor: "#FFFFFF",
-        },
-        {
-          label: this.createComparisonLabels(1),
-          data: this.createComparisonData(1),
-          hidden: true,
-          fill: false,
-          backgroundColor: "#18A2B8",
-          borderColor: "#18A2B8",
-          borderWidth: 2,
-          pointBackgroundColor: "#18A2B8",
-          pointBorderColor: "#000000",
-          pointBorderWidth: 0.5,
-          pointStyle: "rectRounded",
-          pointRadius: 4,
-          pointHitRadius: 5,
-          pointHoverRadius: 5,
-          hoverBackgroundColor: "#FFFFFF",
-        },
-        {
-          label: this.createComparisonLabels(2),
-          data: this.createComparisonData(2),
-          fill: false,
-          backgroundColor: "#28a745",
-          borderColor: "#28a745",
-          borderWidth: 2,
-          pointBackgroundColor: "#28a745",
-          pointBorderColor: "#000000",
-          pointBorderWidth: 0.5,
-          pointStyle: "rectRounded",
-          pointRadius: 4,
-          pointHitRadius: 5,
-          pointHoverRadius: 5,
-          hoverBackgroundColor: "#FFFFFF",
-        },
-        {
-          label: this.createComparisonLabels(3),
-          data: this.createComparisonData(3),
-          fill: false,
-          backgroundColor: "#28a745",
-          borderColor: "#28a745",
-          borderWidth: 2,
-          pointBackgroundColor: "#28a745",
-          pointBorderColor: "#000000",
-          pointBorderWidth: 0.5,
-          pointStyle: "rectRounded",
-          pointRadius: 4,
-          pointHitRadius: 5,
-          pointHoverRadius: 5,
-          hoverBackgroundColor: "#FFFFFF",
-        },
-        {
-          label: this.createComparisonLabels(4),
-          data: this.createComparisonData(4),
-          fill: false,
-          backgroundColor: "#28a745",
-          borderColor: "#28a745",
-          borderWidth: 2,
-          pointBackgroundColor: "#28a745",
-          pointBorderColor: "#000000",
-          pointBorderWidth: 0.5,
-          pointStyle: "rectRounded",
-          pointRadius: 4,
-          pointHitRadius: 5,
-          pointHoverRadius: 5,
-          hoverBackgroundColor: "#FFFFFF",
-        },
-        {
-          label: this.createComparisonLabels(5),
-          data: this.createComparisonData(5),
-          fill: false,
-          backgroundColor: "#28a745",
-          borderColor: "#28a745",
-          borderWidth: 2,
-          pointBackgroundColor: "#28a745",
-          pointBorderColor: "#000000",
-          pointBorderWidth: 0.5,
-          pointStyle: "rectRounded",
-          pointRadius: 4,
-          pointHitRadius: 5,
-          pointHoverRadius: 5,
-          hoverBackgroundColor: "#FFFFFF",
-        },
-        {
-          label: this.createComparisonLabels(6),
-          data: this.createComparisonData(6),
-          fill: false,
-          backgroundColor: "#28a745",
-          borderColor: "#28a745",
-          borderWidth: 2,
-          pointBackgroundColor: "#28a745",
-          pointBorderColor: "#000000",
-          pointBorderWidth: 0.5,
-          pointStyle: "rectRounded",
-          pointRadius: 4,
-          pointHitRadius: 5,
-          pointHoverRadius: 5,
-          hoverBackgroundColor: "#FFFFFF",
-        },
-        {
-          label: this.createComparisonLabels(7),
-          data: this.createComparisonData(7),
-          fill: false,
-          backgroundColor: "#28a745",
-          borderColor: "#28a745",
-          borderWidth: 2,
-          pointBackgroundColor: "#28a745",
-          pointBorderColor: "#000000",
-          pointBorderWidth: 0.5,
-          pointStyle: "rectRounded",
-          pointRadius: 4,
-          pointHitRadius: 5,
-          pointHoverRadius: 5,
-          hoverBackgroundColor: "#FFFFFF",
-        },
-        {
-          label: this.createComparisonLabels(8),
-          data: this.createComparisonData(8),
-          fill: false,
-          backgroundColor: "#28a745",
-          borderColor: "#28a745",
-          borderWidth: 2,
-          pointBackgroundColor: "#28a745",
-          pointBorderColor: "#000000",
-          pointBorderWidth: 0.5,
-          pointStyle: "rectRounded",
-          pointRadius: 4,
-          pointHitRadius: 5,
-          pointHoverRadius: 5,
-          hoverBackgroundColor: "#FFFFFF",
-        },
-        {
-          label: this.createComparisonLabels(9),
-          data: this.createComparisonData(9),
-          fill: false,
-          backgroundColor: "#28a745",
-          borderColor: "#28a745",
-          borderWidth: 2,
-          pointBackgroundColor: "#28a745",
-          pointBorderColor: "#000000",
-          pointBorderWidth: 0.5,
-          pointStyle: "rectRounded",
-          pointRadius: 4,
-          pointHitRadius: 5,
-          pointHoverRadius: 5,
-          hoverBackgroundColor: "#FFFFFF",
-        },
-      ],
+        })
+      }
+      return top10
+    }
+  }
+
+
+
+
+
+  render() {
+    console.log("createLineData", this.createLineData())
+    {
+      for (let i = 0; i <= 9; i++) {
+        // console.log(this.props.top10Data[i])
+      }
+    }
+
+    const line = {
+      labels: this.props.lineLabels,
+      datasets: this.generateDataSets(),
     };
 
     const options = {
@@ -298,40 +203,17 @@ class ComparisonLineContainer extends Component {
           fontStyle: "bold",
           fontColor: "#FFFFFF",
           usePointStyle: true,
-          filter: function(item, chart){
-            var array = []
-            var hello = chart.datasets.slice(1, 11)
-            console.log(hello)
-            hello.forEach(country => {
-              array.push(country.label)
-            })
-            // console.log("datasets after pop", array)
-            console.log(array.includes(chart.datasets[0].label))
-            let counter = 0
-            console.log(counter)
-            for(let i = 0; i <= chart.datasets.length; i++) {
-              console.log("label", chart.datasets[i])
-            if(array.includes(chart.datasets[i].label)){
-              counter += 1
-              console.log(item)
-            }else {
-              console.log(item)
-            }
-          }
-           
-
-          }
         },
       },
       lineTension: 3,
       borderWidth: 2,
     };
 
-    return (  
-      <Line data={line} options={options} />  
-      
-        );
+    return (
+      <Line data={line} options={options} />
+
+    );
   }
 }
- 
+
 export default ComparisonLineContainer;
