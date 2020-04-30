@@ -19,9 +19,6 @@ class ComparisonLineContainer extends Component {
           top10Data.push(day.confirmed)
         }
       })
-
-      // console.log("full data", top10Data)
-      // console.log(top10Data[index])
       return top10Data
     }
   }
@@ -33,43 +30,57 @@ class ComparisonLineContainer extends Component {
 
   }
 
+  createDates = () => {
+    let array_of_lengths = []
+    let max_len;
+    if (this.props.top10Data[0] !== undefined && this.props.selected !== undefined && this.props.data !== undefined) {
+      if (this.props.selected !== "China") {
+        let allCountries = this.props.top10Data
+        allCountries.forEach(country => {
+          let place = []
+
+          this.props.data[country].forEach(day => {
+            if (day.deaths !== 0) {
+              place.push(day);
+            }
+          })
+          array_of_lengths.push(place.length)
+        })
+        max_len = Math.max(...array_of_lengths)
+      } else {
+        let place = []
+        this.props.data["China"].forEach(day => {
+          if (day.deaths !== 0) {
+            place.push(day);
+          }
+        })
+        array_of_lengths.push(place.length)
+        max_len = Math.max(...array_of_lengths)
+      }
+      return Array.from(Array(max_len).keys())
+    }
+  }
+
+
   createLineData = () => {
     let confirmed = []
 
     let countryData = []
 
-    console.log("data", this.props.data)
-
     if (this.props.data[this.props.selected] !== undefined) {
       countryData.push(this.props.data[this.props.selected]);
-      console.log("countrydata", countryData)
       countryData[0].forEach((date) => {
-        console.log("date", date)
         if (date.deaths !== 0) {
           confirmed.push(date.confirmed);
         }
       });
       return confirmed;
     }
-    console.log("before ifsdfjsjfad", countryData.length !== 0)
-    // if (countryData !== undefined) {
-    //   console.log("ifjsdfjsdfhkjshf")
-    //   countryData.forEach((date) => {
-    //     if (date.deaths !== 0) {
-    //       confirmed.push(date.confirmed);
-    //     }
-    //   });
-    // }
-    console.log("graphData", confirmed)
-
-    // return confirmed;
   };
 
   generateDataSets = () => {
-    let datasets = []
     let top10 = []
     var country = this.props.top10Data
-    console.log("the countries going in", country)
     if (this.props.top10Data[this.props.selected] === undefined) {
 
       if (country.includes(this.props.selected)) {
@@ -137,15 +148,9 @@ class ComparisonLineContainer extends Component {
 
 
   render() {
-    console.log("createLineData", this.createLineData())
-    {
-      for (let i = 0; i <= 9; i++) {
-        // console.log(this.props.top10Data[i])
-      }
-    }
 
     const line = {
-      labels: this.props.lineLabels,
+      labels: this.createDates(),
       datasets: this.generateDataSets(),
     };
 

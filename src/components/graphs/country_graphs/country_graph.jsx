@@ -34,8 +34,7 @@ class CountryGraphContainer extends Component {
     var names = []
     var data = this.props.countries
     data.map(country => {
-      console.log(country.us)
-      if(country.us === undefined){
+      if (country.us === undefined) {
         countryData.push(country)
 
         countryData.sort((a, b) => {
@@ -46,48 +45,48 @@ class CountryGraphContainer extends Component {
     countryData.forEach(country => {
       names.push(country.country)
     })
-      return names.slice(0, 10)
+    return names.slice(0, 10)
   }
 
-  
+
 
   render() {
     defaults.global.defaultFontColor = "white";
-    
+
     return (
       <React.Fragment>
         <br></br>
         <div id="l">
-        <CountryLineData 
-          createLineLabels={this.createLineLabels()} 
-          country={this.props.country} 
-          data={this.props.timeseries} 
-          total={this.props.total} 
-          countries={this.props.countries}
-        />
+          <CountryLineData
+            createLineLabels={this.createLineLabels()}
+            country={this.props.country}
+            data={this.props.timeseries}
+            total={this.props.total}
+            countries={this.props.countries}
+          />
         </div>
         <div id="b">
-          <ComparisonLineContainer 
-            data={this.props.timeseries} 
+          <ComparisonLineContainer
+            data={this.props.timeseries}
             top10Data={this.makeTop10Data()}
             lineLabels={this.createLineLabels()}
             selected={this.props.country}
           />
         </div>
         <div id="b">
-          <DailyChangesBar 
-            data={this.props.timeseries} 
+          <DailyChangesBar
+            data={this.props.timeseries}
             country={this.props.country}
           />
         </div>
         <div id="gf">
-          <GrowthFactorLine 
-            createLineLabels={this.createLineLabels()} 
-            data={this.props.timeseries} 
+          <GrowthFactorLine
+            createLineLabels={this.createLineLabels()}
+            data={this.props.timeseries}
             country={this.props.country}
           />
         </div>
-        
+
       </React.Fragment>
     );
   }
