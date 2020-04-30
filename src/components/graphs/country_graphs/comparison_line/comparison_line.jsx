@@ -3,12 +3,6 @@ import { Line } from "react-chartjs-2";
 
 class ComparisonLineContainer extends Component {
 
-  constructor(props) {
-    super(props)
-    this.state = {}
-  }
-
-
   createComparisonData = (index) => {
 
     if (this.props.data !== undefined && this.props.top10Data[index] !== undefined) {
@@ -81,7 +75,6 @@ class ComparisonLineContainer extends Component {
   generateDataSets = () => {
     let top10 = []
     var country = this.props.top10Data
-    let olours = ["#a09be7", "#96e072", "#B10AFF", "#0090F7", "#fff714", "#ff9c1c", "#ff3dc1", "#ffcad4", "#84dcc6", "#ff6978"]
     let colours = ["#f07167", "#ffadad", "#ffd6a5", "#fdffb6", "#caffbf", "#9bf6ff", "#a0c4ff", "#bdb2ff", "#ffc6ff", "#fffffc"]
     if (this.props.top10Data[this.props.selected] === undefined) {
 
@@ -166,10 +159,6 @@ class ComparisonLineContainer extends Component {
     }
   }
 
-
-
-
-
   render() {
 
     const line = {
@@ -238,13 +227,11 @@ class ComparisonLineContainer extends Component {
           title: function (tooltipItems, data) {
             if (data !== undefined) {
               return [data.datasets[tooltipItems[0].datasetIndex]["label"],
-                // tooltipItems[0].xLabel + " Days"
               ]
             }
-
           },
           label: function (tooltipItems, data) {
-            return "Cases: " + data.datasets[tooltipItems.datasetIndex].data[tooltipItems.index] + "   " + "Day: " + data.labels[tooltipItems.index]
+            return "Cases: " + data.datasets[tooltipItems.datasetIndex].data[tooltipItems.index] + "   Day: " + data.labels[tooltipItems.index]
           }
         },
       },
@@ -252,10 +239,10 @@ class ComparisonLineContainer extends Component {
       borderWidth: 2,
     }
 
-
     return (
       <React.Fragment >
         <h4>{`${this.props.selected}`} Case Comparison</h4>
+        <br></br>
         <Line data={line} options={options} />
       </React.Fragment >
     );

@@ -13,9 +13,9 @@ class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      viewMap: false,
+      viewMap: true,
       viewTables: false,
-      viewCountryGraph: true,
+      viewCountryGraph: false,
       viewGlobalGraph: false
     };
   }
@@ -91,7 +91,7 @@ class Header extends Component {
                         ></img>
                       </span>
                       Covid-19 Menu
-                  </span>
+                    </span>
                   )
               }
               id="last_updated"
