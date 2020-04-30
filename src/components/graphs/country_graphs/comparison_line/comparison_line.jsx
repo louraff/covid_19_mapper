@@ -85,22 +85,43 @@ class ComparisonLineContainer extends Component {
 
       if (country.includes(this.props.selected)) {
         country.forEach((country, i) => {
-          top10.push({
-            label: country,
-            data: this.createComparisonData(i),
-            fill: false,
-            backgroundColor: "#18A2B8",
-            borderColor: "#18A2B8",
-            borderWidth: 2,
-            pointBackgroundColor: "#18A2B8",
-            pointBorderColor: "#000000",
-            pointBorderWidth: 0.5,
-            pointStyle: "rectRounded",
-            pointRadius: 4,
-            pointHitRadius: 5,
-            pointHoverRadius: 5,
-            hoverBackgroundColor: "#FFFFFF",
-          })
+          if (country !== this.props.selected) {
+            top10.push({
+              label: country,
+              data: this.createComparisonData(i),
+              fill: false,
+              hidden: true,
+              backgroundColor: "#18A2B8",
+              borderColor: "#18A2B8",
+              borderWidth: 2,
+              pointBackgroundColor: "#18A2B8",
+              pointBorderColor: "#000000",
+              pointBorderWidth: 0.5,
+              pointStyle: "rectRounded",
+              pointRadius: 4,
+              pointHitRadius: 5,
+              pointHoverRadius: 5,
+              hoverBackgroundColor: "#FFFFFF",
+            })
+          }
+          if (country === this.props.selected) {
+            top10.unshift({
+              label: country,
+              data: this.createComparisonData(i),
+              fill: false,
+              backgroundColor: "#18A2B8",
+              borderColor: "#18A2B8",
+              borderWidth: 2,
+              pointBackgroundColor: "#18A2B8",
+              pointBorderColor: "#000000",
+              pointBorderWidth: 0.5,
+              pointStyle: "rectRounded",
+              pointRadius: 4,
+              pointHitRadius: 5,
+              pointHoverRadius: 5,
+              hoverBackgroundColor: "#FFFFFF",
+            })
+          }
         })
       } else {
         country.forEach((country, i) => {
@@ -111,6 +132,7 @@ class ComparisonLineContainer extends Component {
             backgroundColor: "#18A2B8",
             borderColor: "#18A2B8",
             borderWidth: 2,
+            hidden: true,
             pointBackgroundColor: "#18A2B8",
             pointBorderColor: "#000000",
             pointBorderWidth: 0.5,
@@ -121,7 +143,6 @@ class ComparisonLineContainer extends Component {
             hoverBackgroundColor: "#FFFFFF",
           })
         })
-        console.log("line", this.createLineData())
         top10.unshift({
           label: this.props.selected,
           data: this.createLineData(),
@@ -171,7 +192,7 @@ class ComparisonLineContainer extends Component {
             },
             scaleLabel: {
               display: true,
-              labelString: "Date (YYYY/MM/DD)",
+              labelString: "Days Passed Since First Death",
               fontStyle: "bold",
               fontColor: "#FFFFFF",
             },
@@ -215,8 +236,10 @@ class ComparisonLineContainer extends Component {
     };
 
     return (
-      <Line data={line} options={options} />
-
+      <React.Fragment>
+        <h4>{`${this.props.selected}`} Case Comparison</h4>
+        <Line data={line} options={options} />
+      </React.Fragment>
     );
   }
 }
