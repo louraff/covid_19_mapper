@@ -233,15 +233,31 @@ class ComparisonLineContainer extends Component {
           usePointStyle: true,
         },
       },
+      tooltips: {
+        callbacks: {
+          title: function (tooltipItems, data) {
+            if (data !== undefined) {
+              return [data.datasets[tooltipItems[0].datasetIndex]["label"],
+                // tooltipItems[0].xLabel + " Days"
+              ]
+            }
+
+          },
+          label: function (tooltipItems, data) {
+            return "Cases: " + data.datasets[tooltipItems.datasetIndex].data[tooltipItems.index] + "   " + "Day: " + data.labels[tooltipItems.index]
+          }
+        },
+      },
       lineTension: 3,
       borderWidth: 2,
-    };
+    }
+
 
     return (
-      <React.Fragment>
+      <React.Fragment >
         <h4>{`${this.props.selected}`} Case Comparison</h4>
         <Line data={line} options={options} />
-      </React.Fragment>
+      </React.Fragment >
     );
   }
 }
