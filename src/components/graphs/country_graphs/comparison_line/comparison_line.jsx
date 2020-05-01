@@ -1,19 +1,38 @@
 import React, { Component } from 'react';
 import { Line } from "react-chartjs-2";
+import Button from "react-bootstrap/Button";
 
 class ComparisonLineContainer extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      button: false
+    }
+  }
+
+  componentDidUpdate() {
+
+  }
 
   createComparisonData = (index) => {
 
     if (this.props.data !== undefined && this.props.top10Data[index] !== undefined) {
-      var top10Data = []
+      const top10Data = {
+        confirmed: [],
+        deaths: []
+      }
       var country = this.props.top10Data[index]
       this.props.data[country].forEach(day => {
         if (day.deaths !== 0) {
-          top10Data.push(day.confirmed)
+          top10Data.confirmed.push(day.confirmed)
+          top10Data.deaths.push(day.deaths)
         }
       })
-      return top10Data
+      if(!this.state.button) {
+        return top10Data.confirmed
+      }else{
+        return top10Data.deaths
+      }
     }
   }
 
@@ -57,7 +76,10 @@ class ComparisonLineContainer extends Component {
 
 
   createLineData = () => {
-    let confirmed = []
+    let country = {
+      confirmed: [],
+      deaths: []
+    }
 
     let countryData = []
 
@@ -65,17 +87,24 @@ class ComparisonLineContainer extends Component {
       countryData.push(this.props.data[this.props.selected]);
       countryData[0].forEach((date) => {
         if (date.deaths !== 0) {
-          confirmed.push(date.confirmed);
+          country.confirmed.push(date.confirmed);
+          country.deaths.push(date.deaths)
         }
       });
-      return confirmed;
+
+      if(!this.state.button) {
+        return country.confirmed
+      }else{
+        return country.deaths
+      }
     }
   };
 
   generateDataSets = () => {
     let top10 = []
     var country = this.props.top10Data
-    let colours = ["#f07167", "#ffadad", "#ffd6a5", "#fdffb6", "#caffbf", "#9bf6ff", "#a0c4ff", "#bdb2ff", "#ffc6ff", "#fffffc"]
+    let casesColours = ["#008FB2", "#00A3B9", "#39AABB","#5FB2BE", "#7ABBC1", "#95C3C4", "#AFCCC7", "#C8D6CA", "#E2E0CD", "#FDE9CD"]
+    let deathColours = ["#CD1F43", "#CC3B49", "#CD524F", "#CE6555", "#CF765B", "#D08661", "#D19768", "#D2AA6F", "#D3BA75", "#D5CB7B"]
     if (this.props.top10Data[this.props.selected] === undefined) {
 
       if (country.includes(this.props.selected)) {
@@ -86,10 +115,10 @@ class ComparisonLineContainer extends Component {
               data: this.createComparisonData(i),
               fill: false,
               hidden: true,
-              backgroundColor: colours[i],
-              borderColor: colours[i],
+              backgroundColor: this.state.button ?  deathColours[i] :  casesColours[i],
+              borderColor: this.state.button ?  deathColours[i] :  casesColours[i],
               borderWidth: 2,
-              pointBackgroundColor: colours[i],
+              pointBackgroundColor: this.state.button ?  deathColours[i] : casesColours[i],
               pointBorderColor: "#000000",
               pointBorderWidth: 0.5,
               pointStyle: "rectRounded",
@@ -105,11 +134,11 @@ class ComparisonLineContainer extends Component {
               data: this.createComparisonData(i),
               fill: false,
               hidden: false,
-              backgroundColor: "#18A2B8",
-              borderColor: "#18A2B8",
+              backgroundColor: "#fbbd08",
+              borderColor: "#fbbd08",
               borderWidth: 2,
-              pointBackgroundColor: "#18A2B8",
-              pointBorderColor: "#18A2B8",
+              pointBackgroundColor: "#fbbd08",
+              pointBorderColor: "#fbbd08",
               pointBorderWidth: 0.5,
               pointStyle: "star",
               pointRadius: 4,
@@ -125,11 +154,11 @@ class ComparisonLineContainer extends Component {
             label: country,
             data: this.createComparisonData(i),
             fill: false,
-            backgroundColor: colours[i],
-            borderColor: colours[i],
+            backgroundColor: this.state.button ?  deathColours[i] :  casesColours[i],
+            borderColor: this.state.button ?  deathColours[i] :  casesColours[i],
             borderWidth: 2,
             hidden: true,
-            pointBackgroundColor: colours[i],
+            pointBackgroundColor: this.state.button ?  deathColours[i] :  casesColours[i],
             pointBorderColor: "#000000",
             pointBorderWidth: 0.5,
             pointStyle: "rectRounded",
@@ -144,11 +173,11 @@ class ComparisonLineContainer extends Component {
           data: this.createLineData(),
           fill: false,
           hidden: false,
-          backgroundColor: "#18A2B8",
-          borderColor: "#18A2B8",
+          backgroundColor:"#fbbd08",
+          borderColor: "#fbbd08",
           borderWidth: 2,
-          pointBackgroundColor: "#18A2B8",
-          pointBorderColor: "#18A2B8",
+          pointBackgroundColor: "#fbbd08",
+          pointBorderColor: "#fbbd08",
           pointBorderWidth: 0.5,
           pointStyle: "star",
           pointRadius: 4,
@@ -159,6 +188,12 @@ class ComparisonLineContainer extends Component {
       }
       return top10
     }
+  }
+
+  handleClick = () => {
+    this.setState({
+      button: !this.state.button
+    })
   }
 
   render() {
@@ -241,12 +276,101 @@ class ComparisonLineContainer extends Component {
       borderWidth: 2,
     }
 
+    const dOptions = {
+      scales: {
+        xAxes: [
+          {
+            ticks: {
+              display: true,
+              major: {
+                fontStyle: "bold",
+                fontColor: "#FFFFFF",
+              },
+            },
+            gridLines: {
+              display: false,
+              drawBorder: true,
+            },
+            scaleLabel: {
+              display: true,
+              labelString: "Days Passed Since First Death",
+              fontStyle: "bold",
+              fontColor: "#FFFFFF",
+            },
+          },
+        ],
+        yAxes: [
+          {
+            ticks: {
+              display: true,
+              major: {
+                fontStyle: "bold",
+                fontColor: "#FFFFFF",
+              },
+            },
+            gridLines: {
+              display: true,
+              drawBorder: true,
+            },
+            scaleLabel: {
+              display: true,
+              labelString: "No of People",
+              fontStyle: "bold",
+              fontColor: "#FFFFFF",
+            },
+          },
+        ],
+      },
+      legend: {
+        display: true,
+        position: "right",
+        align: "center",
+        labels: {
+          fontSize: 12,
+          fontStyle: "bold",
+          fontColor: "#FFFFFF",
+          usePointStyle: true,
+        },
+      },
+      tooltips: {
+        callbacks: {
+          title: function (tooltipItems, data) {
+            if (data !== undefined) {
+              return [data.datasets[tooltipItems[0].datasetIndex]["label"],
+              ]
+            }
+          },
+          label: function (tooltipItems, data) {
+            return "Deaths: " + data.datasets[tooltipItems.datasetIndex].data[tooltipItems.index] + "   Day: " + data.labels[tooltipItems.index]
+          }
+        },
+      },
+      lineTension: 3,
+      borderWidth: 2,
+    }
     return (
-      <React.Fragment >
-        <h4>{`${this.props.selected}`} Case Comparison</h4>
-        <br></br>
-        <Line data={line} options={options} />
-      </React.Fragment >
+     <React.Fragment>
+      {!this.state.button && (
+        <div>
+          <h4>Case Comparison</h4>
+          <br></br>
+          <Button onClick={this.handleClick} variant={"danger"}>
+            Show Deaths
+          </Button>
+          <Line data={line} options={options} />
+        </div>
+      )}
+      {this.state.button && (
+        <div>
+          <h4>Death Comparison</h4>
+          <br></br>
+          <Button onClick={this.handleClick} variant={"info"}>
+            Show Cases
+          </Button>
+          <Line data={line} options={dOptions} />
+        </div>
+      )}
+    </React.Fragment>
     );
   }
 }
