@@ -26,10 +26,10 @@ class ComparisonLineContainer extends Component {
           top10Data.deaths.push(day.deaths)
         }
       })
-      if(!this.state.button) {
-        return top10Data.confirmed
-      }else{
+      if(this.state.button) {
         return top10Data.deaths
+      }else{
+        return top10Data.confirmed
       }
     }
   }
@@ -54,10 +54,10 @@ class ComparisonLineContainer extends Component {
           top10Data.deaths.push( day.deaths / (parseFloat(pop.replace(/,/g, "")) / 1000) )
         }
       })
-      if(!this.state.button) {
-        return top10Data.confirmed
-      } else {
+      if(this.state.button) {
         return top10Data.deaths
+      } else {
+        return top10Data.confirmed
       }
     }
   }
@@ -118,18 +118,15 @@ class ComparisonLineContainer extends Component {
         }
       });
 
-      if(!this.state.button) {
-        return country.confirmed
-      }else{
+      if(this.state.button) {
         return country.deaths
+      }else{
+        return country.confirmed
       }
     }
   };
 
   createLine1mData = () => {
-    
-    
-
     if (this.props.data[this.props.selected] !== undefined) {
       let country = {
         confirmed: [],
@@ -155,15 +152,17 @@ class ComparisonLineContainer extends Component {
         }
       });
 
-      if(!this.state.button) {
-        return country.confirmed
-      }else{
+      if(this.state.button) {
         return country.deaths
+      }else{
+        return country.confirmed
       }
     }
   }
 
   generateDataSets = () => {
+    console.log("the button",this.state.button)
+    console.log("the adj", this.state.million)
     let top10 = []
     var country = this.props.top10Data
     let casesColours = ["#008FB2", "#00A3B9", "#39AABB","#5FB2BE", "#7ABBC1", "#95C3C4", "#AFCCC7", "#C8D6CA", "#E2E0CD", "#FDE9CD"]
@@ -178,6 +177,7 @@ class ComparisonLineContainer extends Component {
               data: this.state.million ? this.createComparison1mData(i) : this.createComparisonData(i),
               fill: false,
               hidden: true,
+              fillStyle: this.state.button ?  deathColours[i] :  casesColours[i],
               backgroundColor: this.state.button ?  deathColours[i] :  casesColours[i],
               borderColor: this.state.button ?  deathColours[i] :  casesColours[i],
               borderWidth: 2,
@@ -217,6 +217,7 @@ class ComparisonLineContainer extends Component {
             label: country,
             data: this.state.million ? this.createComparison1mData(i) : this.createComparisonData(i),
             fill: false,
+            fillStyle: this.state.button ?  deathColours[i] :  casesColours[i],
             backgroundColor: this.state.button ?  deathColours[i] :  casesColours[i],
             borderColor: this.state.button ?  deathColours[i] :  casesColours[i],
             borderWidth: 2,
@@ -338,7 +339,7 @@ class ComparisonLineContainer extends Component {
           usePointStyle: true,
         }
       },
-      tooltips: this.state.button ? {
+      tooltips: !this.state.button ? {
         callbacks: { 
           title: function (tooltipItems, data) {
             if (data !== undefined) {
@@ -419,7 +420,6 @@ class ComparisonLineContainer extends Component {
     //  
     //     
     // 
-
     return (
      <React.Fragment>
       {!this.state.button && (
