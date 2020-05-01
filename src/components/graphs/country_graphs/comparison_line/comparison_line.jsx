@@ -161,8 +161,8 @@ class ComparisonLineContainer extends Component {
   }
 
   generateDataSets = () => {
-    console.log("the button",this.state.button)
-    console.log("the adj", this.state.million)
+    // console.log("the button",this.state.button)
+    // console.log("the adj", this.state.million)
     let top10 = []
     var country = this.props.top10Data
     let casesColours = ["#008FB2", "#00A3B9", "#39AABB","#5FB2BE", "#7ABBC1", "#95C3C4", "#AFCCC7", "#C8D6CA", "#E2E0CD", "#FDE9CD"]
@@ -255,12 +255,14 @@ class ComparisonLineContainer extends Component {
   }
 
   handleClick = () => {
+    console.log("Button is Clicked")
     this.setState({
       button: !this.state.button,
     })
   }
 
   handleClickMillion = () => {
+    console.log("Million is Clicked")
     this.setState({
       million: !this.state.million,
     })
@@ -422,6 +424,13 @@ class ComparisonLineContainer extends Component {
     // 
     return (
      <React.Fragment>
+       {console.log("button && million", (this.state.button && this.state.million))}
+       {console.log("!button && million", (!this.state.button && this.state.million))}
+       {console.log("button && !million", (this.state.button && !this.state.million))}
+       {console.log("!button && !million", (!this.state.button && !this.state.million))}
+
+
+
       {!this.state.button && (
         <div>
           <h4>Case Comparison</h4>
