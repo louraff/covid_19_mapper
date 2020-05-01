@@ -57,7 +57,7 @@ class MapContainer extends Component {
             }
             onClick={() => this.onMarkerClicked(country.country)}
             options={
-              country.cfr <= this.props.globalCFR
+              country.cfr <= this.props.totalForCFR.globalCFR
                 ? {
                   fillColor: "#FBBD08",
                   fillOpacity: 0.5,

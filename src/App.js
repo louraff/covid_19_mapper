@@ -50,19 +50,19 @@ class App extends Component {
         },
       }),
       fetch("https://pomber.github.io/covid19/timeseries.json")
-    
+
     ])
 
-      .then(([res1, res2, res3,res4]) => {
+      .then(([res1, res2, res3, res4]) => {
         return Promise.all([res1.json(), res2.json(), res3.json(), res4.json()]);
       })
 
-      .then(([res1, res2, res3,res4]) => {
+      .then(([res1, res2, res3, res4]) => {
         this.setState({
           countries: this.createCountry(res2.countries_stat, res3.list),
           total: this.updateTotal(res1),
           totalInt: this.toInteger(res1),
-          totalCFR: this.makeGlobalCFR(res2.countries_stat, res3.list),
+          totalCFR: this.makeAvGlobalCFR(res2.countries_stat, res3.list),
           countriesInteger: this.makeCountriesInteger(
             res2.countries_stat,
             res3.list
@@ -74,8 +74,8 @@ class App extends Component {
 
   fixTimeSeriesUS = (res4) => {
     res4["USA"] = res4["US"]
-    delete res4["US"] 
-    
+    delete res4["US"]
+
     return res4
   }
 
@@ -136,19 +136,20 @@ class App extends Component {
 
   updateTotal(totalArray) {
     let total = this.toInteger(totalArray);
-    var activeCases = total[0] - total[1] - total[2];
 
+    var activeCases = total[0] - total[1] - total[2];
     totalArray["active_cases"] = this.commaNumberString(activeCases.toString())
+    totalArray["globalCFR"] = (total[1] / total[0]) * 100
     return totalArray;
   }
 
-  makeGlobalCFR(countries, states) {
+  makeAvGlobalCFR(countries, states) {
     let cfrPerCountry = [];
     countries.forEach((country) => {
       cfrPerCountry.push(
         (parseInt(country.deaths.replace(/,/g, "")) /
           parseInt(country.cases.replace(/,/g, ""))) *
-          100
+        100
       );
     });
 
@@ -160,6 +161,8 @@ class App extends Component {
 
     return parseFloat(avCfr.toFixed(2));
   }
+
+
 
   toInteger(totalArray) {
     var newTotalCases = parseInt(totalArray["total_cases"].replace(/,/g, ""));
@@ -221,7 +224,7 @@ class App extends Component {
   }
 
   commaNumberString(string) {
-    return string.replace(/\d{1,3}(?=(\d{3})+(?!\d))/g , "$&,");
+    return string.replace(/\d{1,3}(?=(\d{3})+(?!\d))/g, "$&,");
   }
 
   render() {
