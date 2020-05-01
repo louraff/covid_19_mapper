@@ -27,8 +27,10 @@ class ComparisonLineContainer extends Component {
         }
       })
       if(this.state.button) {
+        console.log("DEATHS data returned from createComparisonData")
         return top10Data.deaths
       }else{
+        console.log("CASES data returned from createComparisonData")
         return top10Data.confirmed
       }
     }
@@ -55,8 +57,10 @@ class ComparisonLineContainer extends Component {
         }
       })
       if(this.state.button) {
+        console.log("per 1m comparison DEATHS returned")
         return top10Data.deaths
       } else {
+        console.log("per 1m comparison CASES returned")
         return top10Data.confirmed
       }
     }
