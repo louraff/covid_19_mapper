@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
 import { Line } from "react-chartjs-2";
 import Button from "react-bootstrap/Button";
+import popData from "../../../assets/popData"
 
 class ComparisonLineContainer extends Component {
   constructor(props){
     super(props)
     this.state = {
-      button: false
+      button: false,
+      million: false, 
     }
-  }
-
-  componentDidUpdate() {
-
-  }
+  } 
 
   createComparisonData = (index) => {
 
@@ -31,6 +29,34 @@ class ComparisonLineContainer extends Component {
       if(!this.state.button) {
         return top10Data.confirmed
       }else{
+        return top10Data.deaths
+      }
+    }
+  }
+
+  createComparison1mData = (index) => {
+    if (this.props.data !== undefined && this.props.top10Data[index] !== undefined) {
+      const top10Data = {
+        confirmed: [],
+        deaths: []
+      }
+      let pop; 
+      var country = this.props.top10Data[index]
+      popData.popData.forEach(obj => {
+        if(obj.name === country){
+          pop = obj.pop2020
+          return pop
+        }
+      })
+      this.props.data[country].forEach(day => {
+        if (day.deaths !== 0) {
+          top10Data.confirmed.push( day.confirmed / (parseFloat(pop.replace(/,/g, "")) / 1000) )
+          top10Data.deaths.push( day.deaths / (parseFloat(pop.replace(/,/g, "")) / 1000) )
+        }
+      })
+      if(!this.state.button) {
+        return top10Data.confirmed
+      } else {
         return top10Data.deaths
       }
     }
@@ -100,6 +126,43 @@ class ComparisonLineContainer extends Component {
     }
   };
 
+  createLine1mData = () => {
+    
+    
+
+    if (this.props.data[this.props.selected] !== undefined) {
+      let country = {
+        confirmed: [],
+        deaths: []
+      }
+  
+      let countryData = []
+  
+      let pop; 
+      let selected = this.props.selected
+      popData.popData.forEach(obj => {
+      if(obj.name === selected){
+          pop = obj.pop2020
+          return pop
+        }
+      })
+      
+      countryData.push(this.props.data[this.props.selected]);
+      countryData[0].forEach((date) => {
+        if (date.deaths !== 0) {
+          country.confirmed.push(date.confirmed / (parseFloat(pop.replace(/,/g, "")) / 1000));
+          country.deaths.push(date.deaths / (parseFloat(pop.replace(/,/g, "")) / 1000))
+        }
+      });
+
+      if(!this.state.button) {
+        return country.confirmed
+      }else{
+        return country.deaths
+      }
+    }
+  }
+
   generateDataSets = () => {
     let top10 = []
     var country = this.props.top10Data
@@ -109,10 +172,10 @@ class ComparisonLineContainer extends Component {
 
       if (country.includes(this.props.selected)) {
         country.forEach((country, i) => {
-          if (country !== this.props.selected) {
+          if (country !== this.props.selected) { 
             top10.push({
               label: country,
-              data: this.createComparisonData(i),
+              data: this.state.million ? this.createComparison1mData(i) : this.createComparisonData(i),
               fill: false,
               hidden: true,
               backgroundColor: this.state.button ?  deathColours[i] :  casesColours[i],
@@ -131,7 +194,7 @@ class ComparisonLineContainer extends Component {
           if (country === this.props.selected) {
             top10.unshift({
               label: country,
-              data: this.createComparisonData(i),
+              data: this.state.million ? this.createLine1mData() : this.createLineData(),
               fill: false,
               hidden: false,
               backgroundColor: "#fbbd08",
@@ -152,7 +215,7 @@ class ComparisonLineContainer extends Component {
         country.forEach((country, i) => {
           top10.push({
             label: country,
-            data: this.createComparisonData(i),
+            data: this.state.million ? this.createComparison1mData(i) : this.createComparisonData(i),
             fill: false,
             backgroundColor: this.state.button ?  deathColours[i] :  casesColours[i],
             borderColor: this.state.button ?  deathColours[i] :  casesColours[i],
@@ -170,7 +233,7 @@ class ComparisonLineContainer extends Component {
         })
         top10.unshift({
           label: this.props.selected,
-          data: this.createLineData(),
+          data: this.state.million ? this.createLine1mData() : this.createLineData(),
           fill: false,
           hidden: false,
           backgroundColor:"#fbbd08",
@@ -192,12 +255,17 @@ class ComparisonLineContainer extends Component {
 
   handleClick = () => {
     this.setState({
-      button: !this.state.button
+      button: !this.state.button,
+    })
+  }
+
+  handleClickMillion = () => {
+    this.setState({
+      million: !this.state.million,
     })
   }
 
   render() {
-
     const line = {
       labels: this.createDates(),
       datasets: this.generateDataSets(),
@@ -248,7 +316,7 @@ class ComparisonLineContainer extends Component {
           },
         ],
       },
-      legend: {
+      legend: this.state.button ? {
         display: true,
         position: "right",
         align: "center",
@@ -257,10 +325,21 @@ class ComparisonLineContainer extends Component {
           fontStyle: "bold",
           fontColor: "#FFFFFF",
           usePointStyle: true,
-        },
+        }
+      } :
+      {
+        display: true,
+        position: "right",
+        align: "center",
+        labels: {
+          fontSize: 12,
+          fontStyle: "bold",
+          fontColor: "#FFFFFF",
+          usePointStyle: true,
+        }
       },
-      tooltips: {
-        callbacks: {
+      tooltips: this.state.button ? {
+        callbacks: { 
           title: function (tooltipItems, data) {
             if (data !== undefined) {
               return [data.datasets[tooltipItems[0].datasetIndex]["label"],
@@ -270,106 +349,130 @@ class ComparisonLineContainer extends Component {
           label: function (tooltipItems, data) {
             return "Cases: " + data.datasets[tooltipItems.datasetIndex].data[tooltipItems.index] + "   Day: " + data.labels[tooltipItems.index]
           }
-        },
-      },
-      lineTension: 3,
-      borderWidth: 2,
-    }
-
-    const dOptions = {
-      scales: {
-        xAxes: [
-          {
-            ticks: {
-              display: true,
-              major: {
-                fontStyle: "bold",
-                fontColor: "#FFFFFF",
-              },
-            },
-            gridLines: {
-              display: false,
-              drawBorder: true,
-            },
-            scaleLabel: {
-              display: true,
-              labelString: "Days Passed Since First Death",
-              fontStyle: "bold",
-              fontColor: "#FFFFFF",
-            },
-          },
-        ],
-        yAxes: [
-          {
-            ticks: {
-              display: true,
-              major: {
-                fontStyle: "bold",
-                fontColor: "#FFFFFF",
-              },
-            },
-            gridLines: {
-              display: true,
-              drawBorder: true,
-            },
-            scaleLabel: {
-              display: true,
-              labelString: "No of People",
-              fontStyle: "bold",
-              fontColor: "#FFFFFF",
-            },
-          },
-        ],
-      },
-      legend: {
-        display: true,
-        position: "right",
-        align: "center",
-        labels: {
-          fontSize: 12,
-          fontStyle: "bold",
-          fontColor: "#FFFFFF",
-          usePointStyle: true,
-        },
-      },
-      tooltips: {
-        callbacks: {
-          title: function (tooltipItems, data) {
-            if (data !== undefined) {
-              return [data.datasets[tooltipItems[0].datasetIndex]["label"],
-              ]
-            }
-          },
-          label: function (tooltipItems, data) {
-            return "Deaths: " + data.datasets[tooltipItems.datasetIndex].data[tooltipItems.index] + "   Day: " + data.labels[tooltipItems.index]
+        }} : {callbacks: {
+        title: function (tooltipItems, data) {
+          if (data !== undefined) {
+            return [data.datasets[tooltipItems[0].datasetIndex]["label"],
+            ]
           }
         },
+        label: function (tooltipItems, data) {
+          return "Deaths: " + data.datasets[tooltipItems.datasetIndex].data[tooltipItems.index] + "   Day: " + data.labels[tooltipItems.index]
+        }
+      },
       },
       lineTension: 3,
       borderWidth: 2,
-    }
+  }
+
+    //     xAxes: [
+    //       {
+    //         ticks: {
+    //           display: true,
+    //           major: {
+    //             fontStyle: "bold",
+    //             fontColor: "#FFFFFF",
+    //           },
+    //         },
+    //         gridLines: {
+    //           display: false,
+    //           drawBorder: true,
+    //         },
+    //         scaleLabel: {
+    //           display: true,
+    //           labelString: "Days Passed Since First Death",
+    //           fontStyle: "bold",
+    //           fontColor: "#FFFFFF",
+    //         },
+    //       },
+    //     ],
+    //     yAxes: [
+    //       {
+    //         ticks: {
+    //           display: true,
+    //           major: {
+    //             fontStyle: "bold",
+    //             fontColor: "#FFFFFF",
+    //           },
+    //         },
+    //         gridLines: {
+    //           display: true,
+    //           drawBorder: true,
+    //         },
+    //         scaleLabel: {
+    //           display: true,
+    //           labelString: "No of People",
+    //           fontStyle: "bold",
+    //           fontColor: "#FFFFFF",
+    //         },
+    //       },
+    //     ],
+    //   },
+    //   legend: {
+    //     display: true,
+    //     position: "right",
+    //     align: "center",
+    //     labels: {
+    //       fontSize: 12,
+    //       fontStyle: "bold",
+    //       fontColor: "#FFFFFF",
+    //  
+    //     
+    // 
+
     return (
      <React.Fragment>
       {!this.state.button && (
         <div>
           <h4>Case Comparison</h4>
           <br></br>
-          <Button onClick={this.handleClick} variant={"danger"}>
+          <Button onClick={this.handleClick} variant={"danger"} className={'m-2'}>
             Show Deaths
           </Button>
-          <Line data={line} options={options} />
+          {this.state.million && (
+            <div>
+              <Button onClick={this.handleClickMillion} variant={"warning"}className={'m-2'}>
+              Raw Stats
+              </Button>
+            </div>
+          )}
+          {!this.state.million && (
+            <div>
+              <Button onClick={this.handleClickMillion} variant={"warning"}className={'m-2'}>
+              Adjusted per 1 Million People
+              </Button>
+            </div>
+          )}
+          {/* <Line data={line} options={options} /> */}
         </div>
       )}
       {this.state.button && (
         <div>
           <h4>Death Comparison</h4>
           <br></br>
-          <Button onClick={this.handleClick} variant={"info"}>
+          <Button onClick={this.handleClick} variant={"info"} className={'m-2'}>
             Show Cases
           </Button>
-          <Line data={line} options={dOptions} />
+          {this.state.million && (
+            <div>
+              <Button onClick={this.handleClickMillion} variant={"warning"}className={'m-2'}>
+                Raw Stats
+              </Button>
+            </div>
+          )}
+          {!this.state.million && (
+            <div>
+              <Button onClick={this.handleClickMillion} variant={"warning"}className={'m-2'}>
+              Adjusted per 1 Million People
+              </Button>
+            </div>
+          )}
+          {/* <Line data={line} options={options} /> */}
         </div>
       )}
+      <div>
+      <Line data={line} options={options} />
+      </div>
     </React.Fragment>
     );
   }
