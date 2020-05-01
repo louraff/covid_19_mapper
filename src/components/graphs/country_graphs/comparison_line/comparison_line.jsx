@@ -437,13 +437,16 @@ class ComparisonLineContainer extends Component {
 
       {!this.state.button && (
         <div>
+          {console.log("in !this.state.button")}
           <h4>Case Comparison</h4>
           <br></br>
           <Button onClick={this.handleClick} variant={"danger"} className={'m-2'}>
             Show Deaths
           </Button>
           {this.state.million && (
+          
             <div>
+              {console.log("in this.state.million")}
               <Button onClick={this.handleClickMillion} variant={"warning"}className={'m-2'}>
               Raw Stats
               </Button>
@@ -451,6 +454,7 @@ class ComparisonLineContainer extends Component {
           )}
           {!this.state.million && (
             <div>
+              {console.log("in !this.state.million")}
               <Button onClick={this.handleClickMillion} variant={"warning"}className={'m-2'}>
               Adjusted per 1 Million People
               </Button>
@@ -461,6 +465,7 @@ class ComparisonLineContainer extends Component {
       )}
       {this.state.button && (
         <div>
+          {console.log("in this.state.button")}
           <h4>Death Comparison</h4>
           <br></br>
           <Button onClick={this.handleClick} variant={"info"} className={'m-2'}>
@@ -468,6 +473,7 @@ class ComparisonLineContainer extends Component {
           </Button>
           {this.state.million && (
             <div>
+            {console.log("in this.state.million")}
               <Button onClick={this.handleClickMillion} variant={"warning"}className={'m-2'}>
                 Raw Stats
               </Button>
@@ -475,6 +481,7 @@ class ComparisonLineContainer extends Component {
           )}
           {!this.state.million && (
             <div>
+              {console.log("in !this.state.million")}
               <Button onClick={this.handleClickMillion} variant={"warning"}className={'m-2'}>
               Adjusted per 1 Million People
               </Button>
