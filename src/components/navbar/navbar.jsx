@@ -250,7 +250,7 @@ class Header extends Component {
                       aria-hidden="true"
                     />
                   )
-                  : "Global Av. C.F.R: " + this.props.globalCFR + "%"
+                  : "Global C.F.R: " + this.props.total.globalCFR.toFixed(2) + "%"
               }
               id={"dropdown-menu-align-right"}
             >
@@ -265,9 +265,16 @@ class Header extends Component {
                     ></img>
                   </div>
                   <div>
-                    Case Fatality Rate = % of Recorded Cases that Result in
+                    Case Fatality Rate: % of Recorded Cases that Result in
                     Deaths
                   </div>
+                </div>
+              </Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Item>
+                <div id="drop-down-window">
+                  <Spinner animation="grow" variant="warning" size="sm" />
+                  Country Average C.F.R: {this.props.globalCFR}%
                 </div>
               </Dropdown.Item>
             </DropdownButton>
@@ -306,6 +313,7 @@ class Header extends Component {
             <MapContainer
               countries={this.props.countries}
               total={this.props.totalInt}
+              totalForCFR={this.props.total}
               globalCFR={this.props.globalCFR}
               integerCountries={this.props.integerCountries}
             />

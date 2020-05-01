@@ -148,7 +148,7 @@ describe("updateTotal", () => {
     new_deaths: "1000",
     statistic_taken_at: "2020-04-06 12:53:08"
   }
-  it("adds the active cases to the object", () => {
+  it("adds the active cases and global cfr to the object", () => {
     expect(app.updateTotal(total)).toEqual({
       total_cases: "1,250,000",
       total_deaths: "70,000",
@@ -156,7 +156,8 @@ describe("updateTotal", () => {
       new_cases: "14,000",
       new_deaths: "1000",
       statistic_taken_at: "2020-04-06 12:53:08",
-      active_cases: "910,000"
+      active_cases: "910,000",
+      globalCFR: 5.6000000000000005
     })
   })
 })
