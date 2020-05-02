@@ -152,7 +152,7 @@ class CountryDataLine extends Component {
           fontSize: 12,
           fontStyle: "bold",
           fontColor: "#FFFFFF",
-          usePointStyle: true,
+          // usePointStyle: true,
         },
       },
       lineTension: 3,

@@ -4,13 +4,14 @@ import Button from "react-bootstrap/Button";
 import popData from "../../../assets/popData"
 
 class ComparisonLineContainer extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
+    this.chart = React.createRef();
     this.state = {
       button: false,
-      million: false, 
+      million: false,
     }
-  } 
+  }
 
   createComparisonData = (index) => {
 
@@ -26,11 +27,9 @@ class ComparisonLineContainer extends Component {
           top10Data.deaths.push(day.deaths)
         }
       })
-      if(this.state.button) {
-        console.log("DEATHS data returned from createComparisonData")
+      if (this.state.button) {
         return top10Data.deaths
-      }else{
-        console.log("CASES data returned from createComparisonData")
+      } else {
         return top10Data.confirmed
       }
     }
@@ -42,25 +41,23 @@ class ComparisonLineContainer extends Component {
         confirmed: [],
         deaths: []
       }
-      let pop; 
+      let pop;
       var country = this.props.top10Data[index]
       popData.popData.forEach(obj => {
-        if(obj.name === country){
+        if (obj.name === country) {
           pop = obj.pop2020
           return pop
         }
       })
       this.props.data[country].forEach(day => {
         if (day.deaths !== 0) {
-          top10Data.confirmed.push( day.confirmed / (parseFloat(pop.replace(/,/g, "")) / 1000) )
-          top10Data.deaths.push( day.deaths / (parseFloat(pop.replace(/,/g, "")) / 1000) )
+          top10Data.confirmed.push(day.confirmed / (parseFloat(pop.replace(/,/g, "")) / 1000))
+          top10Data.deaths.push(day.deaths / (parseFloat(pop.replace(/,/g, "")) / 1000))
         }
       })
-      if(this.state.button) {
-        console.log("per 1m comparison DEATHS returned")
+      if (this.state.button) {
         return top10Data.deaths
       } else {
-        console.log("per 1m comparison CASES returned")
         return top10Data.confirmed
       }
     }
@@ -122,9 +119,9 @@ class ComparisonLineContainer extends Component {
         }
       });
 
-      if(this.state.button) {
+      if (this.state.button) {
         return country.deaths
-      }else{
+      } else {
         return country.confirmed
       }
     }
@@ -136,18 +133,18 @@ class ComparisonLineContainer extends Component {
         confirmed: [],
         deaths: []
       }
-  
+
       let countryData = []
-  
-      let pop; 
+
+      let pop;
       let selected = this.props.selected
       popData.popData.forEach(obj => {
-      if(obj.name === selected){
+        if (obj.name === selected) {
           pop = obj.pop2020
           return pop
         }
       })
-      
+
       countryData.push(this.props.data[this.props.selected]);
       countryData[0].forEach((date) => {
         if (date.deaths !== 0) {
@@ -156,36 +153,38 @@ class ComparisonLineContainer extends Component {
         }
       });
 
-      if(this.state.button) {
+      if (this.state.button) {
         return country.deaths
-      }else{
+      } else {
         return country.confirmed
       }
     }
   }
 
+  
+
   generateDataSets = () => {
-    // console.log("the button",this.state.button)
-    // console.log("the adj", this.state.million)
     let top10 = []
     var country = this.props.top10Data
-    let casesColours = ["#008FB2", "#00A3B9", "#39AABB","#5FB2BE", "#7ABBC1", "#95C3C4", "#AFCCC7", "#C8D6CA", "#E2E0CD", "#FDE9CD"]
+    let casesColours = ["#008FB2", "#00A3B9", "#39AABB", "#5FB2BE", "#7ABBC1", "#95C3C4", "#AFCCC7", "#C8D6CA", "#E2E0CD", "#FDE9CD"]
     let deathColours = ["#CD1F43", "#CC3B49", "#CD524F", "#CE6555", "#CF765B", "#D08661", "#D19768", "#D2AA6F", "#D3BA75", "#D5CB7B"]
     if (this.props.top10Data[this.props.selected] === undefined) {
 
       if (country.includes(this.props.selected)) {
         country.forEach((country, i) => {
-          if (country !== this.props.selected) { 
+          if (country !== this.props.selected) {
             top10.push({
               label: country,
               data: this.state.million ? this.createComparison1mData(i) : this.createComparisonData(i),
               fill: false,
               hidden: true,
-              fillStyle: this.state.button ?  deathColours[i] :  casesColours[i],
-              backgroundColor: this.state.button ?  deathColours[i] :  casesColours[i],
-              borderColor: this.state.button ?  deathColours[i] :  casesColours[i],
+              // fillStyle: this.state.button ? deathColours[i] : casesColours[i],
+              fillStyle: this.state.button ? deathColours[i] : casesColours[i],
+              backgroundColor: this.state.button ? deathColours[i] : casesColours[i],
+              borderColor: this.state.button ? deathColours[i] : casesColours[i],
               borderWidth: 2,
-              pointBackgroundColor: this.state.button ?  deathColours[i] : casesColours[i],
+              // pointBackgroundColor: this.state.button ? deathColours[i] : casesColours[i],
+              pointBackgroundColor: this.state.button ? deathColours[i] : casesColours[i],
               pointBorderColor: "#000000",
               pointBorderWidth: 0.5,
               pointStyle: "rectRounded",
@@ -207,7 +206,7 @@ class ComparisonLineContainer extends Component {
               pointBackgroundColor: "#fbbd08",
               pointBorderColor: "#fbbd08",
               pointBorderWidth: 0.5,
-              pointStyle: "star",
+              pointStyle: "rectRounded",
               pointRadius: 4,
               pointHitRadius: 4,
               pointHoverRadius: 5,
@@ -221,12 +220,12 @@ class ComparisonLineContainer extends Component {
             label: country,
             data: this.state.million ? this.createComparison1mData(i) : this.createComparisonData(i),
             fill: false,
-            fillStyle: this.state.button ?  deathColours[i] :  casesColours[i],
-            backgroundColor: this.state.button ?  deathColours[i] :  casesColours[i],
-            borderColor: this.state.button ?  deathColours[i] :  casesColours[i],
+            fillStyle: this.state.button ? deathColours[i] : casesColours[i],
+            backgroundColor: this.state.button ? deathColours[i] : casesColours[i],
+            borderColor: this.state.button ? deathColours[i] : casesColours[i],
             borderWidth: 2,
             hidden: true,
-            pointBackgroundColor: this.state.button ?  deathColours[i] :  casesColours[i],
+            pointBackgroundColor: this.state.button ? deathColours[i] : casesColours[i],
             pointBorderColor: "#000000",
             pointBorderWidth: 0.5,
             pointStyle: "rectRounded",
@@ -241,13 +240,13 @@ class ComparisonLineContainer extends Component {
           data: this.state.million ? this.createLine1mData() : this.createLineData(),
           fill: false,
           hidden: false,
-          backgroundColor:"#fbbd08",
+          backgroundColor: "#fbbd08",
           borderColor: "#fbbd08",
           borderWidth: 2,
           pointBackgroundColor: "#fbbd08",
           pointBorderColor: "#fbbd08",
           pointBorderWidth: 0.5,
-          pointStyle: "star",
+          pointStyle: "rectRounded",
           pointRadius: 4,
           pointHitRadius: 4,
           pointHoverRadius: 5,
@@ -259,14 +258,12 @@ class ComparisonLineContainer extends Component {
   }
 
   handleClick = () => {
-    console.log("Button is Clicked")
     this.setState({
       button: !this.state.button,
     })
   }
 
   handleClickMillion = () => {
-    console.log("Million is Clicked")
     this.setState({
       million: !this.state.million,
     })
@@ -323,7 +320,7 @@ class ComparisonLineContainer extends Component {
           },
         ],
       },
-      legend: this.state.button ? {
+      legend: {
         display: true,
         position: "right",
         align: "center",
@@ -331,22 +328,11 @@ class ComparisonLineContainer extends Component {
           fontSize: 12,
           fontStyle: "bold",
           fontColor: "#FFFFFF",
-          usePointStyle: true,
-        }
-      } :
-      {
-        display: true,
-        position: "right",
-        align: "center",
-        labels: {
-          fontSize: 12,
-          fontStyle: "bold",
-          fontColor: "#FFFFFF",
-          usePointStyle: true,
+          usePointStyle: false,
         }
       },
-      tooltips: !this.state.button ? {
-        callbacks: { 
+      tooltips: !this.state.button ? 
+        {callbacks: {
           title: function (tooltipItems, data) {
             if (data !== undefined) {
               return [data.datasets[tooltipItems[0].datasetIndex]["label"],
@@ -354,146 +340,82 @@ class ComparisonLineContainer extends Component {
             }
           },
           label: function (tooltipItems, data) {
+
             return "Cases: " + data.datasets[tooltipItems.datasetIndex].data[tooltipItems.index] + "   Day: " + data.labels[tooltipItems.index]
           }
-        }} : {callbacks: {
-        title: function (tooltipItems, data) {
-          if (data !== undefined) {
-            return [data.datasets[tooltipItems[0].datasetIndex]["label"],
-            ]
-          }
-        },
-        label: function (tooltipItems, data) {
-          return "Deaths: " + data.datasets[tooltipItems.datasetIndex].data[tooltipItems.index] + "   Day: " + data.labels[tooltipItems.index]
         }
-      },
-      },
-      lineTension: 3,
-      borderWidth: 2,
-  }
+      } 
+      : 
+      { callbacks: {
+            title: function (tooltipItems, data) {
 
-    //     xAxes: [
-    //       {
-    //         ticks: {
-    //           display: true,
-    //           major: {
-    //             fontStyle: "bold",
-    //             fontColor: "#FFFFFF",
-    //           },
-    //         },
-    //         gridLines: {
-    //           display: false,
-    //           drawBorder: true,
-    //         },
-    //         scaleLabel: {
-    //           display: true,
-    //           labelString: "Days Passed Since First Death",
-    //           fontStyle: "bold",
-    //           fontColor: "#FFFFFF",
-    //         },
-    //       },
-    //     ],
-    //     yAxes: [
-    //       {
-    //         ticks: {
-    //           display: true,
-    //           major: {
-    //             fontStyle: "bold",
-    //             fontColor: "#FFFFFF",
-    //           },
-    //         },
-    //         gridLines: {
-    //           display: true,
-    //           drawBorder: true,
-    //         },
-    //         scaleLabel: {
-    //           display: true,
-    //           labelString: "No of People",
-    //           fontStyle: "bold",
-    //           fontColor: "#FFFFFF",
-    //         },
-    //       },
-    //     ],
-    //   },
-    //   legend: {
-    //     display: true,
-    //     position: "right",
-    //     align: "center",
-    //     labels: {
-    //       fontSize: 12,
-    //       fontStyle: "bold",
-    //       fontColor: "#FFFFFF",
-    //  
-    //     
-    // 
+              if (data !== undefined) {
+                return [data.datasets[tooltipItems[0].datasetIndex]["label"],
+                ]
+              }
+            },
+            label: function (tooltipItems, data) {
+
+              return "Deaths: " + data.datasets[tooltipItems.datasetIndex].data[tooltipItems.index] + "   Day: " + data.labels[tooltipItems.index]
+              }
+           }
+        },
+        lineTension: 3,
+        borderWidth: 2,
+      }
+
     return (
-     <React.Fragment>
-       {console.log("button && million", (this.state.button && this.state.million))}
-       {console.log("!button && million", (!this.state.button && this.state.million))}
-       {console.log("button && !million", (this.state.button && !this.state.million))}
-       {console.log("!button && !million", (!this.state.button && !this.state.million))}
-
-
-
-      {!this.state.button && (
-        <div>
-          {console.log("in !this.state.button")}
-          <h4>Case Comparison</h4>
-          <br></br>
-          <Button onClick={this.handleClick} variant={"danger"} className={'m-2'}>
-            Show Deaths
+      <React.Fragment> 
+        {!this.state.button && (
+          <div>
+            <h4>Case Comparison</h4>
+            <br></br>
+            <Button onClick={this.handleClick} variant={"danger"} className={'m-2'}>
+              Show Deaths
           </Button>
-          {this.state.million && (
-          
-            <div>
-              {console.log("in this.state.million")}
-              <Button onClick={this.handleClickMillion} variant={"warning"}className={'m-2'}>
-              Raw Stats
+            {this.state.million && (
+              <div>
+                <Button onClick={this.handleClickMillion} variant={"warning"} className={'m-2'}>
+                  Raw Stats
               </Button>
-            </div>
-          )}
-          {!this.state.million && (
-            <div>
-              {console.log("in !this.state.million")}
-              <Button onClick={this.handleClickMillion} variant={"warning"}className={'m-2'}>
-              Adjusted per 1 Million People
+              </div>
+            )}
+            {!this.state.million && (
+              <div>
+                <Button onClick={this.handleClickMillion} variant={"warning"} className={'m-2'}>
+                  Adjusted per 1 Million People
               </Button>
-            </div>
-          )}
-          {/* <Line data={line} options={options} /> */}
-        </div>
-      )}
-      {this.state.button && (
-        <div>
-          {console.log("in this.state.button")}
-          <h4>Death Comparison</h4>
-          <br></br>
-          <Button onClick={this.handleClick} variant={"info"} className={'m-2'}>
-            Show Cases
+              </div>
+            )}
+          </div>
+        )}
+        {this.state.button && (
+          <div>
+            <h4>Death Comparison</h4>
+            <br></br>
+            <Button onClick={this.handleClick} variant={"info"} className={'m-2'}>
+              Show Cases
           </Button>
-          {this.state.million && (
-            <div>
-            {console.log("in this.state.million")}
-              <Button onClick={this.handleClickMillion} variant={"warning"}className={'m-2'}>
-                Raw Stats
+            {this.state.million && (
+              <div>
+                <Button onClick={this.handleClickMillion} variant={"warning"} className={'m-2'}>
+                  Raw Stats
               </Button>
-            </div>
-          )}
-          {!this.state.million && (
-            <div>
-              {console.log("in !this.state.million")}
-              <Button onClick={this.handleClickMillion} variant={"warning"}className={'m-2'}>
-              Adjusted per 1 Million People
+              </div>
+            )}
+            {!this.state.million && (
+              <div>
+                <Button onClick={this.handleClickMillion} variant={"warning"} className={'m-2'}>
+                  Adjusted per 1 Million People
               </Button>
-            </div>
-          )}
-          {/* <Line data={line} options={options} /> */}
+              </div>
+            )}
+          </div>
+        )}
+        <div>
+          <Line data={line} options={options} ref={this.chart} />
         </div>
-      )}
-      <div>
-      <Line data={line} options={options} />
-      </div>
-    </React.Fragment>
+      </React.Fragment>
     );
   }
 }
