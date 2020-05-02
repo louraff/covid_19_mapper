@@ -239,7 +239,7 @@ export default class GlobalChangesBar extends Component {
       <React.Fragment>
         {!this.state.cases && (
           <div>
-            <h4>Global Daily Case Change</h4>
+            <h4>Daily Case Change</h4>
             <br></br>
             <Button onClick={this.handleClick} variant={"info"}>
               Show Cases
@@ -251,7 +251,7 @@ export default class GlobalChangesBar extends Component {
         {
           this.state.cases && (
             <div>
-              <h4>Global Daily Death Change</h4>
+              <h4>Daily Death Change</h4>
               <br></br>
               <Button onClick={this.handleClick} variant={"danger"}>
                 Show Deaths

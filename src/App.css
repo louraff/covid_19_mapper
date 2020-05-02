@@ -19,6 +19,10 @@
   top: 10%;
 }
 
+#description {
+  color: white
+}
+
 #legend-title {
   position: absolute;
   right: 1%;

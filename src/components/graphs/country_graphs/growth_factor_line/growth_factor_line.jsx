@@ -216,7 +216,7 @@ class GrowthFactorLine extends Component {
           fontSize: 12,
           fontStyle: "bold",
           fontColor: "#FFFFFF",
-          usePointStyle: true,
+          // usePointStyle: true,
         },
       },
       tooltips: {

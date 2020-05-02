@@ -4,6 +4,7 @@ import GlobalDeathsBar from "./global_deaths_bar/global_deaths_bar"
 import GlobalDataLine from "./global_line/global_line"
 import GlobalChangesBar from "./global_changes_bar/global_changes_bar"
 import GlobalGrowthFactor from "./global_growth_line/global_growth_line"
+import CFRContainer from "./global_cfr/global_cfr"
 
 class GlobalGraphContainer extends Component {
   state = {
@@ -49,6 +50,9 @@ class GlobalGraphContainer extends Component {
     defaults.global.defaultFontColor = "white";
     return (
       <div>
+        <h2>Global Data From Day of First Death</h2>
+        <br></br>
+        <br></br>
         <div id="l">
         <GlobalDataLine createLineLabels={this.createLineLabels()} data={this.state.data} />
         </div>
@@ -60,6 +64,9 @@ class GlobalGraphContainer extends Component {
         </div>
         <div id="b">
           <GlobalGrowthFactor data={this.state.data} createLineLabels={this.createLineLabels()} />
+          </div>
+          <div id="b">
+          <CFRContainer data={this.state.data} createLineLabels={this.createLineLabels()} />
           </div>
       </div>
     );

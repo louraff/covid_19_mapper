@@ -209,7 +209,7 @@ export default class GlobalGrowthFactor extends Component {
 
     return (
       <React.Fragment>
-        <h4>Global Growth Factor (R)</h4>
+        <h4>Growth Factor (R)</h4>
         <Line data={line} options={options} />
       </React.Fragment>
     )
