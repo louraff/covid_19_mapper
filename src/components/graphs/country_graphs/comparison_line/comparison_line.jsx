@@ -51,8 +51,8 @@ class ComparisonLineContainer extends Component {
       })
       this.props.data[country].forEach(day => {
         if (day.deaths !== 0) {
-          top10Data.confirmed.push(day.confirmed / (parseFloat(pop.replace(/,/g, "")) / 1000))
-          top10Data.deaths.push(day.deaths / (parseFloat(pop.replace(/,/g, "")) / 1000))
+          top10Data.confirmed.push((day.confirmed / (parseFloat(pop.replace(/,/g, "")) / 1000)).toFixed(0))
+          top10Data.deaths.push((day.deaths / (parseFloat(pop.replace(/,/g, "")) / 1000)).toFixed(0))
         }
       })
       if (this.state.button) {
@@ -148,8 +148,8 @@ class ComparisonLineContainer extends Component {
       countryData.push(this.props.data[this.props.selected]);
       countryData[0].forEach((date) => {
         if (date.deaths !== 0) {
-          country.confirmed.push(date.confirmed / (parseFloat(pop.replace(/,/g, "")) / 1000));
-          country.deaths.push(date.deaths / (parseFloat(pop.replace(/,/g, "")) / 1000))
+          country.confirmed.push((date.confirmed / (parseFloat(pop.replace(/,/g, "")) / 1000)).toFixed(0));
+          country.deaths.push((date.deaths / (parseFloat(pop.replace(/,/g, "")) / 1000)).toFixed(0))
         }
       });
 
