@@ -39,7 +39,7 @@ class GlobalDataLine extends Component {
           label: "Confirmed Cases",
           data: this.createLineData(this.props.data, "confirmed"),
           fill: false,
-          backgroundColor: "#18A2B8",
+          backgroundColor: "rgba(24,162,184, 0.2)",
           borderColor: "#18A2B8",
           borderWidth: 2,
           pointBackgroundColor: "#18A2B8",
@@ -55,7 +55,7 @@ class GlobalDataLine extends Component {
           label: "Confirmed Deaths",
           data: this.createLineData(this.props.data, "deaths"),
           fill: false,
-          backgroundColor: "#dc3644",
+          backgroundColor: "rgba(255,99,132,0.2)",
           borderColor: "#dc3644",
           borderWidth: 2,
           pointBackgroundColor: "#dc3644",
@@ -71,7 +71,7 @@ class GlobalDataLine extends Component {
           label: "Confrmed Recoveries",
           data: this.createLineData(this.props.data, "recovered"),
           fill: false,
-          backgroundColor: "#28a745",
+          backgroundColor: "rgba(40, 167, 69, 0.2)",
           borderColor: "#28a745",
           borderWidth: 2,
           pointBackgroundColor: "#28a745",
@@ -139,7 +139,7 @@ class GlobalDataLine extends Component {
           fontSize: 12,
           fontStyle: "bold",
           fontColor: "#FFFFFF",
-          usePointStyle: true,
+          usePointStyle: false,
         },
       },
       lineTension: 3,
@@ -147,7 +147,7 @@ class GlobalDataLine extends Component {
     };
     return (
       <div>
-        <h2>World Data</h2>
+        <h4>Confirmed Cases, Deaths and Recoveries</h4>
         <br></br>
         <Line data={line} options={options} />
       </div>

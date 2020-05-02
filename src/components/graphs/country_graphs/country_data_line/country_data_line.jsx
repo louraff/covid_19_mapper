@@ -164,7 +164,7 @@ class CountryDataLine extends Component {
         
         {!this.state.doughnut && (
         <div>
-        <h4>{`${this.props.country}`} Data</h4>
+        <h4>{`${this.props.country}`} Confirmed Cases, Deaths and Recoveries</h4>
         <br></br>
         <Button onClick={this.handleDoughnutClick} variant={"info"}>Show {`${this.props.country}`} Cases as % of Global Cases </Button> 
         <Line data={line} options={options} />

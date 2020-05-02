@@ -178,12 +178,9 @@ class ComparisonLineContainer extends Component {
               data: this.state.million ? this.createComparison1mData(i) : this.createComparisonData(i),
               fill: false,
               hidden: true,
-              // fillStyle: this.state.button ? deathColours[i] : casesColours[i],
-              fillStyle: this.state.button ? deathColours[i] : casesColours[i],
               backgroundColor: this.state.button ? deathColours[i] : casesColours[i],
               borderColor: this.state.button ? deathColours[i] : casesColours[i],
               borderWidth: 2,
-              // pointBackgroundColor: this.state.button ? deathColours[i] : casesColours[i],
               pointBackgroundColor: this.state.button ? deathColours[i] : casesColours[i],
               pointBorderColor: "#000000",
               pointBorderWidth: 0.5,
@@ -207,7 +204,7 @@ class ComparisonLineContainer extends Component {
               pointBorderColor: "#fbbd08",
               pointBorderWidth: 0.5,
               pointStyle: "rectRounded",
-              pointRadius: 4,
+              pointRadius: 2.5,
               pointHitRadius: 4,
               pointHoverRadius: 5,
               hoverBackgroundColor: "#FFFFFF",
@@ -220,11 +217,10 @@ class ComparisonLineContainer extends Component {
             label: country,
             data: this.state.million ? this.createComparison1mData(i) : this.createComparisonData(i),
             fill: false,
-            fillStyle: this.state.button ? deathColours[i] : casesColours[i],
+            hidden: true,
             backgroundColor: this.state.button ? deathColours[i] : casesColours[i],
             borderColor: this.state.button ? deathColours[i] : casesColours[i],
             borderWidth: 2,
-            hidden: true,
             pointBackgroundColor: this.state.button ? deathColours[i] : casesColours[i],
             pointBorderColor: "#000000",
             pointBorderWidth: 0.5,
@@ -247,7 +243,7 @@ class ComparisonLineContainer extends Component {
           pointBorderColor: "#fbbd08",
           pointBorderWidth: 0.5,
           pointStyle: "rectRounded",
-          pointRadius: 4,
+          pointRadius: 2.5,
           pointHitRadius: 4,
           pointHoverRadius: 5,
           hoverBackgroundColor: "#FFFFFF",
@@ -368,7 +364,7 @@ class ComparisonLineContainer extends Component {
       <React.Fragment> 
         {!this.state.button && (
           <div>
-            <h4>Case Comparison</h4>
+            <h4>{`${this.props.selected}`} Case Comparison</h4>
             <br></br>
             <Button onClick={this.handleClick} variant={"danger"} className={'m-2'}>
               Show Deaths
@@ -376,14 +372,14 @@ class ComparisonLineContainer extends Component {
             {this.state.million && (
               <div>
                 <Button onClick={this.handleClickMillion} variant={"warning"} className={'m-2'}>
-                  Raw Stats
+                  Show Raw Stats
               </Button>
               </div>
             )}
             {!this.state.million && (
               <div>
                 <Button onClick={this.handleClickMillion} variant={"warning"} className={'m-2'}>
-                  Adjusted per 1 Million People
+                  Show Adjusted per 1 Million People
               </Button>
               </div>
             )}
@@ -391,7 +387,7 @@ class ComparisonLineContainer extends Component {
         )}
         {this.state.button && (
           <div>
-            <h4>Death Comparison</h4>
+            <h4>{`${this.props.selected}`} Death Comparison</h4>
             <br></br>
             <Button onClick={this.handleClick} variant={"info"} className={'m-2'}>
               Show Cases
@@ -399,14 +395,14 @@ class ComparisonLineContainer extends Component {
             {this.state.million && (
               <div>
                 <Button onClick={this.handleClickMillion} variant={"warning"} className={'m-2'}>
-                  Raw Stats
+                  Show Raw Stats
               </Button>
               </div>
             )}
             {!this.state.million && (
               <div>
                 <Button onClick={this.handleClickMillion} variant={"warning"} className={'m-2'}>
-                  Adjusted per 1 Million People
+                  Show Adjusted per 1 Million People
               </Button>
               </div>
             )}
