@@ -156,7 +156,7 @@ class DailyChangesBar extends Component {
       },
       legend: {
         display: true,
-        position: "right",
+        position: "top",
         align: "center",
         labels: {
           fontSize: 12,
@@ -219,7 +219,7 @@ class DailyChangesBar extends Component {
       },
       legend: {
         display: true,
-        position: "right",
+        position: "top",
         align: "center",
         labels: {
           fontSize: 12,
@@ -240,9 +240,17 @@ class DailyChangesBar extends Component {
           <div>
             <h4>{`${this.props.country}`} Daily Death Change</h4>
             <br></br>
+            <div id="description">
+              <p>
+                This represents the daily increase in the number of confirmed deaths in {this.props.country === "United Kingdom" || this.props.country === "United Kingdom" ? `the ${this.props.country}` : `${this.props.country}`}.
+              </p>
+            </div>
+            <br></br>
             <Button onClick={this.handleClick} variant={"info"}>
               Show Cases
             </Button>
+            <br></br>
+            <br></br>
             <Bar data={barDeaths} options={bDeathOptions} />
           </div>
         )}
@@ -250,9 +258,17 @@ class DailyChangesBar extends Component {
           <div>
             <h4>{`${this.props.country}`} Daily Case Change</h4>
             <br></br>
+            <div id="description">
+              <p>
+                This represents the daily increase in the number of confirmed cases in {this.props.country === "United Kingdom" || this.props.country === "United Kingdom" ? `the ${this.props.country}` : `${this.props.country}`}.
+              </p>
+            </div>
+            <br></br>
             <Button onClick={this.handleClick} variant={"danger"}>
               Show Deaths
             </Button>
+            <br></br>
+            <br></br>
             <Bar data={bar} options={bOptions} />
           </div>
         )}

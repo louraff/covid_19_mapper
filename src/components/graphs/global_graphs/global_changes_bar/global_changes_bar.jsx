@@ -158,7 +158,7 @@ export default class GlobalChangesBar extends Component {
       },
       legend: {
         display: true,
-        position: "right",
+        position: "top",
         align: "center",
         labels: {
           fontSize: 12,
@@ -221,7 +221,7 @@ export default class GlobalChangesBar extends Component {
       },
       legend: {
         display: true,
-        position: "right",
+        position: "top",
         align: "center",
         labels: {
           fontSize: 12,
@@ -237,25 +237,41 @@ export default class GlobalChangesBar extends Component {
     };
     return (
       <React.Fragment>
-        {!this.state.cases && (
+        {this.state.cases && (
           <div>
-            <h4>Daily Case Change</h4>
+            <h4>Daily Death Change</h4>
+            <br></br>
+            <div id="description">
+              <p>
+                This represents the daily increase in the number of confirmed deaths globally.
+              </p>
+            </div>
             <br></br>
             <Button onClick={this.handleClick} variant={"info"}>
               Show Cases
         </Button>
+            <br></br>
+            <br></br>
             <Bar data={barDeaths} options={bDeathOptions} />
           </div>
         )
         }
         {
-          this.state.cases && (
+          !this.state.cases && (
             <div>
-              <h4>Daily Death Change</h4>
+              <h4>Daily Case Change</h4>
+              <br></br>
+              <div id="description">
+                <p>
+                  This represents the daily increase in the number of confirmed cases globally.
+                </p>
+              </div>
               <br></br>
               <Button onClick={this.handleClick} variant={"danger"}>
                 Show Deaths
-        </Button>
+              </Button>
+              <br></br>
+              <br></br>
               <Bar data={bar} options={bOptions} />
             </div>
           )}

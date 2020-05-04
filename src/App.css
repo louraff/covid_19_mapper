@@ -20,6 +20,12 @@
 }
 
 #description {
+  color: white;
+  /* padding-right: 100px;
+  padding-left: 100px; */
+}
+
+#equation{
   color: white
 }
 
@@ -84,26 +90,26 @@ h2 {
 }
 
 #l {
-  padding-left: 150px;
-  padding-right: 150px;
+  padding-left: 230px;
+  padding-right: 250px;
   padding-bottom: 150px;
 }
 
 #b {
-  padding-left: 150px;
-  padding-right: 150px;
+  padding-left: 230px;
+  padding-right: 250px;
   padding-bottom: 150px;
 }
 
 #gf {
-  padding-left: 150px;
-  padding-right: 150px;
+  padding-left: 230px;
+  padding-right: 250px;
   padding-bottom: 150px;
 }
 
 #d {
-  padding-left: 150px;
-  padding-right: 150px;
+  padding-left: 230px;
+  padding-right: 250px;
   padding-bottom: 150px;
 }
 

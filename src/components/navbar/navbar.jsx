@@ -16,7 +16,7 @@ class Header extends Component {
       viewMap: true,
       viewTables: false,
       viewCountryGraph: false,
-      viewGlobalGraph: false
+      viewGlobalGraph: false,
     };
   }
 
