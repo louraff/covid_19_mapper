@@ -93,6 +93,7 @@ class MapContainer extends Component {
             ref={this.countryElement}
             countriesArray={this.props.countries}
             globalCFR={this.props.globalCFR}
+            totalCFR={this.props.totalForCFR}
           />
         </div>
       </div >
