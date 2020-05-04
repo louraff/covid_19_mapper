@@ -8,6 +8,14 @@
   flex-direction: row;
 }
 
+footer {
+  z-index: 1;
+  color: white;
+  bottom: 0px;
+  position: absolute;
+  align-items: center;
+}
+
 #nav-title {
   display: flex;
   flex-direction: row;
@@ -90,26 +98,26 @@ h2 {
 }
 
 #l {
-  padding-left: 230px;
-  padding-right: 250px;
+  padding-left: 190px;
+  padding-right: 200px;
   padding-bottom: 150px;
 }
 
 #b {
-  padding-left: 230px;
-  padding-right: 250px;
+  padding-left: 190px;
+  padding-right: 200px;
   padding-bottom: 150px;
 }
 
 #gf {
-  padding-left: 230px;
-  padding-right: 250px;
+  padding-left: 190px;
+  padding-right: 200px;
   padding-bottom: 150px;
 }
 
 #d {
-  padding-left: 230px;
-  padding-right: 250px;
+  padding-left: 190px;
+  padding-right: 200px;
   padding-bottom: 150px;
 }
 
@@ -170,6 +178,7 @@ h2 {
   left: 2%;
   position: absolute;
 }
+
 
 #infoDeaths {
   color: rgb(220, 54, 69);
@@ -255,7 +264,7 @@ h2 {
 }
 
 #search-form input[type="text"] {
-  width: 250px;
+  width: 200px;
   box-sizing: border-box;
   border: 2px solid #646d79;
   border-radius: 4px;

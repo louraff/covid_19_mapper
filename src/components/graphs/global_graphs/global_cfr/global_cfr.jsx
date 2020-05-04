@@ -94,13 +94,12 @@ class CFRContainer extends Component {
       },
       legend: {
         display: true,
-        position: "right",
+        position: "top",
         align: "center",
         labels: {
           fontSize: 12,
           fontStyle: "bold",
           fontColor: "#FFFFFF",
-          usePointStyle: false,
         },
       },
       tooltips: {
@@ -131,7 +130,7 @@ class CFRContainer extends Component {
         <br></br>
         <div id="description">
           <p>
-            This shows the percentage of confirmed cases that result in deaths globally across time.
+            This represents the percentage of confirmed cases that result in deaths globally across time.
           </p>
         </div>
         <br></br>
