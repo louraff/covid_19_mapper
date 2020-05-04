@@ -36,7 +36,7 @@ class GlobalDataLine extends Component {
       labels: this.props.createLineLabels,
       datasets: [
         {
-          label: "Confirmed Cases",
+          label: "Cases",
           data: this.createLineData(this.props.data, "confirmed"),
           fill: false,
           backgroundColor: "rgba(24,162,184, 0.2)",
@@ -52,7 +52,7 @@ class GlobalDataLine extends Component {
           hoverBackgroundColor: "#FFFFFF",
         },
         {
-          label: "Confirmed Deaths",
+          label: "Deaths",
           data: this.createLineData(this.props.data, "deaths"),
           fill: false,
           backgroundColor: "rgba(255,99,132,0.2)",
@@ -68,7 +68,7 @@ class GlobalDataLine extends Component {
           hoverBackgroundColor: "#FFFFFF",
         },
         {
-          label: "Confrmed Recoveries",
+          label: "Recoveries",
           data: this.createLineData(this.props.data, "recovered"),
           fill: false,
           backgroundColor: "rgba(40, 167, 69, 0.2)",
@@ -133,7 +133,7 @@ class GlobalDataLine extends Component {
       },
       legend: {
         display: true,
-        position: "right",
+        position: "top",
         align: "center",
         labels: {
           fontSize: 12,

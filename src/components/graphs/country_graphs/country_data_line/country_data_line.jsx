@@ -5,7 +5,7 @@ import GlobalCasesDoughnut from './../global_cases_doughnut/global_cases_doughnu
 
 class CountryDataLine extends Component {
 
-  state ={
+  state = {
     doughnut: false
   }
 
@@ -44,12 +44,12 @@ class CountryDataLine extends Component {
   }
 
   render() {
-    
+
     const line = {
       labels: this.props.createLineLabels,
       datasets: [
         {
-          label: "Confirmed Cases",
+          label: "Cases",
           data: this.createLineData("confirmed"),
           fill: false,
           backgroundColor: "#18A2B8",
@@ -65,7 +65,7 @@ class CountryDataLine extends Component {
           hoverBackgroundColor: "#FFFFFF",
         },
         {
-          label: "Confirmed Deaths",
+          label: "Deaths",
           data: this.createLineData("deaths"),
           fill: false,
           backgroundColor: "#dc3644",
@@ -81,7 +81,7 @@ class CountryDataLine extends Component {
           hoverBackgroundColor: "#FFFFFF",
         },
         {
-          label: "Confrmed Recoveries",
+          label: "Recoveries",
           data: this.createLineData("recovered"),
           fill: false,
           backgroundColor: "#28a745",
@@ -146,13 +146,12 @@ class CountryDataLine extends Component {
       },
       legend: {
         display: true,
-        position: "right",
+        position: "top",
         align: "center",
         labels: {
           fontSize: 12,
           fontStyle: "bold",
           fontColor: "#FFFFFF",
-          // usePointStyle: true,
         },
       },
       lineTension: 3,
@@ -160,25 +159,39 @@ class CountryDataLine extends Component {
     };
 
     return (
-        <React.Fragment>
-        
+      <React.Fragment>
+
         {!this.state.doughnut && (
-        <div>
-        <h4>{`${this.props.country}`} Confirmed Cases, Deaths and Recoveries</h4>
-        <br></br>
-        <Button onClick={this.handleDoughnutClick} variant={"info"}>Show {`${this.props.country}`} Cases as % of Global Cases </Button> 
-        <Line data={line} options={options} />
-        </div>
+          <div>
+            <h4>{`${this.props.country}`} Confirmed Cases, Deaths and Recoveries</h4>
+            <br></br>
+            <div id="description">
+              <p>
+                This represents the increase over time for confirmed cases, deaths and recoveries in {this.props.country === "United Kingdom" || this.props.country === "United Kingdom" ? `the ${this.props.country}` : `${this.props.country}`}.
+              </p>
+            </div>
+            <br></br>
+            <Button onClick={this.handleDoughnutClick} variant={"info"}>Show {`${this.props.country}`} Cases as % of Global Cases </Button>
+            <br></br>
+            <br></br>
+            <Line data={line} options={options} />
+          </div>
         )}
         {this.state.doughnut && (
           <div>
-           <h4>{`${this.props.country}`} as % of Global Cases</h4>
-           <br></br>
-           <Button onClick={this.handleDoughnutClick} variant={"warning"}>Show Data of {`${this.props.country}`} </Button> 
-           <GlobalCasesDoughnut country={this.props.country} countries={this.props.countries} total={this.props.total} />
-           </div>
+            <h4>{`${this.props.country}`} as % of Global Cases</h4>
+            <br></br>
+            <div id="description">
+              <p>
+                This represents {this.props.country === "United Kingdom" || this.props.country === "United Kingdom" ? `the ${this.props.country}'s` : `${this.props.country}'s`} cases as a percentage of total global cases.
+              </p>
+            </div>
+            <br></br>
+            <Button onClick={this.handleDoughnutClick} variant={"warning"}>Show Data of {`${this.props.country}`} </Button>
+            <GlobalCasesDoughnut country={this.props.country} countries={this.props.countries} total={this.props.total} />
+          </div>
         )}
-        </React.Fragment>
+      </React.Fragment>
     );
   }
 }

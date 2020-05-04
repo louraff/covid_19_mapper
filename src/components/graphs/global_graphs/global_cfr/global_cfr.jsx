@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { Line } from "react-chartjs-2";
+import MathJax from 'react-mathjax2'
+
 
 class CFRContainer extends Component {
-  
+
   createCFRData = () => {
     const graphData = []
- 
+
     if (this.props.data !== undefined) {
       this.props.data.forEach((date) => {
         if (date.deaths !== 0) {
@@ -17,12 +19,12 @@ class CFRContainer extends Component {
   }
 
   createLabels = () => {
-    if(this.props.createLineLabels[0] !== undefined){
+    if (this.props.createLineLabels[0] !== undefined) {
       return this.props.createLineLabels
     }
   }
-  
-  render() { 
+
+  render() {
     const line = {
       labels: this.createLabels(),
       datasets: [
@@ -102,20 +104,36 @@ class CFRContainer extends Component {
         },
       },
       tooltips: {
-       displayColors: false,
-          callbacks: {
-            label: function (tooltipItems, data) {
+        displayColors: false,
+        callbacks: {
+          label: function (tooltipItems, data) {
 
-              return [data.datasets[tooltipItems.datasetIndex].data[tooltipItems.index] + " %"]
-            }
+            return [data.datasets[tooltipItems.datasetIndex].data[tooltipItems.index] + " %"]
           }
-        }, 
+        }
+      },
       lineTension: 3,
       borderWidth: 2,
     };
-    return ( 
+    const ascii = 'C.F.R = (text{Total Global Deaths}/text{Total Global Cases}) times 100'
+
+    return (
       <div>
         <h4> Case Fatality Rate </h4>
+        <br></br>
+        <div id="equation">
+          <MathJax.Context input='ascii'>
+            <div>
+              <MathJax.Node>{ascii}</MathJax.Node>
+            </div>
+          </MathJax.Context>
+        </div>
+        <br></br>
+        <div id="description">
+          <p>
+            This shows the percentage of confirmed cases that result in deaths globally across time.
+          </p>
+        </div>
         <br></br>
         <Line data={line} options={options} />
       </div>

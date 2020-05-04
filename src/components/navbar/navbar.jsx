@@ -15,8 +15,8 @@ class Header extends Component {
     this.state = {
       viewMap: false,
       viewTables: false,
-      viewCountryGraph: true,
-      viewGlobalGraph: false
+      viewCountryGraph: false,
+      viewGlobalGraph: true,
     };
   }
 

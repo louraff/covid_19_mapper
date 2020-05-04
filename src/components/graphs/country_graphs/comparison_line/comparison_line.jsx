@@ -368,6 +368,13 @@ class ComparisonLineContainer extends Component {
           <div>
             <h4>{`${this.props.selected}`} Case Comparison</h4>
             <br></br>
+
+            <div id="description">
+              <p>
+                This represents the {this.props.selected === "United Kingdom" || this.props.country === "United Kingdom" ? `the ${this.props.country}'s` : `${this.props.country}'s`} in comparison the 10 countries with the highest cases.
+              </p>
+            </div>
+            <br></br>
             <Button onClick={this.handleClick} variant={"danger"} className={'m-2'}>
               Show Deaths
           </Button>
