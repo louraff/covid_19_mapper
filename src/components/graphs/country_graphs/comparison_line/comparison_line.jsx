@@ -161,7 +161,7 @@ class ComparisonLineContainer extends Component {
     }
   }
 
-  
+
 
   generateDataSets = () => {
     let top10 = []
@@ -327,22 +327,24 @@ class ComparisonLineContainer extends Component {
           usePointStyle: false,
         }
       },
-      tooltips: !this.state.button ? 
-        {callbacks: {
-          title: function (tooltipItems, data) {
-            if (data !== undefined) {
-              return [data.datasets[tooltipItems[0].datasetIndex]["label"],
-              ]
-            }
-          },
-          label: function (tooltipItems, data) {
+      tooltips: !this.state.button ?
+        {
+          callbacks: {
+            title: function (tooltipItems, data) {
+              if (data !== undefined) {
+                return [data.datasets[tooltipItems[0].datasetIndex]["label"],
+                ]
+              }
+            },
+            label: function (tooltipItems, data) {
 
-            return "Cases: " + data.datasets[tooltipItems.datasetIndex].data[tooltipItems.index] + "   Day: " + data.labels[tooltipItems.index]
+              return "Cases: " + data.datasets[tooltipItems.datasetIndex].data[tooltipItems.index] + "   Day: " + data.labels[tooltipItems.index]
+            }
           }
         }
-      } 
-      : 
-      { callbacks: {
+        :
+        {
+          callbacks: {
             title: function (tooltipItems, data) {
 
               if (data !== undefined) {
@@ -353,15 +355,15 @@ class ComparisonLineContainer extends Component {
             label: function (tooltipItems, data) {
 
               return "Deaths: " + data.datasets[tooltipItems.datasetIndex].data[tooltipItems.index] + "   Day: " + data.labels[tooltipItems.index]
-              }
-           }
+            }
+          }
         },
-        lineTension: 3,
-        borderWidth: 2,
-      }
+      lineTension: 3,
+      borderWidth: 2,
+    }
 
     return (
-      <React.Fragment> 
+      <React.Fragment>
         {!this.state.button && (
           <div>
             <h4>{`${this.props.selected}`} Case Comparison</h4>
@@ -410,6 +412,10 @@ class ComparisonLineContainer extends Component {
         )}
         <div>
           <Line data={line} options={options} ref={this.chart} />
+        </div>
+        <br></br>
+        <div id="description">
+          NB: Population Figures are taken as of March 2020
         </div>
       </React.Fragment>
     );

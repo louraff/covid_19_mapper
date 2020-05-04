@@ -212,13 +212,12 @@ class GrowthFactorLine extends Component {
       },
       legend: {
         display: true,
-        position: "right",
+        position: "top",
         align: "center",
         labels: {
           fontSize: 12,
           fontStyle: "bold",
-          fontColor: "#FFFFFF",
-          // usePointStyle: true,
+          fontColor: "#FFFFFF"
         },
       },
       tooltips: {
@@ -239,20 +238,24 @@ class GrowthFactorLine extends Component {
       <React.Fragment>
         <h4>{`${this.props.country}`} Growth Factor (R) </h4>
         <br></br>
-        <div id="description">
+        <div id="equation">
           <MathJax.Context input='ascii'>
             <div>
               <MathJax.Node>{ascii}</MathJax.Node>
             </div>
           </MathJax.Context>
         </div>
-        <Line data={line} options={options} />
         <br></br>
         <div id="description">
           <p>
-            This represents a historical growth factor.The raw data of cases is taken as a seven-day moving average to smooth out anomalies such as revisions or outliers. Where &#916;N<sub>d</sub> shows the change in cases on a given day and &#916;N<sub>d+1</sub> shows the change in cases of the following day. Hence R &gt; 1 represents exponential growth in cases, R = 1 represents stable growth and R &lt; 1 represents exponential decay in new cases per day.
+            This represents a historical growth factor. The raw data of cases is taken as a seven-day moving average to smooth out anomalies such as revisions or outliers. Here, &#916;N<sub>d</sub> shows the change in cases on a given day and &#916;N<sub>d+1</sub> shows the change in cases of the following day. Hence R &gt; 1 represents exponential growth in cases, R = 1 represents stable growth and R &lt; 1 represents exponential decay in new cases per day.
           </p>
         </div>
+        <br></br>
+        <br></br>
+        <Line data={line} options={options} />
+        <br></br>
+
 
       </React.Fragment >
     );
