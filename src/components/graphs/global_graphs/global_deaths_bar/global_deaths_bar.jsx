@@ -308,7 +308,13 @@ export class GlobalDeathsBar extends Component {
     };
     return (
       <div>
-        <h4>Highest Deaths per 1 Million People</h4>
+        <h4>Highest Country Deaths per Million People</h4>
+        <br></br>
+        <div id="description">
+          <p>
+            This represents 20 countries that have the highest deaths per one million people. Adjusting the figures to per million of population controls for the difference in population sizes between countries. This can be further adjusted to account for population denisity and this demonstrates the number of deaths per one million people per km<sup>2</sup>.
+              </p>
+        </div>
         <br></br>
         {!this.state.adjust && (
           <div id="h">

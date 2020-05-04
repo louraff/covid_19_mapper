@@ -149,6 +149,12 @@ class GlobalDataLine extends Component {
       <div>
         <h4>Confirmed Cases, Deaths and Recoveries</h4>
         <br></br>
+        <div id="description">
+          <p>
+            This represents the increase over time for confirmed cases, deaths and recoveries globally.
+          </p>
+        </div>
+        <br></br>
         <Line data={line} options={options} />
       </div>
     );
