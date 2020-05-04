@@ -368,10 +368,9 @@ class ComparisonLineContainer extends Component {
           <div>
             <h4>{`${this.props.selected}`} Case Comparison</h4>
             <br></br>
-
             <div id="description">
               <p>
-                This represents the {this.props.selected === "United Kingdom" || this.props.country === "United Kingdom" ? `the ${this.props.country}'s` : `${this.props.country}'s`} in comparison the 10 countries with the highest cases.
+                This represents {this.props.selected === "United Kingdom" || this.props.selected === "United Kingdom" ? `the ${this.props.selected}'s` : `${this.props.selected}'s`} cases in comparison to the 10 countries with the highest number of cases globally. Adjusting the figures to per million of population controls for the difference in population sizes between countries.
               </p>
             </div>
             <br></br>
@@ -397,6 +396,12 @@ class ComparisonLineContainer extends Component {
         {this.state.button && (
           <div>
             <h4>{`${this.props.selected}`} Death Comparison</h4>
+            <br></br>
+            <div id="description">
+              <p>
+                This represents {this.props.selected === "United Kingdom" || this.props.selected === "United Kingdom" ? `the ${this.props.selected}'s` : `${this.props.selected}'s`} deaths in comparison to the 10 countries with the highest number of cases globally. Adjusting the figures to per million of population controls for the difference in population sizes between countries.
+              </p>
+            </div>
             <br></br>
             <Button onClick={this.handleClick} variant={"info"} className={'m-2'}>
               Show Cases
