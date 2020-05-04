@@ -318,7 +318,7 @@ class ComparisonLineContainer extends Component {
       },
       legend: {
         display: true,
-        position: "right",
+        position: "top",
         align: "center",
         labels: {
           fontSize: 12,
@@ -423,6 +423,7 @@ class ComparisonLineContainer extends Component {
           </div>
         )}
         <div>
+          <br></br>
           <Line data={line} options={options} ref={this.chart} />
         </div>
         <br></br>

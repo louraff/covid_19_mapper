@@ -256,11 +256,18 @@ class Header extends Component {
             >
               <Dropdown.Item>
                 <div id="drop-down-window">
+                  <Spinner animation="grow" variant="warning" size="sm" />
+                  Country Average C.F.R: {this.props.globalCFR}%
+                </div>
+              </Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Item>
+                <div id="drop-down-window">
                   <div id="info-icon">
                     <img
                       src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/1200px-Infobox_info_icon.svg.png"
-                      height="22px"
-                      width="22px"
+                      height="21px"
+                      width="21px"
                       alt=""
                     ></img>
                   </div>
@@ -268,13 +275,6 @@ class Header extends Component {
                     Case Fatality Rate: % of Recorded Cases that Result in
                     Deaths
                   </div>
-                </div>
-              </Dropdown.Item>
-              <Dropdown.Divider />
-              <Dropdown.Item>
-                <div id="drop-down-window">
-                  <Spinner animation="grow" variant="warning" size="sm" />
-                  Country Average C.F.R: {this.props.globalCFR}%
                 </div>
               </Dropdown.Item>
             </DropdownButton>
@@ -303,6 +303,22 @@ class Header extends Component {
                 <div id="drop-down-window">
                   <Spinner animation="grow" variant="secondary" size="sm" />
                   UTC: {this.props.total.statistic_taken_at}
+                </div>
+              </Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Item>
+                <div id="drop-down-window">
+                  <div id="info-icon">
+                    <img
+                      src="https://www.freeiconspng.com/uploads/binary-data-icon-1.png"
+                      height="20px"
+                      width="22px"
+                      alt=""
+                    ></img>
+                  </div>
+                  <div>
+                    Data: Johns Hopkins University + Worldometer
+                  </div>
                 </div>
               </Dropdown.Item>
             </DropdownButton>

@@ -193,7 +193,6 @@ export default class GlobalGrowthFactor extends Component {
           fontSize: 12,
           fontStyle: "bold",
           fontColor: "#FFFFFF",
-          // usePointStyle: true,
         },
       },
       tooltips: {

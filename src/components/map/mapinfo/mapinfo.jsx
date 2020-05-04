@@ -116,7 +116,7 @@ class MapInfo extends Component {
             }
           }
         })}
-      </div>
+      </div >
     );
   }
 }

@@ -54,20 +54,21 @@ class GlobalGraphContainer extends Component {
         <br></br>
         <br></br>
         <div id="l">
-        <GlobalDataLine createLineLabels={this.createLineLabels()} data={this.state.data} />
+          <GlobalDataLine createLineLabels={this.createLineLabels()} data={this.state.data} />
         </div>
         <div id="b">
-        <GlobalDeathsBar countries={this.props.countries} />
+          <GlobalDeathsBar countries={this.props.countries} />
         </div>
         <div id="b">
           <GlobalChangesBar data={this.state.data} />
         </div>
         <div id="b">
           <GlobalGrowthFactor data={this.state.data} createLineLabels={this.createLineLabels()} />
-          </div>
-          <div id="b">
+        </div>
+        <div id="b">
           <CFRContainer data={this.state.data} createLineLabels={this.createLineLabels()} />
-          </div>
+        </div>
+        <footer>Created by <a href="https://github.com/asiaellis5">Asia Ellis</a>, <a href="https://github.com/davidpaps">David Papamichael</a> and <a href="https://github.com/nicolasraffray">Nicolas Raffray</a> &nbsp;&nbsp; Source Code: <a href="https://github.com/davidpaps/covid_19_mapper">Github</a>&nbsp;&nbsp;Data Sources: <a href="https://github.com/CSSEGISandData/COVID-19">John Hopkins</a>, <a href="https://www.worldometers.info/coronavirus/">Worldometer</a>, <a href="https://github.com/pomber/covid19">Pomber</a></footer>
       </div>
     );
   }
