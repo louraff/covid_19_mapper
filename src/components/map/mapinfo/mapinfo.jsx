@@ -41,7 +41,7 @@ class MapInfo extends Component {
                       <strong>Total Deaths</strong>
                       <br></br> {country.deaths}
                     </div>
-                    {country.cfr <= this.props.globalCFR ? (
+                    {country.cfr <= this.props.totalCFR.globalCFR ? (
                       <div id="infoUSYellow">
                         <strong>C.F.R</strong>
                         <br></br> {country.cfr}%
@@ -96,10 +96,10 @@ class MapInfo extends Component {
                       <br></br> {country.newDeaths}
                     </div>
                     <div id="info">
-                      <strong>Cases per Millon</strong>
+                      <strong>Cases per Million</strong>
                       <br></br> {country.perOneMillion}
                     </div>
-                    {country.cfr <= this.props.globalCFR ? (
+                    {country.cfr <= this.props.totalCFR.globalCFR ? (
                       <div id="infoYellow">
                         <strong>C.F.R</strong>
                         <br></br> {country.cfr}%
@@ -116,7 +116,7 @@ class MapInfo extends Component {
             }
           }
         })}
-      </div>
+      </div >
     );
   }
 }

@@ -80,8 +80,8 @@ export class GlobalDeathsBar extends Component {
           if (parseFloat(countryPop.pop2020) / 1000 > 2.5) {
             deathsPer1m.push(
               country.deaths /
-                (parseFloat(countryPop.pop2020) / 1000) /
-                countryPop.Density
+              (parseFloat(countryPop.pop2020) / 1000) /
+              countryPop.Density
             );
           }
         }
@@ -197,7 +197,7 @@ export class GlobalDeathsBar extends Component {
       },
       legend: {
         display: true,
-        position: "right",
+        position: "top",
         align: "center",
         labels: {
           fontSize: 12,
@@ -218,8 +218,8 @@ export class GlobalDeathsBar extends Component {
             return [
               "Deaths per 1M: " + Math.round(tooltipItems.xLabel),
               "Population Density: " +
-                Math.round(popDensity[0]) +
-                " ( People per km\u00B2 )",
+              Math.round(popDensity[0]) +
+              " ( People per km\u00B2 )",
             ];
           },
         },
@@ -276,7 +276,7 @@ export class GlobalDeathsBar extends Component {
       },
       legend: {
         display: true,
-        position: "right",
+        position: "top",
         align: "center",
         labels: {
           fontSize: 12,
@@ -297,8 +297,8 @@ export class GlobalDeathsBar extends Component {
             return [
               "Adjusted Deaths per 1M: " + tooltipItems.xLabel.toFixed(2),
               "Population Density: " +
-                Math.round(popDensity[0]) +
-                " ( People per km\u00B2 )",
+              Math.round(popDensity[0]) +
+              " ( People per km\u00B2 )",
             ];
           },
         },
@@ -308,25 +308,33 @@ export class GlobalDeathsBar extends Component {
     };
     return (
       <div>
-        <h4>Highest Deaths per 1 Million People</h4>
+        <h4>Highest Country Deaths per Million People</h4>
+        <br></br>
+        <div id="description">
+          <p>
+            This represents 20 countries that have the highest deaths per one million people. Adjusting the figures to per million of population controls for the difference in population sizes between countries. This can be further adjusted to account for population denisity and this demonstrates the number of deaths per one million people per km<sup>2</sup>.
+              </p>
+        </div>
         <br></br>
         {!this.state.adjust && (
-           <div id="h">
-          <Button onClick={this.handleClick} variant={"danger"}>
-            Adjust for Population Density
+          <div id="h">
+            <Button onClick={this.handleClick} variant={"danger"}>
+              Adjust for Population Density
           </Button>
-         
-          <HorizontalBar data={horizontal} options={hOptions} />
-        </div>
+            <br></br>
+            <br></br>
+            <HorizontalBar data={horizontal} options={hOptions} />
+          </div>
         )}
         {this.state.adjust && (
           <div id="h">
-          <Button onClick={this.handleClick} variant={"danger"}>
-            Raw Statistics
+            <Button onClick={this.handleClick} variant={"danger"}>
+              Raw Statistics
           </Button>
-          
-          <HorizontalBar data={horizontalAdj} options={hOptionsAdj} />
-        </div>
+            <br></br>
+            <br></br>
+            <HorizontalBar data={horizontalAdj} options={hOptionsAdj} />
+          </div>
         )}
       </div>
     );
