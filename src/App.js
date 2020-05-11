@@ -79,7 +79,6 @@ class App extends Component {
     delete res4["Taiwan*"]
     delete res4["Korea, South"]
     delete res4["US"]
-    console.log(res4)
     return res4
   }
 

@@ -76,20 +76,14 @@ class ComparisonLineContainer extends Component {
     if (this.props.top10Data[0] !== undefined && this.props.selected !== undefined && this.props.data !== undefined) {
       if (this.props.selected !== "China") {
         let allCountries = this.props.top10Data
-        console.log(allCountries)
         allCountries.forEach(country => {
           let place = []
-          console.log(this.props.data)
-          console.log(country)
-          console.log(this.props.data[country])
 
           this.props.data[country].forEach(day => {
             if (day.deaths !== 0) {
               place.push(day);
-              console.log("place", place.length)
             }
           })
-          console.log("place length", place.length)
           array_of_lengths.push(place.length)
 
         })
