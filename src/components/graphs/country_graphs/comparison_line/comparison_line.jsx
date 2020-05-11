@@ -76,15 +76,22 @@ class ComparisonLineContainer extends Component {
     if (this.props.top10Data[0] !== undefined && this.props.selected !== undefined && this.props.data !== undefined) {
       if (this.props.selected !== "China") {
         let allCountries = this.props.top10Data
+        console.log(allCountries)
         allCountries.forEach(country => {
           let place = []
+          console.log(this.props.data)
+          console.log(country)
+          console.log(this.props.data[country])
 
           this.props.data[country].forEach(day => {
             if (day.deaths !== 0) {
               place.push(day);
+              console.log("place", place.length)
             }
           })
+          console.log("place length", place.length)
           array_of_lengths.push(place.length)
+
         })
         max_len = Math.max(...array_of_lengths)
       } else {
@@ -161,7 +168,7 @@ class ComparisonLineContainer extends Component {
     }
   }
 
-  
+
 
   generateDataSets = () => {
     let top10 = []
@@ -327,22 +334,24 @@ class ComparisonLineContainer extends Component {
           usePointStyle: false,
         }
       },
-      tooltips: !this.state.button ? 
-        {callbacks: {
-          title: function (tooltipItems, data) {
-            if (data !== undefined) {
-              return [data.datasets[tooltipItems[0].datasetIndex]["label"],
-              ]
-            }
-          },
-          label: function (tooltipItems, data) {
+      tooltips: !this.state.button ?
+        {
+          callbacks: {
+            title: function (tooltipItems, data) {
+              if (data !== undefined) {
+                return [data.datasets[tooltipItems[0].datasetIndex]["label"],
+                ]
+              }
+            },
+            label: function (tooltipItems, data) {
 
-            return "Cases: " + data.datasets[tooltipItems.datasetIndex].data[tooltipItems.index] + "   Day: " + data.labels[tooltipItems.index]
+              return "Cases: " + data.datasets[tooltipItems.datasetIndex].data[tooltipItems.index] + "   Day: " + data.labels[tooltipItems.index]
+            }
           }
         }
-      } 
-      : 
-      { callbacks: {
+        :
+        {
+          callbacks: {
             title: function (tooltipItems, data) {
 
               if (data !== undefined) {
@@ -353,15 +362,15 @@ class ComparisonLineContainer extends Component {
             label: function (tooltipItems, data) {
 
               return "Deaths: " + data.datasets[tooltipItems.datasetIndex].data[tooltipItems.index] + "   Day: " + data.labels[tooltipItems.index]
-              }
-           }
+            }
+          }
         },
-        lineTension: 3,
-        borderWidth: 2,
-      }
+      lineTension: 3,
+      borderWidth: 2,
+    }
 
     return (
-      <React.Fragment> 
+      <React.Fragment>
         {!this.state.button && (
           <div>
             <h4>{`${this.props.selected}`} Case Comparison</h4>
