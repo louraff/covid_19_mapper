@@ -129,7 +129,7 @@ class CFRContainer extends Component {
         <br></br>
         <div id="description">
           <p>
-            This represents the percentage of confirmed cases that result in deaths in {this.props.country} across time.
+            This represents the percentage of confirmed cases that result in deaths in {this.props.country === "United Kingdom" || this.props.country === "United Kingdom" ? `the ${this.props.country}` : `${this.props.country}`} across time.
         </p>
         </div>
         <br></br>
