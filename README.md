@@ -20,7 +20,7 @@ npm start
 
 This will start the local server which can be accessed at [_localhost:3000_](http://localhost:3000/)
 
-The project is also hosted live on [_Heroku_](https://covid-mapper.herokuapp.com/), visit via Google Chrome.
+The project is also hosted live on [_Heroku_](https://covid-mapper.herokuapp.com/)
 
 ---
 
@@ -43,25 +43,49 @@ This was the first large Post-Makers project, and was made with a brand new piec
 
 ---
 
-'Stage 1', our MVP, was to have an interactive map that a user can click on to display the current statistics for that country. This took a week to achieve (the original repo can be found [_here_](https://github.com/nicolasraffray/covid-mapper) showing how we got to that point). A user could click on the marker, which would then display the current info in an infowindow.
+### Stage 1
+Our MVP, was to have an interactive map that a user can click on to display the current statistics for that country. This took a week to achieve (the original repo can be found [_here_](https://github.com/nicolasraffray/covid-mapper) showing how we got to this point). A user could click on the marker, which would then display the current info in an infowindow from the googlemap API.
 
 ---
 
-'Stage 2', we decided to represent the mortality and infection rates by replacing the markers on the map with circles. These circles would then change in size and colour depending on the data coming in from the Covid API - when clicked on, the data was then changed from being displayed in an infowindow, to being displayed on the bottom of the screen in it's own section that would render independantly. 
+### Stage 2
+The next step was to represent the mortality and infection rates by replacing the markers on the map with circles. These circles would then change in size and colour depending on the data coming in from the Covid API - when clicked on, the data was then changed from being displayed in an infowindow, to being displayed on the bottom of the screen in it's own section that would render independantly. 
 
  ---
 
-'Stage 3', we decided to add a separate page that would show an interactive table with the numbers relating to various parameters (Total Cases, Total Deaths, Total Recoveries, CFR, Active Cases, Critical Cases and Cases per 1 Million people). A new table is rendered on click of the 'Covid-19' button, which replaces the map. This can then be filtered through via a real time search bar, or each header of a column can be clicked on to adjust the column to read in an ascending or descending order of respective values. 
+### Stage 3
+A separate page was created that shows an interactive table, displaying the data relating to various parameters (Total Cases, Total Deaths, Total Recoveries, CFR, Active Cases, Critical Cases and Cases per 1 Million people). A new table is rendered on click of the 'Covid-19' button, which replaces the map. This can then be filtered through via a real time search bar, or each header of a column can be clicked on to adjust the column to read in an ascending or descending order of respective values. 
 
 ---
 
-'Stage 4', we decided to explore the Graph.js library to add some visuals of the incoming data. The first horizontal bar chart graph shows the death rate per million of a population (with Population Density). The next set of charts are rendered on selection of a country by a user. All charts are started from the date of the first recorded death of that country.
-
-The line graph renders total cases, deaths and recoveries of the given country. The donught chart shows what % of that countries cases make up the total global cases. There is then a bar chart showing daily data of the given country (daily cases or daily deaths). There is finally a graphy showing the growth factor of the virus, commonly called the 'R' value. This is plotted on the same graph as the desired value of 1, showing accross time when a contry has achieved this, or surpassed this number.
+### Stage 4
+We explored the Chart.js library to display the incoming data graphically. The charts are rendered on a seperate page when the menu option is clicked. death of that country.
 
 ---
 
-## Stage 1 + 2
+### Stage 5
+ We further explored the Chart.js library. The charts were split into two pages - Global charts (showing charts from the world) and Country charts (showing country specific charts). All charts are started from the date of the first recorded 
+
+__Global Charts:__ 
+
+- Confirmed cases, deaths and recoveries to date globally.
+- 20 Countries with the highest death count adjusted to deaths per million people of the population (this can be further adjusted to account for population density - per million people per km².
+- Daily confirmed cases change, and death change to date globally.
+- R value to date globally.
+- CFR % to date globally.
+
+__Country Charts:__
+
+Country charts has a search bar. Any country can be typed into this, and the charts that follow will automatically be populated with that countries data.
+
+- Confirmed cases, deaths and recoveries to date for the specified country (can be switched to a doughnut chart to show that country's cases as a % of global cases).
+- R value to date for the specified country.
+- A comparison graph that populates the chosen country and the 10 countries with the highest confirmed cases in the world. Cases and deaths can then be compared on the same graph to date.
+- Daily confirmed cases change, and death change to date for the specified country.
+- CFR % to date for the specified country .
+
+---
+
 <table>
   <tr>
     <td>Stage 1 - Map View</td>
@@ -76,51 +100,67 @@ The line graph renders total cases, deaths and recoveries of the given country. 
 
 ---
 
-## Stage 3
-
 <table>
   <tr>
-    <td>Map View</td>
-     <td>Table View</td>
+    <td>Stage 5 - Map View </td>
+     <td>Stage 5 - Table View</td>
   </tr>
   <tr>
-    <td valign="top"><img src='./public/images/three_map.png' width="5000"/></td>
-    <td valign="top"><img src='./public/images/three_table.png' width="5000"/></td>
+    <td valign="top"><img src='./public/images/.png' width="5000"/></td>
+    <td valign="top"><img src='./public/images/.png' width="5000"/></td>
   </tr>
  </table>
 <table>
 
 ---
 
-## Stage 4
 <table>
   <tr>
-    <td>Map View</td>
-     <td>Table View</td>
+     <td>Stage 5 - </td>
+      <td>Stage 5 - </td>
   </tr>
   <tr>
-    <td valign="top"><img src='./public/images/four_map.png' width="5000"/></td>
-    <td valign="top"><img src='./public/images/four_table.png' width="5000"/></td>
+    <td valign="top"><img src='./public/images/.png' width="5000"/></td>
+    <td valign="top"><img src='./public/images/.png' width="5000"/></td>
   </tr>
  </table>
+
+ ---
+
 <table>
   <tr>
-    <td>Chart 1- Cases per Million</td>
-     <td>Chart 2 - Country Daily Changes</td>
+     <td>Stage 5 - </td>
+     <td>Stage 5 - </td>
   </tr>
   <tr>
-    <td valign="top"><img src='./public/images/four_graph_million.png' width="5000"/></td>
-    <td valign="top"><img src='./public/images/four_graph_daily.png' width="5000"/></td>
+    <td valign="top"><img src='./public/images/.png' width="5000"/></td>
+    <td valign="top"><img src='./public/images/.png' width="5000"/></td>
   </tr>
  </table>
+
+ ---
+
 <table>
    <tr>
-     <td>Chart 3 - Country Data</td>
-      <td>Chart 4 - Country R Value</td>
+      <td>Stage 5 - </td>
+       <td>Stage 5 - </td>
    </tr>
    <tr>
-     <td valign="top"><img src='./public/images/four_graph_data.png' width="5000"/></td>
-     <td valign="top"><img src='./public/images/four_graph_r.png' width="5000"/></td>
+     <td valign="top"><img src='./public/images/.png' width="5000"/></td>
+     <td valign="top"><img src='./public/images/.png' width="5000"/></td>
+   </tr>
+  </table>
+
+  ---
+
+  <table>
+   <tr>
+      <td>Stage 5 - </td>
+       <td>Stage 5 - </td>
+   </tr>
+   <tr>
+     <td valign="top"><img src='./public/images/.png' width="5000"/></td>
+     <td valign="top"><img src='./public/images/.png' width="5000"/></td>
    </tr>
   </table>
 
@@ -130,3 +170,4 @@ The line graph renders total cases, deaths and recoveries of the given country. 
 
 This site is fully open source so feel free to fork this repo. If you do, please just give us proper credit by linking back to the repo: https://github.com/davidpaps/covid_19_mapper We put blood, sweat and tears into this project and are proud of it! 
 
+---
