@@ -4,6 +4,7 @@ import CountryLineData from './country_data_line/country_data_line'
 import DailyChangesBar from './daily_changes_bar/daily_changes_bar'
 import GrowthFactorLine from './growth_factor_line/growth_factor_line'
 import ComparisonLineContainer from './comparison_line/comparison_line'
+import CFRContainer from './country_cfr/country_cfr'
 
 
 
@@ -65,6 +66,13 @@ class CountryGraphContainer extends Component {
             countries={this.props.countries}
           />
         </div>
+        <div id="gf">
+          <GrowthFactorLine
+            createLineLabels={this.createLineLabels()}
+            data={this.props.timeseries}
+            country={this.props.country}
+          />
+        </div>
         <div id="b">
           <ComparisonLineContainer
             data={this.props.timeseries}
@@ -79,14 +87,13 @@ class CountryGraphContainer extends Component {
             country={this.props.country}
           />
         </div>
-        <div id="gf">
-          <GrowthFactorLine
-            createLineLabels={this.createLineLabels()}
+        <div id="b">
+          <CFRContainer
             data={this.props.timeseries}
             country={this.props.country}
+            createLineLabels={this.createLineLabels()}
           />
         </div>
-
       </React.Fragment>
     );
   }
