@@ -13,9 +13,9 @@ class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      viewMap: false,
+      viewMap: true,
       viewTables: false,
-      viewCountryGraph: true,
+      viewCountryGraph: false,
       viewGlobalGraph: false,
     };
   }

@@ -4,7 +4,6 @@ import MathJax from 'react-mathjax2'
 
 
 class GrowthFactorLine extends Component {
-  state = {}
 
   createLineData = () => {
     const graphData = {
