@@ -86,16 +86,28 @@ Country charts has a search bar. Any country can be typed into this, and the cha
 
 ---
 
+### Map/Table View
 <table>
   <tr>
     <td>Stage 1 - Map View</td>
      <td>Stage 2 - Map View</td>
-     <td>Stage 5 - Map View </td>
   </tr>
   <tr>
-    <td valign="top"><img src='./public/images/one_map.png' width="3000"/></td>
-    <td valign="top"><img src='./public/images/two_map.png' width="3000"/></td>
-    <td valign="top"><img src='./public/images/five_map.png' width="3000"/></td>
+    <td valign="top"><img src='./public/images/one_map.png' width="5000"/></td>
+    <td valign="top"><img src='./public/images/two_map.png' width="5000"/></td>
+  </tr>
+ </table>
+<table>
+
+<table>
+  <tr>
+     <td>Stage 5 - Map View </td>
+     <td>Table View</td>
+    
+  </tr>
+  <tr>
+    <td valign="top"><img src='./public/images/five_map.png' width="5000"/></td>
+     <td valign="top"><img src='./public/images/table.png' width="5000"/></td>
   </tr>
  </table>
 <table>
@@ -155,14 +167,15 @@ Country charts has a search bar. Any country can be typed into this, and the cha
 
 <table>
    <tr>
-      <td>Daily Case/Death Change</td>
+      <td>Daily Case Change</td>
+        <td>Daily Death Change</td>
        <td>Case Fatality Rate</td>
-       <td>Table Comparsion</td>
+  
    </tr>
    <tr>
-   <td valign="top"><img src='./public/images/country_change.png' width="3000"/></td>
+   <td valign="top"><img src='./public/images/country_case.png' width="3000"/></td>
+   <td valign="top"><img src='./public/images/country_death.png' width="3000"/></td>
    <td valign="top"><img src='./public/images/country_cfr.png' width="3000"/></td>
-   <td valign="top"><img src='./public/images/table.png' width="3000"/></td>
    </tr>
   </table>
 
