@@ -90,10 +90,30 @@ Country charts has a search bar. Any country can be typed into this, and the cha
   <tr>
     <td>Stage 1 - Map View</td>
      <td>Stage 2 - Map View</td>
+     <td>Stage 5 - Map View </td>
   </tr>
   <tr>
-    <td valign="top"><img src='./public/images/one_map.png' width="5000"/></td>
-    <td valign="top"><img src='./public/images/two_map.png' width="5000"/></td>
+    <td valign="top"><img src='./public/images/one_map.png' width="3000"/></td>
+    <td valign="top"><img src='./public/images/two_map.png' width="3000"/></td>
+    <td valign="top"><img src='./public/images/two_map.png' width="3000"/></td>
+  </tr>
+ </table>
+<table>
+
+---
+
+### Global Charts
+
+<table>
+  <tr>
+     <td>Confirmed Cases, Deaths, Recoveries </td>
+     <td>Highest Country Deaths per Million</td>
+     <td>...Adjusted for Population Density </td>
+  </tr>
+  <tr>
+    <td valign="top"><img src='./public/images/.png' width="3000"/></td>
+    <td valign="top"><img src='./public/images/.png' width="3000"/></td>
+    <td valign="top"><img src='./public/images/.png' width="3000"/></td>
   </tr>
  </table>
 <table>
@@ -102,39 +122,32 @@ Country charts has a search bar. Any country can be typed into this, and the cha
 
 <table>
   <tr>
-    <td>Stage 5 - Map View </td>
-     <td>Stage 5 - Table View</td>
-  </tr>
-  <tr>
-    <td valign="top"><img src='./public/images/.png' width="5000"/></td>
-    <td valign="top"><img src='./public/images/.png' width="5000"/></td>
-  </tr>
- </table>
-<table>
+    <td>Daily Case/Death Change - </td>
+     <td>Growth Factor</td>
+      <td>Case Fatality Rate </td>
 
----
-
-<table>
-  <tr>
-     <td>Stage 5 - </td>
-      <td>Stage 5 - </td>
   </tr>
   <tr>
-    <td valign="top"><img src='./public/images/.png' width="5000"/></td>
-    <td valign="top"><img src='./public/images/.png' width="5000"/></td>
+  <td valign="top"><img src='./public/images/.png' width="3000"/></td>
+  <td valign="top"><img src='./public/images/.png' width="3000"/></td>
+  <td valign="top"><img src='./public/images/.png' width="3000"/></td>
   </tr>
  </table>
 
  ---
 
+### Country Charts
+
 <table>
   <tr>
-     <td>Stage 5 - </td>
-     <td>Stage 5 - </td>
+     <td>Confirmed Cases, Deaths, Recoveries </td>
+     <td>Country % of Global Cases </td>
+     <td>Growth Factor </td>
   </tr>
   <tr>
-    <td valign="top"><img src='./public/images/.png' width="5000"/></td>
-    <td valign="top"><img src='./public/images/.png' width="5000"/></td>
+   <td valign="top"><img src='./public/images/.png' width="3000"/></td>
+   <td valign="top"><img src='./public/images/.png' width="3000"/></td>
+   <td valign="top"><img src='./public/images/.png' width="3000"/></td>
   </tr>
  </table>
 
@@ -142,21 +155,25 @@ Country charts has a search bar. Any country can be typed into this, and the cha
 
 <table>
    <tr>
-      <td>Stage 5 - </td>
-       <td>Stage 5 - </td>
+      <td>Daily Case/Death Change</td>
+       <td>Case Fatality Rate </td>
+       <td>Table View </td>
    </tr>
    <tr>
-     <td valign="top"><img src='./public/images/.png' width="5000"/></td>
-     <td valign="top"><img src='./public/images/.png' width="5000"/></td>
+   <td valign="top"><img src='./public/images/.png' width="3000"/></td>
+   <td valign="top"><img src='./public/images/.png' width="3000"/></td>
+   <td valign="top"><img src='./public/images/.png' width="3000"/></td>
    </tr>
   </table>
 
   ---
 
+  ### Comparison Graph
+
   <table>
    <tr>
-      <td>Stage 5 - </td>
-       <td>Stage 5 - </td>
+      <td>Comparison of Cases </td>
+       <td>Comparison of Deaths</td>
    </tr>
    <tr>
      <td valign="top"><img src='./public/images/.png' width="5000"/></td>
