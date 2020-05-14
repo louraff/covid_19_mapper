@@ -158,7 +158,7 @@ Country charts has a search bar. Any country can be typed into this, and the cha
   </tr>
   <tr>
    <td valign="top"><img src='./public/images/country_c_d_r.png' width="3000"/></td>
-   <td valign="top"><img src='./public/images/%.png' width="3000"/></td>
+   <td valign="top"><img src='./public/images/percentage.png' width="3000"/></td>
    <td valign="top"><img src='./public/images/country_r.png' width="3000"/></td>
   </tr>
  </table>
