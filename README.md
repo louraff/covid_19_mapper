@@ -80,7 +80,7 @@ Country charts has a search bar. Any country can be typed into this, and the cha
 
 - Confirmed cases, deaths and recoveries to date for the specified country (can be switched to a doughnut chart to show that country's cases as a % of global cases).
 - R value to date for the specified country.
-- A comparison graph that populates the chosen country and the 10 countries with the highest confirmed cases in the world. Cases and deaths can then be compared on the same graph to date.
+- A comparison graph that populates the chosen country and the 10 countries with the highest confirmed cases in the world. Cases and deaths can then be compared on the same graph to date. (This can also be  adjusted per million people)
 - Daily confirmed cases change, and death change to date for the specified country.
 - CFR % to date for the specified country .
 
@@ -95,7 +95,7 @@ Country charts has a search bar. Any country can be typed into this, and the cha
   <tr>
     <td valign="top"><img src='./public/images/one_map.png' width="3000"/></td>
     <td valign="top"><img src='./public/images/two_map.png' width="3000"/></td>
-    <td valign="top"><img src='./public/images/two_map.png' width="3000"/></td>
+    <td valign="top"><img src='./public/images/five_map.png' width="3000"/></td>
   </tr>
  </table>
 <table>
@@ -106,14 +106,14 @@ Country charts has a search bar. Any country can be typed into this, and the cha
 
 <table>
   <tr>
-     <td>Confirmed Cases, Deaths, Recoveries </td>
+     <td>Confirmed Cases, Deaths, Recoveries</td>
      <td>Highest Country Deaths per Million</td>
-     <td>...Adjusted for Population Density </td>
+     <td>=> Adjusted for Population Density</td>
   </tr>
   <tr>
-    <td valign="top"><img src='./public/images/.png' width="3000"/></td>
-    <td valign="top"><img src='./public/images/.png' width="3000"/></td>
-    <td valign="top"><img src='./public/images/.png' width="3000"/></td>
+    <td valign="top"><img src='./public/images/global_c_d_r.png' width="3000"/></td>
+    <td valign="top"><img src='./public/images/million.png' width="3000"/></td>
+    <td valign="top"><img src='./public/images/million_density.png' width="3000"/></td>
   </tr>
  </table>
 <table>
@@ -122,15 +122,15 @@ Country charts has a search bar. Any country can be typed into this, and the cha
 
 <table>
   <tr>
-    <td>Daily Case/Death Change - </td>
+    <td>Daily Case/Death Change</td>
      <td>Growth Factor</td>
-      <td>Case Fatality Rate </td>
+      <td>Case Fatality Rate</td>
 
   </tr>
   <tr>
-  <td valign="top"><img src='./public/images/.png' width="3000"/></td>
-  <td valign="top"><img src='./public/images/.png' width="3000"/></td>
-  <td valign="top"><img src='./public/images/.png' width="3000"/></td>
+  <td valign="top"><img src='./public/images/global_daily_change.png' width="3000"/></td>
+  <td valign="top"><img src='./public/images/global_r.png' width="3000"/></td>
+  <td valign="top"><img src='./public/images/global_cfr.png' width="3000"/></td>
   </tr>
  </table>
 
@@ -140,14 +140,14 @@ Country charts has a search bar. Any country can be typed into this, and the cha
 
 <table>
   <tr>
-     <td>Confirmed Cases, Deaths, Recoveries </td>
-     <td>Country % of Global Cases </td>
-     <td>Growth Factor </td>
+     <td>Confirmed Cases, Deaths, Recoveries</td>
+     <td>Country % of Global Cases</td>
+     <td>Growth Factor</td>
   </tr>
   <tr>
-   <td valign="top"><img src='./public/images/.png' width="3000"/></td>
-   <td valign="top"><img src='./public/images/.png' width="3000"/></td>
-   <td valign="top"><img src='./public/images/.png' width="3000"/></td>
+   <td valign="top"><img src='./public/images/country_c_d_r.png' width="3000"/></td>
+   <td valign="top"><img src='./public/images/%.png' width="3000"/></td>
+   <td valign="top"><img src='./public/images/country_r.png' width="3000"/></td>
   </tr>
  </table>
 
@@ -156,28 +156,28 @@ Country charts has a search bar. Any country can be typed into this, and the cha
 <table>
    <tr>
       <td>Daily Case/Death Change</td>
-       <td>Case Fatality Rate </td>
-       <td>Table View </td>
+       <td>Case Fatality Rate</td>
+       <td>Table Comparsion</td>
    </tr>
    <tr>
-   <td valign="top"><img src='./public/images/.png' width="3000"/></td>
-   <td valign="top"><img src='./public/images/.png' width="3000"/></td>
-   <td valign="top"><img src='./public/images/.png' width="3000"/></td>
+   <td valign="top"><img src='./public/images/country_change.png' width="3000"/></td>
+   <td valign="top"><img src='./public/images/country_cfr.png' width="3000"/></td>
+   <td valign="top"><img src='./public/images/table.png' width="3000"/></td>
    </tr>
   </table>
 
   ---
 
-  ### Comparison Graph
+  ### Comparison Charts
 
   <table>
    <tr>
-      <td>Comparison of Cases </td>
+      <td>Comparison of Cases</td>
        <td>Comparison of Deaths</td>
    </tr>
    <tr>
-     <td valign="top"><img src='./public/images/.png' width="5000"/></td>
-     <td valign="top"><img src='./public/images/.png' width="5000"/></td>
+     <td valign="top"><img src='./public/images/comparison_case.png' width="5000"/></td>
+     <td valign="top"><img src='./public/images/comparison_death.png' width="5000"/></td>
    </tr>
   </table>
 
