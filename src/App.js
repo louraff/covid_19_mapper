@@ -170,7 +170,6 @@ class App extends Component {
   }
 
   toInteger(totalArray) {
-    console.log("total array", totalArray);
     var newTotalCases = parseInt(totalArray["total_cases"].replace(/,/g, ""));
     var newTotalDeaths = parseInt(totalArray["total_deaths"].replace(/,/g, ""));
     var newTotalRecoveries = parseInt(
@@ -181,7 +180,6 @@ class App extends Component {
 
   makeCountriesInteger(countries, states) {
     const countriesInteger = [];
-
     ref_country_codes.ref_country_codes.forEach((one) => {
       countries.forEach((two) => {
         if (one.country === two.country_name) {
