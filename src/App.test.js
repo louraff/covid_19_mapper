@@ -272,4 +272,39 @@ describe("updateTotal", () => {
       });
     });
   });
+
+  describe("makeAvGlobalCFR", () => {
+    const app = new App();
+    it("makes a global average cfr", () => {
+      const countries = [
+        {
+          active_cases: "1,171,533",
+          cases: "2,143,177",
+          country_name: "USA",
+          deaths: "117,538",
+          deaths_per_1m_population: "355",
+          new_cases: "953",
+          new_deaths: "11",
+          region: "",
+          serious_critical: "16,744",
+          tests_per_1m_population: "73,410",
+          total_cases_per_1m_population: "6,477",
+          total_recovered: "854,106",
+          total_tests: "24,292,171",
+        },
+      ];
+      const states = [
+        {
+          confirmed: 15228,
+          country: "United States of America",
+          countrycode: "US",
+          deaths: 568,
+          latitude: "34.22333378",
+          longitude: "-82.46170658",
+          state: "South Carolina",
+        },
+      ];
+      expect(app.makeAvGlobalCFR(countries, states)).toEqual(4.61);
+    });
+  });
 });
