@@ -13,7 +13,7 @@ class App extends Component {
     totalInt: [],
     totalCFR: null,
     countriesInteger: [],
-    timeSeries: []
+    timeSeries: [],
   };
 
   componentDidMount() {
@@ -49,12 +49,16 @@ class App extends Component {
             "2bb49386fdmsh5daac6ca9add22ep1484a8jsn9816903163ef",
         },
       }),
-      fetch("https://pomber.github.io/covid19/timeseries.json")
-
+      fetch("https://pomber.github.io/covid19/timeseries.json"),
     ])
 
       .then(([res1, res2, res3, res4]) => {
-        return Promise.all([res1.json(), res2.json(), res3.json(), res4.json()]);
+        return Promise.all([
+          res1.json(),
+          res2.json(),
+          res3.json(),
+          res4.json(),
+        ]);
       })
 
       .then(([res1, res2, res3, res4]) => {
@@ -67,20 +71,20 @@ class App extends Component {
             res2.countries_stat,
             res3.list
           ),
-          timeSeries: this.fixTimeSeriesUS(res4)
+          timeSeries: this.fixTimeSeriesUS(res4),
         });
       });
   }
 
   fixTimeSeriesUS = (res4) => {
-    res4["USA"] = res4["US"]
-    res4["S. Korea"] = res4["Korea, South"]
-    res4["Taiwan"] = res4["Taiwan*"]
-    delete res4["Taiwan*"]
-    delete res4["Korea, South"]
-    delete res4["US"]
-    return res4
-  }
+    res4["USA"] = res4["US"];
+    res4["S. Korea"] = res4["Korea, South"];
+    res4["Taiwan"] = res4["Taiwan*"];
+    delete res4["Taiwan*"];
+    delete res4["Korea, South"];
+    delete res4["US"];
+    return res4;
+  };
 
   createCountry(country, states) {
     const countries = [];
@@ -141,8 +145,8 @@ class App extends Component {
     let total = this.toInteger(totalArray);
 
     var activeCases = total[0] - total[1] - total[2];
-    totalArray["active_cases"] = this.commaNumberString(activeCases.toString())
-    totalArray["globalCFR"] = (total[1] / total[0]) * 100
+    totalArray["active_cases"] = this.commaNumberString(activeCases.toString());
+    totalArray["globalCFR"] = (total[1] / total[0]) * 100;
     return totalArray;
   }
 
@@ -152,7 +156,7 @@ class App extends Component {
       cfrPerCountry.push(
         (parseInt(country.deaths.replace(/,/g, "")) /
           parseInt(country.cases.replace(/,/g, ""))) *
-        100
+          100
       );
     });
 
@@ -165,8 +169,6 @@ class App extends Component {
     return parseFloat(avCfr.toFixed(2));
   }
 
-
-
   toInteger(totalArray) {
     var newTotalCases = parseInt(totalArray["total_cases"].replace(/,/g, ""));
     var newTotalDeaths = parseInt(totalArray["total_deaths"].replace(/,/g, ""));
@@ -178,7 +180,6 @@ class App extends Component {
 
   makeCountriesInteger(countries, states) {
     const countriesInteger = [];
-
     ref_country_codes.ref_country_codes.forEach((one) => {
       countries.forEach((two) => {
         if (one.country === two.country_name) {
