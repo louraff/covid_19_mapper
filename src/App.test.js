@@ -249,4 +249,27 @@ describe("updateTotal", () => {
       expect(app.commaNumberString("1200111")).toEqual("1,200,111");
     });
   });
+
+  describe("fixTimeSeriesUS", () => {
+    let app = new App();
+    it("fixes the correct country names", () => {
+      const res4 = {
+        USA: [{ confirmed: 1, date: "2020-1-22", deaths: 0, recovered: 0 }],
+        "S. Korea": [
+          { confirmed: 1, date: "2020-1-22", deaths: 0, recovered: 0 },
+        ],
+        Taiwan: [{ confirmed: 1, date: "2020-1-22", deaths: 0, recovered: 0 }],
+      };
+      expect(app.fixTimeSeriesUS(res4)).toEqual({
+        USA: [{ confirmed: 1, date: "2020-1-22", deaths: 0, recovered: 0 }],
+        "S. Korea": [
+          { confirmed: 1, date: "2020-1-22", deaths: 0, recovered: 0 },
+        ],
+        Taiwan: [{ confirmed: 1, date: "2020-1-22", deaths: 0, recovered: 0 }],
+        "S. Korea": undefined,
+        Taiwan: undefined,
+        USA: undefined,
+      });
+    });
+  });
 });

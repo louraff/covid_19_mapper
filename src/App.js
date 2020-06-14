@@ -77,6 +77,7 @@ class App extends Component {
   }
 
   fixTimeSeriesUS = (res4) => {
+    console.log("res4", res4);
     res4["USA"] = res4["US"];
     res4["S. Korea"] = res4["Korea, South"];
     res4["Taiwan"] = res4["Taiwan*"];
