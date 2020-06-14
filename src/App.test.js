@@ -28,7 +28,7 @@ describe("App Component", () => {
 });
 
 describe("createCountry", () => {
-  var app = new App();
+  let app = new App();
   const countries = [
     {
       country_name: "USA",
@@ -83,7 +83,7 @@ describe("createCountry", () => {
 });
 
 describe("updateUS", () => {
-  var app = new App();
+  let app = new App();
   const countries = [
     {
       country: "USA",
@@ -138,7 +138,7 @@ describe("updateUS", () => {
 });
 
 describe("updateTotal", () => {
-  var app = new App();
+  let app = new App();
   const total = {
     total_cases: "1,250,000",
     total_deaths: "70,000",
@@ -161,7 +161,7 @@ describe("updateTotal", () => {
   });
 
   describe("toInteger", () => {
-    var app = new App();
+    let app = new App();
     it("returns total cases, total deaths and total recoveries as integers", () => {
       const totalArray = {
         total_cases: "7,904,560",
@@ -186,7 +186,7 @@ describe("updateTotal", () => {
   });
 
   describe("makeCountriesInteger", () => {
-    var app = new App();
+    let app = new App();
     it("returns an array of objects with integer values", () => {
       const countries = [
         {
@@ -240,6 +240,13 @@ describe("updateTotal", () => {
           cfr: 3.73,
         },
       ]);
+    });
+  });
+
+  describe("commaNumberString", () => {
+    let app = new App();
+    it("puts commas back into a number string", () => {
+      expect(app.commaNumberString("1200111")).toEqual("1,200,111");
     });
   });
 });
