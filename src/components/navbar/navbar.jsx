@@ -1,25 +1,21 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Nav from "react-bootstrap/Nav";
 import Spinner from "react-bootstrap/Spinner";
-import MapContainer from "./../map/map";
-import TableContainer from "./../tables/table";
-import SearchContainer from "./../searchbar/searchbar";
-import GlobalGraphContainer from "../graphs/global_graphs/global_graph";
-import { NavLink, Link, useHistory } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 
 const Header = (props) => {
-
+  const [map, setMap] = useState(true)
 
   return (
     <div id="app">
       <Navbar
         fixed="top"
         className="navbar-dark bs-navbar-collapse"
-        bg="dark"
+        bg={map ? "" : "dark"}
       >
         <Nav>
           <DropdownButton
@@ -53,7 +49,7 @@ const Header = (props) => {
             }
             id="last_updated"
           >
-            <Dropdown.Item as={Link} to="/">
+            <Dropdown.Item as={Link} to="/" onClick={() => setMap(true)}>
               <div id="drop-down-window">
                 <div id="info-icon">
                   <img
@@ -69,21 +65,23 @@ const Header = (props) => {
               </div>
             </Dropdown.Item>
             <Dropdown.Divider />
-            <Dropdown.Item as={Link} to="/global">
-              <div id="drop-down-window" >
+            <Dropdown.Item as={Link} to="/global" onClick={() => setMap(false)}>
+              <div id="drop-down-window">
                 <div id="info-icon">
                   <img
                     src="https://cdn4.iconfinder.com/data/icons/data-management-2-3/50/76-512.png"
                     height="18px"
-                    width="18px"
+                    width="20px"
                     alt=""
                   ></img>
                 </div>
-                Interactive Global Charts
+                <span>
+                  Interactive Global Charts
+                </span>
               </div>
             </Dropdown.Item>
             <Dropdown.Divider />
-            <Dropdown.Item as={Link} to="/country">
+            <Dropdown.Item as={Link} to="/country" onClick={() => setMap(false)}>
               <div id="drop-down-window">
                 <div id="info-icon">
                   <img
@@ -99,7 +97,7 @@ const Header = (props) => {
               </div>
             </Dropdown.Item>
             <Dropdown.Divider />
-            <Dropdown.Item as={Link} to="/table">
+            <Dropdown.Item as={Link} to="/table" onClick={() => setMap(false)}>
               <div id="drop-down-window">
                 <div id="info-icon">
                   <img

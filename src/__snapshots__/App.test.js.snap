@@ -8,7 +8,7 @@ exports[`App Component renders as expected, snapshot comparison 1`] = `
     id="app"
   >
     <nav
-      className="navbar-dark bs-navbar-collapse navbar navbar-expand navbar-light bg-dark fixed-top"
+      className="navbar-dark bs-navbar-collapse navbar navbar-expand navbar-light fixed-top"
     >
       <div
         className="navbar-nav"

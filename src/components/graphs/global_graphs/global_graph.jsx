@@ -9,7 +9,6 @@ import CFRContainer from "./global_cfr/global_cfr"
 class GlobalGraphContainer extends Component {
   constructor(props) {
     super(props)
-
   }
   state = {
     data: []
