@@ -238,7 +238,7 @@ const DailyChangesBar = (props) => {
               This represents the daily increase in the number of confirmed
               deaths in{" "}
               {props.country === "United Kingdom" ||
-              this.props.country === "United Kingdom"
+              props.country === "United Kingdom"
                 ? `the ${props.country}`
                 : `${props.country}`}
               .
