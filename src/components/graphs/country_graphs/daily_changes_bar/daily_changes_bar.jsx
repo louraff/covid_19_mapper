@@ -1,18 +1,15 @@
-import React, { Component } from 'react';
+import React, { useState } from "react";
 import { Bar } from "react-chartjs-2";
 import Button from "react-bootstrap/Button";
 
+const DailyChangesBar = (props) => {
+  const [cases, setCases] = useState(true);
 
-class DailyChangesBar extends Component {
-  state = {
-    cases: true,
-  }
-
-  barData = () => {
+  const barData = () => {
     const daily = [];
     const dailyChange = [];
 
-    const countryData = this.props.data[this.props.country];
+    const countryData = props.data[props.country];
     if (countryData !== undefined) {
       countryData.forEach((country) => {
         if (country.deaths !== 0) {
@@ -29,10 +26,10 @@ class DailyChangesBar extends Component {
     }
   };
 
-  barLabel = () => {
+  const barLabel = () => {
     const daily = [];
 
-    const countryData = this.props.data[this.props.country];
+    const countryData = props.data[props.country];
     if (countryData !== undefined) {
       countryData.forEach((country) => {
         if (country.deaths !== 0) {
@@ -47,11 +44,11 @@ class DailyChangesBar extends Component {
     }
   };
 
-  barDataDeaths = () => {
+  const barDataDeaths = () => {
     const daily = [];
     const dailyChange = [];
 
-    const countryData = this.props.data[this.props.country];
+    const countryData = props.data[props.country];
     if (countryData !== undefined) {
       countryData.forEach((country) => {
         if (country.deaths !== 0) {
@@ -68,213 +65,220 @@ class DailyChangesBar extends Component {
     }
   };
 
-  handleClick = () => {
-    this.setState({
-      cases: !this.state.cases,
-    });
+  const handleClick = () => {
+    setCases(!cases);
   };
 
-  render() {
+  const bar = {
+    labels: barLabel(),
+    datasets: [
+      {
+        label: "Daily Case Increase",
+        data: barData(),
+        backgroundColor: "rgba(24,162,184, 0.2)",
+        borderColor: "#18a2b8",
+        borderWidth: 1,
+        hoverBackgroundColor: "#18a2b8",
+        hoverBorderColor: "rgba(255,99,132,0.2)",
+        pointColor: "#18a2b8",
+      },
+    ],
+  };
 
-    const bar = {
-      labels: this.barLabel(),
-      datasets: [
+  const barDeaths = {
+    labels: barLabel(),
+    datasets: [
+      {
+        label: "Daily Death Increase",
+        data: barDataDeaths(),
+        backgroundColor: "rgba(255,99,132,0.2)",
+        borderColor: "#dc3644",
+        borderWidth: 1,
+        hoverBackgroundColor: "#dc3644",
+        hoverBorderColor: "rgba(255,99,132,0.2)",
+        pointColor: "#dc3644",
+      },
+    ],
+  };
+
+  const bDeathOptions = {
+    scales: {
+      xAxes: [
         {
-          label: "Daily Case Increase",
-          data: this.barData(),
-          backgroundColor: "rgba(24,162,184, 0.2)",
-          borderColor: "#18a2b8",
-          borderWidth: 1,
-          hoverBackgroundColor: "#18a2b8",
-          hoverBorderColor: "rgba(255,99,132,0.2)",
-          pointColor: "#18a2b8",
+          ticks: {
+            display: true,
+            major: {
+              fontStyle: "bold",
+              fontColor: "#FFFFFF",
+            },
+          },
+          gridLines: {
+            display: false,
+            drawBorder: true,
+          },
+          scaleLabel: {
+            display: true,
+            labelString: "Cases",
+            fontStyle: "bold",
+            fontColor: "#FFFFFF",
+          },
         },
       ],
-    };
-
-    const barDeaths = {
-      labels: this.barLabel(),
-      datasets: [
+      yAxes: [
         {
-          label: "Daily Death Increase",
-          data: this.barDataDeaths(),
-          backgroundColor: "rgba(255,99,132,0.2)",
-          borderColor: "#dc3644",
-          borderWidth: 1,
-          hoverBackgroundColor: "#dc3644",
-          hoverBorderColor: "rgba(255,99,132,0.2)",
-          pointColor: "#dc3644",
+          ticks: {
+            beginAtZero: true,
+            display: true,
+            major: {
+              fontStyle: "bold",
+              fontColor: "#FFFFFF",
+            },
+          },
+          gridLines: {
+            display: true,
+            drawBorder: true,
+          },
+          scaleLabel: {
+            display: true,
+            labelString: "Deaths",
+            fontStyle: "bold",
+            fontColor: "#FFFFFF",
+          },
         },
       ],
-    };
-
-    const bDeathOptions = {
-      scales: {
-        xAxes: [
-          {
-            ticks: {
-              display: true,
-              major: {
-                fontStyle: "bold",
-                fontColor: "#FFFFFF",
-              },
-            },
-            gridLines: {
-              display: false,
-              drawBorder: true,
-            },
-            scaleLabel: {
-              display: true,
-              labelString: "Cases",
-              fontStyle: "bold",
-              fontColor: "#FFFFFF",
-            },
-          },
-        ],
-        yAxes: [
-          {
-            ticks: {
-              beginAtZero: true,
-              display: true,
-              major: {
-                fontStyle: "bold",
-                fontColor: "#FFFFFF",
-              },
-            },
-            gridLines: {
-              display: true,
-              drawBorder: true,
-            },
-            scaleLabel: {
-              display: true,
-              labelString: "Deaths",
-              fontStyle: "bold",
-              fontColor: "#FFFFFF",
-            },
-          },
-        ],
+    },
+    legend: {
+      display: true,
+      position: "top",
+      align: "center",
+      labels: {
+        fontSize: 12,
+        fontStyle: "bold",
+        fontColor: "#FFFFFF",
       },
-      legend: {
-        display: true,
-        position: "top",
-        align: "center",
-        labels: {
-          fontSize: 12,
-          fontStyle: "bold",
-          fontColor: "#FFFFFF",
+    },
+    tooltips: {
+      displayColors: false,
+    },
+    borderWidth: 2,
+    maintainAspectRatio: true,
+  };
+
+  const bOptions = {
+    scales: {
+      xAxes: [
+        {
+          ticks: {
+            display: true,
+            major: {
+              fontStyle: "bold",
+              fontColor: "#FFFFFF",
+            },
+          },
+          gridLines: {
+            display: false,
+            drawBorder: true,
+          },
+          scaleLabel: {
+            display: true,
+            labelString: "Date (YY/MM/DD)",
+            fontStyle: "bold",
+            fontColor: "#FFFFFF",
+          },
         },
-      },
-      tooltips: {
-        displayColors: false,
-      },
-      borderWidth: 2,
-      maintainAspectRatio: true,
-    };
-
-    const bOptions = {
-      scales: {
-        xAxes: [
-          {
-            ticks: {
-              display: true,
-              major: {
-                fontStyle: "bold",
-                fontColor: "#FFFFFF",
-              },
-            },
-            gridLines: {
-              display: false,
-              drawBorder: true,
-            },
-            scaleLabel: {
-              display: true,
-              labelString: "Date (YY/MM/DD)",
+      ],
+      yAxes: [
+        {
+          ticks: {
+            beginAtZero: true,
+            display: true,
+            major: {
               fontStyle: "bold",
               fontColor: "#FFFFFF",
             },
           },
-        ],
-        yAxes: [
-          {
-            ticks: {
-              beginAtZero: true,
-              display: true,
-              major: {
-                fontStyle: "bold",
-                fontColor: "#FFFFFF",
-              },
-            },
-            gridLines: {
-              display: true,
-              drawBorder: true,
-            },
-            scaleLabel: {
-              display: true,
-              labelString: "Cases",
-              fontStyle: "bold",
-              fontColor: "#FFFFFF",
-            },
+          gridLines: {
+            display: true,
+            drawBorder: true,
           },
-        ],
-      },
-      legend: {
-        display: true,
-        position: "top",
-        align: "center",
-        labels: {
-          fontSize: 12,
-          fontStyle: "bold",
-          fontColor: "#FFFFFF",
+          scaleLabel: {
+            display: true,
+            labelString: "Cases",
+            fontStyle: "bold",
+            fontColor: "#FFFFFF",
+          },
         },
+      ],
+    },
+    legend: {
+      display: true,
+      position: "top",
+      align: "center",
+      labels: {
+        fontSize: 12,
+        fontStyle: "bold",
+        fontColor: "#FFFFFF",
       },
-      tooltips: {
-        displayColors: false,
-      },
-      borderWidth: 2,
-      maintainAspectRatio: true,
-    };
+    },
+    tooltips: {
+      displayColors: false,
+    },
+    borderWidth: 2,
+    maintainAspectRatio: true,
+  };
 
-    return (
-      <React.Fragment>
-        {!this.state.cases && (
-          <div>
-            <h4>{`${this.props.country}`} Daily Death Change</h4>
-            <br></br>
-            <div id="description">
-              <p>
-                This represents the daily increase in the number of confirmed deaths in {this.props.country === "United Kingdom" || this.props.country === "United Kingdom" ? `the ${this.props.country}` : `${this.props.country}`}.
-              </p>
-            </div>
-            <br></br>
-            <Button onClick={this.handleClick} variant={"info"}>
-              Show Cases
-            </Button>
-            <br></br>
-            <br></br>
-            <Bar data={barDeaths} options={bDeathOptions} />
+  return (
+    <React.Fragment>
+      {!cases && (
+        <div>
+          <h4>{`${props.country}`} Daily Death Change</h4>
+          <br></br>
+          <div id="description">
+            <p>
+              This represents the daily increase in the number of confirmed
+              deaths in{" "}
+              {props.country === "United Kingdom" ||
+              this.props.country === "United Kingdom"
+                ? `the ${props.country}`
+                : `${props.country}`}
+              .
+            </p>
           </div>
-        )}
-        {this.state.cases && (
-          <div>
-            <h4>{`${this.props.country}`} Daily Case Change</h4>
-            <br></br>
-            <div id="description">
-              <p>
-                This represents the daily increase in the number of confirmed cases in {this.props.country === "United Kingdom" || this.props.country === "United Kingdom" ? `the ${this.props.country}` : `${this.props.country}`}.
-              </p>
-            </div>
-            <br></br>
-            <Button onClick={this.handleClick} variant={"danger"}>
-              Show Deaths
-            </Button>
-            <br></br>
-            <br></br>
-            <Bar data={bar} options={bOptions} />
+          <br></br>
+          <Button onClick={handleClick} variant={"info"}>
+            Show Cases
+          </Button>
+          <br></br>
+          <br></br>
+          <Bar data={barDeaths} options={bDeathOptions} />
+        </div>
+      )}
+      {cases && (
+        <div>
+          <h4>{`${props.country}`} Daily Case Change</h4>
+          <br></br>
+          <div id="description">
+            <p>
+              This represents the daily increase in the number of confirmed
+              cases in{" "}
+              {props.country === "United Kingdom" ||
+              props.country === "United Kingdom"
+                ? `the ${props.country}`
+                : `${props.country}`}
+              .
+            </p>
           </div>
-        )}
-      </React.Fragment>
-    );
-  }
-}
+          <br></br>
+          <Button onClick={handleClick} variant={"danger"}>
+            Show Deaths
+          </Button>
+          <br></br>
+          <br></br>
+          <Bar data={bar} options={bOptions} />
+        </div>
+      )}
+    </React.Fragment>
+  );
+};
 
 export default DailyChangesBar;
