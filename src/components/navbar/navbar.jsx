@@ -107,8 +107,6 @@ const Header = (props) => {
                   ></img>
                 </div>
                 <NavLink to="/table">Interactive Table</NavLink>
-
-
               </div>
             </Dropdown.Item>
           </DropdownButton>
