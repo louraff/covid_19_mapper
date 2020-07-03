@@ -27,8 +27,7 @@ footer {
 }
 
 #drop-down-window a {
-
-  color: rgb(104,104,104);
+  color: rgb(104, 104, 104);
   text-decoration: none;
 }
 
@@ -43,8 +42,8 @@ footer {
   padding-left: 100px; */
 }
 
-#equation{
-  color: white
+#equation {
+  color: white;
 }
 
 #legend-title {
@@ -189,7 +188,6 @@ h2 {
   position: absolute;
 }
 
-
 #infoDeaths {
   color: rgb(220, 54, 69);
   width: 15%;
@@ -265,7 +263,7 @@ h2 {
   width: 100%;
   margin: 5px;
   justify-content: center;
-  background-color: #343A40;
+  background-color: #343a40;
 }
 
 #search-heading {
@@ -291,3 +289,11 @@ h2 {
 /* #search-form input[type=text]:focus {
   width: 100%;
  */
+
+#error {
+  position: absolute;
+  top: 10%;
+  color: white;
+  justify-content: center;
+  width: 100%;
+}
