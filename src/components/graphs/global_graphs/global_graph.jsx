@@ -20,10 +20,8 @@ class GlobalGraphContainer extends Component {
     let worldData = []
     let data = this.props.data
     let countryArray = Object.keys(data).map(i => i)
-    console.log("countryArrya", countryArray)
     countryArray.forEach((country) => {
       let countryData = data[country]
-      console.log("country", data[country])
       countryData.forEach((day, index) => {
         if (worldData[index] === undefined) {
           let globalStats = { date: day.date, confirmed: day.confirmed, recovered: day.recovered, deaths: day.deaths }
@@ -35,7 +33,6 @@ class GlobalGraphContainer extends Component {
         }
       })
     })
-    console.log("world", worldData)
     this.setState({
       data: worldData
     })
@@ -55,7 +52,6 @@ class GlobalGraphContainer extends Component {
   };
 
   render() {
-    console.log("propsData", this.props.data)
     defaults.global.defaultFontColor = "white";
     return (
       <div id="graph">
@@ -77,8 +73,6 @@ class GlobalGraphContainer extends Component {
         <div id="b">
           <CFRContainer data={this.state.data} createLineLabels={this.createLineLabels()} />
         </div>
-        <footer>Created by <a href="https://github.com/asiaellis5">Asia Ellis</a>, <a href="https://github.com/davidpaps">David Papamichael</a> and <a href="https://github.com/nicolasraffray">Nicolas Raffray</a> &nbsp;&nbsp; Source Code: <a href="https://github.com/davidpaps/covid_19_mapper">Github</a>&nbsp;&nbsp;Data Sources: <a href="https://github.com/CSSEGISandData/COVID-19">John Hopkins</a>, <a href="https://www.worldometers.info/coronavirus/">Worldometer</a>, <a href="https://github.com/pomber/covid19">Pomber</a></footer>
-        <footer>Created by <a href="https://github.com/asiaellis5">Asia Ellis</a>, <a href="https://github.com/davidpaps">David Papamichael</a> and <a href="https://github.com/nicolasraffray">Nicolas Raffray</a> &nbsp;&nbsp; Source Code: <a href="https://github.com/davidpaps/covid_19_mapper">Github</a>&nbsp;&nbsp;Data Sources: <a href="https://github.com/CSSEGISandData/COVID-19">John Hopkins</a>, <a href="https://www.worldometers.info/coronavirus/">Worldometer</a>, <a href="https://github.com/pomber/covid19">Pomber</a></footer>
         <footer>Created by <a href="https://github.com/asiaellis5">Asia Ellis</a>, <a href="https://github.com/davidpaps">David Papamichael</a> and <a href="https://github.com/nicolasraffray">Nicolas Raffray</a> &nbsp;&nbsp; Source Code: <a href="https://github.com/davidpaps/covid_19_mapper">Github</a>&nbsp;&nbsp;Data Sources: <a href="https://github.com/CSSEGISandData/COVID-19">John Hopkins</a>, <a href="https://www.worldometers.info/coronavirus/">Worldometer</a>, <a href="https://github.com/pomber/covid19">Pomber</a></footer>
       </div>
     );

@@ -238,16 +238,6 @@ class App extends Component {
   }
 
   render() {
-    // The state
-    // countries: [],
-    // error: null,
-    // isLoaded: false,
-    // total: [],
-    // totalInt: [],
-    // totalCFR: null,
-    // countriesInteger: [],
-    // timeSeries: [],
-    { console.log("App state", this.state) }
     return (
       <div className="App">
         <BrowserRouter>

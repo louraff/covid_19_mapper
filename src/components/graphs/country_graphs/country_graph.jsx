@@ -16,7 +16,6 @@ class CountryGraphContainer extends Component {
     };
   }
 
-
   createLineLabels = () => {
     const labelData = [];
     const countryData = this.props.timeseries[this.props.country];
@@ -48,8 +47,6 @@ class CountryGraphContainer extends Component {
     })
     return names.slice(0, 10)
   }
-
-
 
   render() {
     defaults.global.defaultFontColor = "white";

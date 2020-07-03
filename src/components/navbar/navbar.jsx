@@ -54,7 +54,6 @@ const Header = (props) => {
             id="last_updated"
           >
             <Dropdown.Item as={Link} to="/">
-
               <div id="drop-down-window">
                 <div id="info-icon">
                   <img
@@ -66,7 +65,6 @@ const Header = (props) => {
                 </div>
                 <span>
                   Interactive Map
-                  {/* <NavLink to="/">Interactive Map</NavLink> */}
                 </span>
               </div>
             </Dropdown.Item>
@@ -82,7 +80,6 @@ const Header = (props) => {
                   ></img>
                 </div>
                 Interactive Global Charts
-                  {/* <NavLink to="/global">Interactive Global Charts</NavLink> */}
               </div>
             </Dropdown.Item>
             <Dropdown.Divider />
@@ -98,7 +95,6 @@ const Header = (props) => {
                 </div>
                 <span>
                   Interactive Country Charts
-                  {/* <NavLink to="/country">Interactive Country Charts</NavLink> */}
                 </span>
               </div>
             </Dropdown.Item>
@@ -114,8 +110,6 @@ const Header = (props) => {
                   ></img>
                 </div>
                 Interactive Table
-
-            {/* <NavLink to="/table">Interactive Table</NavLink> */}
               </div>
             </Dropdown.Item>
           </DropdownButton>

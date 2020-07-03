@@ -10,10 +10,10 @@ class SearchContainer extends Component {
     };
   }
 
-  async componentDidMount() {
-    const res = await fetch("https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/date-range/2020-01-01/2020-06-02/").then(res => res.json())
-    console.log(res)
-  }
+  // async componentDidMount() {
+  //   const res = await fetch("https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/date-range/2020-01-01/2020-06-02/").then(res => res.json())
+  //   console.log(res)
+  // }
 
   getInfo = () => {
     let len = this.state.query.length;
