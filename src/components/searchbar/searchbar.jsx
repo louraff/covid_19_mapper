@@ -10,6 +10,11 @@ class SearchContainer extends Component {
     };
   }
 
+  async componentDidMount() {
+    const res = await fetch("https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/date-range/2020-01-01/2020-06-02/").then(res => res.json())
+    console.log(res)
+  }
+
   getInfo = () => {
     let len = this.state.query.length;
     let results = [];
@@ -60,7 +65,7 @@ class SearchContainer extends Component {
             </label>
           </form>
         </div>
-        <div id="graph-countainer">
+        <div id="graph-container">
           <br></br>
           <CountryGraphContainer
             country={this.state.results[0] === undefined ? "United Kingdom" : this.state.results[0]}
@@ -69,7 +74,7 @@ class SearchContainer extends Component {
             timeseries={this.props.timeseries}
           />
         </div>
-        <footer>Created by <a href="https://github.com/asiaellis5">Asia Ellis</a>, <a href="https://github.com/davidpaps">David Papamichael</a> and <a href="https://github.com/nicolasraffray">Nicolas Raffray</a> &nbsp;&nbsp; Source Code: <a href="https://github.com/davidpaps/covid_19_mapper">Github</a>&nbsp;&nbsp;Data Sources: <a href="https://github.com/CSSEGISandData/COVID-19">John Hopkins</a>, <a href="https://www.worldometers.info/coronavirus/">Worldometer</a>, <a href="https://github.com/pomber/covid19">Pomber</a></footer>
+
       </div >
     );
 

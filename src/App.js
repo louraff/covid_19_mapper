@@ -3,6 +3,12 @@ import "./App.css";
 import Header from "./components/navbar/navbar";
 import ref_country_codes from "./components/assets/countries-lat-long.json";
 import us_codes from "./components/assets/USlatlong.json";
+import MapContainer from "./components/map/map";
+import TableContainer from "./components/tables/table";
+import SearchContainer from "./components/searchbar/searchbar";
+import GlobalGraphContainer from "./components/graphs/global_graphs/global_graph";
+
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 class App extends Component {
   state = {
@@ -156,7 +162,7 @@ class App extends Component {
       cfrPerCountry.push(
         (parseInt(country.deaths.replace(/,/g, "")) /
           parseInt(country.cases.replace(/,/g, ""))) *
-          100
+        100
       );
     });
 
@@ -232,16 +238,45 @@ class App extends Component {
   }
 
   render() {
+    // The state
+    // countries: [],
+    // error: null,
+    // isLoaded: false,
+    // total: [],
+    // totalInt: [],
+    // totalCFR: null,
+    // countriesInteger: [],
+    // timeSeries: [],
+    { console.log("App state", this.state) }
     return (
       <div className="App">
-        <Header
-          total={this.state.total}
-          totalInt={this.state.totalInt}
-          countries={this.state.countries}
-          globalCFR={this.state.totalCFR}
-          integerCountries={this.state.countriesInteger}
-          timeseries={this.state.timeSeries}
-        />
+        <BrowserRouter>
+          <Header
+            total={this.state.total}
+            totalInt={this.state.totalInt}
+            countries={this.state.countries}
+            globalCFR={this.state.totalCFR}
+            integerCountries={this.state.countriesInteger}
+            timeseries={this.state.timeSeries}
+          />
+
+          <Switch>
+
+            <Route exact path="/country" render={(props) => <SearchContainer countries={this.state.countriesInteger} totalInt={this.state.totalInt}
+              totalInt={this.state.totalInt}
+              timeseries={this.state.timeSeries} />} />
+            <Route exact path="/global" render={(props) => <GlobalGraphContainer countries={this.state.countriesInteger} data={this.state.timeSeries} />} />
+            <Route exact path="/table" render={(props) => <TableContainer countries={this.state.countriesInteger} />} />
+            <Route exact path="/" render={(props) => <MapContainer
+              countries={this.state.countries}
+              total={this.state.totalInt}
+              totalForCFR={this.state.total}
+              globalCFR={this.state.globalCFR}
+              integerCountries={this.state.countriesInteger}
+            />} />
+            <Route render={() => <h1>Page Not Found</h1>} />
+          </Switch>
+        </BrowserRouter>
       </div>
     );
   }

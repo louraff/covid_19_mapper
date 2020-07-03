@@ -155,7 +155,7 @@ class TableContainer extends Component {
     }
 
     return (
-      <div>
+      <div id="table">
         <h4 id="table-heading">Global Data</h4>
         <ToolkitProvider
           keyField="id"

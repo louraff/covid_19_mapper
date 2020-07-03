@@ -7,16 +7,23 @@ import GlobalGrowthFactor from "./global_growth_line/global_growth_line"
 import CFRContainer from "./global_cfr/global_cfr"
 
 class GlobalGraphContainer extends Component {
+  constructor(props) {
+    super(props)
+
+  }
   state = {
     data: []
   }
 
-  componentDidMount() {
+
+  componentWillMount() {
     let worldData = []
     let data = this.props.data
     let countryArray = Object.keys(data).map(i => i)
+    console.log("countryArrya", countryArray)
     countryArray.forEach((country) => {
       let countryData = data[country]
+      console.log("country", data[country])
       countryData.forEach((day, index) => {
         if (worldData[index] === undefined) {
           let globalStats = { date: day.date, confirmed: day.confirmed, recovered: day.recovered, deaths: day.deaths }
@@ -28,6 +35,7 @@ class GlobalGraphContainer extends Component {
         }
       })
     })
+    console.log("world", worldData)
     this.setState({
       data: worldData
     })
@@ -47,9 +55,10 @@ class GlobalGraphContainer extends Component {
   };
 
   render() {
+    console.log("propsData", this.props.data)
     defaults.global.defaultFontColor = "white";
     return (
-      <div>
+      <div id="graph">
         <h2>Global Data From Day of First Death</h2>
         <br></br>
         <br></br>

@@ -1,3 +1,7 @@
+/* body {
+  background-color: #3e444a;
+} */
+
 .App {
   text-align: center;
   color: #3e444a;
@@ -20,6 +24,12 @@ footer {
   display: flex;
   flex-direction: row;
   width: 80%;
+}
+
+#drop-down-window a {
+
+  color: rgb(104,104,104);
+  text-decoration: none;
 }
 
 #graph {
@@ -249,13 +259,14 @@ h2 {
 }
 
 #search {
-  top: 20%;
+  top: 7%;
   position: absolute;
   z-index: 1;
-  position: relative;
+  /* position: relative; */
   width: 100%;
   margin: 5px;
   justify-content: center;
+  background-color: #343A40;
 }
 
 #search-heading {
