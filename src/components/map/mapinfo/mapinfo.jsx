@@ -27,7 +27,7 @@ class MapInfo extends Component {
                     <img
                       id="flag"
                       src={`https://www.countryflags.io/us/flat/64.png`}
-                      alt=''
+                      alt=""
                     />
                     <h4>{country.country}</h4>
                   </div>
@@ -47,11 +47,11 @@ class MapInfo extends Component {
                         <br></br> {country.cfr}%
                       </div>
                     ) : (
-                        <div id="infoUSOrange">
-                          <strong>C.F.R</strong>
-                          <br></br> {country.cfr}%
-                        </div>
-                      )}
+                      <div id="infoUSOrange">
+                        <strong>C.F.R</strong>
+                        <br></br> {country.cfr}%
+                      </div>
+                    )}
                   </div>
                 </div>
               );
@@ -61,7 +61,7 @@ class MapInfo extends Component {
                   <div id="infoCountryName">
                     <img
                       id="flag"
-                      alt=''
+                      alt=""
                       src={`https://www.countryflags.io/${ref_country_codes.ref_country_codes
                         .filter((pop) => pop.country === country.country)[0]
                         .alpha2.toLowerCase()}/flat/64.png`}
@@ -105,18 +105,18 @@ class MapInfo extends Component {
                         <br></br> {country.cfr}%
                       </div>
                     ) : (
-                        <div id="infoOrange">
-                          <strong>C.F.R</strong>
-                          <br></br> {country.cfr}%
-                        </div>
-                      )}
+                      <div id="infoOrange">
+                        <strong>C.F.R</strong>
+                        <br></br> {country.cfr}%
+                      </div>
+                    )}
                   </div>
                 </div>
               );
             }
           }
         })}
-      </div >
+      </div>
     );
   }
 }
