@@ -161,234 +161,230 @@ exports[`App Component renders as expected, snapshot comparison 1`] = `
         </div>
       </div>
     </nav>
+  </div>
+  <div>
+    <div>
+      <div
+        id="container"
+      >
+        <div
+          id="map"
+        />
+        <div />
+      </div>
+    </div>
     <div
-      className="Container"
+      id="legend"
     >
       <div>
-        <div>
-          <div
-            id="container"
+        <div
+          id="key"
+        >
+          <strong>
+            Key
+          </strong>
+          <br />
+          <button
+            className="btn btn-outline- btn-sm"
+            disabled={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            type="button"
           >
             <div
-              id="map"
-            />
-            <div />
-          </div>
-        </div>
-        <div
-          id="legend"
-        >
-          <div>
-            <div
-              id="key"
+              id="colour"
             >
-              <strong>
-                Key
-              </strong>
-              <br />
-              <button
-                className="btn btn-outline- btn-sm"
-                disabled={false}
-                onBlur={[Function]}
-                onFocus={[Function]}
-                onMouseOut={[Function]}
-                onMouseOver={[Function]}
-                type="button"
+              <svg
+                height="30"
+                styles=" fill:#000000;"
+                viewBox="0 0 172 172"
+                width="30"
+                x="0px"
+                xmlns="http://www.w3.org/2000/svg"
+                y="0px"
               >
-                <div
-                  id="colour"
+                <g
+                  fill="none"
+                  fillRule="nonzero"
                 >
-                  <svg
-                    height="30"
-                    styles=" fill:#000000;"
-                    viewBox="0 0 172 172"
-                    width="30"
-                    x="0px"
-                    xmlns="http://www.w3.org/2000/svg"
-                    y="0px"
+                  <path
+                    d="M0,172v-172h172v172z"
+                    fill="none"
+                  />
+                  <g
+                    fill="#ffc108"
                   >
-                    <g
-                      fill="none"
-                      fillRule="nonzero"
-                    >
-                      <path
-                        d="M0,172v-172h172v172z"
-                        fill="none"
-                      />
-                      <g
-                        fill="#ffc108"
-                      >
-                        <path
-                          d="M86,157.66667c-39.41667,0 -71.66667,-32.25 -71.66667,-71.66667c0,-39.41667 32.25,-71.66667 71.66667,-71.66667c39.41667,0 71.66667,32.25 71.66667,71.66667c0,39.41667 -32.25,71.66667 -71.66667,71.66667z"
-                        />
-                      </g>
-                    </g>
-                  </svg>
-                </div>
-              </button>
-              <br />
-              <button
-                className="btn btn-outline- btn-sm"
-                disabled={false}
-                onBlur={[Function]}
-                onFocus={[Function]}
-                onMouseOut={[Function]}
-                onMouseOver={[Function]}
-                type="button"
-              >
-                <div
-                  id="colour"
-                >
-                  <svg
-                    height="30"
-                    styles=" fill:#000000;"
-                    viewBox="0 0 172 172"
-                    width="30"
-                    x="0px"
-                    xmlns="http://www.w3.org/2000/svg"
-                    y="0px"
-                  >
-                    <g
-                      fill="none"
-                      fillRule="nonzero"
-                    >
-                      <path
-                        d="M0,172v-172h172v172z"
-                        fill="none"
-                      />
-                      <g
-                        fill="#fb5945"
-                      >
-                        <path
-                          d="M86,14.33333c-39.58041,0 -71.66667,32.08626 -71.66667,71.66667c0,39.58041 32.08626,71.66667 71.66667,71.66667c39.58041,0 71.66667,-32.08626 71.66667,-71.66667c0,-39.58041 -32.08626,-71.66667 -71.66667,-71.66667z"
-                        />
-                      </g>
-                    </g>
-                  </svg>
-                </div>
-              </button>
+                    <path
+                      d="M86,157.66667c-39.41667,0 -71.66667,-32.25 -71.66667,-71.66667c0,-39.41667 32.25,-71.66667 71.66667,-71.66667c39.41667,0 71.66667,32.25 71.66667,71.66667c0,39.41667 -32.25,71.66667 -71.66667,71.66667z"
+                    />
+                  </g>
+                </g>
+              </svg>
             </div>
-            <button
-              className="btn btn-outline- btn-sm"
-              disabled={false}
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseOut={[Function]}
-              onMouseOver={[Function]}
-              type="button"
+          </button>
+          <br />
+          <button
+            className="btn btn-outline- btn-sm"
+            disabled={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            type="button"
+          >
+            <div
+              id="colour"
             >
-              <div
-                id="size"
+              <svg
+                height="30"
+                styles=" fill:#000000;"
+                viewBox="0 0 172 172"
+                width="30"
+                x="0px"
+                xmlns="http://www.w3.org/2000/svg"
+                y="0px"
               >
-                <svg
-                  height="15"
-                  styles=" fill:#000000;"
-                  viewBox="0 0 172 172"
-                  width="15"
-                  x="0px"
-                  xmlns="http://www.w3.org/2000/svg"
-                  y="0px"
+                <g
+                  fill="none"
+                  fillRule="nonzero"
                 >
+                  <path
+                    d="M0,172v-172h172v172z"
+                    fill="none"
+                  />
                   <g
-                    transform="translate(4.988,4.988) scale(0.942,0.942)"
+                    fill="#fb5945"
                   >
-                    <g
-                      fill="none"
-                      fillRule="nonzero"
-                    >
-                      <g
-                        fill="#ffffff"
-                      >
-                        <path
-                          d="M86,157.66667c-39.41667,0 -71.66667,-32.25 -71.66667,-71.66667c0,-39.41667 32.25,-71.66667 71.66667,-71.66667c39.41667,0 71.66667,32.25 71.66667,71.66667c0,39.41667 -32.25,71.66667 -71.66667,71.66667zM86,28.66667c-31.53333,0 -57.33333,25.8 -57.33333,57.33333c0,31.53333 25.8,57.33333 57.33333,57.33333c31.53333,0 57.33333,-25.8 57.33333,-57.33333c0,-31.53333 -25.8,-57.33333 -57.33333,-57.33333z"
-                        />
-                      </g>
-                      <path
-                        d="M0,172v-172h172v172z"
-                        fill="none"
-                      />
-                      <g
-                        fill="#ffffff"
-                      >
-                        <path
-                          d="M86,157.66667c-39.41667,0 -71.66667,-32.25 -71.66667,-71.66667c0,-39.41667 32.25,-71.66667 71.66667,-71.66667c39.41667,0 71.66667,32.25 71.66667,71.66667c0,39.41667 -32.25,71.66667 -71.66667,71.66667zM86,28.66667c-31.53333,0 -57.33333,25.8 -57.33333,57.33333c0,31.53333 25.8,57.33333 57.33333,57.33333c31.53333,0 57.33333,-25.8 57.33333,-57.33333c0,-31.53333 -25.8,-57.33333 -57.33333,-57.33333z"
-                        />
-                      </g>
-                      <path
-                        d=""
-                        fill="none"
-                      />
-                    </g>
+                    <path
+                      d="M86,14.33333c-39.58041,0 -71.66667,32.08626 -71.66667,71.66667c0,39.58041 32.08626,71.66667 71.66667,71.66667c39.58041,0 71.66667,-32.08626 71.66667,-71.66667c0,-39.58041 -32.08626,-71.66667 -71.66667,-71.66667z"
+                    />
                   </g>
-                </svg>
-              </div>
-            </button>
-            <br />
-            <button
-              className="btn btn-outline- btn-sm"
-              disabled={false}
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseOut={[Function]}
-              onMouseOver={[Function]}
-              type="button"
-            >
-              <div
-                id="size"
-              >
-                <svg
-                  height="30"
-                  styles=" fill:#000000;"
-                  viewBox="0 0 172 172"
-                  width="30"
-                  x="0px"
-                  xmlns="http://www.w3.org/2000/svg"
-                  y="0px"
-                >
-                  <g
-                    transform="translate(4.988,4.988) scale(0.942,0.942)"
-                  >
-                    <g
-                      fill="none"
-                      fillRule="nonzero"
-                    >
-                      <g
-                        fill="#ffffff"
-                      >
-                        <path
-                          d="M86,157.66667c-39.41667,0 -71.66667,-32.25 -71.66667,-71.66667c0,-39.41667 32.25,-71.66667 71.66667,-71.66667c39.41667,0 71.66667,32.25 71.66667,71.66667c0,39.41667 -32.25,71.66667 -71.66667,71.66667zM86,28.66667c-31.53333,0 -57.33333,25.8 -57.33333,57.33333c0,31.53333 25.8,57.33333 57.33333,57.33333c31.53333,0 57.33333,-25.8 57.33333,-57.33333c0,-31.53333 -25.8,-57.33333 -57.33333,-57.33333z"
-                        />
-                      </g>
-                      <path
-                        d="M0,172v-172h172v172z"
-                        fill="none"
-                      />
-                      <g
-                        fill="#ffffff"
-                      >
-                        <path
-                          d="M86,157.66667c-39.41667,0 -71.66667,-32.25 -71.66667,-71.66667c0,-39.41667 32.25,-71.66667 71.66667,-71.66667c39.41667,0 71.66667,32.25 71.66667,71.66667c0,39.41667 -32.25,71.66667 -71.66667,71.66667zM86,28.66667c-31.53333,0 -57.33333,25.8 -57.33333,57.33333c0,31.53333 25.8,57.33333 57.33333,57.33333c31.53333,0 57.33333,-25.8 57.33333,-57.33333c0,-31.53333 -25.8,-57.33333 -57.33333,-57.33333z"
-                        />
-                      </g>
-                      <path
-                        d=""
-                        fill="none"
-                      />
-                    </g>
-                  </g>
-                </svg>
-              </div>
-            </button>
-          </div>
+                </g>
+              </svg>
+            </div>
+          </button>
         </div>
-        <div
-          id="mapinfo"
+        <button
+          className="btn btn-outline- btn-sm"
+          disabled={false}
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          type="button"
         >
           <div
-            id="card"
-          />
-        </div>
+            id="size"
+          >
+            <svg
+              height="15"
+              styles=" fill:#000000;"
+              viewBox="0 0 172 172"
+              width="15"
+              x="0px"
+              xmlns="http://www.w3.org/2000/svg"
+              y="0px"
+            >
+              <g
+                transform="translate(4.988,4.988) scale(0.942,0.942)"
+              >
+                <g
+                  fill="none"
+                  fillRule="nonzero"
+                >
+                  <g
+                    fill="#ffffff"
+                  >
+                    <path
+                      d="M86,157.66667c-39.41667,0 -71.66667,-32.25 -71.66667,-71.66667c0,-39.41667 32.25,-71.66667 71.66667,-71.66667c39.41667,0 71.66667,32.25 71.66667,71.66667c0,39.41667 -32.25,71.66667 -71.66667,71.66667zM86,28.66667c-31.53333,0 -57.33333,25.8 -57.33333,57.33333c0,31.53333 25.8,57.33333 57.33333,57.33333c31.53333,0 57.33333,-25.8 57.33333,-57.33333c0,-31.53333 -25.8,-57.33333 -57.33333,-57.33333z"
+                    />
+                  </g>
+                  <path
+                    d="M0,172v-172h172v172z"
+                    fill="none"
+                  />
+                  <g
+                    fill="#ffffff"
+                  >
+                    <path
+                      d="M86,157.66667c-39.41667,0 -71.66667,-32.25 -71.66667,-71.66667c0,-39.41667 32.25,-71.66667 71.66667,-71.66667c39.41667,0 71.66667,32.25 71.66667,71.66667c0,39.41667 -32.25,71.66667 -71.66667,71.66667zM86,28.66667c-31.53333,0 -57.33333,25.8 -57.33333,57.33333c0,31.53333 25.8,57.33333 57.33333,57.33333c31.53333,0 57.33333,-25.8 57.33333,-57.33333c0,-31.53333 -25.8,-57.33333 -57.33333,-57.33333z"
+                    />
+                  </g>
+                  <path
+                    d=""
+                    fill="none"
+                  />
+                </g>
+              </g>
+            </svg>
+          </div>
+        </button>
+        <br />
+        <button
+          className="btn btn-outline- btn-sm"
+          disabled={false}
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
+          type="button"
+        >
+          <div
+            id="size"
+          >
+            <svg
+              height="30"
+              styles=" fill:#000000;"
+              viewBox="0 0 172 172"
+              width="30"
+              x="0px"
+              xmlns="http://www.w3.org/2000/svg"
+              y="0px"
+            >
+              <g
+                transform="translate(4.988,4.988) scale(0.942,0.942)"
+              >
+                <g
+                  fill="none"
+                  fillRule="nonzero"
+                >
+                  <g
+                    fill="#ffffff"
+                  >
+                    <path
+                      d="M86,157.66667c-39.41667,0 -71.66667,-32.25 -71.66667,-71.66667c0,-39.41667 32.25,-71.66667 71.66667,-71.66667c39.41667,0 71.66667,32.25 71.66667,71.66667c0,39.41667 -32.25,71.66667 -71.66667,71.66667zM86,28.66667c-31.53333,0 -57.33333,25.8 -57.33333,57.33333c0,31.53333 25.8,57.33333 57.33333,57.33333c31.53333,0 57.33333,-25.8 57.33333,-57.33333c0,-31.53333 -25.8,-57.33333 -57.33333,-57.33333z"
+                    />
+                  </g>
+                  <path
+                    d="M0,172v-172h172v172z"
+                    fill="none"
+                  />
+                  <g
+                    fill="#ffffff"
+                  >
+                    <path
+                      d="M86,157.66667c-39.41667,0 -71.66667,-32.25 -71.66667,-71.66667c0,-39.41667 32.25,-71.66667 71.66667,-71.66667c39.41667,0 71.66667,32.25 71.66667,71.66667c0,39.41667 -32.25,71.66667 -71.66667,71.66667zM86,28.66667c-31.53333,0 -57.33333,25.8 -57.33333,57.33333c0,31.53333 25.8,57.33333 57.33333,57.33333c31.53333,0 57.33333,-25.8 57.33333,-57.33333c0,-31.53333 -25.8,-57.33333 -57.33333,-57.33333z"
+                    />
+                  </g>
+                  <path
+                    d=""
+                    fill="none"
+                  />
+                </g>
+              </g>
+            </svg>
+          </div>
+        </button>
       </div>
+    </div>
+    <div
+      id="mapinfo"
+    >
+      <div
+        id="card"
+      />
     </div>
   </div>
 </div>
