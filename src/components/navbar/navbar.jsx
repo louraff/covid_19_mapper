@@ -11,7 +11,6 @@ import GlobalGraphContainer from "../graphs/global_graphs/global_graph";
 import { NavLink, Link, useHistory } from "react-router-dom"
 
 
-
 const Header = (props) => {
 
 
@@ -19,8 +18,8 @@ const Header = (props) => {
     <div id="app">
       <Navbar
         fixed="top"
-        // bg={this.state.viewMap ? "" : "dark"}
         className="navbar-dark bs-navbar-collapse"
+        bg="dark"
       >
         <Nav>
           <DropdownButton
@@ -54,7 +53,8 @@ const Header = (props) => {
             }
             id="last_updated"
           >
-            <Dropdown.Item href="/">
+            <Dropdown.Item as={Link} to="/">
+
               <div id="drop-down-window">
                 <div id="info-icon">
                   <img
@@ -64,11 +64,14 @@ const Header = (props) => {
                     alt=""
                   ></img>
                 </div>
-                <NavLink to="/">Interactive Map</NavLink>
+                <span>
+                  Interactive Map
+                  {/* <NavLink to="/">Interactive Map</NavLink> */}
+                </span>
               </div>
             </Dropdown.Item>
             <Dropdown.Divider />
-            <Dropdown.Item>
+            <Dropdown.Item as={Link} to="/global">
               <div id="drop-down-window" >
                 <div id="info-icon">
                   <img
@@ -78,11 +81,12 @@ const Header = (props) => {
                     alt=""
                   ></img>
                 </div>
-                <NavLink to="/global">Interactive Global Charts</NavLink>
+                Interactive Global Charts
+                  {/* <NavLink to="/global">Interactive Global Charts</NavLink> */}
               </div>
             </Dropdown.Item>
             <Dropdown.Divider />
-            <Dropdown.Item >
+            <Dropdown.Item as={Link} to="/country">
               <div id="drop-down-window">
                 <div id="info-icon">
                   <img
@@ -92,11 +96,14 @@ const Header = (props) => {
                     alt=""
                   ></img>
                 </div>
-                <NavLink to="/country">Interactive Country Charts</NavLink>
+                <span>
+                  Interactive Country Charts
+                  {/* <NavLink to="/country">Interactive Country Charts</NavLink> */}
+                </span>
               </div>
             </Dropdown.Item>
             <Dropdown.Divider />
-            <Dropdown.Item >
+            <Dropdown.Item as={Link} to="/table">
               <div id="drop-down-window">
                 <div id="info-icon">
                   <img
@@ -106,7 +113,9 @@ const Header = (props) => {
                     alt=""
                   ></img>
                 </div>
-                <NavLink to="/table">Interactive Table</NavLink>
+                Interactive Table
+
+            {/* <NavLink to="/table">Interactive Table</NavLink> */}
               </div>
             </Dropdown.Item>
           </DropdownButton>
@@ -130,7 +139,7 @@ const Header = (props) => {
             }
             id="last_updated"
           >
-            <Dropdown.Item>
+            <Dropdown.Item componentClass='span'>
               <div id="drop-down-window">
                 <Spinner animation="grow" variant="info" size="sm" />
                   Daily Increase: {props.total.new_cases}
@@ -157,7 +166,7 @@ const Header = (props) => {
             }
             id="last_updated"
           >
-            <Dropdown.Item>
+            <Dropdown.Item componentclass='span'>
               <div id="drop-down-window">
                 <Spinner animation="grow" variant="success" size="sm" />
                   Active Cases: {props.total.active_cases}
