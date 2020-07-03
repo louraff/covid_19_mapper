@@ -9,7 +9,7 @@ import CFRContainer from "./global_cfr/global_cfr";
 const GlobalGraphContainer = (props) => {
   const [data, setData] = useState([]);
 
-  useEffect(() => {
+  const getData = () => {
     let worldData = [];
     let data = props.data;
     let countryArray = Object.keys(data).map((i) => i);
@@ -32,6 +32,10 @@ const GlobalGraphContainer = (props) => {
       });
     });
     setData(worldData);
+  };
+
+  useEffect(() => {
+    getData();
   }, []);
 
   const createLineLabels = () => {
