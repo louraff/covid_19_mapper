@@ -16,7 +16,7 @@ describe("404 Page", () => {
     expect(wrapper.find("img").length).toEqual(1);
   });
 
-  it("should render correctly", () => {
+  it("renders correctly", () => {
     const component = renderer.create(<Page />).toJSON();
     expect(component).toMatchSnapshot();
   });
