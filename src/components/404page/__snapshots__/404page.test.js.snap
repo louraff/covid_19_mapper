@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`404 Page should render correctly 1`] = `
+<div
+  id="error"
+>
+  <h1>
+    Page Not Found Page
+  </h1>
+  <br />
+  <img
+    alt=""
+    src="https://cdn3.iconfinder.com/data/icons/science-116/64/virus-lab-scientist-biology-cell-medical-512.png?v=2"
+  />
+</div>
+`;

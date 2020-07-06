@@ -1,5 +1,4 @@
 import * as React from "react";
-import { render } from "@testing-library/react";
 import { shallow } from "enzyme";
 import App from "./App";
 import renderer from "react-test-renderer";
@@ -10,8 +9,8 @@ describe("App Component", () => {
   });
 
   it("renders as expected, snapshot comparison", () => {
-    const TextInputComponent = renderer.create(<App />).toJSON();
-    expect(TextInputComponent).toMatchSnapshot();
+    const component = renderer.create(<App />).toJSON();
+    expect(component).toMatchSnapshot();
   });
 
   it("mounts the state", () => {
