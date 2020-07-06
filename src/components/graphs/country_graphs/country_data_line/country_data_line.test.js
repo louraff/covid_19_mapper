@@ -29,4 +29,8 @@ describe("Country Line", () => {
   it("should render a <Button />", () => {
     expect(wrapper.find("Button").length).toEqual(1);
   });
+
+  it("renders correctly", () => {
+    expect(wrapper).toMatchSnapshot();
+  });
 });

@@ -1,15 +1,27 @@
 import * as React from "react";
-import { render } from "@testing-library/react";
 import { shallow } from "enzyme";
 import DailyChangesBar from "./daily_changes_bar";
 
-describe("Daily Changes Bar Test", () => {
-  it("does not crash when loaded onto page", () => {
-    shallow(
-      <DailyChangesBar
-        data={[]}
-        country={[]}
-      />
-    );
+describe("Daily Bar", () => {
+  let wrapper;
+
+  beforeEach(
+    () => (wrapper = shallow(<DailyChangesBar data={[]} country={[]} />))
+  );
+
+  it("should render a <div />", () => {
+    expect(wrapper.find("div").length).toEqual(2);
+  });
+
+  it("should render a <Bar />", () => {
+    expect(wrapper.find("Bar").length).toEqual(1);
+  });
+
+  it("should render a <Button />", () => {
+    expect(wrapper.find("Button").length).toEqual(1);
+  });
+
+  it("renders correctly", () => {
+    expect(wrapper).toMatchSnapshot();
   });
 });

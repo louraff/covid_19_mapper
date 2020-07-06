@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Country Growth Factor renders correctly 1`] = `ShallowWrapper {}`;
