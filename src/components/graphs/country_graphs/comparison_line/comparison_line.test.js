@@ -1,18 +1,35 @@
 import * as React from "react";
-import { render } from "@testing-library/react";
 import { shallow } from "enzyme";
 import ComparisonLineContainer from "./comparison_line";
-import renderer from "react-test-renderer";
 
-describe("Comparison Line Test", () => {
-  it("does not crash when loaded onto page", () => {
-    shallow(
-      <ComparisonLineContainer
-        data={[]}
-        top10Data={[]}
-        lineLabels={[]}
-        selected={""}
-      />
-    );
+describe("Comparison Line", () => {
+  let wrapper;
+
+  beforeEach(
+    () =>
+      (wrapper = shallow(
+        <ComparisonLineContainer
+          data={[]}
+          top10Data={[]}
+          lineLabels={[]}
+          selected={""}
+        />
+      ))
+  );
+
+  it("should render a <div />", () => {
+    expect(wrapper.find("div").length).toEqual(5);
+  });
+
+  it("should render a <Line />", () => {
+    expect(wrapper.find("Line").length).toEqual(1);
+  });
+
+  it("should render a <Button />", () => {
+    expect(wrapper.find("Button").length).toEqual(2);
+  });
+
+  it("renders correctly", () => {
+    expect(shallow).toMatchSnapshot();
   });
 });
