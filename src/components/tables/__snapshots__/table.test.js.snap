@@ -1,0 +1,248 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table renders correctly 1`] = `
+<div
+  id="table"
+>
+  <h4
+    id="table-heading"
+  >
+    Global Data
+  </h4>
+  <div>
+    <label
+      className="search-label"
+      htmlFor="search-bar-0"
+    >
+      <span
+        className="sr-only"
+      >
+        Search this table
+      </span>
+      <input
+        aria-label="enter text you want to search"
+        className="form-control searchbar"
+        id="search-bar-0"
+        onChange={[Function]}
+        onKeyUp={[Function]}
+        placeholder="Search..."
+        style={
+          Object {
+            "backgroundColor": "215, 213, 213",
+            "width": "250px",
+          }
+        }
+        type="text"
+        value=""
+      />
+    </label>
+    <hr />
+    <div
+      className="react-bootstrap-table"
+    >
+      <table
+        className="table table-striped table-bordered"
+        id="bootstrap-table"
+      >
+        <thead>
+          <tr
+            className="header-class"
+          >
+            <th
+              aria-label="Country sortable"
+              className="sortable"
+              onClick={[Function]}
+              onKeyUp={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "#636D78",
+                }
+              }
+              tabIndex={0}
+            >
+              Country
+              <span>
+                 ↑/↓
+              </span>
+            </th>
+            <th
+              aria-label="Total Cases sortable"
+              className="sortable"
+              onClick={[Function]}
+              onKeyUp={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "#636D78",
+                  "color": "#18A2B8",
+                }
+              }
+              tabIndex={0}
+            >
+              Total Cases
+              <span>
+                 ↑/↓
+              </span>
+            </th>
+            <th
+              aria-label="Recovered sortable"
+              className="sortable"
+              onClick={[Function]}
+              onKeyUp={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "#636D78",
+                  "color": "rgb(40,167,69)",
+                }
+              }
+              tabIndex={0}
+            >
+              Recovered
+              <span>
+                 ↑/↓
+              </span>
+            </th>
+            <th
+              aria-label="Deaths sortable"
+              className="sortable"
+              onClick={[Function]}
+              onKeyUp={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "#636D78",
+                  "color": "rgb(220,54,69)",
+                }
+              }
+              tabIndex={0}
+            >
+              Deaths
+              <span>
+                 ↑/↓
+              </span>
+            </th>
+            <th
+              aria-label="Active Cases sortable"
+              className="sortable"
+              onClick={[Function]}
+              onKeyUp={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "#636D78",
+                }
+              }
+              tabIndex={0}
+            >
+              Active Cases
+              <span>
+                 ↑/↓
+              </span>
+            </th>
+            <th
+              aria-label="Critical Cases sortable"
+              className="sortable"
+              onClick={[Function]}
+              onKeyUp={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "#636D78",
+                }
+              }
+              tabIndex={0}
+            >
+              Critical Cases
+              <span>
+                 ↑/↓
+              </span>
+            </th>
+            <th
+              aria-label="Cases per 1 Mil sortable"
+              className="sortable"
+              onClick={[Function]}
+              onKeyUp={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "#636D78",
+                }
+              }
+              tabIndex={0}
+            >
+              Cases per 1 Mil
+              <span>
+                 ↑/↓
+              </span>
+            </th>
+            <th
+              aria-label="C.F.R sortable"
+              className="sortable"
+              onClick={[Function]}
+              onKeyUp={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "#636D78",
+                  "color": "#FBBD08",
+                }
+              }
+              tabIndex={0}
+            >
+              C.F.R
+              <span>
+                 ↑/↓
+              </span>
+            </th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+  <footer>
+    Created by 
+    <a
+      href="https://github.com/asiaellis5"
+    >
+      Asia Ellis
+    </a>
+    ,
+     
+    <a
+      href="https://github.com/davidpaps"
+    >
+      David Papamichael
+    </a>
+     and
+     
+    <a
+      href="https://github.com/nicolasraffray"
+    >
+      Nicolas Raffray
+    </a>
+     
+       Source Code:
+     
+    <a
+      href="https://github.com/davidpaps/covid_19_mapper"
+    >
+      Github
+    </a>
+      Data Sources:
+     
+    <a
+      href="https://github.com/CSSEGISandData/COVID-19"
+    >
+      John Hopkins
+    </a>
+    ,
+     
+    <a
+      href="https://www.worldometers.info/coronavirus/"
+    >
+      Worldometer
+    </a>
+    ,
+     
+    <a
+      href="https://github.com/pomber/covid19"
+    >
+      Pomber
+    </a>
+  </footer>
+</div>
+`;
