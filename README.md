@@ -1,6 +1,6 @@
 # Covid-19 Mapper
 
-A global Covid-19 mapper, made on a single page React App. This used several API calls for the Covid-19 data, and a Google Map API displaying the countries data geographically. Jest and Enzyme was used for testing, Heroku for deployment and Travis for Continuous Integeration. 
+A global Covid-19 mapper, made on a single page React App. This used several API calls for the Covid-19 data, and a Google Map API displaying the countries data geographically. Jest and Enzyme was used for testing, Heroku for deployment and Travis for Continuous Integeration.
 
 ---
 
@@ -28,12 +28,11 @@ The project is also hosted live on [_Heroku_](https://covid-mapper.herokuapp.com
 
 Jest and Enzyme were used for testing. To run, in the command line type:
 
-
 ```
 npm test
 ```
 
-This will display all tests (including snapshots).
+This will display all _87_ Jest & Enyzyme tests (including snapshots).
 
 ---
 
@@ -44,29 +43,34 @@ This was the first large Post-Makers project, and was made with a brand new piec
 ---
 
 ### Stage 1
+
 Our MVP, was to have an interactive map that a user can click on to display the current statistics for that country. This took a week to achieve (the original repo can be found [_here_](https://github.com/nicolasraffray/covid-mapper) showing how we got to this point). A user could click on the marker, which would then display the current info in an infowindow from the googlemap API.
 
 ---
 
 ### Stage 2
-The next step was to represent the mortality and infection rates by replacing the markers on the map with circles. These circles would then change in size and colour depending on the data coming in from the Covid API - when clicked on, the data was then changed from being displayed in an infowindow, to being displayed on the bottom of the screen in it's own section that would render independantly. 
 
- ---
+The next step was to represent the mortality and infection rates by replacing the markers on the map with circles. These circles would then change in size and colour depending on the data coming in from the Covid API - when clicked on, the data was then changed from being displayed in an infowindow, to being displayed on the bottom of the screen in it's own section that would render independantly.
+
+---
 
 ### Stage 3
-A separate page was created that shows an interactive table, displaying the data relating to various parameters (Total Cases, Total Deaths, Total Recoveries, CFR, Active Cases, Critical Cases and Cases per 1 Million people). A new table is rendered on click of the 'Covid-19' button, which replaces the map. This can then be filtered through via a real time search bar, or each header of a column can be clicked on to adjust the column to read in an ascending or descending order of respective values. 
+
+A separate page was created that shows an interactive table, displaying the data relating to various parameters (Total Cases, Total Deaths, Total Recoveries, CFR, Active Cases, Critical Cases and Cases per 1 Million people). A new table is rendered on click of the 'Covid-19' button, which replaces the map. This can then be filtered through via a real time search bar, or each header of a column can be clicked on to adjust the column to read in an ascending or descending order of respective values.
 
 ---
 
 ### Stage 4
+
 We explored the Chart.js library to display the incoming data graphically. The charts are rendered on a seperate page when the menu option is clicked. death of that country.
 
 ---
 
 ### Stage 5
- We further explored the Chart.js library. The charts were split into two pages - Global charts (showing charts from the world) and Country charts (showing country specific charts). All charts are started from the date of the first recorded 
 
-__Global Charts:__ 
+We further explored the Chart.js library. The charts were split into two pages - Global charts (showing charts from the world) and Country charts (showing country specific charts). All charts are started from the date of the first recorded
+
+**Global Charts:**
 
 - Confirmed cases, deaths and recoveries to date globally.
 - 20 Countries with the highest death count adjusted to deaths per million people of the population (this can be further adjusted to account for population density - per million people per km².
@@ -74,19 +78,20 @@ __Global Charts:__
 - R value to date globally.
 - CFR % to date globally.
 
-__Country Charts:__
+**Country Charts:**
 
 Country charts has a search bar. Any country can be typed into this, and the charts that follow will automatically be populated with that countries data.
 
 - Confirmed cases, deaths and recoveries to date for the specified country (can be switched to a doughnut chart to show that country's cases as a % of global cases).
 - R value to date for the specified country.
-- A comparison graph that populates the chosen country and the 10 countries with the highest confirmed cases in the world. Cases and deaths can then be compared on the same graph to date. (This can also be  adjusted per million people)
+- A comparison graph that populates the chosen country and the 10 countries with the highest confirmed cases in the world. Cases and deaths can then be compared on the same graph to date. (This can also be adjusted per million people)
 - Daily confirmed cases change, and death change to date for the specified country.
 - CFR % to date for the specified country .
 
 ---
 
 ### Map/Table View
+
 <table>
   <tr>
     <td>Stage 1 - Map View</td>
@@ -146,7 +151,7 @@ Country charts has a search bar. Any country can be typed into this, and the cha
   </tr>
  </table>
 
- ---
+---
 
 ### Country Charts
 
@@ -163,7 +168,7 @@ Country charts has a search bar. Any country can be typed into this, and the cha
   </tr>
  </table>
 
- ---
+---
 
 <table>
    <tr>
@@ -179,9 +184,9 @@ Country charts has a search bar. Any country can be typed into this, and the cha
    </tr>
   </table>
 
-  ---
+---
 
-  ### Comparison Charts
+### Comparison Charts
 
   <table>
    <tr>
@@ -198,6 +203,6 @@ Country charts has a search bar. Any country can be typed into this, and the cha
 
 ## Forking This Repo
 
-This site is fully open source so feel free to fork this repo. If you do, please just give us proper credit by linking back to the repo: https://github.com/davidpaps/covid_19_mapper We put blood, sweat and tears into this project and are proud of it! 
+This site is fully open source so feel free to fork this repo. If you do, please just give us proper credit by linking back to the repo: https://github.com/davidpaps/covid_19_mapper We put blood, sweat and tears into this project and are proud of it!
 
 ---

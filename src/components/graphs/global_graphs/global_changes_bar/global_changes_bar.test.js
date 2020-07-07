@@ -1,24 +1,22 @@
 import * as React from "react";
 import { shallow } from "enzyme";
-import DailyChangesBar from "./daily_changes_bar";
+import GlobalChangesBar from "./global_changes_bar";
 
-describe("Daily Bar", () => {
+describe("Global Changes Bar", () => {
   let wrapper;
 
-  beforeEach(
-    () => (wrapper = shallow(<DailyChangesBar data={[]} country={[]} />))
-  );
+  beforeEach(() => (wrapper = shallow(<GlobalChangesBar data={[]} />)));
 
   it("should render a <div />", () => {
     expect(wrapper.find("div").length).toEqual(2);
   });
 
-  it("should render a <Bar />", () => {
-    expect(wrapper.find("Bar").length).toEqual(1);
-  });
-
   it("should render a <Button />", () => {
     expect(wrapper.find("Button").length).toEqual(1);
+  });
+
+  it("should render a <Bar />", () => {
+    expect(wrapper.find("Bar").length).toEqual(1);
   });
 
   it("renders correctly", () => {

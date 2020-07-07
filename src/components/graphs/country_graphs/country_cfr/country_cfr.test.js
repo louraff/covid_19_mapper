@@ -1,12 +1,12 @@
 import * as React from "react";
 import { shallow } from "enzyme";
-import CFRContainer from "./global_cfr";
+import CFRContainer from "./country_cfr";
 
-describe("Global CFR", () => {
+describe("Country CFR", () => {
   let wrapper;
 
   beforeEach(
-    () => (wrapper = shallow(<CFRContainer createLineLabels={[]} data={[]} />))
+    () => (wrapper = shallow(<CFRContainer data={[]} country={[]} />))
   );
 
   it("should render a <div />", () => {
@@ -18,6 +18,6 @@ describe("Global CFR", () => {
   });
 
   it("renders correctly", () => {
-    expect(wrapper).toMatchSnapshot();
+    expect(shallow).toMatchSnapshot();
   });
 });

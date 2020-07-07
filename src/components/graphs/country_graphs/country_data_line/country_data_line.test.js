@@ -1,18 +1,36 @@
 import * as React from "react";
-import { render } from "@testing-library/react";
 import { shallow } from "enzyme";
 import CountryLineData from "./country_data_line";
 
-describe("Country Data Line Test", () => {
-  it("does not crash when loaded onto page", () => {
-    shallow(
-      <CountryLineData
-        createLineLabels={[]}
-        country={""}
-        data={[]}
-        total={[]}
-        countries={[]}
-      />
-    );
+describe("Country Line", () => {
+  let wrapper;
+
+  beforeEach(
+    () =>
+      (wrapper = shallow(
+        <CountryLineData
+          createLineLabels={[]}
+          country={""}
+          data={[]}
+          total={[]}
+          countries={[]}
+        />
+      ))
+  );
+
+  it("should render a <div />", () => {
+    expect(wrapper.find("div").length).toEqual(2);
+  });
+
+  it("should render a <Line />", () => {
+    expect(wrapper.find("Line").length).toEqual(1);
+  });
+
+  it("should render a <Button />", () => {
+    expect(wrapper.find("Button").length).toEqual(1);
+  });
+
+  it("renders correctly", () => {
+    expect(wrapper).toMatchSnapshot();
   });
 });
