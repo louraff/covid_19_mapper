@@ -1,19 +1,17 @@
 import * as React from "react";
 import { shallow } from "enzyme";
-import GlobalGrowthFactor from "./global_growth_line";
+import GlobalDataLine from "./global_line";
 
-describe("Global Growth Line", () => {
+describe("Global CFR", () => {
   let wrapper;
 
   beforeEach(
     () =>
-      (wrapper = shallow(
-        <GlobalGrowthFactor data={[]} createLineLabels={[]} />
-      ))
+      (wrapper = shallow(<GlobalDataLine createLineLabels={[]} data={[]} />))
   );
 
   it("should render a <div />", () => {
-    expect(wrapper.find("div").length).toEqual(3);
+    expect(wrapper.find("div").length).toEqual(2);
   });
 
   it("should render a <Line />", () => {

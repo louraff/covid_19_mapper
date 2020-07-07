@@ -11,6 +11,10 @@ describe("Global Changes Bar", () => {
     expect(wrapper.find("div").length).toEqual(2);
   });
 
+  it("should render a <Button />", () => {
+    expect(wrapper.find("Button").length).toEqual(1);
+  });
+
   it("should render a <Bar />", () => {
     expect(wrapper.find("Bar").length).toEqual(1);
   });
