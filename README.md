@@ -206,3 +206,5 @@ Country charts has a search bar. Any country can be typed into this, and the cha
 This site is fully open source so feel free to fork this repo. If you do, please just give us proper credit by linking back to the repo: https://github.com/davidpaps/covid_19_mapper We put blood, sweat and tears into this project and are proud of it!
 
 ---
+
+<!--Covid 19 pandemic-->
